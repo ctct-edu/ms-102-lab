@@ -1,307 +1,294 @@
-## WWL Tenants - Terms of Use
+## [WWL テナント - 利用規約](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#wwl-tenants---terms-of-use)
 
-If you are being provided with a tenant as a part of an instructor-led training delivery, please note that the tenant is made available for the purpose of supporting the hands-on labs in the instructor-led training. 
+インストラクター主導のトレーニング実施の一部としてテナントが提供されている場合、テナントはインストラクター主導のトレーニングのハンズオン ラボをサポートする目的で利用可能であることに注意してください。
 
-Tenants should not be shared or used for purposes outside of hands-on labs. The tenant used in this course is a trial tenant and cannot be used or accessed after the class is over and are not eligible for extension. 
+テナントを共有したり、ハンズオン ラボ以外の目的で使用したりしないでください。本コースで利用するテナントはトライアルテナントのため、授業終了後は利用・アクセスできず、延長の対象外となります。
 
-Tenants must not be converted to a paid subscription. Tenants obtained as a part of this course remain the property of Microsoft Corporation and we reserve the right to obtain access and repossess at any time. 
+テナントを有料サブスクリプションに変更してはなりません。このコースの一環として取得したテナントは引き続き Microsoft Corporation の所有物であり、当社はいつでもアクセス権を取得し、再所有する権利を留保します。
 
-# Learning Path 1 - Lab 1 - Exercise 1 - Initialize your Microsoft 365 Tenant 
+# [ラーニング パス 1 - ラボ 1 - 演習 1 - Microsoft 365 テナントを初期化する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#learning-path-1---lab-1---exercise-1---initialize-your-microsoft-365-tenant)
 
-Adatum Corporation is a subsidiary of Contoso Electronics. Adatum runs its legacy applications (such as Microsoft Exchange Server 2019) in an on-premises deployment. However, it recently subscribed to Microsoft 365, thereby creating a hybrid deployment in which it must synchronize its on-premises and cloud deployments. 
+Adatum Corporation は Contoso Electronics の子会社です。Adatum は、レガシー アプリケーション (Microsoft Exchange Server 2019 など) をオンプレミス展開で実行します。ただし、最近 Microsoft 365 に加入したため、オンプレミス展開とクラウド展開を同期する必要があるハイブリッド展開が作成されました。
 
-As Adatum's Microsoft 365 administrator, you have been tasked with deploying Microsoft 365 in Adatum’s hybrid deployment using a virtualized lab environment. In this exercise, you will set up Adatum's Microsoft 365 trial tenant, and your instructor will guide you on how to obtain your Microsoft 365 credentials in your lab-hosted environment. You will use these credentials throughout the remaining labs in this course. 
+Adatum の Microsoft 365 管理者として、あなたは仮想化されたラボ環境を使用して Adatum のハイブリッド展開に Microsoft 365 を展開する任務を負っています。この演習では、Adatum の Microsoft 365 試用版テナントをセットアップし、インストラクターがラボホスト環境で Microsoft 365 資格情報を取得する方法を説明します。このコースの残りのラボでは、これらの資格情報を使用します。
 
-In your lab environment, your lab hosting provider has already obtained a Microsoft 365 trial tenant for you. Your lab provider has also created two admin accounts that you will use in your VM lab environment: 
+ラボ環境では、ラボ ホスティング プロバイダーが Microsoft 365 試用版テナントをすでに取得しています。ラボ プロバイダーは、VM ラボ環境で使用する 2 つの管理者アカウントも作成しました。
 
-- A local administrator account for Adatum's on-premises environment (Adatum\Administrator).
-- A default tenant admin account in Microsoft 365 (the display name for this user account is MOD Administrator). 
+- Adatum のオンプレミス環境のローカル管理者アカウント (Adatum\Administrator)。
+- Microsoft 365 のデフォルトのテナント管理者アカウント (このユーザー アカウントの表示名は MOD 管理者です)。
 
-You will log into the Client 1 PC (LON-CL1) using the local Adatum\Administrator account. When you access Microsoft 365 for the first time, you will initially log in using the Microsoft 365 tenant admin account (MOD Administrator). You will then update Adatum's Microsoft 365 organizational profile, and you'll prepare your tenant for Microsoft Azure Active Directory and for later labs using Information Rights Management, audit alerts, Microsoft Graph PowerShell, and sensitivity labels.
+ローカルの Adatum\Administrator アカウントを使用して、クライアント 1 PC (LON-CL1) にログインします。初めて Microsoft 365 にアクセスするときは、最初に Microsoft 365 テナント管理者アカウント (MOD 管理者) を使用してログインします。次に、Adatum の Microsoft 365 組織プロファイルを更新し、Microsoft Azure Active Directory 用と、Information Rights Management、監査アラート、Microsoft Graph PowerShell、機密ラベルを使用する後のラボ用にテナントを準備します。
 
+### [タスク 1 - Microsoft 365 資格情報を取得する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#task-1---obtain-your-microsoft-365-credentials)
 
-### Task 1 - Obtain Your Microsoft 365 Credentials
+ラボを開始すると、Microsoft Virtual Lab 環境でラボ ホスティング プロバイダーが提供する無料の Microsoft 365 試用版テナントにアクセスできるようになります。このテナント内では、ラボ ホスティング プロバイダーによって、MOD Administrator という名前の既定のテナント管理者用の Microsoft 365 ユーザー アカウントが作成されています。ラボ ホスティング プロバイダーはこのユーザー アカウントに一意のユーザー名とパスワードを割り当てており、そのアカウントには Microsoft 365 グローバル管理者のロールが割り当てられています。Microsoft Virtual Lab 環境内で Microsoft 365 にサインインするには、このユーザー名とパスワードを取得する必要があります。テナント名とテナント プレフィックスも割り当てられます。この情報は、このコースのラボ全体のさまざまなタスクでも使用します。
 
-Once you launch the lab, you'll be able to access the free Microsoft 365 trial tenant provided by your lab hosting provider in the Microsoft Virtual Lab environment. Within this tenant, your lab hosting provider has created a Microsoft 365 user account for a default tenant administrator named MOD Administrator. Your lab hosting provider has assigned this user account a unique username and password, and the account has been assigned the Microsoft 365 Global administrator role. You must retrieve this username and password so that you can sign into Microsoft 365 within the Microsoft Virtual Lab environment. You will also be assigned a tenant name and tenant prefix. You will also use this information in various tasks throughout the labs for this course.
+このコースは、複数の認定ラボ ホスティング プロバイダーのいずれかを使用してラーニング パートナーによって提供されるため、テナントに関連付けられた UPN 名とテナント ID を取得するために必要な実際の手順は、ラボ ホスティング プロバイダーによって異なる場合があります。したがって、インストラクターは、コースでこの情報を取得する方法について必要な指示を提供します。
 
-Because this course can be offered by learning partners using any one of several authorized lab hosting providers, the actual steps involved to retrieve the UPN name and tenant ID associated with your tenant may vary by lab hosting provider. Therefore, your instructor will provide you with the necessary instructions on how to retrieve this information for your course. <br/>
+後で使用できるように、次の情報 (講師から提供されたもの) を書き留めておく必要があります。
 
-You should write down the following information (provided by your instructor) for later use:
+- **テナントのプレフィックス。**このテナント プレフィックスは、このコースのラボ全体で Microsoft 365 にサインインするために使用する Microsoft 365 ユーザー アカウント用です。各 Microsoft 365 ユーザー アカウントのドメインは、{ユーザー エイリアス}@xxxxxZZZZZZ.onmicrosoft.com の形式になります。xxxxxZZZZZZ はテナント プレフィックスです。これは、ラボ ホスティング業者のプレフィックス (xxxxx、一部のホスティング業者は M365x などの一般的なプレフィックスを使用しますが、他のホスティング業者は会社のイニシャルまたはその他の指定を使用します) とテナント ID (ZZZZZZ、通常は 6 桁の数字) の 2 つの部分で構成されます。後で使用できるように、この xxxxxZZZZZZ テナント プレフィックス値を記録します。いずれかのラボ手順で、ユーザー アカウントの 1 つ (MOD 管理者など) として Microsoft 365 にサインインするように指示された場合は、ここで取得した xxxxxZZZZZZ 値を .onmicrosoft.com ドメインのテナント プレフィックス部分として入力する必要があります。
+- **テナントのパスワード。**これは、ラボ ホスティング プロバイダーからテナント管理者アカウントに提供されるパスワードです。**注:**このパスワードは、テナント管理者アカウントだけでなく、ラボ全体で使用される事前定義された各ユーザー アカウントにも使用します。
+- **カスタム ドメイン名。**ラボ ホスティング プロバイダーが Adatum のカスタム ドメイン名を作成しました。このドメインは、後のラボ演習で Microsoft 365 にカスタム ドメインを追加するときに使用します。ドメイン名の形式は**xxxUPNxxx.xxxCustomDomainxxx.xxx です。****xxxUPNxxx は**ラボ ホスティング プロバイダーから提供された UPN 番号に置き換える必要があり、**xxxCustomDomainxxx.xxxは置き換える必要があります。**ラボ ホスティング プロバイダーのドメイン名を使用します。たとえば、ラボ ホスティング プロバイダーが Fabrikam Inc であると仮定します。プロバイダーがテナントに割り当てる UPN 番号が AMPVU3a で、そのカスタム ドメイン名が fabrikam.us の場合、新しいカスタム ドメインのドメイン名は AMPVU3a.fabrikam.us になります。 。インストラクターは、ラボ ホスティング プロバイダーの UPN 番号とカスタム ドメイン名を提供します。
 
-- **Tenant prefix.** This tenant prefix is for the Microsoft 365 user accounts that you will use to sign into Microsoft 365 throughout the labs in this course. The domain for each Microsoft 365 user account is in the format of {user alias}@xxxxxZZZZZZ.onmicrosoft.com, where xxxxxZZZZZZ is the tenant prefix. It consists of two parts - your lab hoster's prefix (xxxxx; some hosters use a generic prefix such as M365x, while others use their company initials or some other designation) and the tenant ID (ZZZZZZ; usually a 6 digit number). Record this xxxxxZZZZZZ tenant prefix value for later use. When any of the lab steps direct you to sign into Microsoft 365 as one of the user accounts (such as the MOD Administrator), you must enter the xxxxxZZZZZZ value that you obtained here as the tenant prefix portion of your .onmicrosoft.com domain.
+### [タスク 2 - Adatum の組織プロファイルをセットアップする](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#task-2--set-up-adatums-organization-profile)
 
-- **Tenant password.** This is the password provided by your lab hosting provider for the tenant admin account. **Note:** You will use this password not only for the tenant admin account, but for each of the predefined user accounts that are used throughout the labs.
+このコースのラボ全体を通じて、Adatum の Microsoft 365 管理者である Holly Dickson の役割を引き受けてロールプレイを行います。ホリーとしてのあなたの役割は、Microsoft 365 試用版テナントの会社プロファイルを設定する任務を負っています。このタスクでは、Adatum のテナントに必要なオプションを構成します。ホリーはまだ自分用の個人用 Microsoft 365 ユーザー アカウントを作成していないため (これは次のラボ演習で作成します)、ホリーは最初に、ラボのホスティングによって作成された既定の Microsoft 365 テナント管理者アカウントとパスワードを使用して Microsoft 365 にサインインします。プロバイダー。このアカウントは MOD 管理者アカウントであり、エイリアスは「admin」です。このアカウントのユーザー名は[admin@xxxxxZZZZZZ.onmicrosoft.comです。](mailto:admin@xxxxxZZZZZZ.onmicrosoft.com)(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって割り当てられたテナント プレフィックスです); このアカウントの表示名は MOD Administrator になります。
 
-- **Custom Domain name.** Your lab hosting provider has created a custom domain name for Adatum. You will use this domain when adding a custom domain into Microsoft 365 in a later lab exercise. The domain name is in the format **xxxUPNxxx.xxxCustomDomainxxx.xxx.** You must replace **xxxUPNxxx** with the UPN number provided by your lab hosting provider, and you must replace **xxxCustomDomainxxx.xxx** with the lab hosting provider's domain name. For example, let's assume your lab hosting provider is Fabrikam Inc. If the UPN number it assigns to your tenant is AMPVU3a and its custom domain name is fabrikam.us, then the domain name for your new custom domain would be AMPVU3a.fabrikam.us. Your instructor will provide you with your lab hosting provider's UPN number and custom domain name.  
+1. ラボ ホスティング プロバイダーの仮想マシン環境を開くときは、クライアント 1 VM (LON-CL1) から始める必要があります。VM 環境が他のマシン (LON-DC1 など) で開いている場合は、今すぐ**LON-CL1**に切り替えてください。
 
+2. ラボ ホスティング プロバイダーによって作成されたローカル**管理者**アカウントとして、パスワード**Pa55w.rdを使用して****LON-CL1**にログインします。
 
-### Task 2- Set up Adatum's Organization Profile
+3. 画面下部のタスクバーで、**Microsoft Edge**アイコンを選択します。必要に応じて、ブラウザを開いたときにウィンドウを最大化します。
 
-Throughout the labs in this course, you will role-play by taking on the persona of Holly Dickson, Adatum’s Microsoft 365 Administrator. In your role as Holly, you have been tasked with setting up the company’s profile for its Microsoft 365 trial tenant. In this task, you will configure the required options for Adatum’s tenant. Since Holly has yet to create a personal Microsoft 365 user account for herself (you will do this in the next lab exercise), Holly will initially sign into Microsoft 365 using the default Microsoft 365 tenant admin account and password that was created by your lab hosting provider. This account is the MOD Administrator account, whose alias is "admin". The username for this account is admin@xxxxxZZZZZZ.onmicrosoft.com (where xxxxxZZZZZZ is the tenant prefix assigned by your lab hosting provider); the display name for this account will be MOD Administrator.
+4. Edge ブラウザーで、アドレス バーに次の URL を入力して、**Microsoft 365 ホームページに移動します:** **[https://portal.office.com](https://portal.office.com/)**
 
-1. When you open your lab hosting provider's Virtual Machine environment, you need to begin with the Client 1 VM (LON-CL1). If your VM environment opens with one of the other machines (such as LON-DC1), then switch to **LON-CL1** now.
+5. **[サインイン]**ダイアログ ボックスで、ラボ ホスティング プロバイダーから提供された**Microsoft 365 テナント ユーザー名**(これは MOD 管理者アカウント)をコピーして貼り付けます。**[ユーザー名は、 admin@xxxxxZZZZZZ.onmicrosoft.com](mailto:admin@xxxxxZZZZZZ.onmicrosoft.com)**の形式である必要があります。xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって割り当てられたテナント プレフィックスです。**「次へ」**を選択します。
 
-2. Log into **LON-CL1** as the local **Administrator** account that was created by your lab hosting provider with the password **Pa55w.rd**. 
+6. **[パスワードの入力]**ダイアログ ボックスで、ラボ ホスティング プロバイダーから提供された一意の**Microsoft 365 テナント パスワードをコピーして貼り付け、** **[サインイン]**を選択します。
 
-3. On the taskbar at the bottom of your screen, select the **Microsoft Edge** icon. If necessary, maximize your browser window when it opens.
+7. 滞在中に**サインインしていますか?** ダイアログ ボックスで、**[今後これを表示しない]**チェック ボックスをオンにして、**[はい] を選択します。**表示される**[パスワードを保存]**ダイアログ ボックスで、 **[しない]**を選択します。
 
-4. In your Edge browser, go to the **Microsoft 365 Home** page by entering the following URL in the address bar: **https://portal.office.com** 
+8. **[Microsoft 365 へようこそ]**ダイアログ ボックスが画面の中央に表示された場合、それを閉じるオプションはありません。代わりに、ウィンドウの右側にある前向き矢印アイコン ( **>** ) を 2 回選択し、次にチェック マーク アイコンを選択して、このメッセージ ウィンドウ内のスライドを進めます。
 
-5. In the **Sign in** dialog box, copy and paste in the **Microsoft 365 Tenant Username** provided by your lab hosting provider (this is the MOD Administrator account). The username should be in the form of **admin@xxxxxZZZZZZ.onmicrosoft.com**, where xxxxxZZZZZZ is the tenant prefix assigned by your lab hosting provider. Select **Next**.
+9. **[さらにアプリを検索]**ウィンドウが表示された場合は、ウィンドウの右上隅にある[ **X]を選択してウィンドウを閉じます。**
 
-6. In the **Enter password** dialog box, copy and paste in the unique **Microsoft 365 Tenant Password** provided by your lab hosting provider and then select **Sign in**.
+10. **[Microsoft 365 へようこそ]**ページが Edge ブラウザーの [**ホーム] | [ホーム]**に表示されます。**「Microsoft 365」**タブ。これは MOD 管理者の Microsoft 365 ホームページです。
 
-7. On the **Stay signed in?** dialog box, select the **Don’t show this again** check box and then select **Yes.** On the **Save password** dialog box that appears, select **Never**.
+    画面の右上隅に円の中に表示されるイニシャル**MAに注目してください。****これらは、 MOD 管理者**アカウントのイニシャルです。これは、サインインしたばかりのラボ ホスティング プロバイダーによって作成されたテナント管理者アカウントです。ラボ ホスティング プロバイダーによって作成された他の既存の Microsoft 365 ユーザー アカウントには、各アカウントに関連付けられた写真があります。したがって、後のラボでこれらのユーザーのいずれかとしてサインインすると、ユーザーのイニシャルではなくユーザーの写真が表示されます。ただし、MOD管理者などのユーザーに写真が割り当てられていない場合は、写真の代わりにユーザーのイニシャルが表示されます。
 
-8. If a **Welcome to Microsoft 365** dialog box appears in the middle of the screen, there's no option to close it. Instead, to the right of the window, select the forward arrow icon (**>**) two times and then select the check mark icon to advance through the slides in this messaging window. 
+    **[Microsoft 365 へようこそ]**ページの左側のウィンドウに表示されるアプリケーション アイコンの一覧で、 [**管理者]**を選択します。これにより、新しいブラウザー タブで**Microsoft 365 管理センターが開きます。**
 
-9. If a **Find more apps** window appears, select the **X** in the upper right-hand corner of the window to close it. 
+11. **Microsoft 365 管理センター**で、左側のナビゲーション ウィンドウで**[すべて表示]を選択し、** **[設定]**を選択します。**[設定]**グループで、**[組織設定]**を選択します。
 
-10. The **Welcome to Microsoft 365** page appears in your Edge browser in the **Home | Microsoft 365** tab. This is the MOD Administrator's Microsoft 365 home page. <br/>
+12. **「組織設定」**ページには、デフォルトで**「サービス」**タブが表示されます。**「組織プロファイル」**タブを選択します。
 
-	Notice the initials **MA** that appear in a circle in the top-right corner of the screen. These are the initials of the **MOD Administrator** account, which is the tenant admin account created by your lab hosting provider that you just signed in as. The other existing Microsoft 365 user accounts that were created by your lab hosting provider have a picture associated with each of their accounts; therefore, when you sign in as any of those users in later labs, the user's picture will be displayed rather than the user's initials. However, when a user such as the MOD Administrator has no picture assigned to it, the user's initials are displayed in place of the picture. <br/>
+13. **[組織プロファイル]**タブで、プロファイル データのリストから**[組織情報]を選択します。**
 
-	On the **Welcome to Microsoft 365** page, in the list of application icons that appear in the left-hand pane, select **Admin**; this opens the **Microsoft 365 admin center** in a new browser tab. 
+14. **表示される組織情報**ペインで、次の情報を入力します。
 
-11. In the **Microsoft 365 admin center**, select **Show all** in the left-hand navigation pane and then select **Settings**. In the **Settings** group, select **Org settings**. 
+    - 名前: **Adatum Corporation** (注: Adatum Corporation は Contoso Inc の子会社です。ラボ ホスティング プロバイダーがこのラボ用に取得した Microsoft 試用版テナントは、もともと Contoso に割り当てられていた可能性があります。Contoso (またはその他の値) が組織名として表示される場合**は**、を**Adatum Corporation**に変更します。)
+    - 住所: **555 Main Street**
+    - 都市:**レドモンド**
+    - 州または地方:**ワシントン州**
+    - 郵便番号: **98052**
+    - 電話番号: 変更しないでください
+    - 技術連絡先: 変更しないでください
+    - 希望言語:**英語**
 
-12. On the **Org settings** page, the **Services** tab is displayed by default. Select the **Organization profile** tab.
+15. **[保存]**を選択します。
 
-13. In the **Organization profile** tab, select **Organization information** from the list of profile data.
+16. **[組織情報]**ウィンドウの上部に、変更が保存されたことを示すメッセージが表示されます。右上隅の[ **X]**を選択してペインを閉じます。
 
-14. In the **Organization information** pane that appears, enter the following information: <br/>
+17. **[組織プロファイル]**タブに戻り、組織プロファイル データのリストで**[リリース設定]**を選択します。
 
-    - Name: **Adatum Corporation** (Note: Adatum Corporation is a subsidiary of Contoso Inc. The Microsoft trial tenant that your lab hosting provider obtained for this lab may have been originally assigned to Contoso. If **Contoso** (or any other value) appears as the organization name, then change it to **Adatum Corporation**.)
+    **注:** Microsoft 365 の利点の 1 つは、最新の機能と更新プログラムを環境に自動的に適用できることです。このプロセスにより、組織のメンテナンス コストとオーバーヘッドが削減され、早期導入ユーザーが新機能をテストできるようになります。**リリース設定**を設定することにより、Microsoft 365 テナントがこれらの更新プログラムをいつどのように受信するかを制御できます。
 
-    - Street Address: **555 Main Street**
+18. **表示される[リリース設定]**ペインで、[**選択したユーザーを対象としたリリース]**オプションを使用すると、更新をプレビューするユーザーのコントロール グループを作成して、組織全体の更新を準備できるようになります。**[全員を対象としたリリース]**オプションは、組織全体の更新を早期に入手できる開発環境でより一般的に使用されます。Adatum などの非開発環境では、選択したユーザー グループに対象を絞ったリリースがより一般的な設定です。これにより、コントロール グループによるレビューが完了した後で全員が更新を利用できるようにするタイミングを組織が制御できるようになります。
 
-    - City: **Redmond**
+    **[選択したユーザーを対象としたリリース]**オプションを選択し、**[保存]**を選択します。
 
-    - State or province: **Washington**
+19. **[リリース設定]**ペインで、リリース オプションのリストの下にある [**ユーザーの選択]**オプションを選択します。
 
-    - ZIP or postal code: **98052**
+20. 表示される**[ターゲット リリースのユーザーの選択**] ペインで、 **[ターゲット リリースを受け取るのは誰ですか?]内を選択します。**分野。これにより、アクティブなユーザーのリストが表示されます (これらは、ラボ ホスティング プロバイダーによって試用版テナント用に作成された Microsoft 365 ユーザー アカウントです)。このリストで、次の各ユーザーを選択します。
 
-    - Phone: do not change
+    **注:**各ユーザーを一度に 1 人ずつ選択する必要があります。ユーザーを選択した後、「**誰が対象リリースを受け取るべきか?」内で選択する必要があります。**フィールドを再度クリックするとリストが再表示され、次のユーザーを選択できるようになります。
 
-    - Technical contact: do not change
+    - **アレックス・ウィルバー**
+    - **ジョニ・シャーマン**
+    - **リン・ロビンス**
+    - **MOD管理者**
 
-    - Preferred language: **English**
+    **注:** Alex、Joni、Lynne は、Holly の Microsoft 365 パイロット チームのメンバーです。彼らのアカウントは、このコースのラボ全体で使用されます。
 
-15. Select **Save**.
+21. **[保存]**を選択します。
 
-16. At the top of the **Organization information** pane, note the message indicating the changes have been saved. Select the **X** in the upper right-hand corner to close the pane.
+22. **[リリース設定]**ペインの上部に、4 人のユーザーが対象のリリースに追加されたことを示すメッセージが表示されます。右上隅の[ **X]**を選択してペインを閉じます。
 
-17. Back on the **Organization profile** tab, in the list of organization profile data, select **Release preferences**.  <br/>
+23. 次のタスクのために**Microsoft 365 管理センター**を開いたまま、Microsoft Edge で**LON-CL1**にログインしたままにします。
 
-    **Note:** One of the benefits of Microsoft 365 is its ability to have the latest features and updates automatically applied to your environment. This process can reduce maintenance costs and overhead for an organization and allow early-adopter users to test new features. By setting up your **Release preferences**, you can control how and when your Microsoft 365 tenant receives these updates. <br/>
+### [タスク 3 - Adatum のパイロット プロジェクト チーム用のカスタム テーマを作成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#task-3--create-a-custom-theme-for-adatums-pilot-project-team)
 
-18. In the **Release preferences** pane that appears, the **Targeted release for select users** option enables you to create a control group of users who will preview updates so that you can prepare the updates for your entire organization. The **Targeted release for everyone** option is more commonly used in development environments, where you can get updates early for your entire organization. In non-development environments, such as Adatum, targeted release to a select group of users is a more typical preference as it enables an organization to control when it wants to make updates available to everyone once they've been reviewed by the control group. <br/>
+前のタスクでは、誰かが Microsoft 365 にサインインすると、システムはその人の写真 (提供されている場合) または写真が提供されていない場合はイニシャルを表示することを学習しました。Adatum の Microsoft 365 管理者である Holly Dickson は、サインインしているユーザーの写真やイニシャルを見るだけでは満足できません。彼女は、パイロット プロジェクト チームのメンバー用に、サインインしているユーザーの名前も表示されるカスタム テーマを作成したいと考えています。パイロット プロジェクトの終了時に、パイロット プロジェクト チームのメンバーがこのデザインを好む場合は、すべてのユーザーに適用されるようにデフォルト テーマで同じオプションを構成します。
 
-	Select the **Targeted release for select users** option and then select **Save**.
+カスタム テーマは、1 つ以上の Microsoft 365 グループに関連付ける必要があります。したがって、この変更を実装するには、ホリーはまずパイロット プロジェクト チームのメンバー用の Microsoft 365 グループを作成する必要があります。次に、このグループに関連付けられたカスタム テーマを作成し、サインインしているユーザーの名前を表示する設定を有効にすることができます。このタスクでは、Adatum の Microsoft 365 パイロット プロジェクト チームのメンバー用の Microsoft 365 グループを作成します。次に、サインインしているユーザーの名前を表示するカスタム テーマを作成し、パイロット プロジェクト チームをこのテーマに割り当てます。カスタム テーマで構成できる他のオプションも確認し、必要に応じて色を変更できます。
 
-19. In the **Release preferences** pane, below the list of release options, select the **Select users** option.
+1. LON-CL1 にはローカルの**adatum\administrator**アカウントとしてログインしたままにし、Edge ブラウザーでは Microsoft 365 に**MOD Administrator**としてログインしたままにする必要があります。
 
-20. In the **Choose users for targeted release** pane that appears, select inside the **Who should receive targeted releases?** field. This displays the list of active users (these are the Microsoft 365 user accounts created for your trial tenant by your lab hosting provider). In this list, select each of the following users. <br/>
+2. **Microsoft 365 管理センター**で、左側のナビゲーション ウィンドウで**[チームとグループ]を選択し、その下で****[アクティブなチームとグループ]**を選択します。
 
-    **Note:** You must select each user, one at a time. After selecting a user, you must select inside the **Who should receive targeted releases?** field again to re-display the list so that you can select the next user. 
+3. **[アクティブなチームとグループ]**ページには、各グループ タイプを表示するタブがあります。**[Microsoft 365]**タブはデフォルトで表示されます。このタブには、既存の Microsoft 365 グループが表示されます。
 
-	- **Alex Wilber**
-	- **Joni Sherman**
-	- **Lynne Robbins**
-	- **MOD Administrator** <br/>
+   Microsoft 365 グループのリストの上にあるメニュー バーに表示される [**グループの追加]**オプションを選択します。これにより、**グループの追加**ウィザードが開始されます。
 
-    **Note:** Alex, Joni, and Lynne are part of Holly's Microsoft 365 pilot team. Their accounts will be used throughout the labs for this course.
-    
-21. Select **Save**.
+4. **グループの追加**ウィザードの[**グループの種類の選択]**ページで、既定で**[Microsoft 365 (推奨)]**オプションが選択されている必要があります。そうでない場合は、今すぐこのオプションを選択してください。**「次へ」**を選択します。
 
-22. At the top of the **Release preferences** pane, note the message indicating the 4 users were added to the targeted release. Select the **X** in the upper right-hand corner to close the pane. 
+5. **[基本のセットアップ]**ページで、**[名前]**フィールドに**「M365 パイロット プロジェクト」**と入力し、[説明] フィールドに「**Microsoft 365 パイロット プロジェクト チームのメンバー」と入力します (注:****説明**を入力しない場合でも、[このフィールドを使用して**「次へ」**ボタンを有効にします)。**「次へ」**を選択します。
 
-23. Remain logged into **LON-CL1** with Microsoft Edge open to the **Microsoft 365 admin center** for the next task.
+6. **次に、MOD 管理者をM365 パイロット プロジェクト**グループの所有者として割り当てます。**[所有者の割り当て]**ウィンドウで、**[+所有者の割り当て]**を選択します。
 
-### Task 3- Create a custom theme for Adatum's pilot project team
+7. **表示される[所有者の割り当て]**ペインで、 **[MOD Administrator] の**横にあるチェック ボックスをオンにし、ペインの下部にある**[追加 (1)]ボタンを選択します。**
 
-In the prior task, you learned that when someone is signed into Microsoft 365, the system will either display their photograph (if one is supplied), or their initials if no photograph is provided. Holly Dickson, Adatum's Microsoft 365 Administrator, is not satisfied with just seeing a picture or initials of the signed-in user. She wants to create a custom theme for the members of her pilot project team so that it also displays the signed-in user's name. At the end of the pilot project, if the pilot project team members prefer this design, she will configure this same option in the default theme so that it applies to all users. 
+8. **[所有者の割り当て]**ページに、MOD 管理者がグループの所有者として表示されるはずです。**「次へ」**を選択します。
 
-Custom themes must be associated with one or more Microsoft 365 groups. Therefore, to implement this change, Holly must first create a Microsoft 365 group for the members of the pilot project team. She can then create a custom theme associated with this group that enables the setting to display the signed-in user's name. In this task, you will create a Microsoft 365 group for the members of Adatum's Microsoft 365 pilot project team. You will then create a custom theme that displays the signed-in user's name, and you will assign the pilot project team to this theme. You will also review other options that can be configured with custom themes, and you can make any color changes that you wish.
+9. ここで、M365 パイロット プロジェクト グループにメンバーを割り当てます。**[メンバーの追加]**ページで、**[+メンバーを追加]**を選択します。
 
-1. You should still be logged into LON-CL1 as the local **adatum\administrator** account, and in your Edge browser, you should still be logged into Microsoft 365 as the **MOD Administrator**. 
+10. **表示される[メンバーの追加]**ウィンドウで、次のユーザーの横にあるチェック ボックスをオンにします: **Alex Wilber**、**Allan Deyoung**、**Diego Siciliani**、**Isaiah Langer**、**Joni Sherman**、**Lynne Robbins**、**Megan Bowen**、**MOD Administrator**、**Nestor Wilke**、および**Patti Fernandez**。次に、ペインの下部にある**[追加] (10)ボタンを選択します。**
 
-2. In the **Microsoft 365 admin center**, select **Teams & groups** in the left-hand navigation pane, and then under it, select **Active teams & groups**. 
+11. **[メンバーの追加]**ページで、これら 10 人のユーザーがグループのメンバーとしてリストされていることを確認します。ユーザーを見逃した場合は、**[+メンバーの追加]**を選択して、見逃したユーザーを追加します。10 人のユーザー全員がこのページに表示されたら、**[次へ]**を選択します。
 
-3. In the **Active teams and groups** page, there's a tab for viewing each of the group types. The **Microsoft 365** tab is displayed by default; this tab displays the existing Microsoft 365 groups.  <br/>
+12. **[設定の編集]**ページで、次の情報を入力します。
 
-    Select the **Add a group** option that appears on the menu bar above the list of Microsoft 365 groups. This initiates the **Add a group** wizard. 
+    - **[グループ電子メール アドレス]**フィールドに**「m365pilotproject」**と入力します。
+    - **[プライバシー]**フィールドで**[プライベート]**を選択します。
+    - **[Microsoft Teams をグループに追加]**セクションで、**[このグループのチームを作成する**] チェック ボックスがオンになっていることを確認し (空白の場合は選択します)、 [**次へ]**を選択します。
 
-4. In the **Add a group** wizard, on the **Choose a group type** page, the **Microsoft 365 (recommended)** option should be selected by default. If it isn't, then select this option now. Select **Next**. 
+13. **[グループの追加を確認して終了]**ページで、入力した内容を確認します。修正する必要がある場合は、調整が必要な特定の領域で**[編集]を選択し、必要な修正を行ってから、** **[次へ]**を選択してこのページに戻ります。すべてが正しければ、**「グループの作成」**を選択します。
 
-5. In the **Set up the basics** page, enter **M365 pilot project** in the **Name** field, and then enter **Members of the Microsoft 365 pilot project team** in the **Description** field (Note: even if you don't enter a description, you must still select into this field to enable the **Next** button). Select **Next**.
+14. **[M365 パイロット プロジェクト グループが作成されました]**ウィンドウが表示されたら、ページの上部にある、新しいグループがアクティブ グループのリストに表示されるまでに 5 分かかる場合があるというコメントに注目してください。
 
-6. You will now assign the MOD Administrator as owner of the **M365 pilot project** group. In the **Assign owners** window, select **+Assign owners**.
-	
-7. In the **Assign owners** pane that appears, select the check box next to **MOD Administrator**, and then select the **Add (1)** button at the bottom of the pane.
+    **[閉じる]**を選択します。**これにより、 [アクティブなチームとグループ]**ページに戻り、 **[Microsoft 365**グループ] タブが表示されます。M365 パイロット プロジェクト グループは Microsoft 365 グループであるため、最終的にはこのタブに表示されるはずです。必要に応じて、Microsoft 365 グループのリストに M365 パイロット プロジェクト グループが表示されるまで、メニュー バーの**[更新]オプションを選択します。**
 
-8. On the **Assign owners** page, MOD Administrator should appear as owner of the group. Select **Next**.
+15. **Microsoft 365 管理センター**のナビゲーション ウィンドウの**[設定]**グループで、 **[組織の設定]**を選択します。
 
-9. You will now assign members to the M365 pilot project group. In the **Add members** page, select **+Add members**.
+16. **[組織設定]**ページで、**[組織プロファイル]**タブを選択します。
 
-10. In the **Add members** pane that appears, select the check boxes next to the following users: **Alex Wilber**, **Allan Deyoung**, **Diego Siciliani**, **Isaiah Langer**, **Joni Sherman**, **Lynne Robbins**, **Megan Bowen**, **MOD Administrator**, **Nestor Wilke**, and **Patti Fernandez**. Then select the **Add (10)** button at the bottom of the pane.
+17. 組織プロファイル データのリストで、**[カスタム テーマ]**を選択します。
 
-11. On the **Add members** page, verify these 10 users are listed as members of the group. If you missed a user, select **+Add members** and then add any users that you missed. When all 10 users appear on this page, select **Next**.
+18. **表示される[組織に合わせて Microsoft 365 をカスタマイズ]**ウィンドウでは、ユーザーが Microsoft 365 にサインインしたときに表示される既定のテーマをカスタマイズしたり、追加のカスタム テーマを追加したりできます。**+テーマの追加**オプションを選択します。
 
-12. In the **Edit settings** page, enter the following information: <br/>
+19. 表示される**[新しいグループ テーマ]**ウィンドウには、デフォルトで**[全般]**タブが表示されます。**「名前」**フィールドに**「M365 パイロット プロジェクトのテーマ」**と入力します。
 
-	- Enter **m365pilotproject** in the **Group email address** field.
-	- In the **Privacy** field, select **Private**.
-	- Under the **Add Microsoft Teams to your group** section, verify the **Create a team for this group** check box is selected (select it if it's blank), and then select **Next**.
+20. **「グループ」**フィールド内を選択します。表示されるグループのリストで、**M365 パイロット プロジェクトが**グループのリストに表示されている場合は選択します。
 
-13. In the **Review and finish adding group** page, review the content that you entered. If anything needs to be fixed, select **Edit** under the specific area that needs adjustment, make any necessary corrections, and then select **Next** to continue back to this page. Once everything is correct, select **Create group**.
+    **注:** **M365 パイロット プロジェクトが**グループのリストに表示されない場合は、 **[グループ]**フィールドに**「M365」**と入力します。検索結果ボックスが表示され、**M365 パイロット プロジェクト**グループが表示されます。**M365 パイロット プロジェクト**を選択します。
 
-14. Once the **M365 pilot project group created** window appears, note the comment at the top of the page that it may take 5 minutes for the new group to appear in the list of Active groups.  </br>
+21. **[ユーザーの表示名を表示する]**チェック ボックスをオンにします。これは、ホリーが M365 パイロット プロジェクト チームのメンバー向けにカスタマイズしたいと考えている設定です。
 
-	Select **Close**. This returns you to the **Active teams and groups** page, which should display the **Microsoft 365** group tab. Since the M365 pilot project group was a Microsoft 365 group, it should eventually display on this tab. If necessary, select the **Refresh** option on the menu bar until you see the M365 pilot project group in the list of Microsoft 365 groups.
+22. **[ロゴ]**タブを選択し、時間をかけてそのオプションを確認します。**「色」**タブでも同じことを行います。更新できるさまざまなテーマとブランド オプションに注目してください。
 
-15. In the **Microsoft 365 admin center**, under the **Settings** group in the navigation pane, select **Org settings**. 
+    このラボでは、オプションを変更することも、デフォルト値をそのまま使用することもできます。たとえば、現実の環境では、会社のロゴを追加し、背景画像をすべてのユーザーのデフォルトとして設定できます。このラボでは、ナビゲーション ウィンドウの色、テキストの色、アイコンの色、アクセントの色を自由に変更してください。
 
-16. On the **Org settings** page, select the **Organization profile** tab.
+    **Microsoft 365 パイロット プロジェクト チームのメンバーが使用するこのテーマのさまざまなオプションを検討してください。必要に応じて変更を加えます。**
 
-17. In the list of organization profile data, select **Custom themes**.
+    **ヒント:**カラー パターンによっては、美的にユーザーの注意をそらすものもあります。いずれかの色を変更する場合は、ネオン カラーや明るいピンクや白などの高解像度の色など、コントラストの高い色を一緒に使用しないことをお勧めします。
 
-18. In the **Customize Microsoft 365 for your organization** pane that appears, you can customize the default theme that users see when signed into Microsoft 365, and you can add additional custom themes. Select the **+Add theme** option.
+23. **[保存]**を選択します。変更を保存したら、**M365 パイロット プロジェクトのテーマ**ペインを閉じます。
 
-19. In the **New group theme** pane that appears, the **General** tab is displayed by default. Enter **M365 pilot project theme** in the **Name** field.
+24. 画面上部のアドレス バーの左側にある**[更新]**アイコンを選択します。画面が更新されたら、**MA の**イニシャルが付いた円の左側に**MOD 管理者の**名前がどのように表示されるかに注目してください。作成したカスタム テーマにより、サインインしているユーザーの名前がプロフィール写真またはイニシャルの左側に表示されます。
 
-20. Select inside the **Groups** field. In the list of groups that appears, select **M365 pilot project** if it appears in the list of groups. <br/>
+25. 組織プロファイル データのリストで、**[カスタム テーマ]**を選択します。
 
-	**Note:** If **M365 pilot project** doesn't appear in the list of groups, then enter **M365** in the **Groups** field. A search results box should appear that displays the **M365 pilot project** group. Select **M365 pilot project**. 
+26. **表示される[組織に合わせて Microsoft 365 をカスタマイズ]**ウィンドウで、**既定のテーマ**と**M365 パイロット プロジェクトのテーマが**どのように表示されるかに注目してください。**デフォルトのテーマ**を選択します。
 
-21. Select the **Show the user's display name** check box. This is the setting that Holly wants to customize for the M365 pilot project team members.
- 
-22. Select the **Logos** tab and take some time to review its options. Do the same for the **Colors** tab. Note the various theme and branding options that are available for you to update. <br/>
+27. **[デフォルトのテーマ]**ペインで、[**ユーザーの表示名を表示する**] オプションが選択されていないことに注目してください。ウィンドウの上部にある戻る矢印を選択して、[**組織に合わせて Microsoft 365 をカスタマイズ]**ウィンドウに戻ります。
 
-	For the purpose of this lab, you can change any of the options or leave the default values as is. For example, in your real-world environment, you can add the logo of your company and set the background image as the default for all your users. For this lab, feel free to change the colors for your navigation pane, text color, icon color, and accent color. <br/>
+    後で Holly が**[ユーザーの表示名を表示する]オプションを永続的な機能にすることに決めた場合、すべての Adatum ユーザーに適用されるように [****デフォルト テーマ]**ペインでこのオプションを選択し、 **M365 Pilot プロジェクト テーマ**を削除します。
 
-	**Go ahead and explore the different options for this theme that will be used by the Microsoft 365 pilot project team members. Make any changes that you wish.** <br/>
+    **[組織に合わせて Microsoft 365 をカスタマイズ]**ウィンドウを閉じます。
 
-	**Tip:** Some color patterns aesthetically distract users. If you do change any of the colors, it's recommended that you avoid using high contrasting colors together, such as neon colors and high-resolution colors like bright pink and white.
+28. 次のタスクのために**Microsoft 365 管理センター**を開いたまま、Microsoft Edge で**LON-CL1**にログインしたままにします。
 
-23. Select **Save**. Close the **M365 pilot project theme** pane once your changes are saved. 
+### [タスク 4 - SharePoint Online の Information Rights Management を有効にする](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#task-4---enable-information-rights-management-for-sharepoint-online)
 
-24. Select the **Refresh** icon at the top of the screen, to the left of the address bar. Once the screen refreshes, note how the **MOD Administrator** name appears to the left of the circle with the **MA** initials. The signed-in user's name now appears to the left of their profile picture or initials due to the custom theme that you just created.
+このタスクでは、SharePoint Online の Information Rights Management (IRM) を有効にします。
 
-25. In the list of organization profile data, select **Custom themes**.
+**重要:**実習 7 では Exchange および SharePoint の IRM を検証しますが、IRM が SharePoint Online に表示されるまでに最大 60 分以上かかる場合があるため、ここで SharePoint Online の IRM を有効にする必要があります。演習 7 の検証演習に進むまでに、IRM の内部構成は完了しているはずなので、SharePoint Online に IRM が存在するまで待つ必要はありません。実際の展開で IRM を有効にする予定がある場合は、この時間の問題に留意してください。
 
-26. In the **Customize Microsoft 365 for your organization** pane that appears, notice how it displays the **Default theme** and the **M365 pilot project theme**. Select the **Default theme**. 
+1. LON-CL1 にはローカルの**adatum\administrator**アカウントとしてログインしたままにし、Edge ブラウザーでは Microsoft 365 に**MOD Administrator**としてログインしたままにする必要があります。
+2. **Microsoft 365 管理センター**で、左側のナビゲーション ウィンドウで [**すべて表示(必要な場合)] を選択して、すべてのナビゲーション オプションを表示します。****[管理センター]**グループで、**[SharePoint]**を選択します。これにより、新しいタブで**SharePoint 管理センターが**開きます。
+3. **[新しいホームページへようこそ]**ウィンドウで、**[ツアーに参加する]**を選択します。
+4. **SharePoint 管理センター**の左側のナビゲーション ウィンドウで、**[設定]**を選択します。
+5. **[設定]**ページの下部に、「**探している設定が見つかりませんか?」**という文があります。**クラシック設定ページに移動します。****この文では、 「クラシック設定ページ」**というハイパーリンク付きテキストを選択します。
+6. 従来の [**設定]ページで、** **[Information Rights Management (IRM)]**セクションまで下にスクロールします。このセクションの右側のオプションで、「**構成で指定された IRM サービスを使用する」オプション**を選択し、**「IRM 設定を更新」**ボタンを選択します。
+7. ページの一番下までスクロールし、**「OK」**ボタンを選択します。
+8. **変更が保存されると、 [設定]**ページの上部に戻ります。ブラウザーで、現在表示しているタブ ( **[https://xxxxxZZZZZZ-admin.sharepoint.com](https://xxxxxzzzzzz-admin.sharepoint.com/)**タブ) を閉じます。**これにより、 SharePoint 管理センター**の**[設定]**ページに戻ります。
+9. Edge ブラウザーでこの**SharePoint 管理センタータブを閉じます。**次のタスクのためにブラウザで他のタブを開いたままにしておきます。
 
-27. On the **Default theme** pane, notice how the **Show the user's display name** option is not selected. Select the back arrow at the top of the pane to return to  the **Customize Microsoft 365 for your organization** pane. <br/>
+### [タスク 5 – 監査ログをオンにしてアラート ポリシーを有効にする](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#task-5--turn-on-audit-logging-to-enable-alert-policies)
 
-	If Holly later decides to make the **Show the user's display name** option a permanent feature, she will select this option in the **Default theme** pane so that it applies to all Adatum users, and she will delete the **M365 Pilot project theme**. <br/>
+ラボ 6 では、Microsoft 365 Defender ポータルを使用してアラート ポリシーを作成します。ただし、アラートを実装する前に、管理者はまず組織の監査ログを有効にする必要があります。監査ログを有効にしてから完全に有効になるまでに数時間かかる場合があるため、このラボでは監査ログを有効にして、ラボ 6 に到達するまでに完全に有効になるようにします。
 
-	Close the **Customize Microsoft 365 for your organization** pane.
+1. LON-CL1 にはローカルの**adatum\administrator**アカウントとしてログインしたままにし、Edge ブラウザーでは Microsoft 365 に**MOD Administrator**としてログインしたままにする必要があります。
 
-28. Remain logged into **LON-CL1** with Microsoft Edge open to the **Microsoft 365 admin center** for the next task.
+2. **Microsoft 365 管理センター**の左側のナビゲーション ウィンドウの**[管理センター]**セクションで、 **[セキュリティ]**を選択します。これにより、ブラウザーの新しいタブで**Microsoft 365 Defender**ポータルが開きます。
 
+3. **Microsoft 365 Defender**ポータルで、左側のナビゲーション ウィンドウの下部に向かって下にスクロールし、**[監査]**を選択します。
 
-### ‎Task 4 - Enable Information Rights Management for SharePoint Online 
+4. **[監査]**ウィンドウで、1 分ほど待って、ページの上部に「**ユーザーと管理者のアクティビティの記録を開始します」**というバナーが表示されるかどうかを確認します。このバナーが表示された場合、組織では監査が有効になっていません。このバナーは、監査ログを有効にするためのプロンプトです。
 
-In this task, you will turn on Information Rights Management (IRM) for SharePoint Online. 
+   今すぐこのバナーを選択して、監査ログを有効にします。
 
-**Important:** While you will validate IRM for Exchange and SharePoint in Lab 7, you must enable IRM for SharePoint Online now because it can take up to 60 minutes or more for IRM to show up in SharePoint Online. By the time you get to the validation exercise in Lab 7, IRM should have finished its internal configuration and you won’t have to wait for it to be present in SharePoint Online. Keep this time issue in mind if you plan to enable IRM in your real-world deployment.
+5. 監査ログがオンになると、「**監査」**ウィンドウでバナーが表示されなくなります。後のラボでは、このページに戻って、ラボ作業中に完了した監査済みのアクティビティを表示します。
 
-1. You should still be logged into LON-CL1 as the local **adatum\administrator** account, and in your Edge browser, you should still be logged into Microsoft 365 as the **MOD Administrator**. 
+6. Edge ブラウザーの**[Microsoft 365 Defender]**タブを閉じます。ブラウザを開いたままにして、次のタスクに進みます。
 
-2. In the **Microsoft 365 admin center**, select **Show all** (if necessary) in the left-hand navigation pane to see all the navigation options. Under the **Admin centers** group, select **SharePoint**. This will open the **SharePoint admin center** in a new tab.
+### [タスク 6 – Microsoft Graph PowerShell をインストールする](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#task-6--install-microsoft-graph-powershell)
 
-3. In the **Welcome to your new home page** window, select **Take the tour**.
+Microsoft 365 をインストールするときに、いくつかの構成タスクを実行するには、Microsoft Graph PowerShell が必要です。今後のラボ演習では、Windows PowerShell を使用してこれらのタスクのいくつかを実行するため、Microsoft Graph PowerShell モジュールをインストールすることから始める必要があります。このモジュールを使用すると、PowerShell を通じて Microsoft 365 のユーザーおよび組織の管理タスクの多くを実行できます。パスワードのリセット、パスワード ポリシー、ライセンスの管理とレポートなどの大量のタスクに最適です。
 
-4. In the **SharePoint admin center**, in the left-hand navigation pane, select **Settings**. 
+1. **LON-CL1 では、 Windows PowerShell**の昇格されたインスタンスを開く必要があります。タスクバーの左下隅に表示される検索ボックスに「**power」**と入力します。検索結果の一覧で、**[Windows PowerShell]**を右クリックし([Windows PowerShell ISE] は選択しないでください)、表示されるドロップダウン メニューで [**管理者として実行] を選択します。**
 
-5. At the bottom of the **Settings** page is a sentence that says **Can’t find the setting you’re looking for? Go to the classic settings page.** In this sentence, select the hyperlinked text that says: **classic settings page**.
+2. PowerShell ウィンドウを最大化します。**Windows PowerShell**で、コマンド プロンプトに次のコマンドを入力して、PowerShell ギャラリーから Microsoft Graph PowerShell モジュールをインストールし、Enter キーを押します。
 
-6. On the classic **Settings** page, scroll down to the **Information Rights Management (IRM)** section. In the options to the right of this section, select the **Use the IRM service specified in your configuration** option, and then select the **Refresh IRM Settings** button.
+   ```
+    Install-Module Microsoft.Graph -Scope CurrentUser
+   ```
 
-7. Scroll to the bottom of the page and select the **OK** button. 
+   
 
-8. Once the changes have been saved, you will be returned to the top of the **Settings** page. In your browser, close the current tab that you're on (the **https://xxxxxZZZZZZ-admin.sharepoint.com** tab). This will return you to the **Settings** page in the **SharePoint admin center**.
+3. 信頼できないリポジトリ (PSGallery) からモジュールをインストールするかどうかを確認するメッセージが表示されます。**A**を入力して**[A] すべてはい**を選択し、Enter キーを押します。
 
-9. Close this **SharePoint admin center** tab in your Edge browser. Leave the other tabs open in your browser for the next task.
+   **注:**応答すると、すべての Microsoft Graph サブモジュールのインストールが開始されます。すべてのインストール メッセージ (各サブモジュールの) の表示が完了しても、Microsoft Graph PowerShell のインストールが完了するまでに約 5 ～ 10 分かかります。この間、カーソルは信頼できないリポジトリ メッセージの下で点滅し続けます。ちょっとした休憩を取るには良い機会かもしれません。
 
+4. Microsoft Graph PowerShell がインストールされると、コマンド プロンプトが表示されます。次のコマンドを実行して、Microsoft.Graph プライマリ モジュールの下にインストールされたサブモジュールの完全なリストを表示します。
 
-### Task 5 – Turn on Audit Logging to enable Alert Policies
+   ```
+    Get-InstalledModule Microsoft.Graph.* 
+   ```
 
-In Lab 6, you will create Alert Policies using the Microsoft 365 Defender portal. However, before you can implement alerts, an administrator must first turn on Audit Logging for the organization. Since it can take a couple of hours for audit logging to become fully enabled once you turn it on, you will turn it on in this lab so that it's fully enabled by the time you get to Lab 6.
+   
 
-1. You should still be logged into LON-CL1 as the local **adatum\administrator** account, and in your Edge browser, you should still be logged into Microsoft 365 as the **MOD Administrator**. 
+   **注記：**このコースで Microsoft Graph PowerShell を使用するラボでは、Microsoft.Graph.Identity.DirectoryManagement、Microsoft.Graph.Users、および Microsoft.Graph.Groups のサブモジュールを使用します。サブモジュールのコマンドレットにアクセスするには、まずサブモジュールをインポートする必要があります。"Import-Module Microsoft.Graph" コマンドを使用して 30 個以上のサブモジュールをすべて一度にインポートすることも、実行中の機能を実行するために必要な各モジュールをインポートすることもできます (たとえば、"Import-Module Microsoft.Graph")。 .Graph.Users」を使用して、特定の時点でユーザー メンテナンスを実行します。このトレーニングの目的では、後のラボ演習では 3 つのサブモジュールのみを使用するため、ここで 40 以上のサブモジュールすべてをインポートするわけではありません。代わりに、これら 3 つのサブモジュールは、後のラボで必要になったときにインポートするまで待ちます。
 
-2. In the **Microsoft 365 admin center**, under the **Admin centers** section in the left-hand navigation pane, select **Security**. This will open the **Microsoft 365 Defender** portal in a new tab in your browser.
+5. PowerShell の実行ポリシー設定は、Windows システム上でどの PowerShell スクリプトを実行できるかを決定します。このポリシーを**無制限**に設定すると、Holly はすべての構成ファイルをロードし、すべてのスクリプトを実行できるようになります。コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
 
-3. In the **Microsoft 365 Defender** portal, scroll down towards the bottom of the left-hand navigation pane and select **Audit**.
+   ```
+    Set-ExecutionPolicy unrestricted
+   ```
 
-4. In the **Audit** window, wait a minute or so to see if a banner appears towards the top of the page that says: **Start recording user and admin activity**. If this banner appears, then auditing is NOT turned on for your organization. This banner is your prompt to turn on audit logging. <br/>
+   
 
-	Select this banner now to turn on audit logging. 
+   実行ポリシーを変更するかどうかを確認するメッセージが表示されたら、 「 **A 」と入力して****[A] すべてはいを**選択します。
 
-5. In the **Audit** window, the banner will disappear once audit logging is turned on. In a later lab, you will return to this page to view audited activities that you completed during your lab work.  
- 
-6. Close the **Microsoft 365 Defender** tab in your Edge browser. Leave your browser open and proceed to the next task. 
+6. PowerShell ウィンドウを閉じ**ない**でください。Windows PowerShell ウィンドウを開いたままにしておきますが、ここでは最小化します。LON-CL1 にログインしたままにし、Edge ブラウザを開いたままにしてください。
 
+### [タスク 7 - PowerShell スクリプトを実行して機密ラベルを作成および公開する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#task-7---run-a-powershell-script-to-create-and-publish-a-sensitivity-label)
 
-### Task 6 – Install Microsoft Graph PowerShell 
+このタスクでは、このラボ シリーズで将来使用するための秘密度ラベルと秘密度ラベル ポリシーを作成するラボ セットアップ スクリプトを実行します。このスクリプトの実行は、クラスの最終日に実行するラボをサポートして機密ラベルとラベル ポリシーを作成するために必要です。機密ラベル ラボは基本的に、1) ラベルの作成とラベル ポリシーの発行、および 2) 発行されたラベル ポリシーのテストの 2 つの部分で構成されます。機密ラベル ラボの問題は、ラベル ポリシーを発行すると、発行されたラベル ポリシーが Microsoft 365 に反映されるまでに 24 時間かかることです。そのため、作成したラベルとポリシーをテストすることはできません。授業の最終日に発表します。
 
-Microsoft Graph PowerShell is required to perform several configuration tasks when installing Microsoft 365. Because future lab exercises will perform several of these tasks using Windows PowerShell, you should begin by installing the Microsoft Graph PowerShell module. This module allows you to perform many of the Microsoft 365 user and organization administration tasks through PowerShell. It’s great for bulk tasks such as password resets, password policies, license management and reporting, and so on.  
+このタイミングの問題に対処するには、このタスクで秘密度ラベルを作成し、ラベル ポリシーに発行する PowerShell スクリプトを実行します。クラスの最終日に到達するまでに、このラベル ポリシーがシステム全体に反映され、テストできるようになります。
 
-1. On LON-CL1, you must open an elevated instance of **Windows PowerShell**. Type **power** in the Search box that appears in the bottom left corner of the taskbar. In the list of search results, right-click on **Windows PowerShell** (do not select Windows PowerShell ISE) and select **Run as administrator** in the drop-down menu that appears. 
+**注:**クラスの最終日に実行する秘密度ラベルのラボでは、別のラベルとラベル ポリシーを作成します (名前が異なるもののみ)。それらの設定は、このスクリプトで作成されたものとまったく同じになります。機密ラベル ラボでは、Microsoft 365 UI を使用してラベルを作成し、ラベル ポリシーを発行する体験を提供します。ただし、機密ラベルとラベル ポリシーをテストするタスクを実行する場合、UI で作成して公開したものはテストできません。これらは翌日までテストに使用できないためです。代わりに、このタスクで実行するスクリプトを使用して作成および公開されたラベルとラベル ポリシーをテストします。
 
-2. Maximize your PowerShell window. In **Windows PowerShell**, type the following command at the command prompt to install the Microsoft Graph PowerShell module from the PowerShell Gallery and then press Enter: <br/>
+1. **LON-CL1**で、Windows タスクバーから**ファイル エクスプローラーアイコンを選択します。**ファイル エクスプローラー ウィンドウを最大化します。
 
-		Install-Module Microsoft.Graph -Scope CurrentUser
+2. **ファイル エクスプローラー**で、フォルダーの場所**C:\Users\Administrator.ADATUM\Documents\Lab Setup**に移動します。
 
-3. You will be prompted to confirm whether you want to install the module from an untrusted repository (PSGallery). Enter **A** to select **[A] Yes to All** and then press Enter.  <br/>
+3. **Lab Setup**サブフォルダーには、**LabSetup.bat**という名前の .bat ファイルが存在する必要があります。
 
-    **Note:** Your response will initiate the installation of all the Microsoft Graph sub-modules. Once all the installation messages (for each sub-module) have finished displaying, it will still take approximately 5 to 10 minutes to complete the Microsoft Graph PowerShell installation. During this time, the cursor will continue to blink below the untrusted repository message. This may be a good time to take a short break.
+   **LabSetup.bat**ファイルを右クリックし、 **[管理者として実行]**を選択します。これにより、ラボのセットアップ プロセスが開始されます。
 
-4. A command prompt will appear once Microsoft Graph PowerShell has been installed. Run the following command to see the complete list of sub-modules that were installed under the Microsoft.Graph primary module:  <br/>
+   **注:** **「Windows が PC を保護しました」という**ポップアップ警告が表示された場合は、「**詳細情報」**を選択し、ポップアップの下部にある「**とにかく実行」**を選択して続行します。**ラボ設定**ウィンドウが画面に表示されます。
 
-		Get-InstalledModule Microsoft.Graph.* 
+4. **サインイン**ウィンドウが表示されるまでに最大 1 分かかる場合があります。ラボ ホスティング プロバイダーから提供された MOD 管理者アカウント ( **[admin@xxxxxZZZZZZ.onmicrosoft.com](mailto:admin@xxxxxZZZZZZ.onmicrosoft.com)** ; xxxxxZZZZZZ はラボ ホスティング プロバイダーから提供されるテナント プレフィックス) を入力し、 [**次へ]**を選択します。**[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたテナント管理者パスワードを入力し、**[サインイン]**を選択します。
 
-	**Note:** The labs that use Microsoft Graph PowerShell in this course will use the following sub-modules: Microsoft.Graph.Identity.DirectoryManagement, Microsoft.Graph.Users, and Microsoft.Graph.Groups. To access the cmdlets for a sub-module, you must first import the sub-module. You can either import all 30+ sub-modules at one time using the "Import-Module Microsoft.Graph" command, or you can import each module that's needed to perform whatever function you're doing (for example, "Import-Module Microsoft.Graph.Users" to perform user maintenance) at a particular point in time. For the purpose of this training, since the later lab exercises will only use three sub-modules, you will NOT import all 40+ sub-modules now. Instead, you will wait to import these three sub-modules when they're needed in later labs. Proceed to the next step. 
+5. [**アカウントの選択]**ウィンドウが表示されます。このウィンドウで、使用可能なアカウントのリストから**MOD 管理者を選択します。**プロンプトが表示されたら、ラボ ホスティング プロバイダーから提供されたテナント管理者パスワードを入力し、**[サインイン]**を選択します。
 
-5. PowerShell's execution policy settings dictate what PowerShell scripts can be run on a Windows system. Setting this policy to **Unrestricted** enables Holly to load all configuration files and run all scripts. At the command prompt, type the following command, and then press Enter:   <br/>
+   **重要:**ラボ**設定**プロセスには 5 分のタイムアウトがあります。**この 5 分以内に認証情報を入力できなかった場合は、 「ラボのセットアップに失敗**しました」というポップアップ メッセージが表示されます。**EXITING...**と表示されます。**[OK]**を選択し、Microsoft サインオン ウィンドウを閉じて、手順 3 ～ 5 を繰り返します。
 
-		Set-ExecutionPolicy unrestricted
+6. ラボのセットアップ プロセスが完了すると、「ラボのセットアップが完了しました」というポップアップ メッセージが表示されます**。EXITING...**と表示されます。**[OK]**を選択して続行します。
 
-	‎If you are prompted to verify that you want to change the execution policy, enter **A** to select **[A] Yes to All.** 
+   **重要:**ラボのセットアップ プロセスが完了するまでに最大 5 分かかる場合があります。
 
-6. Do **NOT** close your PowerShell window. Leave the Windows PowerShell window open but minimize it for now. Remain logged into LON-CL1 and keep your Edge browser open.
-
-
-### Task 7 - Run a PowerShell script to create and publish a sensitivity label
-
-In this task, you will run a lab setup script that creates a sensitivity label and sensitivity label policy for future use in this lab series. Running this script is necessary to support the lab that you will perform on the last day of class to create a sensitivity label and label policy. The sensitivity label lab basically consists of two parts: 1) Creating a label and publishing a label policy, and 2) Testing the published label policy. The problem with the sensitivity label lab is that once you publish a label policy, it takes 24 hours for the published label policy to propagate through Microsoft 365. As such, you won't be able to test the label and policy that you create and publish on the last day of class. 
-
-To address this timing issue, you will run a PowerShell script in this task that creates a sensitivity label and publishes it to a label policy. By the time you get to the last day of class, this label policy will have propagated through the system, and you'll be able to test it. 
-
-**Note:** In the sensitivity label lab that you perform on the last day of class, you will create another label and label policy - just ones with different names. Their settings will be exactly the same as the ones created by this script. The sensitivity label lab will give you the experience of creating a label and publishing a label policy using the Microsoft 365 UI. However, when you perform the tasks to test the sensitivity label and label policy, you won't test the ones that you created and published in the UI, since they won't be available for testing until the next day. Instead, you will test the label and label policy that were created and published using the script that you run in this task. 
-
-1. On **LON-CL1**, select the **File Explorer** icon from the Windows taskbar. Maximize the File Explorer window.
-
-2. In **File Explorer**, navigate to the following folder location: **C:\Users\Administrator.ADATUM\Documents\Lab Setup**.
-
-3. In the **Lab Setup** subfolder a .bat file named **LabSetup.bat** should exist.
-
-    Right-click on the **LabSetup.bat** file and then select **Run as administrator**. Doing so will start the lab setup process.
-
-    **Note:** If a **Windows protected your PC** pop-up warning is displayed, select **More info** and then select **Run anyway** at the bottom of the pop-up to continue. A **Lab setup** window will appear on the screen.
-
-4. It may take up to 1 minute before a **Sign in** window appears. Enter the MOD Administrator account provided by your lab hosting provider (**admin@xxxxxZZZZZZ.onmicrosoft.com**; where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) and then select **Next**. On the **Enter password** window, enter the tenant admin password provided by your lab hosting provider and then select **Sign in**.
-
-5. A **Pick an account** window will appear. On this window, select **MOD Administrator** from the list of available accounts. If prompted, enter the tenant admin password provided by your lab hosting provider and then select **Sign in**.
-
-    **Important:** The **Lab Setup** process has a time-out of 5 minutes. If you fail to type in your credentials within this 5 minute time frame, a pop-up message displaying **Lab Setup Failed. EXITING...** will appear. Select **Ok**, close the Microsoft Sign-on window, and repeat steps 3-5.
-
-6. Once the lab setup process has completed, a pop-up message displaying **Lab Setup Completed. EXITING...** will appear. Select **Ok** and proceed.
-
-    **IMPORTANT:** It may take up to 5 minutes for the lab setup process to complete.
-
-
-
-# Proceed to Lab 1 - Exercise 2 
+# [ラボ 1 - 演習 2 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#proceed-to-lab-1---exercise-2)

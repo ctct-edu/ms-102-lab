@@ -1,84 +1,81 @@
-# Learning Path 7 - Lab 7 - Exercise 3 - Create message encryption rules
+# [ラーニング パス 7 - ラボ 7 - 演習 3 - メッセージ暗号化ルールの作成](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex3_Message_Encryption.md#learning-path-7---lab-7---exercise-3---create-message-encryption-rules)
 
+このラボでは、Adatum の新しい Microsoft 365 管理者である Holly Dickson の役割を果たします。あなたは、Adatum の Microsoft 365 導入で Microsoft 365 メッセージ暗号化の使用を試験的に試験する任務を与えられました。メッセージ暗号化ルールは Exchange Online と Windows PowerShell の両方を使用して作成できるため、各方法をテストして、運用開始後にどちらを使用するかを決定することにしました。
 
-In this lab, you will take on the persona of Holly Dickson, Adatum’s new Microsoft 365 Administrator. You have been tasked with piloting the use of Microsoft 365 message encryption in Adatum’s Microsoft 365 deployment. Since message encryption rules can be created using both Exchange Online and Windows PowerShell, you have decided to test each method to determine which you prefer to use once you go live.
+この演習では、Exchange 管理センターと Windows PowerShell の両方を使用してメール フロー暗号化ルールを作成する方法を学習します。
 
-In this exercise you will learn how to create a mail flow encryption rule using both the Exchange admin center and Windows PowerShell.
+### [タスク 1 – Exchange 管理センターを使用してメール フロー暗号化ルールを作成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex3_Message_Encryption.md#task-1--create-a-mail-flow-encryption-rule-using-the-exchange-admin-center)
 
-### Task 1 – Create a Mail Flow Encryption Rule using the Exchange admin center
+このタスクでは、Exchange 管理センターを使用して、Exchange Online 環境内のメッセージの暗号化ルールを作成します。次のタスクでは、代わりに PowerShell を使用して同じことを行います。
 
-In this task, you will create an encryption rule for messages inside your Exchange Online environment by using the Exchange admin center. In the next task, you will do the same thing but using PowerShell instead. 
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+2. **Microsoft 365 管理センター**の左側のナビゲーション ウィンドウで、 [**すべて表示**] (必要な場合) を選択し、**[管理センター]で****[Exchange]**を選択します。これにより、Exchange Online 管理センターが開きます。
 
-2. In the **Microsoft 365 admin center**, in the left-hand navigation pane, select **Show all** (if necessary), and then under **Admin centers**, select **Exchange**. This will open the Exchange Online admin center.
+3. **Exchange 管理センター**の左側のナビゲーション ウィンドウで**[メール フロー]**を選択してこのグループを展開し、**[ルール]**を選択します。
 
-3. In the **Exchange admin center**, in the left-hand navigation pane select **Mail flow** to expand this group, and then select **Rules**.
+4. **[ルール]**ページで、メニュー バーの**[+ルールの追加]を選択して、新しいルールを作成します。**これにより、アクションのドロップダウン メニューが表示されます。**「新しいルールの作成」**を選択します。これにより、**新しいトランスポート ルール**ウィザードが開始されます。
 
-4. On the **Rules** page, select **+Add a rule** on the menu bar to create a new rule. This displays a drop-down menu of actions. Select **Create a new rule.** This initiates the **New transport rule** wizard.
+5. **新しいトランスポート ルール**ウィザードの**[ルール条件の設定]**ページで、 **[名前]**フィールドに「 **[guest@adatum.com](mailto:guest@adatum.com)****のメールを暗号化」**と入力します。
 
-5. In the **New transport rule** wizard, on the **Set rule conditions** page, enter **Encrypt mail for guest@adatum.com** in the **Name** field.
+6. **「このルールを適用する場合」**条件の下に 2 つのフィールドが表示されます。最初のフィールドを選択します。表示されるドロップダウン メニューで、**受信者を**選択します。
 
-6. Two fields appear below the **Apply this rule if** condition. Select the first field. In the drop-down menu that appears, select **the recipient**. <br/>
+   2 番目のフィールドを選択します。表示されるドロップダウン メニューで、 [**この人です]**を選択します。この条件では、ユーザー リストから既存の名前を選択するか、[**メンバーの選択]**フィールドに新しい電子メール アドレスを入力する必要があります。この場合、**「メンバーの選択」**フィールドに**[「guest@adatum.com」](mailto:guest@adatum.com)**と入力します。**表示されるguest@adatum**フィールドを選択し、**[保存]**を選択します。
 
-	Select the second field. In the drop-down menu that appears, select **is this person**. For this condition, you must either select an existing name from the user list or type a new email address in the **Select members** field. In this case, enter **guest@adatum.com** in the **Select members** field. Select the **guest@adatum** field that appears, and then select **Save**.
+7. ここで追加の条件を追加する必要があるため、**「この人物です**」フィールドの右側に表示される**プラス記号 (+)**を選択します。
 
-7. You must now add an additional condition, so select the **plus sign (+)** that appears to the right of the **is this person** field.
+8. 2 番目の条件が**And**見出しの下にどのように表示されるかに注目してください。この 2 番目の条件では、最初のフィールドを選択し、ドロップダウン メニューから**[受信者]を選択します。**2 番目のフィールドを選択します。表示されるドロップダウン メニューで、**外部/内部を選択します。**
 
-8. Note how a second condition appears under the **And** heading. In this second condition, select the first field, and then select **The recipient** from the drop-down menu. Select the second field. In the drop-down menu that appears, select **is external/internal.**
+9. **[受信者の場所の選択**] ダイアログ ボックスで、ドロップダウン矢印を選択します。ドロップダウン メニューで、[**組織外]**を選択し、**[保存] を選択します。**
 
-9. In the **select recipient location** dialog box, select the drop-down arrow. In the drop-down menu, select **Outside the organization** and then select **Save.** 
+10. 次に、このルールが適用されたときに実行するアクションを定義する必要があります。**「次の操作を実行します**」セクションで、最初のフィールドを選択します。表示されるドロップダウン メニューで、 [**メッセージ セキュリティの変更]**を選択します。2 番目のフィールドを選択します。表示されるメニューで、[ **Office 365 メッセージの暗号化と権利保護を適用する] を選択します。**
 
-10. You now need to define an action to perform when this rule is applied. In the **Do the following** section, select the first field. In the drop-down menu that appears, select **Modify the message security**. Select the second field. In the menu that appears, select **Apply Office 365 Message Encryption and rights protection.**
+11. **[RMS テンプレートの選択]**ダイアログ ボックスで、ドロップダウン矢印を選択し、 [**暗号化]**を選択して、**[保存]**を選択します。
 
-11. In the **select RMS template** dialog box, select the drop-down arrow, select **Encrypt**, and then select **Save**.
+12. **「ルール条件の設定」**ページに戻ります。このルールには例外を定義しないため、ルールの**「Except if」セクションは更新しません。****「次へ」**を選択します。
 
-12. You will be returned to the **Set rule conditions** page. Since you will not be defining any exceptions to this rule, you will not update the **Except if** section of the rule. Select **Next**.
+13. **[ルール設定の設定]**ページで、**ルール モードが****[強制]**に設定されていることを確認します(まだ選択されていない場合は、このオプションを選択します)。**[重大度]**フィールドを選択し、ドロップダウン メニューから**[中]**を選択します。**「次へ」**を選択します。
 
-13. On the **Set rule settings** page, verify the **Rule mode** is set to **Enforce** (select this option if it isn't already selected). Select the **Severity** field and select **Medium** from the drop-down menu. Select **Next**.
+14. **[確認して終了]**ページで、条件とルールの設定を確認します。値を変更する必要がある場合は、**「ルール条件の編集」**または**「ルール設定の編集」**を選択して、対応するフィールドを修正します。すべての条件と設定が正しい場合は、**[完了]**を選択します。
 
-14. On the **Review and finish** page, review the conditions and rule settings. If any value needs to be changed, select either **Edit rule conditions** or **Edit rule settings** to correct the corresponding field. When all conditions and settings are correct, select **Finish**.
+15. トランスポート ルールが正常に作成されたら、**[完了]**を選択します。
 
-15. Once the transport rule is created successfully, select **Done**.
+16. **これにより、 「ルール」**ページに戻るはずです。新しいルールがルールのリストに表示されない場合は、メニュー バーの**[更新]オプションを選択します。**
 
-16. This should return you to the **Rules** page. If the new rule does not appear in the list of rules, select the **Refresh** option on the menu bar. 
+17. ブラウザのタブを開いたままにして、次のタスクに進みます。
 
-17. Leave your browser tabs open and proceed to the next task. 
- 
+### [タスク 2 – Windows PowerShell を使用してメール フロー暗号化ルールを作成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex3_Message_Encryption.md#task-2--create-a-mail-flow-encryption-rule-using-windows-powershell)
 
-### Task 2 – Create a Mail Flow Encryption Rule using Windows PowerShell
+前のタスクでは、Exchange 管理センターを使用してメール フロー暗号化ルールを構成しました。このタスクでは、Windows PowerShell (具体的には Microsoft Graph PowerShell) を使用してメール フロー暗号化ルールを作成します。まず、Exchange Online PowerShell モジュール (ExchangeOnlineManagement) に接続する必要があります。このタスクで使用される**New-TransportRule**コマンドレットは Exchange Online コマンドレットであるため、これが必要です。そのため、このコマンドレットにアクセスするには、PowerShell を介して Exchange Online セッションに接続する必要があります。
 
-In the prior task, you configured a mail flow encryption rule using the Exchange admin center. In this task, you will create a mail flow encryption rule using Windows PowerShell, or more specifically, Microsoft Graph PowerShell. You must begin by cconnecting to the Exchange Online PowerShell module (ExchangeOnlineManagement). This is required because the **New-TransportRule** cmdlet used in this task is an Exchange Online cmdlet. As such, you must connect to the Exchange Online session through PowerShell to access this cmdlet.
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+2. Windows PowerShell がまだデスクトップ上で開いている場合は、タスクバーの PowerShell アイコンを選択して PowerShell ウィンドウを最大化します。ただし、PowerShell を最後に使用した後に閉じた場合は、タスク バーの**検索**ボックスに**「power」と入力し、表示されるメニューで****Windows PowerShell を**右クリックし、ドロップダウン メニューで [**管理者として実行]を選択します。**
 
-2. If Windows PowerShell is still open on your desktop, then select the PowerShell icon on the taskbar to maximize the PowerShell window. However, if you closed PowerShell after using it the last time, then enter **power** in the **Search** box on the taskbar, and in the menu that appears, right-click on **Windows PowerShell** and select **Run as administrator** in the drop-down menu. 
+3. **Windows PowerShell**では、コマンド プロンプトで次のコマンドを実行して、Exchange Online PowerShell モジュール (ExchangeOnlineManagement) をインストールすることから始める必要があります。
 
-3. In **Windows PowerShell**, you must begin by installing the Exchange Online PowerShell module (ExchangeOnlineManagement) by running the following command at the command prompt:<br/>
+   インストール**モジュール - 名前 ExchangeOnlineManagement**
 
-	‎**Install-Module -Name ExchangeOnlineManagement** 
-	
-4. If you are prompted to confirm whether you want to install the module from an untrusted repository (PSGallery), enter **A** to select **[A] Yes to All.** 
+4. 信頼できないリポジトリ (PSGallery) からモジュールをインストールするかどうかを確認するメッセージが表示されたら、「**A 」と入力して****[A] すべてはいを**選択します。
 
-5. You must then connect to the module by running the following command at the command prompt (Note: in the command, you must copy and paste in the Tenant Name provided by your lab hosting provider (xxxxxZZZZZZ.onmicrosoft.com, where xxxxxZZZZZZ is the tenant prefix assigned by your lab hosting provider):
+5. 次に、コマンド プロンプトで次のコマンドを実行して、モジュールに接続する必要があります (注: コマンドでは、ラボ ホスティング プロバイダーから提供されたテナント名 (xxxxxZZZZZZ.onmicrosoft.com、xxxxxZZZZZZ はテナント) をコピーして貼り付ける必要があります)ラボ ホスティング プロバイダーによって割り当てられたプレフィックス):
 
-	‎**Connect-ExchangeOnline -UserPrincipalName holly@xxxxxZZZZZZ.onmicrosoft.com**
-	
-6. In the **Enter password** dialog box that appears, enter the Microsoft 365 tenant admin password provided by your lab hosting provider and then select **Sign in**.
+   Connect **-ExchangeOnline -UserPrincipalName [holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:holly@xxxxxZZZZZZ.onmicrosoft.com)**
 
-7. You will now create a mail flow rule by using the **New-TransportRule** cmdlet, and you will set the **ApplyRightsProtectionTemplate** property to **Encrypt**, which is one of the available RMS templates. This rule will encrypt all outgoing mail from Adatum that is being sent to Gservices@adatum.com.  <br/>
+6. **表示される[パスワードの入力]**ダイアログ ボックスで、ラボ ホスティング プロバイダーから提供された Microsoft 365 テナント管理者パスワードを入力し、 [**サインイン] を**選択します。
 
-	To create this rule, run the following command:<br/>
+7. **ここで、 New-TransportRule**コマンドレットを使用してメール フロー ルールを作成し、 **ApplyRightsProtectionTemplate**プロパティを、使用可能な RMS テンプレートの 1 つである**Encrypt**に設定します。[このルールは、Adatum からGservices@adatum.com](mailto:Gservices@adatum.com)に送信されるすべての送信メールを暗号化します。
 
-	**New-TransportRule -Name "Encrypt rule for Guest Services" -SentTo "Gservices@adatum.com" -SentToScope "NotinOrganization" -ApplyRightsProtectionTemplate Encrypt**  <br/>
-	
-	**Note:** This command will take several seconds to complete. Do not proceed to the next step until PowerShell displays the properties of the new rule that you created.
+   このルールを作成するには、次のコマンドを実行します。
 
-8. To verify the rule exists, begin by minimizing your PowerShell window. In your Microsoft Edge browser, you should still be in the **mail flow** window of the **Exchange admin center**, and the **rules** tab should be displayed. The list of rules should only display the **Encrypt mail for guest@adatum.com** rule that you created in the prior task.<br/>
+   **New-TransportRule -Name "ゲスト サービスの暗号化ルール" -SentTo " [Gservices@adatum.com](mailto:Gservices@adatum.com) " -SentToScope "NotinOrganization" -ApplyRightsProtectionTemplate Encrypt**
 
-	‎On the menu bar that appears above the list of rules, select the **Refresh** icon. In the refreshed list, the rule that you just created using PowerShell should appear as well.
-	
-9. Leave your Edge browser open for the next exercise.
+   **注:**このコマンドは完了するまでに数秒かかります。作成した新しいルールのプロパティが PowerShell に表示されるまで、次の手順に進まないでください。
 
+8. ルールが存在することを確認するには、まず PowerShell ウィンドウを最小化します。**Microsoft Edge ブラウザでは、引き続きExchange 管理センターの****メール フロー**ウィンドウが表示され、**[ルール]**タブが表示されます。ルールのリストには、前のタスクで作成した**[「guest@adatum.com の](mailto:guest@adatum.com)****メールを暗号化する」ルールのみが表示されます。**
 
-# End of Lab 7
+   ルールのリストの上に表示されるメニュー バーで、**[更新]**アイコンを選択します。更新されたリストには、PowerShell を使用して作成したばかりのルールも表示されます。
+
+9. 次の演習のために Edge ブラウザを開いたままにしておきます。
+
+# [ラボ 7 の終了](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex3_Message_Encryption.md#end-of-lab-7)

@@ -1,323 +1,347 @@
-# Learning Path 3 - Lab 3 - Exercise 2 - Implement Identity Synchronization 
+# [ラーニング パス 3 - ラボ 3 - 演習 2 - ID 同期の実装](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex2_Implement_Identity_Synch.md#learning-path-3---lab-3---exercise-2---implement-identity-synchronization)
 
-In this exercise, you will use Azure AD Connect to enable synchronization between Adatum’s on-premises Active Directory and Azure Active Directory. Azure AD Connect will then continue to synchronize any delta changes every 30 minutes. You will then make some user and group updates and then manually force an immediate synchronization rather than waiting for Azure AD Connect to automatically synchronize the updates. You will then verify whether the updates were synchronized.  
+この演習では、Azure AD Connect を使用して、Adatum のオンプレミス Active Directory と Azure Active Directory 間の同期を有効にします。その後、Azure AD Connect は 30 分ごとにデルタ変更を同期し続けます。次に、ユーザーとグループの更新をいくつか行ってから、Azure AD Connect が自動的に更新を同期するのを待つのではなく、手動で強制的に即時同期を実行します。次に、更新が同期されたかどうかを確認します。
 
-‎**IMPORTANT:** When you start this exercise, you should perform the first four tasks without any delay between them so that Azure AD Connect does not automatically synchronize the changes that you make to the identity objects.
+重要**:**この演習を開始するときは、Azure AD Connect が ID オブジェクトに加えた変更を自動的に同期しないように、最初の 4 つのタスクを遅延なく実行する必要があります。
 
-### Task 1: Install Azure AD Connect and Initiate Synchronization
+### [タスク 1: Azure AD Connect をインストールし、同期を開始する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex2_Implement_Identity_Synch.md#task-1-install-azure-ad-connect-and-initiate-synchronization)
 
-In this task, you will run the Azure AD Connect setup wizard to enable synchronization between Adatum’s on-premises Active Directory and Azure Active Directory. Once the configuration is complete, the synchronization process will automatically start. 
+このタスクでは、Azure AD Connect セットアップ ウィザードを実行して、Adatum のオンプレミス Active Directory と Azure Active Directory 間の同期を有効にします。構成が完了すると、同期プロセスが自動的に開始されます。
 
-1. You should still be logged into **LON-DC1** as the local **adatum\administrator** from the prior task. 
+1. 前のタスクのローカル**adatum\administratorとして****LON-DC1**にログインしている必要があります。
 
-2. After finishing the previous lab exercise, you should still be logged into Microsoft 365 in your Edge browser as Holly Dickson.  
+2. 前のラボ演習を終了した後も、Edge ブラウザーで Holly Dickson として Microsoft 365 にログインしているはずです。
 
-3. In your **Edge** browser, select the **Microsoft 365 admin center** tab, and then in the navigation pane, select **Users**, and then select **Active Users**. <br/>
+3. **Edge**ブラウザーで、**[Microsoft 365 管理センター]**タブを選択し、ナビゲーション ウィンドウで [**ユーザー]**、**[アクティブ ユーザー]**の順に選択します。
 
-4. In the **Active users** window, select the **ellipsis** icon that appears at the end of the menu bar, and then in the drop-down menu that appears, select **Directory synchronization**. This initiates the **Add or sync users to Azure AD** wizard.
+4. **[アクティブ ユーザー]**ウィンドウで、メニュー バーの最後に表示される**省略記号アイコンを選択し、表示されるドロップダウン メニューで****[ディレクトリ同期]**を選択します。これにより、**Azure AD へのユーザーの追加または同期ウィザード**が開始されます。
 
-5. In the **Add or sync users to Azure AD** wizard, on the **About user synchronization** page, read through the content. In the **User status** section, note the number of existing Adatum cloud users and hybrid users. Select **Next**.
+5. **Azure AD にユーザーを追加または同期する**ウィザードの [**ユーザー同期について]**ページで、内容を最後までお読みください。**[ユーザー ステータス]**セクションで、既存の Adatum クラウド ユーザーとハイブリッド ユーザーの数に注目してください。**「次へ」**を選択します。
 
-6. On the **Select a migration option** page, read the explanation of each option so that you understand the migration options that are available. Select the **Continuous sync** option and then select **Next**.
+6. **[移行オプションの選択]**ページで各オプションの説明を読み、使用可能な移行オプションを理解します。**[継続的同期]**オプションを選択し、 **[次へ]**を選択します。
 
-7. On the **Prepare by running IdFix** page, since you already ran IdFix in the prior lab exercise, there's no need to download and run it again. Select **Next**.
+7. **「IdFix を実行して準備」**ページでは、前のラボ演習で IdFix をすでに実行しているため、再度ダウンロードして実行する必要はありません。**「次へ」**を選択します。
 
-8. On the **Review synchronization tools** page, Holly had originally planned to select the **Azure AD Connect** option given Adatum's Exchange hybrid deployment. But just to verify that this is the correct solution, Holly has decided to use the system tool that recommends the synchronization tool to use based on your synchronization requirements. Holly will use this feature to verify whether Azure AD Connect is the correct choice for Adatum. <br/>
+8. **[同期ツールの確認]**ページで、Holly は当初、 Adatum の Exchange ハイブリッド デプロイを考慮して**Azure AD Connect**オプションを選択する予定でした。ただし、これが正しい解決策であることを確認するためだけに、Holly は、同期要件に基づいて使用する同期ツールを推奨するシステム ツールを使用することにしました。Holly は、この機能を使用して、Azure AD Connect が Adatum にとって正しい選択であるかどうかを確認します。
 
-	Select **Help me decide**. This option enables you to select from amongst a variety of requirements that your organization may have.  
+   **[決定を手伝ってください**] を選択します。このオプションを使用すると、組織が持つ可能性のあるさまざまな要件の中から選択できます。
 
-9. In the list of requirements that appears, select the following Adatum requirements to see which sync tool the system recommends (Note how the recommendation changes after selecting each additional requirement): <br/>
+9. 表示される要件のリストで、次の Adatum 要件を選択して、システムが推奨する同期ツールを確認します (追加の要件をそれぞれ選択すると、推奨がどのように変化するかに注目してください)。
 
-	- Select **I require the ability for users to access both on-premises and cloud-based applications using the same passwords (Password hash sync and Password writeback).**  <br/>
+   - **[ユーザーが同じパスワードを使用してオンプレミスとクラウドベースのアプリケーションの両方にアクセスできる機能 (パスワード ハッシュ同期とパスワード ライトバック) が必要です] を選択します**。
 
-		**Note:** After selecting this check box, note the recommendation that appears at the bottom of the page. By just selecting this one requirement, the system recommends using **Azure AD cloud sync**. <br/>
-	
-	- Select **I have Exchange on-premises objects that I need to sync to the cloud (Exchange hybrid).**  <br/>
+     **注:**このチェック ボックスをオンにすると、ページの下部に表示される推奨事項に注意してください。この 1 つの要件を選択するだけで、システムは**Azure AD クラウド同期の**使用を推奨します。
 
-		**Note:** After selecting this second check box, the recommendation has changed to **Azure AD Connect**. This confirms that Holly's initial thought of selecting Azure AD Connect was the same as what the system would have recommended given Adatum's synchronization requirements.
+   - **クラウドと同期する必要がある Exchange オンプレミス オブジェクトがあります (Exchange ハイブリッド) を**選択します。
 
-10. Select **Next**. The system will initiate synchronization using the recommended solution, **Azure AD Connect**. 
+     **注:この 2 番目のチェック ボックスを選択すると、推奨事項が****Azure AD Connect**に変わります。これにより、Azure AD Connect を選択するという Holly の最初の考えが、Adatum の同期要件を考慮してシステムが推奨したものと同じであったことが確認されます。
 
-11. On the **Sync your users** page, select the **Download Azure AD Connect** box. This opens a new tab in your browser and takes you to the Microsoft Download Center.
+10. **「次へ」**を選択します。システムは、推奨ソリューションである**Azure AD Connect**を使用して同期を開始します。
 
-12. In the **Microsoft Download Center**, a message indicating **Thank you for downloading Microsoft Azure Active Directory Connect** should appear. <br/>
+11. **[ユーザーの同期]**ページで、 **[Azure AD Connect のダウンロード]**ボックスを選択します。これにより、ブラウザーで新しいタブが開き、Microsoft ダウンロード センターに移動します。
 
-	If a **Downloads** window appears at the top of the screen, select the **Open file** link that appears below the **AzureADConnect.msi** file once it's finished downloading. <br/>
+12. **Microsoft ダウンロード センター**に、 **「Microsoft Azure Active Directory Connect をダウンロードしていただきありがとうございます」**というメッセージが表示されます。
 
-	However, if a **Downloads** window doesn't appear at the top of the screen, select the ellipsis icon (three dots) that appears to the right of the **Profile 1** icon (the image of a person inside a circle). In the drop-down menu that appears, select **Downloads**. If a **Downloads** window appears at the top of the screen and it includes the **AzureADConnect.msi** file, then select the **Open file** link that appears below it. However, if **AzureADConnect.msi**  does not appear in the **Downloads** window, then on the **Microsoft Download Center** page, select the **click here to download manually** hyperlink and then repeat this step to open the **AzureADConnect.msi** file.
+    画面の上部に**[ダウンロード]**ウィンドウが表示される場合は、ダウンロードが完了した**AzureADConnect.msi**ファイルの下に表示される [**ファイルを開く]リンクを選択します。**
 
-13. Opening the **AzureADConnect.msi** file initiates the installation of the Microsoft Azure Active Directory Connect Tool by starting the **Microsoft Azure Active Directory Connect** wizard. The first page of the wizard may appear and then suddenly disappear, or it may not appear at all. If either situation occurs, then select the wizard icon on the taskbar. 
+    ただし、**ダウンロード**ウィンドウが画面の上部に表示されない場合は、プロファイル**1**アイコン (円の中の人の画像) の右側に表示される省略記号アイコン (3 つの点) を選択します。表示されるドロップダウン メニューで、**[ダウンロード]**を選択します。画面の上部に**[ダウンロード]ウィンドウが表示され、そのウィンドウに****AzureADConnect.msi**ファイルが含まれている場合は、その下に表示される [**ファイルを開く]**リンクを選択します。ただし、**AzureADConnect.msi が****[ダウンロード]**ウィンドウ に表示されない場合は、 **Microsoft ダウンロード センター**ページで、[**ここをクリックして手動でダウンロード] を選択します。**ハイパーリンクをクリックし、この手順を繰り返して**AzureADConnect.msi**ファイルを開きます。
 
-14. On the **Welcome to Azure AD Connect** window in the setup wizard, select the **I agree to the license terms and privacy notice** check box and then select **Continue**.
+13. **AzureADConnect.msi**ファイルを開くと、 Microsoft Azure Active Directory Connect ウィザードが開始され、 **Microsoft Azure Active Directory Connect**ツールのインストールが開始されます。ウィザードの最初のページが表示されてから突然消える場合や、まったく表示されない場合があります。いずれかの状況が発生した場合は、タスクバーのウィザード アイコンを選択します。
 
-15. On the **Express Settings** page, read the instruction regarding a single Windows Server AD forest and then select **Use express settings**.
+14. セットアップ ウィザードの**[Azure AD Connect へようこそ]**ウィンドウで、 **[ライセンス条項とプライバシー通知に同意します]**チェック ボックスをオンにし、 [**続行]**を選択します。
 
-16. On the **Connect to Azure AD** window, enter **Holly@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) in the **USERNAME** field. <br/>
+15. **[高速設定]**ページで、単一の Windows Server AD フォレストに関する手順を読み、[**高速設定を使用する]**を選択します。
 
-	In the **PASSWORD** field, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account), and then select **Next**. <br/>
+16. **[Azure AD に接続]**ウィンドウで、**[USERNAME]フィールドに****[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)** (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) を入力します。
 
-	**Note:** If the **Next** button is not enabled, then tab off the **PASSWORD** field to enable it. 
+    **[PASSWORD]**フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 テナント パスワード**を入力し、 [**次へ]**を選択します。
 
-17. On the **Connect to AD DS** page, enter **adatum\Administrator** in the **USERNAME** field, enter **Pa55w.rd** in the **PASSWORD** field, and then select **Next**  (if the **Next** button is not enabled, then tab off the PASSWORD field to enable it). 
+    **注:** **[次へ]**ボタンが有効になっていない場合は、 **[パスワード]**フィールドをタブで外して有効にします。
 
-18. In the **Azure AD sign-in configuration** window, select the **Continue without matching all UPN suffixes to verified domains** check box at the bottom of the page and then select **Next**.
+17. **[AD DS に接続]**ページで、[ **USERNAME]**フィールドに**「adatum\Administrator」**と入力し、[ **PASSWORD]**フィールドに**「Pa55w.rd** **」**と入力して、[次へ] を選択します ([**次へ**] ボタンが有効になっていない場合は、[パスワード] フィールドをタブで外して有効にします)。
 
-19. On the **Ready to configure** screen, select the check box for **Start the synchronization process when configuration completes** if it’s not already selected, and then select **Install**.   <br/>
+18. **Azure AD サインイン構成**ウィンドウで、ページの下部にある [**すべての UPN サフィックスを検証済みのドメインに一致させずに続行する] チェック ボックスをオンにし、** **[次へ]**を選択します。
 
-	**IMPORTANT:** While Holly eventually plans install an Exchange hybrid deployment, she will not do so now. For the purpose of this lab, do **NOT** select the **Exchange hybrid deployment** option. 
+19. **[構成の準備完了]**画面で、 **[構成の完了時に同期プロセスを開始する]**チェック ボックスがまだ選択されていない場合は選択し、 [**インストール]**を選択します。
 
-20. Wait for the configuration to complete (which may take several minutes). On the **Configuration complete** page, select **Exit**. 
+    **重要:** Holly は最終的に Exchange ハイブリッド展開をインストールする予定ですが、今はインストールする予定はありません。このラボでは、**Exchange ハイブリッド展開**オプションを選択**しない**でください。
 
-21. Select the **Windows (Start)** icon in the lower left corner of the taskbar. In the **Start** menu that appears, select the icon to display all apps. Select **Azure AD Connect** to expand the group, and then select **Synchronization Service** to start this desktop application. <br/>
+20. 構成が完了するまで待ちます (数分かかる場合があります)。**[構成の完了]**ページで、**[終了]**を選択します。
 
-	**Note:** If you selected **Azure AD Connect** in the **Start** menu and it expanded and you were able to select **Synchronization Service**, then proceed to the next step (step 22). However, if **Azure AD Connect** did not expand when you selected it in the **Start** menu, then you will need to close all applications and then restart LON-DC1. <br/>
+21. タスクバーの左下隅にある**Windows (スタート)**アイコンを選択します。**表示される[スタート]**メニューで、アイコンを選択してすべてのアプリを表示します。**[Azure AD Connect]**を選択してグループを展開し、**[同期サービス]**を選択してこのデスクトップ アプリケーションを開始します。
 
-	**Note:** The remaining instructions in this step are what you should do if you needed to restart LON-DC1. <br/>
+    **注:** **[スタート]**メニューで**[Azure AD Connect]**を選択し、それが展開されて**[同期サービス]**を選択できた場合は、次のステップ (ステップ 22) に進みます。ただし、**[スタート]メニューで****Azure AD Connect を**選択したときに展開されなかった場合は、すべてのアプリケーションを閉じて、LON-DC1 を再起動する必要があります。
 
-	If you restarted LON-DC1, then after it restarts, follow the instructions from your lab hosting provider to select **Ctrl+Alt+Delete**. This will display the log on screen for LON-DC1. <br/>
+    **注:**この手順の残りの手順は、LON-DC1 を再起動する必要がある場合に実行する必要がある手順です。
 
-	Log in as **Adatum\Administrator** with a password of **Pa55w.rd**. <br/>
+    LON-DC1 を再起動した場合は、再起動後に、ラボ ホスティング プロバイダーの指示に従って**Ctrl+Alt+Delete**を選択します。LON-DC1 のログオン画面が表示されます。
 
-	Minimize **Server Manager** after it opens, and then open the **Edge** browser and navigate to **htps://portal.office.com**. <br/>
+    **Adatum\Administrator**としてパスワード**Pa55w.rd**でログインします。
 
-	Log in as **Holly@xxxxxZZZZZZ.onmicrosoft.com**.  In the **Password** field, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account). <br/>
+    **サーバー マネージャーが**開いたら最小化し、**Edgeブラウザを開いて****htps://portal.office.com**に移動します。
 
-	On the **Microsoft Office Home** page, select **Admin** to open the **Microsoft 365 admin center**. <br/>
+    **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**としてログインします。**[パスワード]**フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 テナント パスワードを入力します。**
 
-	Then select the **Windows (Start)** icon in the lower left corner of the taskbar. In the **Start** menu that appears, select **Azure AD Connect** to expand the group (this time it should expand), and then select **Synchronization Service**.  
+    **Microsoft Office ホーム**ページで、**[管理者]を選択して****Microsoft 365 管理センター**を開きます。
 
-22. Maximize the **Synchronization Service Manager on LON-DC1** window. The **Operations** tab at the top of the screen is displayed by default so that you can monitor the synchronization process, which automatically started when you selected this program. 
+    次に、タスクバーの左下隅にある**Windows (スタート)アイコンを選択します。****表示される[スタート]**メニューで、**[Azure AD Connect]**を選択してグループを展開し (今回は展開する必要があります)、 [**同期サービス]**を選択します。
 
-23. Wait for the **Export** profile to complete for **xxxxxZZZZZZ.onmicrosoft.com - AAD**. When it finishes, its **Status** should be **completed-export-errors**. Once it's complete and you see this status, select this row.  
+22. **LON-DC1 ウィンドウで Synchronization Service Manager を**最大化します。画面上部の [操作] タブがデフォルトで表示され、このプログラムを選択すると自動的に開始される同期プロセスを監視でき**ます**。
 
-24. In the bottom portion of the screen, a detail pane appears showing the detailed information for this selected operation. 
+23. **xxxxxZZZZZZ.onmicrosoft.com-AADの****エクスポート**プロファイルが完了するまで待ちます。完了すると、**ステータスは****completed-export-errors**になるはずです。完了してこのステータスが表示されたら、この行を選択します。
 
-	- In the **Export Statistics** pane on the left, note the number of on-premises users that were added to Azure Active Directory and the number that were updated. 
-	- In the **Export Errors** pane on the right, note the errors that appear. If you recall back in the prior lab exercise when you ran the IdFix tool, there were two users with validation errors that you purposely did not fix (**Ngoc Bich Tran** and **An Dung Dao**). 
+24. 画面の下部に、選択した操作の詳細情報を示す詳細ペインが表示されます。
 
-		Select the first link (CN={xxxxxx...) under the **Export Errors** column that applies to the first **DataValidationFailed** error. This will display the first of these two users that were not synchronized by the Azure AD Connect tool. Review the error to see why this account is broken. **Tip:** In the **Connector Space Object Properties** window, select the **Export Error** tab. In the **Error Information** section, select the **Detail** button. Review the detailed error information, and then select **Close**. Select **Close** again. <br/>
+    - 左側の [**統計のエクスポート]**ウィンドウで、Azure Active Directory に追加されたオンプレミス ユーザーの数と更新された数をメモします。
 
-		Select the second Data Validation error link and verify this error is for the second user that you purposely did not fix. Follow the same steps as before to review the error for this user.   <br/>
+    - 右側の**[エクスポート エラー]**ペインで、表示されるエラーに注目してください。前回のラボ演習で IdFix ツールを実行したときを思い出してください。意図的に修正しなかった検証エラーが発生したユーザーが 2 人いました ( **Ngoc Bich Tran**と**An Dung Dao** )。
 
-	‎**IMPORTANT:** Because a synchronization had not been performed prior to this, the initial synchronization was a **Full Synchronization** (see the **Profile Name** column in the top pane). Because the synchronization process will continue to run automatically every 30 minutes, any subsequent synchronizations will display **Delta Synchronization** as its **Profile Name**. If you leave the **Synchronization Service Manager** window open, after 30 minutes you will see that it attempts to synchronize the two users who were not synchronized during the initial synchronization. These will display as a **Delta Synchronization** rather than a **Full Synchronization**.
+      **最初のDataValidationFailed**エラーに該当する**[エクスポート エラー]**列の下の最初のリンク (CN={xxxxxx...) を選択します。これにより、Azure AD Connect ツールによって同期されなかった 2 人のユーザーのうち最初のユーザーが表示されます。エラーを確認して、このアカウントが壊れている理由を確認してください。**ヒント:** **[コネクタ スペース オブジェクトのプロパティ]**ウィンドウで、**[エクスポート エラー]**タブを選択します。**「エラー情報」**セクションで、**「詳細」**ボタンを選択します。詳細なエラー情報を確認し、**[閉じる]**を選択します。もう一度**「閉じる」**を選択します。
 
-25. Now that you have seen Azure AD Connect complete a Full Synchronization, in the next task you will make some updates and manually force an immediate synchronization rather than waiting for it to synchronize updates every 30 minutes. Close the **Synchronization Service Manager on LON-DC1** window. 
+      2 番目のデータ検証エラー リンクを選択し、このエラーが意図的に修正しなかった 2 番目のユーザーのものであることを確認します。前と同じ手順に従って、このユーザーのエラーを確認します。
 
-26. In your browser, close all tabs except for the **Home | Microsoft 365** tab and the **Active users - Microsoft 365 admin center** tab. 
+    重要**:**これより前に同期が実行されていなかったため、最初の同期は**完全同期**でした(上部ペインの**プロファイル名列を参照)。****同期プロセスは 30 分ごとに自動的に実行され続けるため、後続の同期ではプロファイル名**として**デルタ同期**が表示されます。**Synchronization Service Manager**ウィンドウを開いたままにすると、30 分後に、初期同期中に同期されなかった 2 人のユーザーの同期が試行されることがわかります。**これらは、完全同期**ではなく**デルタ同期**として表示されます。
 
-27. Leave LON-DC1 open as it will be used in the next exercise.
+25. Azure AD Connect が完全同期を完了したことが確認できたので、次のタスクでは、いくつかの更新を行って、30 分ごとに更新が同期されるのを待つのではなく、手動で強制的に即時同期を実行します。**LON-DC1 の Synchronization Service Manager**ウィンドウを閉じます。
 
+26. ブラウザで、**[ホーム] | [タブ]を除くすべてのタブを閉じます。[Microsoft 365]**タブと**[アクティブなユーザー - Microsoft 365 管理センター]**タブ。
 
-### Task 2 - Create Group Accounts to Test Synchronization  
+27. LON-DC1 は次の演習で使用するため、開いたままにしておきます。
 
-To test the manual, forced synchronization process, you will also set up several group scenarios to verify whether the forced synchronization function is working in Azure AD Connect. You will create a new security group, and you will update the group members in an existing, built-in security group, all within Adatum’s on-premises environment. 
+### [タスク 2 - 同期をテストするためのグループ アカウントを作成する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex2_Implement_Identity_Synch.md#task-2---create-group-accounts-to-test-synchronization)
 
-Each group will be assigned several members. After the forced synchronization, you will validate that you can see each security group in Microsoft 365 and that its members were synced up from the on-premises group to the cloud group. You will also validate the built-in security group was not created in Microsoft 365, even though you added members to it in Adatum's on-premises environment. 
+手動の強制同期プロセスをテストするには、いくつかのグループ シナリオをセットアップして、強制同期機能が Azure AD Connect で機能しているかどうかを確認します。新しいセキュリティ グループを作成し、既存の組み込みセキュリティ グループのグループ メンバーをすべて Adatum のオンプレミス環境内で更新します。
 
-**Important:** Built-in groups are predefined, on-premises security groups that are located under the **Builtin** container in **Active Directory Users and Computers**. They are created automatically when you create an Active Directory domain. You can use these groups to control access to shared resources and delegate specific domain-wide administrative roles. **However, they are NOT synchronized to Microsoft 365, even after adding members to them.** You will validate this functionality in this task.
+各グループには複数のメンバーが割り当てられます。強制同期後、Microsoft 365 の各セキュリティ グループが表示され、そのメンバーがオンプレミス グループからクラウド グループに同期されたことを検証します。また、Adatum のオンプレミス環境でメンバーを追加した場合でも、組み込みセキュリティ グループが Microsoft 365 で作成されていないことも検証します。
 
-1. You should still be logged into **LON-DC1** as the **Administrator** from the prior task. 
+**重要:**組み込みグループは、「**Active Directory ユーザーとコンピューター」の****組み込み**コンテナーの下にある、事前定義されたオンプレミスのセキュリティ グループです。これらは、Active Directory ドメインの作成時に自動的に作成されます。これらのグループを使用して、共有リソースへのアクセスを制御し、特定のドメイン全体の管理役割を委任できます。**ただし、メンバーを追加した後でも、Microsoft 365 には同期されません。**このタスクでは、この機能を検証します。
 
-2. If **Server Manager** is closed, then re-open it now; otherwise, select the **Server Manager** icon on the taskbar. 
+1. 前のタスクで**管理者**として**LON-DC1**にログインしたままである必要があります。
 
-3. In **Server Manager**, select **Tools** at the top right side of the screen, and then in the drop-down menu select **Active Directory Users and Computers.**
+2. **サーバー マネージャーが**閉じている場合は、ここで再度開きます。それ以外の場合は、タスクバーの**サーバー マネージャーアイコンを選択します。**
 
-4. You will begin by adding members to one of the built-in, on-premises security groups. Maximize the **Active Directory Users and Computers** window. In the console tree in the left-hand pane, under **Adatum.com**, select the **Builtin** folder. This will display all the built-in security group folders that were automatically created at the time the **Adatum.com** domain was created.
+3. **サーバー マネージャー**で、画面右上の [**ツール]を選択し、ドロップダウン メニューで****[Active Directory ユーザーとコンピューター] を選択します。**
 
-5. In the detail pane on the right, double-click the **Print Operators** security group.
+4. まず、組み込みのオンプレミス セキュリティ グループの 1 つにメンバーを追加します。**「Active Directory ユーザーとコンピュータ」**ウィンドウを最大化します。左側のペインのコンソール ツリーで、**Adatum.comの下にある****Builtin**フォルダーを選択します。**これにより、 Adatum.com**ドメインの作成時に自動的に作成されたすべての組み込みセキュリティ グループ フォルダーが表示されます。
 
-6. In the **Print Operators Properties** window, select the **Members** tab and then select the **Add** button.
+5. 右側の詳細ペインで、**Print Operators**セキュリティ グループをダブルクリックします。
 
-7. In the **Select Users, Contacts, Computers, Service Accounts, or Groups** window, in the **Enter the object names to select** field, type the following names (type all three at once with a semi-colon separating them):  
+6. **「印刷オペレーターのプロパティ」**ウィンドウで、**「メンバー」タブを選択し、** **「追加」**ボタンを選択します。
 
-	- **Ashlee Pickett** 
+7. **[ユーザー、連絡先、コンピュータ、サービス アカウント、またはグループの**選択] ウィンドウの**[選択するオブジェクト名を入力してください] フィールド**に次の名前を入力します (セミコロンで区切って 3 つすべてを一度に入力します)。
 
-	- **Juanita Cook** 
+   - **アシュリー・ピケット**
+   - **ファニータ・クック**
+   - **モーガン・ブルックス**
 
-	- **Morgan Brooks**  
+8. **[名前の確認]**を選択します。すべての検証が完了したら、**「OK」を選択して****「印刷オペレーターのプロパティ」**ウィンドウに戻ります。
 
-8. Select **Check Names**. Once they are all validated, select **OK** to return to the **Print Operators Properties** window.
+9. **[Print Operators Properties]**ウィンドウで**[OK]**を選択して、**[Active Directory ユーザーとコンピュータ]**ウィンドウに戻ります。
 
-9. In the **Print Operators Properties** window, select **OK** to return to the **Active Directory Users and Computers** window.
+10. ここで、新しいセキュリティ グループを作成します。**Adatum.com**の下のコンソール ツリーで、 **Research**フォルダーを右クリックし、**[新規]を選択し、** **[グループ]**を選択します。
 
-10. You will now create a new security group. In the console tree under **Adatum.com**, right-click on the **Research** folder, select **New,** and then select **Group**.  
+11. **[新しいオブジェクト - グループ]**ウィンドウで、次の情報を入力します。
 
-11. In the **New Object - Group** window, enter the following information:
+    - グループ名:**製造業**
+    - グループ範囲:**ユニバーサル**
+    - グループの種類:**セキュリティ**
 
-	- Group name: **Manufacturing**
+12. **[OK]**を選択します。
 
-	- Group scope: **Universal**
+13. **Adatum.com**の下のコンソール ツリーで**Research**フォルダーを選択し、右側の詳細ペインで**Manufacturing**セキュリティ グループをダブルクリックします。
 
-	- Group type: **Security**
+14. **「製造プロパティ」**ウィンドウで、**「電子メール」**フィールドに**[「Manufacturing@adatum.com」](mailto:manufacturing@adatum.com)**と入力します。
 
-12. Select **OK**.
+    **注:** Microsoft 365 には、セキュリティ グループとメールが有効なセキュリティ グループという 2 種類のセキュリティ グループがあります。このオンプレミス セキュリティ グループの [**電子メール]**フィールドに値を入力すると、同期プロセスによって Microsoft 365 にメールが有効なセキュリティ グループが作成されます。
 
-13. In the console tree under **Adatum.com**, select the **Research** folder, and then in the detail pane on the right, double-click on the **Manufacturing** security group.  
+15. **[メンバー]**タブを選択し、手順 6 ～ 9 を繰り返して、次のメンバーをこのグループに追加します。
 
-14. In the **Manufacturing Properties** window, enter **manufacturing@adatum.com** in the **E-mail** field. <br/>
+    - **ベルナルド・ルッター**
+    - **チャーリー・ミラー**
+    - **ドーン・ウィリアムソン**
 
-	**Note:** There are two types of security groups in Microsoft 365: a security group and a mail-enabled security group. By entering a value in the **E-mail** field for this on-premises security group, the synchronization process will create a mail-enabled security group in Microsoft 365.   
+16. 次のタスクのために**[Active Directory ユーザーとコンピュータ]**ウィンドウを開いたままにしておきます。
 
-15. Select the **Members** tab, and then repeat steps 6-9 to add the following members to this group:  
+### [タスク 3 - 同期をテストするためにグループ メンバーシップを変更する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex2_Implement_Identity_Synch.md#task-3---change-group-membership-to-test-synchronization)
 
-	- **Bernardo Rutter**
+このタスクでは、同期プロセスが Azure AD Connect で機能しているかどうかをテストするための別のシナリオを設定します。このタスクでは、グループのメンバーを変更して、グループが同期された後にそのメンバーがクラウドに反映されるかどうかを確認します。
 
-	- **Charlie Miller**
+1. このタスクは、LON-DC1 で前のタスクが中断したところから継続します。**[Active Directory ユーザーとコンピュータ]**ウィンドウの**Adatum.com**の下のコンソール ツリーでは、**Research**組織単位が選択されたままです。
 
-	- **Dawn Williamson**  
+   右側の詳細ペインで、**Research**セキュリティ グループをダブルクリックします。
 
-16. Leave the **Active Directory Users and Computers** window open for the next task.
+2. **[リサーチ プロパティ]**ウィンドウで、**[メンバー]**タブを選択して、このグループのメンバーを表示します。
 
- 
-### Task 3 - Change Group Membership to Test Synchronization  
+3. 次のユーザーをグループから削除したいと考えています:
 
-This task sets up another scenario for testing whether the sync process is working in Azure AD Connect. In this task you will change the members of a group to see if they are reflected in the cloud once the group is synced. 
+   - **カイチュー**
+   - **シャノンブース**
+   - **ティア・ゼシレビッチ**
 
-1. This task continues from where the previous task left off in LON-DC1. In the **Active Directory Users and Computers** window, in the console tree under **Adatum.com**, the **Research** organizational unit is still selected. <br/>
+   **ヒント:**各ユーザーを個別に削除することもできますが、最も簡単な方法は、3 人全員を一度に削除することです。最初のユーザーを選択し、**Ctrl**キーを押したまま下にスクロールして、他の 2 人を選択します。3 人のユーザーをすべて選択した状態で、**[削除]ボタンを選択し、** **[はい]**を選択して削除を確認します。3 人のユーザーが削除されたことを確認し、**[OK] を選択します。**
 
-	In the detail pane on the right, double-click the **Research** security group.
+4. **「Active Directory ユーザーとコンピュータ」**ウィンドウを閉じます。
 
-2. In the **Research Properties** window, select the **Members** tab to view the members of this group.  
+5. 次のタスクで引き続き使用するため、LON-DC1 は開いたままにしておきます。
 
-3. You want to remove the following users from the group:
+   重要**:**前のタスクで ID オブジェクトに加えた変更が Azure AD Connect によって自動的に同期されないように、このタスクを完了したらすぐに次のタスクを実行する必要があります。
 
-	- **Cai Chu**  
+### [タスク 4 - 手動同期を強制する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex2_Implement_Identity_Synch.md#task-4---force-a-manual-synchronization)
 
-	- **Shannon Booth**  
+このタスクでは、Azure AD Connect が ID オブジェクトを同期するまで 30 分待つ代わりに、Adatum のオンプレミス AD と Azure AD の間の同期を強制します。強制同期を実行するには、PowerShell を使用する必要があります。
 
-	- **Tia Zecirevic**  
-	
-	**Tip:** While you can remove each user individually, the quickest way is to remove all three at one time. Select the first user, then hold the **Ctrl** key down while scrolling down and selecting the other two. With all three users selected, select the **Remove** button and then select **Yes** to confirm the removal. Verify the three users have been removed, and then select **OK.**
+**重要 - PowerShell に関する注意:**前のラボ演習では、その演習のタスクで Microsoft Graph PowerShell ではなく MSOnline モジュールを使用した理由を示す免責事項が提供されていました。Microsoft は、MSOnline と Azure Active Directory (Azure AD) PowerShell の 2 つの古い PowerShell モジュールを Microsoft Graph PowerShell に置き換える作業を進めていますが、古いモジュールには Microsoft Graph PowerShell にまだ組み込まれていない機能がいくつかあります。前の演習のコマンドとこのタスクで使用したコマンドは、このカテゴリに分類されます。前の演習では MSOnline モジュールに接続しましたが、このモジュールも Start-ADSyncSyncCycle コマンドに従ってこのタスクで使用されます。
 
-4. Close the **Active Directory Users and Computers** window.
-  
-5. Leave LON-DC1 open as you will continue using it in the next task. <br/>
+1. LON-DC1 で、前の演習で**Windows PowerShellアプリケーションがまだ開いている場合は、****ここで閉じる必要があります**。
 
-	‎**Important:** You should perform the next task immediately after completing this one so that Azure AD Connect doesn’t automatically synchronize the changes that you just made to the identity objects in the previous tasks.
+   警告**:**この手順を実行する理由は、Azure AD Connect のセットアップ前に Windows PowerShell を開いた場合、手順 3 で使用したコマンドレット**Start-ADSyncSyncCycle**が使用できなくなり、コマンドレットが認識されないことを示すエラーが表示されるためです。実行しようとすると。したがって、このステップでは、Windows PowerShell が開いている場合は閉じることをお勧めします。
 
+2. この時点では、Windows PowerShell は開いてはいけません。今、それを再度開きたいと考えています。これを開くには、タスク バーの**虫眼鏡 (検索)アイコンを選択し、検索ボックスに****「power」**と入力し、メニューで**Windows PowerShell** (Windows PowerShell ISE ではない) を右クリックし、**[管理者として実行]**を選択します。Windows PowerShell ウィンドウが開いたら、最大化します。
 
-### Task 4 - Force a manual synchronization   
+3. **Windows PowerShell**で次のコマンドを実行して、Adatum のオンプレミス AD と Azure AD の間で同期サイクルを手動で実行します。ここではデルタスイッチを使用して、更新のみが同期されるようにします **。**
 
-In this task, you will force a sync between Adatum’s on-premises AD and Azure AD instead of waiting 30 minutes for Azure AD Connect to synchronize the identity objects. You must use PowerShell to perform a forced synchronization.
+   ```
+    Start-ADSyncSyncCycle -PolicyType Delta
+   ```
 
-**IMPORTANT - PowerShell notice:** The prior lab exercise provided a disclaimer indicating why the tasks in that exercise used the MSOnline module rather than Microsoft Graph PowerShell. While Microsoft is in the process of replacing the two older PowerShell modules, MSOnline and Azure Active Directory (Azure AD) PowerShell, with Microsoft Graph PowerShell, there is some functionality in the older modules that has not yet been incorporated into Microsoft Graph PowerShell. The commands in the prior exercise and the command used in this task fall into that category. The prior exercise connected to the MSOnline module, which is also used in this task per the Start-ADSyncSyncCycle command. 
+   
 
-1. On LON-DC1, if the **Windows PowerShell** application is still open from the prior exercise, then **you MUST close it now**.  <br/>
+   注**:**何らかの理由で、最初の完全同期の実行後にドメイン コントローラー VM が再起動された場合、Microsoft Azure AD Sync サービスが再起動していない可能性があります。この問題が発生した場合、上記の強制同期を実行しようとするとエラーが発生します。この問題が発生した場合は、まず Microsoft Azure AD Sync サービスを開始してから、強制同期を実行する必要があります。
 
-	‎**WARNING:** The reason for this step is that if Windows PowerShell was opened BEFORE the Azure AD Connect setup, the cmdlet **Start-ADSyncSyncCycle** that is used in step 3 will not be available and you will receive an error indicating that the cmdlet is not recognized when you attempt to run it. Therefore, it’s recommended that at this step, you close Windows PowerShell if it’s open.  
+   **注:** Start-ADSyncSyncCycle コマンドが見つからない場合は、PowerShell モジュールのインストールを完了するためにドメイン コントローラーを再起動する必要があります。
 
-2. At this point, Windows PowerShell should NOT be open. You now want to reopen it. To open it, select the **magnifying glass (Search)** icon in the taskbar, type **power** in the Search box, and then in the menu, right-click on **Windows PowerShell** (not Windows PowerShell ISE) and select **Run as administrator**. Maximize the Windows PowerShell window once it opens.
+4. 同期プロセスが正常に完了したら、PowerShell ウィンドウを最小化し (閉じないでください)、次のタスクに進みます。次のタスクでは PowerShell を使用して、ディレクトリ同期の結果の一部を検証します。
 
-3. In **Windows PowerShell**, run the following command to manually run a sync cycle between Adatum’s on-premises AD and Azure AD. The **Delta** switch is used here so that only the updates are synchronized.   <br/>
+5. LON-DC1 に留まり、次のタスクに進みます。
 
-		Start-ADSyncSyncCycle -PolicyType Delta
-	
-	‎**Note:** If for any reason the Domain Controller VM was restarted after the original full synchronization run, the Microsoft Azure AD Sync service may not have restarted. If this occurred, you’ll receive an error when you try to perform the forced sync above. If this occurs, you’ll need to start the Microsoft Azure AD Sync service first and then perform the forced synchronization.
+### [タスク 5 - ディレクトリ同期の結果を検証する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex2_Implement_Identity_Synch.md#task-5---validate-the-results-of-directory-synchronization)
 
-	**Note:** If the Start-ADSyncSyncCycle command is not found, the domain controller will need to be restarted for the PowerShell module to complete its installation.
-	
-4. Once the synchronization process has successfully completed, minimize your PowerShell window (do not close it) and proceed to the next task. You will use PowerShell in the next task to validate some of the results of the directory synchronization.
+このタスクでは、以前に行った変更が Adatum のオンプレミス Active Directory から Azure Active Directory に同期されたかどうかを検証します。Microsoft 365 管理センターを使用して変更を検証し、次に Windows PowerShell を使用して同じ検証を実行します。これにより、Microsoft 365 管理センター GUI と PowerShell の両方を使用して同期を検証する経験が得られます。
 
-5. Remain in LON-DC1 and proceed to the next task.
-  
+**重要 - PowerShell に関する注意:**このタスクでは、Microsoft Graph PowerShell でサポートされている、グループとユーザーに対する基本的な PowerShell クエリを使用します。Microsoft Graph PowerShell は、MSOnline と Azure Active Directory (Azure AD) PowerShell という 2 つの古い PowerShell モジュールを置き換えるものであるため、このタスクでは Microsoft Graph PowerShell を使用します。
 
-### Task 5 - Validate the Results of Directory Synchronization   
+1. ローカルの**adatum\administrator**としてパスワード**Pa55w.rd を使用して LON-DC1 にログインしている必要があります。**
 
-In this task, you will validate whether the changes you made earlier were synchronized from Adatum’s on-premises Active Directory to Azure Active Directory. You will validate the changes using the Microsoft 365 admin center, and then you’ll perform the same validations using Windows PowerShell. This gives you experience in validating synchronization using both the Microsoft 365 admin center GUI and PowerShell.
+2. 次に、前のタスクで更新したグループの同期結果を調べてみましょう。**Edge**ブラウザで、[**ホーム] | [ホーム]**のタブがまだ開いている場合は、**Microsoft 365**ページと**[アクティブなユーザー - Microsoft 365 管理センター] に移動**し、次の手順に進みます。
 
-**IMPORTANT - PowerShell notice:** This task employs basic PowerShell queries for Groups and Users, which are supported in Microsoft Graph PowerShell. Since Microsoft Graph PowerShell is replacing the two older PowerShell modules, MSOnline and Azure Active Directory (Azure AD) PowerShell, you will use Microsoft Graph PowerShell in this task.
+   それ以外の場合は、アドレス バーに**https://portal.office.com/****と入力してMicrosoft 365 ホームページを開き、** **[holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:holly@xxxxxZZZZZZ.onmicrosoft.com)**としてログインします(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです) ）。**[パスワード]**フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (MOD 管理者アカウント) 用に提供されたものと同じ**Microsoft 365 テナント パスワードを入力し、** **Microsoft 365 ホームページで****Microsoft 365 管理センター**に移動します。
 
-1. You should still be logged into LON-DC1 as the local **adatum\administrator** with a password of **Pa55w.rd.**
+3. **Microsoft 365 管理センター**のナビゲーション ウィンドウで**[チームとグループ]**を選択し、 [**アクティブなチームとグループ]**を選択します。
 
-2. Now let’s examine the synchronization results for the groups that you updated in the previous tasks. In your **Edge** browser, if tabs are still open for the **Home | Microsoft 365** page and the **Active users - Microsoft 365 admin center**, then proceed to the next step. <br/>
+4. **[アクティブなチームとグループ]**ウィンドウには、既定で**[Microsoft 365]**タブが表示されます。**「セキュリティ」**タブを選択します。**Print Operators**グループがセキュリティ グループのリストに表示されないことを確認します。**前述したように、 Print Operators**グループなどの組み込みセキュリティ グループは、前のタスクで行ったようにグループにメンバーを追加した場合でも、オンプレミス AD から Azure AD に同期されません。
 
-	Otherwise, enter **https://portal.office.com/** in the address bar to open the **Microsoft 365 Home** page, and then log in as **holly@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider). In the **Password** field, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account), and then on the **Microsoft 365 Home** page, navigate to the **Microsoft 365 admin center**. 
+5. **[メールが有効なセキュリティ]**タブを選択します。**[製造]**グループが表示されることを確認します。前のタスクでオンプレミス グループに 電子メール アドレス ( **[production@adatum.com](mailto:manufacturing@adatum.com)** )を追加したため、このグループは標準のセキュリティ グループではなく、メールが有効なセキュリティ グループとして表示されます。
 
-3. In the **Microsoft 365 admin center**, select **Teams & groups** in the navigation pane, and then select **Active teams & groups**. 
+   **注:** **[製造]**グループが表示されるまで、最大 10 分間待つ必要がある場合があります。グループが表示されるまでリストを更新し続けます。
 
-4. In the **Active teams and groups** window, the **Microsoft 365** tab is displayed by default. Select the **Security** tab. Verify the **Print Operators** group does NOT appear in the list of security groups. As mentioned previously, built-in security groups such as the **Print Operators** group are not synced from the on-premises AD to Azure AD, even when you add members to the group as you did in the earlier task.
+6. **製造**グループの場合は、 **[電子メール]**列に表示される値を確認します。**[ディレクトリ同期中にグループの電子メール アドレスが、 Manufacturing@adatum.com](mailto:manufacturing@adatum.com)**から、Exchange Online のグループのメールボックスである**[Manufacturing@xxxxxZZZZZZ.onmicrosoft.com](mailto:manufacturing@xxxxxZZZZZZ.onmicrosoft.com)**に変更されたことを確認します。
 
-5. Select the **Mail-enabled security** tab. Verify the **Manufacturing** group appears. This group appears as a mail-enabled security group rather than a standard security group because you added an email address (**manufacturing@adatum.com**) to the on-premises group in the prior task.  <br/>
+   **[同期ステータス]**列のアイコンの上にマウスを置き、 **[オンプレミスから同期済み]**と表示されていることを確認します。
 
-	**Note:** You may need to wait up to 10 minutes before the **Manufacturing** group appears. Continue to refresh the list until you see the group.  
+7. **[製造]**グループの右側には、垂直の省略記号アイコン (ピリオドが 3 つ垂直に並んでいます) があります。このアイコンの上にマウスを置きます。このグループはオンプレミス環境でのみ管理できることを示すメッセージが表示されることに注意してください。
 
-6. For the **Manufacturing** group, check the value displayed in the **Email** column. Verify the group email address was changed during directory synchronization from **manufacturing@adatum.com** to **manufacturing@xxxxxZZZZZZ.onmicrosoft.com**, which is the group's mailbox in Exchange Online. <br/>
+8. 次に、Windows PowerShell を使用してこのグループを調べてみましょう。**Windows PowerShell**がタスクバーですでに開いている場合は、PowerShell アイコンを選択して次の手順に進みます。それ以外の場合は、タスク バーの**[検索]**フィールドに**「PowerShell」と入力し、** **Windows PowerShell**アプリケーションを右クリックして [**管理者として実行]**を選択します。PowerShell ウィンドウを最大化します。
 
-	Hover your mouse over the icon in the **Sync status** column and verify that it indicates **Synced from on-premises**. 
+9. まず、Microsoft Graph PowerShell をインストールする必要があります。このトレーニングの前半で、Microsoft Graph PowerShell を LON-CL1 にインストールしました。その時点で、次のコマンドを実行して 30 個以上のサブモジュールをすべてインストールしました: Install-Module Microsoft.Graph (Graph は 30 個以上のサブモジュールを含む親モジュールです)。30 以上のサブモジュールをすべて LON-DC1 にインストールすることもできますが、このタスクではグループとユーザーのサブモジュールのみを使用します。これは、LON-DC1 で PowerShell を使用するこのトレーニングの最後のタスクです。したがって、インストール時間を短縮するには、次の 2 つのコマンドを実行します。これにより、これら 2 つのサブモジュールのみがインストールされ、他の 30 以上のサブモジュールはインストールされません。これにより、Graph サブモジュール全体ではなく、特定のサブモジュールをインストールする経験も得られます。
 
-7. To the right of the **Manufacturing** group is a vertical ellipsis icon (three periods vertically aligned). Hold your mouse over this icon. Note the message that appears which indicates you can only manage this group in your on-premises environment. 
+   ａ．**次のコマンドを入力して Enter キーを押します (信頼できないリポジトリからこのモジュールをインストールするかどうかを尋ねるメッセージが表示された場合は、 「すべてはい」**の意味で**A**を入力します。次のコマンドでも同じことを行います)。
 
-8. Now let’s examine this group using Windows PowerShell. If **Windows PowerShell** is already open on the taskbar, then select the PowerShell icon and proceed to the next step; otherwise, type **PowerShell** in the **Search** field on the taskbar and then right-click on the **Windows PowerShell** application and select **Run as administrator**. Maximize your PowerShell window.
+   ```
+    Install-Module Microsoft.Graph.Groups -Scope CurrentUser  <br/>
+   ```
 
-9. You should begin by installing Microsoft Graph PowerShell. Earlier in this training, you installed Microsoft Graph PowerShell on LON-CL1. At that time, you installed all 30+ sub-modules by running the following command: Install-Module Microsoft.Graph (where Graph is the parent module that contains the 30+ sub-modules). While you could install all 30+ sub-modules on LON-DC1, you're only going to use the Groups and Users sub-modules in this task, which is the last task in this training that uses PowerShell on LON-DC1. Therefore, to reduce installation time, you'll run the following two commands that will install just those two sub-modules and none of the other 30+ sub-modules. This also provides you with experience in installing specific sub-modules rather than the entire complement of Graph sub-modules.   <br/>
+   
 
-	a. Type the following command and press Enter (If you receive a message asking whether you want to install this module from an untrusted repository, enter **A** for **Yess to All**; do the same for the next command as well):  <br/>
+   b. コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
 
-		Install-Module Microsoft.Graph.Groups -Scope CurrentUser  <br/>
+   ```
+    Install-Module Microsoft.Graph.Users -Scope CurrentUser  <br/>
+   ```
 
-	b. At the command prompt, type the following command and press Enter:  <br/>
+   
 
-		Install-Module Microsoft.Graph.Users -Scope CurrentUser  <br/>
+10. Groups サブモジュールと Users サブモジュールをインストールしたので、それぞれのコマンドレットを PowerShell セッションにインポートするには、それぞれをインポートする必要があります。これを行うには、次の 2 つのコマンドを実行する必要があります。
 
-10. Now that you have installed the Groups and Users sub-modules, you must import each of them in order to import their respective cmdlets into your PowerShell session. To do so, you must run the following two commands: <br/>
+    ａ．次のコマンドを入力して Enter キーを押します。
 
-	a. Type the following command and press Enter:  <br/>
+    ```
+    Import-Module Microsoft.Graph.Groups
+    ```
 
-		Import-Module Microsoft.Graph.Groups
+    
 
-	a. Then type the following command and press Enter:  <br/>
+    ａ．次に、次のコマンドを入力して Enter キーを押します。
 
-		Import-Module Microsoft.Graph.Users
+    ```
+    Import-Module Microsoft.Graph.Users
+    ```
 
-11. At the command prompt, you must now connect to Microsoft Graph and perform a request for permission to use the Groups and Users cmdlets that were just imported. To complete this task, you only need 'Read only' permissions for these two sub-modules. Type the following command and then press Enter: <br/>
-		
-		Connect-MgGraph -Scopes 'Group.Read.All', 'User.Read.All'
+    
 
-12. In the **Pick an account** window that appears, select **Holly Dickson's** account. In the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in**. 
+11. コマンド プロンプトで、Microsoft Graph に接続し、インポートしたばかりの Groups および Users コマンドレットを使用する許可の要求を実行する必要があります。このタスクを完了するには、これら 2 つのサブモジュールに対する「読み取り専用」権限のみが必要です。次のコマンドを入力して Enter キーを押します。
 
-13. If a **Permissions requested** dialog box appears, select the **Consent on behalf of your organization** check box and then select **Accept**.
+    ```
+    Connect-MgGraph -Scopes 'Group.Read.All', 'User.Read.All'
+    ```
 
-14. You will now use PowerShell to display the list of groups in Microsoft 365. This list should include the groups that you manually created in Microsoft 365, as well as the groups that were created in the on-premises Active Directory that were just synchronized with Microsoft 365. Type the following command and then press Enter:
+    
 
-		Get-MgGroup | Format-List Id, DisplayName, Description, GroupTypes
+12. **表示される「アカウントを選択」**ウィンドウで、**Holly Dickson の**アカウントを選択します。**[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 [**サインイン]**を選択します。
 
-15. You now want to display the members of the **Research** group. In the list of groups, highlight the object ID for the **Research** group and then press **Ctrl+C** to copy the ID to the clipboard. Then type the following command, paste in the Research group's object ID (**Ctrl+V**) in the appropriate spot, and then press Enter:  <br/>
+13. **[アクセス許可が要求されました**] ダイアログ ボックスが表示された場合は、 **[組織を代表して同意する**] チェック ボックスをオンにして、**[同意する]**を選択します。
 
-		Get-MgGroupMember -GroupId 'paste in the group's object ID here'
+14. ここで、PowerShell を使用して、Microsoft 365 のグループのリストを表示します。このリストには、Microsoft 365 で手動で作成したグループと、Microsoft と同期したばかりのオンプレミスの Active Directory で作成されたグループが含まれている必要があります。 365. 次のコマンドを入力し、Enter キーを押します。
 
-16. In the list of group members that were displayed in the prior step, note how the results simply show the object ID of each member. Without displaying the user names, this command doesn't help you verify whether the group members were synchronized. To work around this issue, you're going to repeat the prior command, but this time you'll add an additional component that retrieves the User record for each member of the group and displays the User's attributes, which includes the user name. <br/>
+    ```
+    Get-MgGroup | Format-List Id, DisplayName, Description, GroupTypes
+    ```
 
-	At the command prompt hit the UP arrow on your keyboard. This will automatically type the prior command that was run (which includes the Research group's object ID, so you don't have to re-paste it). Then following the object ID, type the remaining portion of the command (starting with **-All**) and press Enter:
+    
 
-		Get-MgGroupMember -GroupId 'the object ID of the Research group' -All | ForEach {Get-MgUser -UserId $_.Id}
+15. **次に、リサーチ**グループのメンバーを表示したいとします。グループのリストで、**リサーチグループのオブジェクト ID を強調表示し、** **Ctrl+C**を押してID をクリップボードにコピーします。次に、次のコマンドを入力し、リサーチ グループのオブジェクト ID ( **Ctrl+V** ) を適切な場所に貼り付けて、Enter キーを押します。
 
-17. In the list of members of the Research group, verify the following users are **NOT** included. Remember, in the prior task you removed these three users from the Research group in the on-premises Active Directory, prior to synchronizing the group to Microsoft 365:  
+    ```
+    Get-MgGroupMember -GroupId 'paste in the group's object ID here'
+    ```
 
-	- Cai Chu 
+    
 
-	- Shannon Booth  
+16. 前の手順で表示されたグループ メンバーのリストでは、結果に各メンバーのオブジェクト ID が単純に表示されることに注目してください。ユーザー名を表示しない場合、このコマンドはグループ メンバーが同期されているかどうかを確認するのには役立ちません。この問題を回避するには、前のコマンドを繰り返しますが、今回はグループの各メンバーのユーザー レコードを取得し、ユーザー名を含むユーザーの属性を表示するコンポーネントを追加します。
 
-	- Tai Zecirevic  
+    コマンド プロンプトでキーボードの上矢印を押します。これにより、以前に実行されたコマンドが自動的に入力されます (これにはリサーチ グループのオブジェクト ID が含まれるため、再貼り付ける必要はありません)。次に、オブジェクト ID に続いて、コマンドの残りの部分 ( **-All**で始まる) を入力し、Enter キーを押します。
 
-18. In the prior task, you added the **Manufacturing** group in the on-premises Active Directory, and you assigned three users to the group. You now want to verify the members of the **Manufacturing** group were synchronized when the group was added in Microsoft 365 during the synchronization process, <br/>
+    ```
+    Get-MgGroupMember -GroupId 'the object ID of the Research group' -All | ForEach {Get-MgUser -UserId $_.Id}
+    ```
 
-	To do so, you must first scroll back up to the list of groups, highlight the object ID for the **Manufacturing** group and then press **Ctrl+C** to copy the ID to the clipboard. <br/>
+    
 
-	Then hit the UP arrow on your keyboard to automatically type the prior command, which contains the object ID of the Research group that you pasted in during the prior step:  <br/>
+17. Research グループのメンバーのリストに、次のユーザーが含まれて**いない**ことを確認します。前のタスクで、グループを Microsoft 365 に同期する前に、オンプレミスの Active Directory のリサーチ グループからこれら 3 人のユーザーを削除したことを思い出してください。
 
-		Get-MgGroupMember -GroupId 'the object ID of the Research group' -All | ForEach {Get-MgUser -UserId $_.Id}    <br/>
+    - カイチュー
+    - シャノンブース
+    - タイ・ゼシレビッチ
 
-	**Important:** You must then replace the object ID of the Research group with the object ID of the Manufacturing group before running this command. To do so, use the left arrow on your keyboard to move your cursor to the start of the object ID, then highlight the object ID of the Research group and hit **Ctrl+V**. This will replace the ID of the Research group by pasting in the object ID of the **Manufacturing** group. Then press Enter to run the command. Doing so will display the members of the **Manufacturing** group. <br/>
+18. 前のタスクでは、オンプレミスの Active Directory に**製造**グループを追加し、そのグループに 3 人のユーザーを割り当てました。ここで、同期プロセス中に Microsoft 365 にグループが追加されたときに、**製造**グループのメンバーが同期されたことを確認したいと考えています。
 
-	In the **Manufacturing** group, you earlier added the following members to the group in the on-premises Active Directory. You should now see each of these group members in this Microsoft 365 group following synchronization:  
+    **これを行うには、まずグループのリストまでスクロールして戻り、マニュファクチャリング**グループのオブジェクト ID を強調表示してから、**Ctrl+C**を押してID をクリップボードにコピーする必要があります。
 
-	- Bernardo Rutter
+    次に、キーボードの上矢印を押して、前のコマンドを自動的に入力します。このコマンドには、前の手順で貼り付けたリサーチ グループのオブジェクト ID が含まれています。
 
-	- Charlie Miller
+    ```
+    Get-MgGroupMember -GroupId 'the object ID of the Research group' -All | ForEach {Get-MgUser -UserId $_.Id}    <br/>
+    ```
 
-	- Dawn Williamson
+    
 
-19. You have now validated that your test groups and user accounts were synchronized properly. Once you have completed the validation steps, close your PowerShell window. 
- 
-# Proceed to Lab 3 - Exercise 3
- 
+    **重要:**このコマンドを実行する前に、Research グループのオブジェクト ID を Manufacturing グループのオブジェクト ID に置き換える必要があります。これを行うには、キーボードの左矢印を使用してカーソルをオブジェクト ID の先頭に移動し、リサーチ グループのオブジェクト ID を強調表示して**Ctrl+V**を押します。これにより、研究グループの ID が**製造**グループのオブジェクト ID に貼り付けられて置き換えられます。次に、Enter キーを押してコマンドを実行します。**これにより、製造**グループのメンバーが表示されます。
+
+    **製造**グループでは、以前に次のメンバーをオンプレミスの Active Directory のグループに追加しました。同期後、この Microsoft 365 グループにこれらの各グループ メンバーが表示されるようになります。
+
+    - ベルナルド・ルッター
+    - チャーリー・ミラー
+    - ドーン・ウィリアムソン
+
+19. これで、テスト グループとユーザー アカウントが適切に同期されたことが検証されました。検証手順が完了したら、PowerShell ウィンドウを閉じます。
+
+# [ラボ 3 - 演習 3 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex2_Implement_Identity_Synch.md#proceed-to-lab-3---exercise-3)

@@ -1,226 +1,207 @@
-# Learning Path 4 - Lab 4 - Exercise 3 - PIM Teammate Approval Request
+# [ラーニング パス 4 - ラボ 4 - 演習 3 - PIM チームメイトの承認リクエスト](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex3_PIM_Teammate_Approval.md#learning-path-4---lab-4---exercise-3---pim-teammate-approval-request)
 
-Up to this point, you have conducted two forms of PIM approval:
+ここまでに、次の 2 つの形式の PIM 承認を実施しました。
 
-- one by an administrator (Holly), who approved the activation and assignment of the Global Administrator role to Patti Fernandez.
-- another by Alex Wilber, who self-approved the assignment of the Helpdesk administrator role to his user account. 
+- 1 つは管理者 (Holly) によるもので、グローバル管理者ロールのアクティブ化と Patti Fernandez への割り当てを承認しました。
+- もう 1 つは、ユーザー アカウントへのヘルプデスク管理者の役割の割り当てを自己承認した Alex Wilber によるものです。
 
-In this exercise, you will conduct a third form of PIM approval, which is having a non-admin user approve the assignment of a role to another user. 
+この演習では、PIM 承認の 3 番目の形式を実行します。これは、管理者以外のユーザーに別のユーザーへのロールの割り当てを承認してもらいます。
 
-In an attempt to decrease overhead but still maintain a secure way of managing administrator roles, Holly decided to allow Alex Wilber and Joni Sherman to approve each other’s request to activate the Intune Administrator role.  This will allow Alex and Joni to perform device management tasks within Intune without having to wait for Holly to approve their requests. 
+オーバーヘッドを削減しながら、管理者ロールを安全に管理する方法を維持するために、Holly は、Alex Wilber と Joni Sherman が Intune 管理者ロールをアクティブ化するための互いの要求を承認できるようにすることにしました。これにより、Alex と Joni は、Holly による要求の承認を待つことなく、Intune 内でデバイス管理タスクを実行できるようになります。
 
+### [タスク 1 - Intune 管理者ロールに適したグループを作成する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex3_PIM_Teammate_Approval.md#task-1---create-an-eligible-group-for-the-intune-admin-role)
 
-### Task 1 - Create an eligible group for the Intune Admin role
+Adatum のパイロット プロジェクトにおける PIM の最終テストのために、Holly は、Intune 管理者ロールの資格のある Alex Wilber と Joni Sherman を選択しました。今後のロールの割り当てを簡素化するために、ホリーはセキュリティ グループを作成し、そのグループに Alex と Joni を割り当ててから、そのグループを Intune 管理者ロールに割り当てたいと考えています。これは、以前のヘルプデスク管理者ロールのラボ演習で行ったのと同じです。
 
-For this final test of PIM in Adatum's pilot project, Holly has selected Alex Wilber and Joni Sherman to be eligible for the Intune admin role. To simplify future role assignments, Holly wants to create a security group, assign Alex and Joni to the group, and then assign the group to the Intune admin role - just as she previously did in the prior lab exercise for the Helpdesk administrator role. 
+1. LON-CL1 には引き続きローカルの**adatum\administrator**アカウントとしてログインする必要があり、Edge ブラウザーでは引き続き Holly Dickson として Microsoft 365 にログインする必要があります。
 
-1. You should still be logged into LON-CL1 as the local **adatum\administrator** account, and in your Edge browser, you should still be logged into Microsoft 365 as Holly Dickson.
+2. **Edge ブラウザーで、 Microsoft Entra 管理センター**を含むタブを選択します。このタブは、前のラボ演習で開いたままになっているはずです。
 
-2. In your Edge browser, select the tab containing the **Microsoft Entra admin center**, which should still be open from the prior lab exercise. 
+3. **Microsoft Entra 管理センター**の左側のナビゲーション ウィンドウで、 [**グループ]**を選択し、**[すべてのグループ]**を選択します。
 
-3. In the **Microsoft Entra admin center**, in the left-hand navigation pane, select **Groups**, and then select **All groups**.
+4. グループ内**| [すべてのグループ]**ウィンドウで、メニュー バーの**[新しいグループ]を選択します。**
 
-4. In the **Groups | All groups** window, select **New group** in the menu bar.
+5. **[新しいグループ]**ウィンドウで、次の情報を入力します。
 
-5. In the **New group** window, enter the following information:
+   - グループタイプ -**セキュリティ**
+   - グループ名 - **PIM-Intune-Administrators**
+   - グループの説明 - **PIM で Intune 管理者ロールに割り当てることができる適格なユーザーのグループ**
+   - Azure AD ロールをグループに割り当てることができます -**はい**
+   - メンバーシップの種類 -**割り当て済み**
+   - 所有者 - **[所有者が選択されていません]**を選択します。**[所有者の追加]**ウィンドウで、**検索**フィールドに**「Holly」**と入力し、**[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**ユーザー アカウントを選択します。
+   - メンバー - **「メンバーが選択されていません」**を選択します。**[メンバーの追加]**ウィンドウで、**[Alex Wilber]**を選択します。**[検索] フィールドに「Joni」**と入力し、**[Joni Sherman]**を選択します。
 
-    - Group type - **Security**
+6. **[新しいグループ]**ウィンドウで、**[作成]**を選択します。
 
-    - Group name - **PIM-Intune-Administrators**
+7. ページの上部に、「**Azure AD ロールを割り当てることができるグループの作成は、後で変更できない設定です」という内容のダイアログ ボックスが表示されます。この機能を追加してもよろしいですか?** 。**[はい]**を選択します。
 
-    - Group description - **Group of eligible users who can be assigned to the Intune Administrator role in PIM**
+8. グループについて**| [すべてのグループ]**ウィンドウで、**PIM-Intune-Administrators**グループが表示されない場合は、メニュー バーの**[更新]を選択します。**グループが表示されるまでに数分かかる場合があります。
 
-    - Azure AD roles can be assigned to the group - **Yes**
+9. ここで、**PIM-Intune-Administrators**グループをロールの割り当てに適格にする必要があります。**Microsoft Entra 管理センターの**ナビゲーション ウィンドウの [ID ガバナンス] セクションで、**[** Privileged **Identity Management]**を選択します。
 
-    - Membership type - **Assigned**
+10. Privileged **Identity Management | クイック スタート**ウィンドウの中央ペインの**[管理]セクションの下にある****[Azure AD ロール]**を選択します。
 
-    - Owners - Select **No owners selected**. In the **Add owners** pane, enter **Holly** in the **Search** field and select the **Holly@xxxxxZZZZZZ.onmicrosoft.com** user account
+11. アダタムコーポレーションでは**| クイック スタートウィンドウの****[割り当て]**セクションで、 **[資格の割り当て]**ボタンを選択します。
 
-    - Members - Select **No members selected**. In the **Add members** pane, select **Alex Wilber**. Enter **Joni** in the Search field, and then select **Joni Sherman**.
+12. アダタムコーポレーションでは**| [ロール]**ウィンドウでロールのリストを下にスクロールし、**[Intune 管理者]**を選択します。
 
-6. In the **New group** window, select **Create**.
+13. Intune**管理者 | [割り当て]**ウィンドウで、メニュー バーの**[+割り当ての追加]を選択します。**
 
-7. A dialog box appears towards the top of the page that says: **Creating a group to which Azure AD roles can be assigned is a setting that cannot be changed later. Are you sure that you want to add this capability?**. Select **Yes**.
+14. **「割り当ての追加」**ウィンドウには、デフォルトで**「メンバーシップ」**タブが表示されます。**[メンバーの選択]**で、**[メンバーが選択されていません]**を選択します。
 
-8. On the **Groups | All groups** window, if the **PIM-Intune-Administrators** group does not appear, select **Refresh** on the menu bar. It may take a few minutes for the group to appear.
+15. 右側に表示される**「メンバーの選択」**ペインで、 **「検索」**フィールドに**「PIM」**と入力します。**これにより、名前がPIM**で始まる対象となるユーザーおよびグループのリストが表示されます。**表示されるPIM-Intune-Administrators**グループを選択し、**[選択]**ボタンを選択します。
 
-9. You must now make the **PIM-Intune-Administrators** group eligible for role assignment. In the **Microsoft Entra admin center** navigation pane, under the **Identity Governance** section, select **Privileged Identity Management**.
+16. **[割り当ての追加]**ウィンドウで、**[次へ]を選択します (これは、** **[設定]**タブを選択するのと同じことを行います)。
 
-10. In the **Privileged Identity Management | Quick start** window, in the middle pane under the **Manage** section, select **Azure AD roles**.
+17. **[割り当ての追加]**ウィンドウの**[設定]**タブで、 **[割り当ての種類]オプションが****[適格]**に設定されていることを確認します。また、**[永続的に適格]**チェック ボックスが選択されていることを確認し (選択されていない場合は、すぐに選択してください)、**[割り当て]**を選択します。
 
-11. In the **Adatum Corporation | Quick start** window, under the **Assign** section, select the **Assign Eligibility** button.
+18. Intune**管理者 | [割り当て]**ウィンドウで、**PIM-Intune-Administrators**グループが Intune 管理者ロールへの適格な割り当てであることに注意してください。**PIM-Intune-Administrators は**グループであるため、このグループ (Alex Wilber と Joni Sherman で構成される) のすべてのメンバーが Intune 管理者ロールを割り当てる資格があることを意味します。
 
-12. In the **Adatum Corporation | Roles** window, scroll down through the list of roles and select **Intune Administrator**.
+    **注:ラボでのテストでは、新しい割り当てが****[対象となる割り当て]**タブに表示されるまでに最大 30 分かかる場合があることがわかっています。**PIM-Intune-Administrators が**すぐに表示されない場合は、数分間待ってから、メニュー バーの**[更新]オプションを選択します。****PIM-Intune-Administrators が****[対象となる割り当て]**のリストに表示されるまで、数分ごとに**[更新]**オプションを選択し続けます。
 
-13. In the **Intune Administrator | Assignments** window, select **+Add assignments** on the menu bar. 
+19. 次のタスクのためにブラウザのタブはすべて開いたままにしておきます。
 
-14. In the **Add assignments** window, the **Membership** tab is displayed by default. Under **Select member(s)**, select **No member selected**.
+### [タスク 2 - 承認を必要とするように Intune 管理者ロールを構成する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex3_PIM_Teammate_Approval.md#task-2---configure-the-intune-administrator-role-to-require-approval)
 
-15. In the **Select a member** pane that appears on the right, enter **PIM** in the **Search** field. This will display the list of eligible users and groups whose name starts with **PIM**. Select the **PIM-Intune-Administrators** group that appears, and then select the **Select** button.
+この演習では、Holly は PIM-Intune-Administrators グループが Intune 管理者ロールの資格を得ることができるようにします。ただし、ホリーはグループに役割の資格を与えるだけでなく、そのメンバーに役割のリクエストを承認させることになります。次に、ホリーは、PIM からこのロールに対するすべての承認が通知されるようにロールを構成します。
 
-16. In the **Add assignments** window, select **Next** (this does the same thing as selecting the **Setting** tab). 
+ヘルプデスク管理者ロールに関する以前の PIM 演習と同様に、ホリーは、要求されない限り、Alex と Joni が Intune 管理者ロールをアクティブ化しないことを信頼しています。したがって、ホリーは、アレックスとジョニがロールをアクティブ化する必要がある場合にのみ、正当な理由を提供することを要求します。さらに、ホリーは、アレックスとジョニがお互いのロールのアクティブ化要求を承認できるようにロールを構成したいと考えています。ホリーは、どちらかのユーザーがもう一方のユーザーからのリクエストを承認するたびに通知を受け取りたいだけです。
 
-17. In the **Add assignments** window, under the **Setting** tab, verify the **Assignment type** option is set to **Eligible**. Also verify the **Permanently eligible** check box is selected (if not, then do so now), and then select **Assign**. 
+1. LON-CL1 では、Edge ブラウザーで、Holly Dickson として Microsoft 365 にログインしているはずです。
 
-18. In the **Intune Administrator | Assignments** window, note that the **PIM-Intune-Administrators** group is an eligible assignment to the Intune Administrator role. Because **PIM-Intune-Administrators** is a group, it means that all members of this group (which consists of Alex Wilber and Joni Sherman) are now eligible to be assigned the Intune Administrator role.
+2. ブラウザーでは、前のタスクで使用した**Microsoft Entra 管理センターが開いたままになっているはずです。**左側のナビゲーションペインの**「Identity Governance」**セクションで、**「Privileged Identity Management」**を選択します。
 
-    **Note:** Lab testing has shown that it can sometimes take up to 30 minutes for new assignments to appear under the **Eligible assignments** tab. If **PIM-Intune-Administrators** doesn't appear immediately, wait a few minutes and then select the **Refresh** option on the menu bar. Continue to select the **Refresh** option every few minutes until **PIM-Intune-Administrators** appears in the list of **Eligible assignments**.
-1921. Leave all browser tabs open for the next task.
+3. Privileged **Identity Management | クイック スタート**ウィンドウの中央ペインの**[管理]セクションの下にある****[Azure AD ロール]**を選択します。
 
+4. アダタムコーポレーションでは**| クイック スタート**ウィンドウの中央ペインの**[管理]セクションの下にある****[設定]**を選択します。
 
-### Task 2 - Configure the Intune Administrator role to require approval
+5. アダタムコーポレーションでは**| [設定]**ウィンドウで、**Intune 管理者**ロールを選択します。
 
-In this exercise, Holly will enable the PIM-Intune-Administrators group to be eligible for the Intune admin role. However, not only will Holly make the group eligible for the role, but she will also make its members approvers of the role requests. Holly will then configure the role so that PIM notifies her of all approvals for this role.
+   **ヒント:**役割がアルファベット順に表示されない場合は、**「役割」**見出しを選択してアルファベットの昇順に並べ替えます。これにより、Intune 管理者ロールを見つけやすくなります。
 
-As in the prior PIM exercise involving the Helpdesk admin role, Holly is trusting that Alex and Joni won't activate the Intune admin role unless they're required to do so. Therefore, Holly will only require that Alex and Joni provide a justification whenever they must activate the role. In addition, Holly wants to configure the role so that Alex and Joni can approve each other's request for role activation. Holly simply wants to be notified whenever either user approves a request from the other.
+6. **[ロール設定の詳細 - Intune 管理者]**ウィンドウで、ページをスクロールし、ロールのアクティブ化、割り当て、および通知に関する情報を確認します。次に、ページ上部のメニュー バーで**[編集]を選択します。**
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as Holly Dickson.
+7. アクティベーション スライダーの下で、[**アクティベーション時、設定が必要] を****[なし]**に設定します。
 
-2. In your browser, you should still have the **Microsoft Entra admin center** open from the prior task. In the left-hand navigation pane, under the **Identity Governance** section, select **Privileged Identity Management**.
+   **注:**以前のラボ演習で、Holly は、Patti Fernandez がグローバル管理者ロールのアクティブ化を要求したときに、Azure MFA を使用してサインインすることを要求しました。そうすることで、Holly は Azure MFA サインインが機能することを確認しました。ただし、パイロット プロジェクトの目的では、Holly は Intune 管理者ロールをアクティブにするときに多要素認証を使用した検証を必要としません (また、この MFA 機能は前のラボ演習ですでにテストしているため、授業で時間をかけて検証する必要はありません)再びそれを行う）。
 
-3. In the **Privileged Identity Management | Quick start** window, in the middle pane under the **Manage** section, select **Azure AD roles**.
+8. **[ロール設定の編集 - Intune 管理者]**ウィンドウには、既定で**[ライセンス認証]タブが表示されます。**パイロット プロジェクトの場合、Holly は [**アクティベーション時に正当な理由が必要]**チェック ボックスをオンにしたくないと考えています。このチェック ボックスがオンになっている場合は、今すぐ選択を解除 (クリア) してください。ホリーは、アレックスとジョニが必要な場合にのみロールをアクティブ化することを知っているため、ロールの割り当てをアクティブにするために彼らからの正当な理由を必要としません (ただし、次のステップで、ホリーはロールの割り当てを要求するときに正当な理由を必要とします)。
 
-4. In the **Adatum Corporation | Quick start** window, in the middle pane under the **Manage** section, select **Settings**. 
+9. **[アクティブ化するには承認が必要]**チェック ボックスをオンにします。これにより、**「承認者の選択」**セクションが有効になります。
 
-5. In the **Adatum Corporation | Settings** window, select the **Intune Administrator** role.    <br/>
+10. **「承認者の選択」**セクションでは、特定の承認者が選択されていません。ホリーは、PIM-Intune-Administrators グループのメンバーをこのロールの承認者として割り当てたいと考えているため、このセクションを選択します。
 
-    **Tip:** If the roles are not displayed in alphabetical order, select the **Role** heading to sort them in ascending alphabetical order. This will make it easier to locate the Intune administrator role.
+11. **表示される[メンバーの選択]**ウィンドウで、検索ボックスに**「PIM」と入力します。****名前がPIM**で始まるユーザーとグループの一覧で、**PIM-Intune-Administrators を選択し、** **[選択]**ボタンを選択します。このグループを選択すると、グループのメンバーは、このロールに対して適格なユーザーによるリクエストを承認するための通知を受け取ります。
 
-6. In the **Role setting details -  Intune Administrator** window, scroll through the page and review the information for role activation, assignment, and notification. Then select **Edit** on the menu bar at the top of the page.
+12. **[ロール設定の編集 - Intune 管理者]**ウィンドウでは、現在**[ライセンス認証]**タブが表示されています。隣に表示される**「割り当て」**タブを選択します。**[アクティブな割り当てに正当な理由が必要]**チェック ボックスがオンになっていることを確認します(オンになっていない場合は、ここでオンにします)。
 
-7. Below the activation slider, set the **On activation, require** setting to **None**. <br/>
+13. **[ロール設定の編集 - Intune 管理者]**ウィンドウで、**[通知]**タブを選択します。
 
-    **Note:** In a previous lab exercise, Holly required that Patti Fernandez sign in using Azure MFA when she requested activation of the Global admin role. In doing so, Holly verified the Azure MFA sign-in worked. However, for the purpose of the pilot project, Holly will not require verification using multi-factor authentication when activating the Intune administrator role (and since you already tested this MFA feature in the prior lab exercise, there's no reason to take time in class to do it again). 
+14. **[通知]**タブの[**資格のあるメンバーがこのロールをアクティブ化したときに通知を送信する]**セクションで、ホリーは、アレックスまたはジョニがこのロールを承認したときに通知を受け取ることを希望しています。したがって：
 
-8. In the **Edit role setting - Intune Administrator** window, the **Activation** tab is displayed by default. For the pilot project, Holly does not want the **Require justification on activation** check box selected. If this check box is selected, then un-select (clear) it now. Holly knows that Alex and Joni will only activate the role when needed, so she doesn't require a justification from them to activate the role assignment (however, in the next step, Holly will require justification when they request assignment of the role). 
+    - **[役割アクティブ化アラート]**チェック ボックスがオンになっていることを確認します。
+    - **ロールのアクティブ化アラート**のデフォルトの受信者は**Admin**です。これは、グローバル管理者 (Holly) および任意の特権ロール管理者を指します。
+    - **[アクティブ化されたユーザー (要求者) への通知] のチェック**を外します (クリアします) 。Alex と Joni はお互いのリクエストを承認するため、承認時に通知を受け取る必要はありません。
+    - **[アクティベーションの承認を要求する]**チェック ボックスがオンになっていることを確認します。
 
-9. Select the **Require approval to activate** check box. By doing so, the **Select approver(s)** section becomes enabled.
+15. **[ロール設定の編集 - Intune 管理者]**ウィンドウの下部で、 **[更新]**を選択します。
 
-10. In the **Select approver(s)** section, no specific approver has been selected. Holly wants to assign the members of the PIM-Intune-Administrators group as the approver for this role, so select this section. 
+16. 次のタスクのためにブラウザのタブはすべて開いたままにしておきます。
 
-11. In the **Select a member** pane that appears, enter **PIM** in the Search box. In the list of users and groups whose name starts with **PIM**, select **PIM-Intune-Administrators** and then select the **Select** button. By selecting this group, the members of the group will receive notification to approve the request made by any eligible user for this role.
+### [タスク 3 - Intune 管理者ロールの要求を送信する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex3_PIM_Teammate_Approval.md#task-3---submit-a-request-for-the-intune-admin-role)
 
-12. In the **Edit role setting - Intune Administrator** window, you're currently in the **Activation** tab. Select the **Assignment** tab that appears next to it. Verify the **Require justification on active assignment** check box is selected (if not, select it now).
+Holly のパイロット プロジェクトのこの時点で、**PIM-Intune-Administrators**グループは Intune 管理者ロールの資格を与えられています。このグループのメンバー (この場合は他のメンバー) に承認を要求することで、グループの各メンバー (この場合は Alex Wilber と Joni Sherman) に Intune 管理者の役割を割り当てることができます。ホリーは、パイロット プロジェクトで PIM プロセスをテストしたいと考えています。このタスクでは、Joni Sherman の役割を引き受けます。Joni Sherman は、自分のアカウントに Intune 管理者ロールを割り当てる承認要求を送信します。
 
-13. In the **Edit role setting - Intune Administrator** window, select the **Notification** tab.
+1. LON-CL1 で、タスクバーの**Edge**アイコンを右クリックし、表示されるメニューで**[新しい InPrivate ウィンドウ]**を選択します。
 
-14. On the **Notification** tab, under the **Send notifications when eligible members activate this role** section, Holly wants to be notified when Alex or Joni approve this role. Therefore:
+2. InPrivate ブラウジング セッションで、アドレス バーに次の URL を入力します: **[https://portal.azure.com](https://portal.azure.com/)**
 
-    - Verify the **Role activation alert** check box is selected.
-    - The default recipient for the **Role activation alert** is **Admin**. This refers to the Global Administrators (Holly) and any Privileged Role Administrators. 
-    - Un-check (clear) the **Notification to activated user (requestor)**. Since Alex and Joni will be approving each other's requests, they don't need to receive a notification when they do so.
-    -  Verify the **Request to approve an activation** check box is selected. 
+3. これから、Joni Sherman として Azure にログインします。**[サインイン]**ウィンドウで、**[「JoniS@xxxxxZZZZZZ.onmicrosoft.com](mailto:JoniS@xxxxxZZZZZZ.onmicrosoft.com)**」 (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) と入力し、 [**次へ]**を選択します。**[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 [**サインイン]**を選択します。サインインした状態で**滞在しますか?** ダイアログ ボックスで、**[今後これを表示しない]**チェック ボックスをオンにし、**[はい]**を選択します。
 
-15. At the bottom of the **Edit role setting - Intune Administrator** window, select **Update**.
+4. **[Microsoft Azure へようこそ]**ダイアログ ボックスが表示された場合は、**[後で]**を選択してツアーをスキップします。
 
-16. Leave all browser tabs open for the next task.
+5. **Microsoft Azure**ポータルでは、画面の中央に**Azure サービス**のセクションがあります。このセクションには、一連の Azure サービスとそれに関連するアイコンが表示されます。行の最後で、**[その他のサービス]** (前方向矢印アイコン付き) を選択します。これにより、**「すべてのサービス」**ウィンドウが開きます。
 
+6. **[すべてのサービス]**ウィンドウで、ページ上部の**[フィルター サービス]**検索ボックスに**「priv」と入力します。**検索結果のリストで、**[Azure AD Privileged Identity Management]**を選択します。
 
-### Task 3 - Submit a request for the Intune Admin role
+7. Privileged **Identity Management | クイック スタート**ウィンドウの左側のナビゲーション ペインの**[タスク]セクションで、** **[自分の役割]**を選択します。
 
-At this point in Holly's pilot project, the **PIM-Intune-Administrators** group has been made eligible for the Intune administrator role. Each member of the group (in this case, Alex Wilber and Joni Sherman) can now be assigned the Intune Administrator role by requesting approval from a member of this group, which in this case will be the other person. Holly wants to test out the PIM process in her pilot project. In this task, you will take on the role of Joni Sherman, who will submit a request to approve assigning the Intune Administrator role to her account. 
+8. 私の**役割 | Azure AD ロール**ウィンドウでは、既定で**[適格な割り当て]**タブが表示されます。**前のタスクで、ホリーはジョニとアレックスをPIM-Intune-Administrators**グループのメンバーとして割り当て、ホリーは後で Intune 管理者ロールの適格グループとして割り当てたことを思い出してください。そのため、このロールはJoni の**適格な割り当て**のリストに表示されます。Intune 管理者ロールの**[アクション]**列で、 **[アクティブ化]**を選択します。
 
-1.  In LON-CL1, right-click on the **Edge** icon on the taskbar and in the menu that appears, select **New InPrivate window**. 
+9. 表示される**[アクティブ化 - Intune 管理者]ウィンドウで、****解決が必要なさまざまなユーザーからのデバイス管理サポート要求を****[理由]**フィールドに入力し、ウィンドウの下部にある [**アクティブ化]ボタンを選択します。**
 
-2. In your InPrivate browsing session, enter the following URL in the address bar: **https://portal.azure.com**
+10. 私の役割について**| Azure AD ロール**ウィンドウのメニュー バーに**[適格な割り当て]タブが表示されます。**その横に表示される**[アクティブな割り当て]**タブを選択します。役割が表示されないことに注意してください。
 
-3. You're now going to log into Azure as Joni Sherman. In the **Sign in** window, enter **JoniS@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) and then select **Next**. In the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in**. In the **Stay signed in?** dialog box, select the **Don't show this again** check box and then select **Yes**.
+    **注:**前のタスクの場合、Holly は、ユーザー アカウントのアクティブ化に PIM-Intune-Administrators グループのメンバーによる承認が必要になるように、Intune 管理者ロールをセットアップしました。Joni が行ったのは、自分のユーザー アカウントに対して Intune 管理者ロールをアクティブ化するよう要求したことです。これにより、PIM-Intune-Administrators グループのメンバーに通知要求が送信され、Joni の要求を承認します。Alex Wilber はグループのメンバーであるため、Joni の役割アクティブ化の要求を承認または拒否できます。Alex は次のタスクでこのリクエストを確認します。
 
-4. If a **Welcome to Microsoft Azure** dialog box appears, select **Maybe later** to skip the tour.
+11. 次のタスクのために、InPrivate ブラウザー セッションを開いたままにしておきます。
 
-5. In the **Microsoft Azure** portal, in the middle of the screen is the section of **Azure services**. This section displays a row of Azure services and their associated icons. At the end of the row, select **More services** (with the forward arrow icon). This opens the **All services** window.
+### [タスク 4 - Intune 管理者ロールの要求を承認する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex3_PIM_Teammate_Approval.md#task-4----approve-the-request-for-the-intune-admin-role)
 
-6. In the **All services** window, enter **priv** in the **Filter services** search box at the top of the page. In the list of search results, select **Azure AD Privileged Identity Management**.
+タスク 2 に戻り、ホリーは PIM-Intune-Administrators グループを Intune 管理者ロールの承認者として割り当てました。これは、ジョニとアレックスの両方がグループのメンバーとして役割の割り当てのリクエストを承認できることを意味します。ジョニは前のタスクで役割の割り当てリクエストを送信したため、アレックスはリクエストを確認して、それを受け入れるか拒否するかを決定する必要があります。
 
-7. In the **Privileged Identity Management | Quick start** window, in the **Tasks** section in the left-hand navigation pane, select **My Roles**.
+Joni は、PIM-Intune-Administrators グループのメンバーとして、Intune 管理者ロールの要求を承認できます。しかし、ジョニもこの役割の割り当てを要求したため、彼女自身の要求を自己承認することはできないはずです。グループの別のメンバー (この場合は Alex) だけが彼女のリクエストを承認できる必要があります。このタスクでは、まず、Joni が自分のリクエストを自己承認できないことを確認します。
 
-8. In the **My roles | Azure AD roles** window, the **Eligible assignments** tab is displayed by default. Remember, in the prior task Holly assigned Joni and Alex as members of the **PIM-Intune-Administrators** group, which Holly later assigned as an eligible group for the Intune Administrator role. As such, this role appears in the list of **Eligible assignments** for Joni. Under the **Action** column for the Intune Administrator role, select **Activate**.
+1. InPrivate ブラウザ セッションには、引き続き Joni Sherman としてログインしている必要があります。前のタスクの終了時にセッションを閉じた場合は、前のタスクの手順を繰り返して InPrivate 閲覧セッションを開き、Joni としてサインインして、[マイ ロール] ウィンドウに移動し**ます**。
 
-9. In the **Activate - Intune Administrator** pane that appears, enter **Device management support requests from various users that require resolution** in the **Reason** field, and then select the **Activate** button at the bottom of the pane.
+2. まず、Joni が Intune 管理者ロールに対する自分の要求を自己承認できないことを確認することから始めます。あなたは現在、**私の役割 |に所属しています。**前のタスクを中断した**Azure AD ロールウィンドウ。**ウィンドウの上部にあるナビゲーション スレッド ( **[すべてのサービス] > [Privileged Identity Management] | [私のロール**] ) で、 [ **Privileged Identity Management] | [マイ ロール] を選択します。私の役割**。
 
-10. On the **My roles | Azure AD roles** window, the **Eligible assignments** tab is displayed on the menu bar. Select the **Active assignments** tab that appears next to it. Note that no roles appear. <br/>
+3. Privileged **Identity Management | クイック スタート**ウィンドウの左側のナビゲーション ペインの**[タスク]セクションで、** **[リクエストの承認]**を選択します。
 
-     **Note:** If the prior task, Holly set up the Intune Administrator role so that activation to a user account will require approval by a member of the PIM-Intune-Administrators group. What Joni just did was request that the Intune Admin role be activated for her user account. This will send a notification request to the members of the PIM-Intune-Administrators group to approve Joni's request. Since Alex Wilber is a member of the group, he can then either approve or deny Joni's request for role activation. Alex will review this request in the next task.
+4. リクエストの**承認 | Azure AD ロールウィンドウには、** **「ロールの割り当ての更新または延長のリクエスト」**と**「ロールのアクティブ化のリクエスト」という**2 つのセクションがあります。**[役割の割り当ての更新または延長のリクエスト]**セクションで、Joni には承認待ちのリクエストがないことに注意してください。
 
-11. Leave the InPrivate browser session open for the next task.
+   **重要:** Joni は、PIM-Intune-Administrators グループのメンバーであっても、Intune 管理者ロールに対する自分の要求を自己承認できないことが確認されました。グループの他のメンバーの 1 人がジョニのリクエストを承認する必要があります。これは、このタスクの残りの手順で実行し、Alex がリクエストを承認します。
 
+5. InPrivate ブラウズ セッションを閉じます。
 
-### Task 4 -  Approve the request for the Intune Admin role
+6. ここで、Alex Wilber の新しい InPrivate 閲覧セッションを開き、Joni の Intune 管理者ロールのアクティブ化要求を承認します。LON-CL1 で、タスクバーの**Edge**アイコンを右クリックし、表示されるメニューで**[新しい InPrivate ウィンドウ]**を選択します。
 
-Back in Task 2, Holly assigned the PIM-Intune-Administrators group as approver for the Intune Administrator role. This means that both Joni and Alex, as members of the group, can approve requests for role assignment. Since Joni submitted a role assignment request in the prior task, Alex must review the request and determine whether to accept or deny it. 
+7. InPrivate ブラウジング セッションで、アドレス バーに次の URL を入力します: **[https://portal.azure.com](https://portal.azure.com/)**
 
-As a member of the PIM-Intune-Administrators group, Joni can approve requests for the Intune Admin role. But since Joni also requested assignment of this role, she should not be able to self-approve her own request. Only another member of the group (in this case, Alex) should be able to approve her request. In this task, you first want to verify that Joni can't self-approve her own request. 
+8. これから、Alex Wilber として Azure にログインします。**[サインイン]**ウィンドウに**[「AlexW@xxxxxZZZZZZ.onmicrosoft.com」](mailto:AlexW@xxxxxZZZZZZ.onmicrosoft.com)**と入力し(xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)、 [**次へ]**を選択します。**[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 [**サインイン]**を選択します。サインインした状態で**滞在しますか?** ダイアログ ボックスで、**[今後これを表示しない]**チェック ボックスをオンにし、**[はい]**を選択します。
 
-1. You should still be logged into the InPrivate browser session as Joni Sherman. If you closed the session at the end of the prior task, then repeat the steps from the prior task to open the InPrivate browsing session, sign in as Joni, and navigate to the **My roles** window. 
+9. **[Microsoft Azure へようこそ]**ダイアログ ボックスが表示された場合は、**[後で]**を選択してツアーをスキップします。
 
-2. You want to begin by verifying that Joni can't self-approve her own request for the Intune Admin role. You're currently in the **My roles | Azure AD roles** window, where you left off from the prior task. In the navigation thread at the top of the window (**All services > Privileged Identity Management | My roles**), select **Privileged Identity Management | My roles**.
+10. **Microsoft Azure**ポータルでは、画面の中央に**Azure サービス**のセクションがあります。**[その他のサービス]** (前向き矢印アイコン)を選択します。これにより、**「すべてのサービス」**ウィンドウが開きます。
 
-3. In the **Privileged Identity Management | Quick start** window, in the **Tasks** section in the left-hand navigation pane, select **Approve requests**.
+11. **「すべてのサービス」**ウィンドウで、ページ上部の**検索**ボックスに**「priv」と入力します。**検索結果のリストで、**[Azure AD Privileged Identity Management]**を選択します。
 
-4. In the **Approve requests | Azure AD roles** window, there are two sections - **Requests to renew or extend role assignments**, and **Requests for role activations**. Under the **Requests to renew or extend role assignments** section, note that Joni has no requests pending approval. <br/>
+12. Privileged **Identity Management | クイック スタート**ウィンドウの左側のナビゲーション ペインの**[タスク]セクションで、** **[リクエストの承認]**を選択します。
 
-    **Important:** You have just verified that Joni can't self-approve her own request for the Intune Administrator role, even though she's a member of the PIM-Intune-Administrators group. One of the other members of the group must approve Joni's request. You'll do this in the remaining steps of this task, where Alex will approve her request. 
+13. リクエストの**承認 | Azure AD ロールウィンドウの****[ロールのアクティブ化の要求]**セクションで、Joni Sherman からの**Intune 管理者**要求の左側にあるチェック ボックスをオンにし、[**承認**] ボタンを選択します。
 
-5. Close the InPrivate browsing session. 
+14. 画面の右側に表示される**「リクエストの承認」**ペインで、 **「理由」**フィールドに**「PIM テスト」と入力し、** **「確認」**を選択します。
 
-6. You will now open a new InPrivate browsing session for Alex Wilber to approve Joni's activation request for the Intune Administrator role. In LON-CL1, right-click on the **Edge** icon on the taskbar and in the menu that appears, select **New InPrivate window**. 
+15. Alex の InPrivate ブラウザー セッションを閉じます。
 
-7. In your InPrivate browsing session, enter the following URL in the address bar: **https://portal.azure.com**
+16. ここで、Joni の新しい InPrivate ブラウザー セッションを開いて、Joni に Intune 管理者ロールが割り当てられていることを確認します。InPrivate ブラウジング セッションで、アドレス バーに次の URL を入力します: **[https://portal.azure.com](https://portal.azure.com/)**
 
-8. You're now going to log into Azure as Alex Wilber. In the **Sign in** window, enter **AlexW@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) and then select **Next**. In the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in**. In the **Stay signed in?** dialog box, select the **Don't show this again** check box and then select **Yes**.
+17. これから、Joni Sherman として Azure にログインします。**[サインイン]**ウィンドウで、**[「JoniS@xxxxxZZZZZZ.onmicrosoft.com](mailto:JoniS@xxxxxZZZZZZ.onmicrosoft.com)**」 (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) と入力し、 [**次へ]**を選択します。**[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 [**サインイン]**を選択します。サインインした状態で**滞在しますか?** ダイアログ ボックスで、**[今後これを表示しない]**チェック ボックスをオンにし、**[はい]**を選択します。
 
-9. If a **Welcome to Microsoft Azure** dialog box appears, select **Maybe later** to skip the tour.
+18. **Microsoft Azure**ポータルでは、画面の中央に**Azure サービス**のセクションがあります。**[その他のサービス]** (前向き矢印アイコン)を選択します。これにより、**「すべてのサービス」**ウィンドウが開きます。
 
-10. In the **Microsoft Azure** portal, in the middle of the screen is the section of **Azure services**. Select **More services** (with the forward arrow icon). This opens the **All services** window.
+19. **[すべてのサービス]**ウィンドウで、ページ上部の**[フィルター サービス]**検索ボックスに**「priv」と入力します。**検索結果のリストで、**[Azure AD Privileged Identity Management]**を選択します。
 
-11. In the **All services** window, enter **priv** in the **Search** box at the top of the page. In the list of search results, select **Azure AD Privileged Identity Management**.
+20. Privileged **Identity Management | クイック スタート**ウィンドウの左側のナビゲーション ウィンドウの**[タスク]セクションで、** **[自分の役割]**を選択します。
 
-12. In the **Privileged Identity Management | Quick start** window, in the **Tasks** section in the left-hand navigation pane, select **Approve requests**.
+21. 私の**役割 | Azure AD ロール**ウィンドウでは、既定で**[適格な割り当て]**タブが表示されます。**[アクティブな割り当て]**タブを選択します。Intune 管理者ロールが Joni に対してアクティブ化されたことに注意してください。
 
-13. In the **Approve requests | Azure AD roles** window, in the **Requests for role activations** section, select the check box to the left of the **Intune Administrator** request from Joni Sherman, and then select the **Approve** button.
+22. InPrivate ブラウザー セッションを閉じます。
 
-14. In the **Approve Request** pane that appears on the right-side of the screen, enter **PIM testing** in the **Justification** field and then select **Confirm**.
+23. Edge ブラウザとすべてのタブを開いたままにしておきます。
 
-15. Close the InPrivate browser session for Alex.
+### [タスク 5 - PIM 通知が発行されたことを確認する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex3_PIM_Teammate_Approval.md#task-5----verify-a-pim-notification-was-issued)
 
-16. You will now open a new InPrivate browser session for Joni to verify she was assigned the Intune Administrator role. In your InPrivate browsing session, enter the following URL in the address bar: **https://portal.azure.com**
+以前に Intune 管理者ロールを構成したときに、対象となるユーザーがロールをアクティブ化するたびに Holly に通知されるように通知機能を設定しました。Alex Wilber が Joni Sherman のロールをアクティブ化したばかりなので、Holly はこのアクティビティの通知を受け取るはずです。このタスクでは、Holly がこの通知を受信したことを確認します。
 
-17. You're now going to log into Azure as Joni Sherman. In the **Sign in** window, enter **JoniS@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) and then select **Next**. In the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in**. In the **Stay signed in?** dialog box, select the **Don't show this again** check box and then select **Yes**.
+1. LON-CL1 では、Edge ブラウザーで、Holly Dickson として Microsoft 365 にログインしているはずです。
+2. Edge ブラウザでは、前のラボ演習で、Alex Wilber がヘルプデスク管理者の役割を自己承認したという電子メール通知を Holly が受信したことを確認したときの [Outlook] タブが開いたままになっているはずです。Edge ブラウザー セッションで**[Outlook]**タブを選択して、 Holly の受信トレイに戻ります。
+3. Holly の**受信トレイには、** **PIM: Joni Sherman が Intune 管理者ロールの割り当てをアクティブ化したこと**を示す電子メールが届いているはずです。
+4. 電子メールを選択して開きます。電子メールの情報を確認します。
+5. Joni による Intune 管理者ロールの承認に関連するアクティビティの監査済みリストを確認するには、Edge ブラウザーで**[Microsoft Entra 管理センター]タブを選択します。**
+6. **Microsoft Entra 管理センター**で、**[Adatum Corporation - 設定]**ページが表示されます。ここは、前のタスクで中断した場所です。中央ペインのページ下部にある**「アクティビティ」セクションで、** **「リソース監査」**を選択します。
+7. アダタムコーポレーションでは**| リソース監査**ページで、PIM アクティビティのリストを確認します。最近の 2 つのアクティビティに注目してください。要求者が Alex Wilber である 2 番目のアクティビティを選択します。**表示される監査の詳細**ウィンドウで、**件名**が Joni Sherman であり、**アクションは**、Intune 管理者ロールに対する Joni のロール要求を Alex が承認したことを示していることに注意してください。**[閉じる]**を選択します。
+8. アダタムコーポレーションでは**| リソース監査**ページの PIM アクティビティのリストで、最初のアクティビティを選択します。**表示される監査の詳細**ウィンドウで、**件名**が Joni Sherman であり、**アクションは**Joni が Intune 管理者ロールに追加されたことを示していることに注意してください。役割リクエストに対して入力した**理由に**も注意してください。**[閉じる]**を選択します。
+9. **Edge ブラウザ セッションで、[ホーム] | [タブ]**を除くすべてのタブを閉じます。**[Microsoft 365]タブと****Microsoft 365 管理センター**を含むタブ。次のラボのために、これら 2 つのタブを開いたままにしておきます。
 
-18. In the **Microsoft Azure** portal, in the middle of the screen is the section of **Azure services**. Select **More services** (with the forward arrow icon). This opens the **All services** window.
-
-19. In the **All services** window, enter **priv** in the **Filter services** search box at the top of the page. In the list of search results, select **Azure AD Privileged Identity Management**.
-
-20. In the **Privileged Identity Management | Quick start** window, in the **Tasks** section in the left-hand navigation pane, select **My roles**.
-
-21.  In the **My roles | Azure AD roles** window, the **Eligible assignments** tab is displayed by default. Select the **Active assignments** tab. Note the Intune Administrator role is now activated for Joni. 
-
-22. Close the InPrivate browser session.
-
-23. Leave your Edge browser and all tabs open. 
-
-
-### Task 5 -  Verify a PIM notification was issued
-
-When you earlier configured the Intune Administrator role, you set up the notification feature so that Holly would be notified any time an eligible user activated the role. Since Alex Wilber just activated the role for Joni Sherman, Holly should receive a notification of this activity. This task will verify that Holly received this notification. 
-
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as Holly Dickson.
-
-2. In your Edge browser, you should still have the Outlook tab open from the prior lab exercise in which you verified that Holly received an email notification that Alex Wilber had self-approved the Helpdesk Administrator role. Select the **Outlook** tab in your Edge browser session to return to Holly's Inbox. 
-
-3. In Holly's **Inbox**, she should have received an email indicating **PIM: Joni Sherman activated the Intune Administrator role assignment**.
-
-4. Select the email to open it. Review the information in the email. 
-
-5. To review the audited list of activities related to Joni's approval of the Intune Administrator role, select the **Microsoft Entra admin center** tab in your Edge browser. 
-
-6. In the **Microsoft Entra admin center**, the **Adatum Corporation - Settings** page should be displayed. This is where you left off in an earlier task. In the middle pane, under the **Activity** section towards the bottom of the page, select **Resource audit**.
-
-7. In the **Adatum Corporation | Resource audit** page, review the list of PIM activities. Note the two most recent activities. Select the second activity, where the requestor is Alex Wilber. In the **Audit details** pane that appears, note the **Subject** is Joni Sherman, and the **Action** indicates Alex approved Joni's role request for the Intune Administrator role. Select **Close**.
-
-8. In the **Adatum Corporation | Resource audit** page, in the list of PIM activities, select the first activity. In the **Audit details** pane that appears, note the **Subject** is Joni Sherman, and the **Action** indicates Joni was added to the Intune Administrator role. Also note the **Reason** that you entered for the role request. Select **Close**.
-
-9. In your Edge browser session, close all the tabs except for the **Home | Microsoft 365** tab and the tab containing the **Microsoft 365 admin center**. Leave these two tabs open for the next lab.
-
-
-# End of Lab 4
+# [ラボ 4 の終了](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex3_PIM_Teammate_Approval.md#end-of-lab-4)

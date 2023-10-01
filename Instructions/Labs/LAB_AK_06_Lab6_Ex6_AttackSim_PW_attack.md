@@ -1,170 +1,166 @@
-# Learning Path 6 - Lab 6 - Exercise 6 - Conduct a Drive-by URL attack using Attack Simulation training
+# [ラーニング パス 6 - ラボ 6 - 演習 6 - 攻撃シミュレーション トレーニングを使用してドライブバイ URL 攻撃を実行する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex6_AttackSim_PW_attack.md#learning-path-6---lab-6---exercise-6---conduct-a-drive-by-url-attack-using-attack-simulation-training)
 
-Holly Dickson is concerned that some of the users at Adatum may require training about avoiding URL links to familiar websites that are either fake or have been hacked. This type of attack is known as a Drive-by URL attack. With this type of attack, a target receives an email containing a URL link, and when the target selects the link, they are taken to a website that runs background code whose sole purpose is to gather information about the target or deploy arbitrary code to their device. As part of her pilot project, Holly has decided to use the Microsoft 365 Attack simulation training feature to determine her users' susceptibility to Drive-by URL attacks.
+Holly Dickson 氏は、Adatum のユーザーの中には、偽の Web サイトやハッキングされた Web サイトへの URL リンクを避けるためのトレーニングが必要になる可能性があることを懸念しています。このタイプの攻撃は、ドライブバイ URL 攻撃として知られています。このタイプの攻撃では、ターゲットは URL リンクを含む電子メールを受信し、ターゲットがリンクを選択すると、バックグラウンド コードを実行する Web サイトに誘導されます。そのバックグラウンド コードの唯一の目的は、ターゲットに関する情報を収集したり、ターゲットに任意のコードを展開したりすることです。デバイス。パイロット プロジェクトの一環として、ホリーは Microsoft 365 攻撃シミュレーション トレーニング機能を使用して、ドライブバイ URL 攻撃に対するユーザーの感受性を判断することにしました。
 
-**Note:** At the end of this exercise, you will disable MFA for Holly's account. This will save you from having to enter the second form of authentication when signing in as Holly in any of the remaining labs in this course.
+**注:**この演習の最後に、Holly のアカウントの MFA を無効にします。これにより、このコースの残りのラボで Holly としてサインインするときに、2 番目の認証形式を入力する必要がなくなります。
 
+### [タスク 1: ドライブバイ URL 攻撃を設定して開始する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex6_AttackSim_PW_attack.md#task-1-configure-and-launch-a-drive-by-url-attack)
 
-### Task 1: Configure and launch a Drive-by URL attack 
+ドライブバイ URL 攻撃では、ターゲットを誘惑しようとする Web サイトは通常、何らかの方法で侵害された既知の Web サイト、または既知の Web サイト自体のクローンです。ハッカーは、Web サイトに精通していることでターゲットへの信頼が高まり、ターゲットが URL リンクを選択しても安全だと感じるまでになることを望んでいます。ホリーは、Tailspin Toys Web サイトのパクリを使用してドライブバイ URL 攻撃を作成したいと考えています。Tailspin Toys は全国的に知られたおもちゃ店で、テレビやソーシャル メディアを通じて常にプロモーションを行っています。ホリーは、Tailspin Toys という名前のブランドに対するこの知識を利用して、攻撃シミュレーション トレーニングの一環として無料のおもちゃの魅力的なプロモーションを提供したいと考えています。これにより、彼女は何人の Adatum 従業員がこの種の攻撃の影響を受けやすいかを確認できるようになります。
 
-In a Drive-by URL attack, the website attempting to lure the target will typically be a well-known website that has been compromised in some fashion, or a clone of a well-known website itself. The hacker hopes that familiarity with the website builds trust in the target, to the point where the target feels that it's safe to select the URL link. Holly wants to create a Drive-by URL attack using a rip-off of the Tailspin Toys website. Tailspin Toys is a nationally known toy store that is constantly offering promotions on TV and throughout social media. Holly wants to use this familiarity with the Tailspin Toys name brand to offer an enticing promotion for free toys as part of her attack simulation training. This will enable her to see how many Adatum employees are susceptible to this type of attack. 
+前のラボでは、すべての Adatum ユーザーに送信されるシミュレーションを作成しました。シミュレーションには既存のペイロード テンプレートも使用しました。このラボ演習では、シミュレーションを Lynne Robbins にロールアウトするだけで、独自のカスタム ペイロードを作成します。
 
-In the prior lab, you created a simulation that was sent to all Adatum users. You also used an existing payload template for the simulation. In this lab exercise, you will only roll out the simulation to Lynne Robbins, and you will create your own custom payload.  
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+2. 前のラボ演習の後、まだ**Microsoft 365 Defender**ポータルが表示されているはずです。そうでない場合は、**Microsoft 365 管理センター**の左側のナビゲーション ウィンドウの**[管理センター]**グループで、 **[セキュリティ]**を選択します。
 
-2. After the previous lab exercise, you should still be in the **Microsoft 365 Defender** portal. If not, then in the **Microsoft 365 admin center**, under the **Admin centers** group in the left-hand navigation pane, select **Security**.
+3. **Microsoft 365 Defender**ポータルでは、まだ**[攻撃シミュレーション トレーニング]**ページが表示されているはずです。そうでない場合は、左側のナビゲーション ウィンドウの [**電子メールとコラボレーション]で、** **[攻撃シミュレーション トレーニング]**を選択します。
 
-3. In the **Microsoft 365 Defender** portal, you should still be on the **Attack simulation training** page; if not, then in the left-hand navigation pane, under **Email & collaboration**, select **Attack simulation training**.
+4. **[攻撃シミュレーション] トレーニング**ページには、デフォルトで**[概要]**タブが表示されます。**[シミュレーション]**タブを選択し、メニュー バーに表示される**[+ シミュレーションの起動]を選択します。**
 
-4. On the **Attack Simulation training** page, the **Overview** tab is displayed by default. Select the **Simulations** tab, and then select **+ Launch a simulation** that appears on the menu bar.
+5. **[テクニックの選択]**ページで、[**ドライブバイ URL]**オプションを選択します。このオプションで、[**ドライブバイ URL の詳細を表示]**リンクを選択します。これにより、右側に**ドライブバイ URLペインが開きます。****このタイプの攻撃の説明**と**シミュレーションの手順**を確認してください。完了したら、**[ドライブバイ URL]**ペインを閉じて、**[次へ]**を選択します。
 
-5. On the **Select Technique** page, select the **Drive-by URL** option. Under this option, select the **View details of Drive-by URL** link. This opens a **Drive-by URL** pane on the right. Review the **Description** and the **Simulation steps** for this type of attack. When you're done, close the **Drive-by URL** pane and select **Next**.
+6. **[名前シミュレーション]**ページで、**[シミュレーション名]**フィールドに**「カスタム ペイロード」**と入力し、**[次へ]**を選択します。
 
-6. On the **Name Simulation** page, enter **Custom payload** in the **Simulation name** field and then select **Next**.
+7. **[ペイロードとログインの選択] ページ**で、**[+ペイロードの作成]**を選択します。
 
-7. On the **Select payload and login page**, select **+Create a payload**.
+8. ペイロード ウィザードの**[タイプの選択]**ページでは、デフォルトで**[電子メール]**オプションが選択されている必要があります (選択されていない場合は、ここで選択します)。**「次へ」**を選択します。
 
-8. On the **Select type** page of the Payload wizard, the **Email** option should be selected by default (if not, select it now). Select **Next**. 
+9. **[テクニックの選択]**ページでは、デフォルトで**ドライブバイ URL**攻撃タイプが選択されている必要があります (手順 5 でこのオプションをすでに選択しているため、他のオプションはすべて無効になっています)。**「次へ」**を選択します。
 
-9. On the **Select Technique** page, the **Drive-by URL** attack type should be selected by default (all other options are disabled since you already selected this option back in step 5). Select **Next**.
+10. **[ペイロード名]**ページで、次の情報を入力します。
 
-10. On the **Payload name** page, enter the following information: <br/>
+    - ペイロード名:**無料ギフトオファー**
+    - 説明:**このペイロードは、無料の賞品や信じられないほどのギフトを提供するドライブバイ URL 脅威用です。**
 
-	- Payload name: **Free gift offer**
-	- Description: **This payload is for Drive-by URL threats offering free prizes and gifts that are too good to be true**
+11. **「次へ」**を選択します。
 
-11. Select **Next**.
+12. **[ペイロードの構成]**ページで、次の情報を入力します。
 
-12. On the **Configure Payload** page, enter the following information: <br/>
+    - 名前から:**クレメン・シック**
+    - 電子メールから: **[klemens@tailspintoys.com](mailto:klemens@tailspintoys.com)**
+    - メールの件名: **Tailspin Toys からのおもちゃの無料プレゼント プロモーション**
+    - フィッシング リンクにしたい URL を選択します。[ **URL を選択]**ボタンを選択し、架空の URL のリストから**[https://www.prizegives.com](https://www.prizegives.com/)**を選択します。
+    - テーマ:**パーソナライズされたオファー**
+    - 業種:**小売**
+    - 現在のイベント:**はい**
+    - ペイロードの言語を選択します:**英語**
+    - 電子メール メッセージ: 電子メール メッセージの本文に表示される次のテキストを入力してください: ** Tailspin Toys では、25 周年記念の一環として、お好みのおもちゃを 1 つだけ無料でプレゼントします。次のリンクをクリックして、お好みのおもちゃを選択してください: **
+    - 前のメッセージを入力した後、テキスト フォームの上部 (**ダイナミック タグ**の右側) にある**[フィッシング リンク]**オプションを選択します。表示される**[フィッシング URL に名前を**付ける] ダイアログ ボックスで、 **[名前]**フィールドに**[「Free25thAnniversary Gift@tailspintoys.com」](mailto:Free25thAnniversaryGift@tailspintoys.com)****と入力し、 [確認]**を選択します。
 
-	- From name: **Klemen Sic**
-	- From email: **klemens@tailspintoys.com**
-	- Email subject: **Free toy giveaway promotion from Tailspin Toys**
-	- Select a URL you want to be your phishing link: select the **Select URL** button and select **https://www.prizegives.com** from the list of fictitious URLs. 
-	- Theme: **Personalized Offer**
-	- Industry: **Retail**
-	- Current Event: **Yes**
-	- Select the language for payload : **English** 
-	- Email message: Enter the following text that will be displayed in the body of the email message: **Tailspin Toys is offering you a FREE, one-time only giveaway of a toy of your choice as part of our 25th anniversary celebration! Please click on the following link to select the toy of your choice: ** 
-	- After entering the prior message, select the **Phishing link** option at the top of the text form (to the right of **Dynamic tag**). In the **Name Phishing Url** dialog box that appears, enter **Free25thAnniversaryGift@tailspintoys.com** in the **Name** field and then select **Confirm**.
+    メッセージは次のように表示されるはずです。
 
-	The message should now appear as: 
+    Tailspin Toys は、25 周年記念の一環として、お選びいただいたおもちゃの 1 回限りの無料ギフトを提供しています。次のリンクをクリックして、お好みのおもちゃを選択してください: **[Free25thAnniversary Gift@tailspintoys.com](mailto:Free25thAnniversaryGift@tailspintoys.com)**
 
-	Tailspin Toys is offering you a FREE, one-time only gift of the toy of your choice as part of our 25th anniversary celebration! Please click on the following link to select the toy of your choice: **Free25thAnniversaryGift@tailspintoys.com** 
+13. **「次へ」**を選択します。
 
-13. Select **Next**.	
+14. **[インジケーターの追加]**ページで、**[インジケーターの追加]**を選択します。
 
-14. On the **Add Indicators** page, select **Add Indicator**.
+15. 右側に表示される**[インジケーターの追加]**ペインで、次の情報を入力します。
 
-15. On the **Add Indicator** pane that appears on the right, enter the following information: <br/>
+    - 使用したい指標を選択してください:**あまりにも良いオファー**
+    - このインジケーターをペイロードのどこに配置しますか:**電子メールの本文から**
 
-	- Select an indicator you would like to use: **Too good to be true offers**
-	- Where do you want to place this indicator on payload: **From the Body of the Email**
+16. **「テキストの選択」**ボタンが表示されます。このボタンを選択します。
 
-16. A **Select Text** button will appear. Select this button.
+17. 右側に表示される「**必要なテキストの選択」ペイン**で、コード ブロック全体が強調表示されるように、コード ブロックの先頭から末尾までカーソルをドラッグします。**これにより、 「選択」**ボタンが有効になります。このボタンを選択します。
 
-17. In the **Select the required text** pane that appears on the right, drag your cursor from the start of the code block to the end, so that the entire code block is highlighted. This will enable the **Select** button. Select this button. 
+18. **「インジケーターの説明」**フィールドで、デフォルトの説明を「**無料ギフトまたはその他の 1 回限りのプロモーション特典」という**テキストに置き換えます。
 
-18. In the **Indicator Description** field, replace the default description with the following text: **Free gifts or other one-time only promotional giveaways**.
+19. **インジケーター プレビュー**内を選択して、インジケーター メッセージのプレビューを表示します。次に、**[インジケーター プレビュー]**フィールドの外側を選択してプレビューを終了します。
 
-19. Select inside the **Indicator Preview** to see a preview of the indicator message. Then select outside the **Indicator Preview** field to exit the preview. 
+20. **[インジケーターの追加]**ペインの下部にある**[追加]**ボタンを選択します。
 
-20. Select the **Add** button at the bottom of the **Add Indicator** pane.
+21. **[インジケーターの追加]**ページに、作成したばかりのインジケーターが表示されます。**「次へ」**を選択します。
 
-21. On the **Add Indicators** page, the indicator that you just created should be displayed. Select **Next**.
+22. **[ペイロードの確認]**ページで、入力した情報を確認します。変更する必要がある場合は、適切な**編集**オプションを選択して変更するか、「**戻る」**を選択して「構成」セクションに情報を入力します。すべてが正しければ、**「送信」**を選択します。しばらくすると、**「新しいペイロードが作成されました」**という確認メッセージが表示されます。**[完了]**を選択します。
 
-22. On the **Review Payload** page, review the entered information. If anything needs to be changed, select the appropriate **Edit** option to make the change, or select **Back** to enter any of the information in the Configure section. Once everything is correct, select **Submit**. After a few moments you will receive a confirmation stating **New payload created**. Select **Done**. 
+23. **[ペイロードとログイン ページの選択]**ウィンドウで、作成したばかりの**無料ギフト オファー**ペイロードがリストに表示されます。このペイロードの情報を確認してください。ペイロードはシミュレーションで使用されていないため、**予測侵害率 (%) は**まだ決定されていないことに注意してください。
 
-23. On the **Select payload and login page** window, the **Free gift offer** payload that you just created should appear in the list. Review the information for this payload. Note that no **Predicted Compromised rate (%)** has been determined yet, since the payload hasn't been used in a simulation. 
+24. **[ペイロードとログイン ページの選択]**ページで、**無料ギフト オファー**ペイロードの左側にあるチェック ボックスをオンにし、**[次へ]**を選択します。
 
-24. On the **Select payload and login page** page, select the check box to the left of the **Free gift offer** payload, and then select **Next**. 
+25. **[ターゲット ユーザー]**ページで、**[特定のユーザーとグループのみを含める]**オプションを選択し、**[+ ユーザーの追加]**を選択します。
 
-25. On the **Target Users** page, select the **Include only specific users and groups** option, and then select **+Add Users**. 
+26. 表示される**「ユーザーの追加」**ペインの上部にある**「ユーザーまたはグループの検索」フィールドに****「Lynne**」と入力し、Enter キーを押します。表示される名前が Lynne で始まるユーザーのリストで、**「Lynne Robbins」を選択し、** **「Add 1 User(s)」**を選択します。
 
-26. In the **Add Users** pane that appears, in the **Search for Users or Groups** field at the top of the pane, enter **Lynne** and then hit Enter. In the list of users that appears whose name starts with Lynne, select **Lynne Robbins** and then select **Add 1 User(s)**.
+27. **[ターゲット ユーザー]**ページでは、Lynne Robbins がターゲット ユーザーとして表示されます。**[次へ]**を選択し、 **[ユーザーの除外]**ページでもう一度**[次へ]**を選択します。
 
-27. On the **Target Users** page, Lynne Robbins should be displayed as the targeted user. Select **Next** and then select **Next** again on the **Exclude users** page. 
+28. **[トレーニングの割り当て]**ページの**[設定]**セクションで、 **[自分にトレーニングを割り当てる (推奨)]**オプションがデフォルトで選択されている必要があります (選択されていない場合は、ここで選択します)。**[期日]**フィールドを選択します。表示されるドロップダウン メニューで、 [**シミュレーション終了後 7 日]**を選択し、**[次へ]**を選択します。
 
-28. On the **Assign Training** page, under the **Preferences** section, the **Assign training for me (Recommended)** option should be selected by default (if not, select it now). Select the **Due Date** field. In the drop-down menu that appears, select **7 days after Simulation ends** and then select **Next**.
+29. **[フィッシング ランディング ページの選択]**ウィンドウには、デフォルトで**[グローバル ランディング ページ]**タブが表示されます。**Microsoft Landing Page Template 1 の**名前を選択して、ページをプレビューします。
 
-29. On the **Select Phish landing page** window, the **Global landing pages** tab should be displayed by default. Select the **Microsoft Landing Page Template 1** name to preview the page. 
+30. **Microsoft ランディング ページ テンプレート 1**のプレビューが右側のペインに表示されます。このプレビュー パネルは、誰かがドライブバイ URL 攻撃に遭遇し、シミュレーションで**Microsoft Landing Page Template 1**を使用した場合にランディング ページがどのように表示されるかを示す例を示します。このプレビュー パネルを下にスクロールして、このテンプレートの機能を確認します。完了したら、プレビュー パネルの下部にある**[閉じる]ボタンを選択します。**
 
-30. A preview of the **Microsoft Landing Page Template 1** appears in the pane on the right. This preview panel provides an example of what the landing page will look like when someone experiences a Drive-by URL attack and the simulation uses **Microsoft Landing Page Template 1**. Scroll down through this preview panel and review the features of this template. When you're finished, select the **Close** button at the bottom of the preview panel. 
+31. このシミュレーションに使用するランディング ページ テンプレートが見つかるまで、他のランディング ページ テンプレートをいくつか見ていきます。**[フィッシング ランディング ページの選択]**ウィンドウで、他のテンプレートのいずれかを選択します (チェックボックスではなく、テンプレートの名前を選択します)。プレビュー パネルを調べて、このテンプレートのランディング ページが**Microsoft Landing Page Template 1**とどのように異なるかを確認します。完了したら、プレビュー パネルの下部にある**[閉じる]ボタンを選択します。**
 
-31. You will now look at some of the other landing page templates until you find one that you want to use for this simulation. On the **Select Phish landing page** window, select one of the other templates (select the name of the template and not its checkbox). Examine the preview panel and note how the landing page for this template is different from **Microsoft Landing Page Template 1**. When you're finished, select the **Close** button at the bottom of the preview panel.
+32. 前の手順を繰り返して、別のテンプレートを選択します。このテンプレートが、先ほど確認した他の 2 つのテンプレートとどのように異なるかに注目してください。
 
-32. Repeat the prior step and select another template. Note how this template is different from the other two you looked at.<br/>
+    このシミュレーションに使用するテンプレートが見つかるまで、この手順を好きなだけ繰り返します。テンプレートに満足したら、[**フィッシングの選択] ランディング ページ**でそのテンプレートのチェックボックスをオンにし、**[次へ]**を選択します。
 
-	Repeat this step as many times as you would like until you find a template that you want to use for this simulation. Once you're satisfied with a template, select the checkbox for that template on the **Select Phish landing page** and then select **Next**.
+33. **[エンド ユーザー通知の選択]**ページで、エンド ユーザーへの通知方法を選択します。このラボでは、**[Microsoft のデフォルト通知 (推奨)]**を選択します。表示される通知のリストで、次の通知を構成します。
 
-33. On the **Select end user notification** page, choose how you want the end user to be notified. For the purpose of this lab, select **Microsoft default notification (recommended)**. In the list of notifications that appears, configure the following notifications:
+    - Microsoft のデフォルトの正の強化通知 -**配信設定を****シミュレーション終了後に配信する**ように設定します
+    - Microsoft のデフォルトのトレーニング リマインダー通知 -**配信設定を****毎週**に 設定します
 
-	 - Microsoft default positive reinforcement notification - set **Delivery preferences** to **Deliver after simulation ends**
-	 - Microsoft default training reminder notification - set **Delivery preferences** to  **Weekly**
+34. **「次へ」**を選択します。
 
-34. Select **Next**.
+35. **[起動の詳細]**ページで、 [**完了したらすぐにこのシミュレーションを起動する]**オプションを選択し、 [**次へ]**を選択します。
 
-35. On the **Launch Details** page, select the **Launch this simulation as soon as I'm done** option and then select **Next**.
+36. **[シミュレーションの確認]**ページで、入力した情報を確認します。変更する必要がある場合は、適切な**編集**オプションを選択して変更を加えます。すべてが正しければ、**「送信」**を選択します。**シミュレーションの起動がスケジュールされたことを**示す確認メッセージが表示されるまでに、数分かかる場合があります。**[完了]**を選択します。
 
-36. On the **Review Simulation** page, review the entered information. If anything needs to be changed, select the appropriate **Edit** option to make the change. Once everything is correct, select **Submit**. It may take a few minutes before you receive a confirmation stating **Simulation has been scheduled for launch**. Select **Done**.
+### [タスク 2: ドライブバイ URL 攻撃の結果を確認する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex6_AttackSim_PW_attack.md#task-2-review-the-drive-by-url-attack-results)
 
+次に、開始したばかりのドライブバイ URL シミュレーション攻撃の結果を確認します。このタスクでは、攻撃シミュレーション トレーニングで構成した電子メールを組織が受信したかどうかを確認します。次に、シミュレーションしたドライブバイ URL 攻撃に関連する結果を確認します。
 
-### Task 2: Review the Drive-by URL attack results
+1. **LON-CL2**に切り替えます。
 
-You will now review the results of the Drive-by URL simulation attack that you just launched. In this task, you will verify whether your organization has received the email that you configured in the Attack simulation training. You will then review the results associated with the Drive-by URL attack that you simulated.
+2. LON-CL2 では、Edge ブラウザで、前のラボ演習で使用した Lynne Robbins の Outlook メールボックスを含むタブが開いているはずです。**[Lynne の Outlook 受信トレイに、攻撃シミュレーターによって送信された、 klemens@tailspintoys.com](mailto:klemens@tailspintoys.com)**からの電子メールが表示されるはずです。電子メールの件名は、「**Tailspin Toys からのおもちゃの無料プレゼント プロモーション」**です。電子メールを選択して開き、メッセージ本文の詳細を確認します。
 
-1. Switch to **LON-CL2**.
+   **注:**電子メールが届くまでに最大 15 分かかる場合があります。続行する前にメールを待ってください。
 
-2. On LON-CL2, in the Edge browser, you should have a tab open containing Lynne Robbins' Outlook mailbox from the prior lab exercise. In Lynne's Outlook Inbox, you should see the email that was sent by the Attack Simulator that's from **klemens@tailspintoys.com**. The subject of the email is **Free toy giveaway promotion from Tailspin Toys**. Select the email to open it and review the details in the body of the message. 
+3. メールに含まれているリンクを選択します。これがドライブバイ URL 攻撃であることがわかっていても、スピア フィッシング キャンペーンの結果を追跡する攻撃シミュレーター レポートでその効果を確認できるようになります。
 
-	**NOTE:** It can take up to 15 minutes for the email to arrive.  Wait for the email before proceeding.
+   このリンクを選択すると、組織が実施しているフィッシング認識テストの一環としてどのようにリダイレクトされたかを説明する Web ページが表示されます。このサイトのコンテンツを最後まで読んでください。このサイトでは、攻撃シミュレーションを設定するときに前のタスクで選択したランディング ページ テンプレートが使用されています。
 
-8. Select the link that is included in the email. Even though you know this is a Drive-by URL attack, this will enable you to see the effect of doing so in the Attack Simulator report that tracks the results of the spear phishing campaign. <br/>
+4. **Edge ブラウザの [ Outlook]**タブで、ウィンドウの右上隅にある Lynne Robbins の写真を選択します。表示される Lynne のプロフィール ウィンドウで、**[サインアウト]**を選択します。
 
-	Selecting this link displays a web page that explains how you have been redirected to it as part of a Phishing awareness test being run by your organization.  Read through the contents of this site, which uses the landing page template that you selected in the prior task when setting up the attack simulation. 
+5. Lynne がサインアウトしたら、Edge ブラウザーを閉じます。
 
-11. In the **Outlook** tab in your Edge browser, select the picture of Lynne Robbins in the upper-right corner of the window. In Lynne's profile window that appears, select **Sign out**.
+6. **LON-CL1**に切り替えます。
 
-12. Once Lynne is signed out, close the Edge browser.
+7. LON-CL1 では、Holly Dickson としてログインしているブラウザ セッションで、**攻撃シミュレーション トレーニング**ページが表示されているはずです。**カスタム ペイロードシミュレーションが****[最近のシミュレーション]**リストに表示されない場合は、アドレス バーの URL の左側にある**[更新]アイコンを選択します。**カスタム**ペイロード**シミュレーションが表示されます。**[カスタム ペイロード**シミュレーション]を選択して、このシミュレーションでキャプチャされた診断結果を表示します。
 
-13. Switch back to **LON-CL1**.
+8. **[カスタム ペイロード]**ページが表示されます。このシミュレートされた攻撃のために収集されたすべての情報を確認します。完了したら、ウィンドウの右上隅にある[ **X]を選択してウィンドウを閉じます。**
 
-14. On LON-CL1, in your browser session where you are logged in as Holly Dickson, you should still be on the **Attack simulation training** page. If the **Custom payload** simulation does not appear in the **Recent Simulations** list, select the **Refresh** icon to the left of the URL on the address bar. The **Custom payload** simulation should now appear. Select the **Custom payload** simulation to view the diagnostic results that were captured for this simulation.
+9. LON-CL1 でブラウザを開いたままにし、どのタブも閉じないでください。
 
-15. A **Custom payload** page should appear. Review all the information collected for this simulated attack. When you're finished, select the **X** in the upper right-hand corner of the window to close it. 
+### [タスク 3: 全体管理者の多要素認証を無効にする](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex6_AttackSim_PW_attack.md#task-3-disable-multi-factor-authentication-for-the-global-admin)
 
-16. Leave your browser open in LON-CL1 and do not close any of the tabs.
+Microsoft の攻撃シミュレーション トレーニングを使用してフィッシング攻撃をシミュレートするために、ホリーはユーザー アカウントに対して多要素認証 (MFA) を有効にしました。攻撃シミュレーション トレーニング テストを完了したので、パイロット プロジェクトの残りの部分で MFA に対処する必要がないように、自分のアカウントの MFA を無効にしたいと考えています。
 
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-### Task 3: Disable Multi-factor Authentication for the Global Admin
+2. Holly Dickson のユーザー アカウントの MFA を無効にするには、まずMicrosoft 365 管理センターの**アクティブ ユーザーリストにアクセスする必要があります。**ブラウザー タブで**Microsoft 365 管理センター**を開いている場合は、ここでそれを選択します。それ以外の場合は、新しいブラウザー タブを開き、アドレス バーに**[https://portal.office.com](https://portal.office.com/)****と入力し、 Office 365 ホーム**ページで、左側のアプリ アイコンの列に表示される**管理者**アイコンを選択します。スクリーン。これにより、新しいブラウザー タブで**Microsoft 365 管理センターが開きます。**
 
-To use Microsoft's Attack simulation training to simulate phishing attacks, Holly enabled Multi-Factor Authentication (MFA) for her user account. Now that she has completed the Attack simulation training tests, she wants to disable MFA for her account so that she doesn't have to deal with MFA for the remainder of the pilot project.
+3. **Microsoft 365 管理センター**の左側のナビゲーション ウィンドウで、 [**ユーザー]を選択し、** **[アクティブなユーザー]**を選択します。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+4. **[アクティブなユーザー]**ウィンドウのユーザー リストの上部にあるメニュー バーで、**[多要素認証]**を選択します。
 
-2. To disable MFA for Holly Dickson's user account, you must first access the **Active users** list in the Microsoft 365 admin center. If you have the **Microsoft 365 admin center** open in a browser tab, then select that now; otherwise, open a new browser tab, enter **https://portal.office.com** in the address bar, and then on the **Office 365 home** page, select the **Admin** icon that appears in the column of app icons on the left-side of the screen. This opens the **Microsoft 365 admin center** in a new browser tab. 
+5. **多要素認証**ウィンドウ ([**ユーザーごとのレガシー MFA]**を選択する必要がある場合があります)では、デフォルトで [**ユーザー]**タブが表示されます。**Holly Dickson**のチェック ボックスをオンにし、右側の Holly のプロパティ ペインで**[無効にする]**を選択します。
 
-3. On the **Microsoft 365 admin center**, in the left-hand navigation pane, select **Users** and then select **Active users**.
+6. **多要素認証を無効にしますか**? ダイアログ ボックスで**[はい]**を選択します。
 
-4. In the **Active users** window, on the menu bar at the top of the user list, select **Multi-factor authentication**.
+7. **[アップデートが成功しました]**ダイアログ ボックスが表示されたら、**[閉じる]**を選択します。**多要素認証**ウィンドウで、Holly の MFA ステータスが**Disabled**に変更されたことを確認します。ブラウザの**[多要素認証]**タブを閉じます。
 
-5. In the **multi-factor authentication** window (may need to select **Legacy per-user MFA**), the **users** tab is displayed by default. Select the check box for **Holly Dickson**, and in Holly's properties pane on the right, select **Disable**.
+8. ここで、Holly として Microsoft 365 からサインアウトし、Holly として (MFA なしで) 再度サインインする必要があります。これを行うには、次の手順を実行します。
 
-6. On the **Disable multi-factor authentication?** dialog box, select **yes**. 
+   - 画面の右上にある Holly のアカウント アイコン (円の中の HD) を選択し、Holly のプロフィール ウィンドウで [**サインアウト]**を選択します。
+   - サインアウトしたら、Edge ブラウザを閉じます。そうするとキャッシュがクリアされます。
+   - 新しい Edge ブラウザー セッションを開きます。
+   - **[https://portal.office.com](https://portal.office.com/)** URLを入力します。
+   - **[アカウントの選択]**ウィンドウで、Holly のアカウントを選択し、ラボ ホスティング プロバイダーからテナント管理者アカウント (MOD 管理者アカウント) 用に提供されたものと同じ**Microsoft 365 テナント パスワードを [****パスワード]**として入力します。
+   - **Microsoft Office ホーム**ページから**[管理者]アイコンを選択して、** **Microsoft 365 管理センター**に移動します。
 
-7. When the **Updates successful** dialog box appears, select **close**. In the **multi-factor authentication** window, verify Holly's MFA Status has changed to **Disabled**. Close the **Multi-factor authentication** tab in your browser.
+   これで、次のラボ演習に進む準備ができました。
 
-8. You must now sign out of Microsoft 365 as Holly and then sign back in as Holly (without MFA). To do so, perform the following steps: <br/>
-
-	- Select Holly's account icon (HD in a circle) at the top-right of the screen and in Holly's profile window, select **Sign out**.
-	- Once you're signed out, close your Edge browser. Doing so will clear your cache.
-	- Open a new Edge browser session.
-	- Enter the **https://portal.office.com** URL.
-	- In the **Pick an account** window, select Holly's account and enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) as the **Password**.
-	- From the **Microsoft Office Home** page, select the **Admin** icon to navigate to the **Microsoft 365 admin center**.
-	
-	You are now ready to proceed to the next lab exercise.
-
-# End of Lab 6
- 
+# [ラボ 6 の終了](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex6_AttackSim_PW_attack.md#end-of-lab-6)

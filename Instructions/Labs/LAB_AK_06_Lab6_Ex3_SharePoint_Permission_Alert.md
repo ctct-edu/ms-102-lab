@@ -1,89 +1,82 @@
-# Learning Path 6 - Lab 6 - Exercise 3 - Implement SharePoint Permission Alert
+# [ラーニング パス 6 - ラボ 6 - 演習 3 - SharePoint 権限アラートの実装](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex3_SharePoint_Permission_Alert.md#learning-path-6---lab-6---exercise-3---implement-sharepoint-permission-alert)
 
+この演習では、ユーザーが SharePoint サイト コレクションのサイト コレクション管理者として追加されたときに Lynne Robbins に通知するアラートを構成してテストします。
 
-In this exercise you will configure and test an alert that notifies Lynne Robbins when a user is added as a site collection administrator for a SharePoint site collection.
+### [タスク 1 – SharePoint 権限アラートを作成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex3_SharePoint_Permission_Alert.md#task-1--create-a-sharepoint-permissions-alert)
 
-### Task 1 – Create a SharePoint Permissions Alert
+1. 前のラボの最後には、LON-CL2 にログインしました。このラボでは LON-CL1 を使用します。
 
-1. At the end of the prior lab, you were logged into LON-CL2. This lab will use LON-CL1.  <br/>
+   **LON-CL1**に切り替えます。
 
-    Switch to **LON-CL1**. 
+2. **LON-CL1**では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。Edge ブラウザーで、**[アラート ポリシー - Microsoft 365 セキュリティ]**タブを選択すると、**Microsoft 365 Defender**ポータルが表示されます。
 
-2. On **LON-CL1**, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. In your Edge browser, select the **Alert policy - Microsoft 365 security** tab, which displays the **Microsoft 365 Defender** portal.
+3. **[Microsoft 365 Defender]**タブでは、前のラボ演習の**[アラート ポリシー]**ウィンドウが表示されたままになっているはずです(そうでない場合は、左側のナビゲーション ウィンドウで [**ポリシーとルール]**を選択し、**[アラート ポリシー]**を選択します)。
 
-3. In the **Microsoft 365 Defender** tab, you should still be in the **Alert policy** window from the prior lab exercise (if not, then in the left-hand navigation pane, select **Policies & rules** and then select **Alert policy**).
+4. **[アラート ポリシー]**ウィンドウで、メニュー バーの [ **+新しいアラート ポリシー]を選択します。**これにより、**新しいアラート ポリシー**ウィザードが開始されます。
 
-4. In the **Alert policy** window, select **+New Alert Policy** on the menu bar. This initiates the **New Alert Policy** wizard.
+5. [アラートに**名前を付け、分類し、重大度を選択してください]**ウィンドウで、次の情報を入力します。
 
-5. On the **Name your alert, categorize it, and choose a severity** window, enter the following information:
+   - 名前:**ユーザーをサイト コレクション管理者として追加します**
+   - 説明:**このアラートは、SharePoint サイト コレクションのサイト コレクション管理者にユーザーが追加されたときに、Lynne Robbins に通知します。**
+   - 重大度:**中**
+   - カテゴリ:**権限**
 
-	- Name: **Add user as a site collection administrator**
+6. **「次へ」**を選択します。
 
-	- Description: **This alert notifies Lynne Robbins when a user is added to the site collection administrators on a SharePoint site collection.**
+7. **[アクティビティ、条件、およびアラートをトリガーするタイミングを選択してください]**ウィンドウで、次の情報を入力します。
 
-	- Severity: **Medium**
+   - アクティビティ: [**アクティビティの選択]**フィールドを選択し、表示されるメニューで**[サイト管理アクティビティ]**セクションまで下にスクロールし、**[追加されたサイト コレクション管理者]を選択します。**
+   - アラートをどのようにトリガーしたいですか? **アクティビティがルールに一致するたびに**
 
-	- Category: **Permissions**
+8. **「次へ」**を選択します。
 
-6. Select **Next**.
+9. **[このアラートがトリガーされたときに人々に通知するかどうかを決定します**] ウィンドウで、次の情報を入力します。
 
-7. On the **Choose an activity, conditions and when to trigger the alert** window, enter the following information:
+   - 電子メール受信者: **Holly Dickson を**削除し、**Lynne Robbinsを追加します。**
+   - 1 日あたりの通知制限:**制限なし**
 
-	- Activity is: select the **Select an activity** field, then in the menu that appears, scroll down to the **Site administration activities** section and select **Added site collection admin**
+10. **「次へ」**を選択します。
 
-	- How do you want the alert to be triggered? **Every time an activity matches the rule**
+11. **[設定の確認]**ページの**[ポリシーを今すぐオンにしますか?]の下にあります。**オプションで、**[はい、すぐにオンにします] を**選択し、**[送信]**を選択します。
 
-8. Select **Next**.
+12. **[新しいアラート ポリシー]**ウィンドウで、**[完了]**を選択します。
 
-9. On the **Decide if you want to notify people when this alert is triggered** window, enter the following information:
+13. 新しいアラート ポリシーが [**アラート ポリシー]**ページのリストに表示され、その**[タイプ]が****[カスタム]**に設定され、その**ステータスが [****オン]**に設定されていることを確認します。
 
-	- Email recipients: Remove **Holly Dickson** and add **Lynne Robbins**
+14. 次のタスクのために、Edge ブラウザーのタブはすべて開いたままにしておきます。
 
-	- Daily notification limit: **No limit**
+これで、ユーザーが SharePoint Online サイト コレクションのサイト コレクション管理者として追加されたときを監視する追加のアラート ポリシーが構成されました。
 
-10. Select **Next**.
+### [タスク 2 – SharePoint 権限アラートを検証する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex3_SharePoint_Permission_Alert.md#task-2--validate-the--sharepoint-permissions-alert)
 
-11. On the **Review your settings** page, under the **Do you want to turn the policy on right away?** option, select **Yes, turn it on right away** and then select **Submit**. 
+前のタスクでは、ユーザーがサイト コレクションのサイト コレクション管理者として追加されたときに Lynne Robbins に通知するアラートを構成しました。このアラートをテストするために、Holly Dickson は、Alex Wilber をサイト コレクション管理者としてグローバル SharePoint コミュニケーション サイトに追加します。このアクティビティにより、先ほど作成したアラート ポリシーがトリガーされ、Lynne Robbins のメールボックスにアラート通知電子メールが送信されます。次に、LON-CL2 VM に切り替えて、Lynne がこの電子メールを受信したかどうかを確認します。
 
-12. On the **New Alert Policy** window, select **Done**.
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-13. Verify your new alert policy appears in the list on the **Alert policy** page, its **Type** is set to **Custom**, and its **Status** in **On**.
+2. **Microsoft Edge**ブラウザーで新しいタブを開き、アドレス バーに次の URL を入力します: **[https://xxxxxZZZZZZ.sharepoint.com/_layouts/15/settings.aspx](https://xxxxxzzzzzz.sharepoint.com/_layouts/15/settings.aspx)** (xxxxxZZZZZZ を、ラボ ホスティング プロバイダーが提供するテナント プレフィックスに置き換えます) ）。これにより、グローバル SharePoint コミュニケーション サイトの**サイト設定が開きます。**
 
-14. Leave all the Edge browser tabs open for the next task.
+3. **[サイトの設定]**ウィンドウの [ユーザーと権限] セクションで、**[**サイト**の権限]**を選択します。
 
-You have now configured an additional alert policy that monitors when a user is added as a site collection administrator for a SharePoint Online site collection.
+4. ページ上部のリボンには、デフォルトで**[アクセス許可]タブが表示されます。****「管理」**グループで、**「サイト コレクション管理者」**を選択します。
 
-### Task 2 – Validate the  SharePoint Permissions Alert
+5. **[サイト コレクション管理者]**ダイアログ ボックスでは、この役割グループに既定で割り当てられている全体管理者アカウントがデータ入力フィールドに表示されます。このアカウントの右側に**「 Alex 」**と入力し、表示されるユーザーのリストから**Alex Wilber**を選択して、 **[OK]**を選択します。
 
-In the prior task, you configured an alert that will notify Lynne Robbins when a user is added as a site collection administrator for a site collection. To test this alert, Holly Dickson will add Alex Wilber as a site collection admin to the global SharePoint Communication site. This activity should trigger the alert policy that you just created, which should send an alert notification email to Lynne Robbins’ mailbox. You will then switch to the LON-CL2 VM to see if Lynne received this email. 
+6. 新しいサイト コレクション管理者が追加されたため、このイベントを通知するアラートが Lynne Robbins の受信トレイに自動的に送信されます。残りの手順を実行して、Lynne がこのメールを受信したことを確認します。このアラートが LON-CL2 上の Lynne のメールボックスに送信されたかどうかを確認します。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+   **LON-CL2**に切り替えます。
 
-2. In your **Microsoft Edge** browser, open a new tab and enter the following URL in the address bar: **https://xxxxxZZZZZZ.sharepoint.com/_layouts/15/settings.aspx** (replace xxxxxZZZZZZ with the tenant prefix provided by your lab hosting provider). This opens the **Site Settings** for the global SharePoint Communication site.
+7. **LON-CL2**では、前のタスクで使用した**Lynne Robbins**として**Web 上の Outlook**に引き続きログインしている必要があります。Lynne の受信トレイを監視して、作成したばかりのアラートによって生成された電子メールを表示します。
 
-3. On the **Site Settings** window, under the **Users and Permissions** section, select **Site permissions**. 
+   **注:**ラボでのテストでは、場合によっては、電子メールが Lynne の受信箱に受信されるまでに最大 15 分程度かかることがわかっています。メールが届くまでは続行しないでください。
 
-4. In the ribbon at the top of the page, the **Permissions** tab is displayed by default. Under the **Manage** group, select **Site Collection Administrators**.
+8. 電子メールが Lynne の受信箱に到着したら、電子メールを開いて内容を確認します。電子メールの一番下までスクロールし、**[アラートの詳細を表示]**ボタンを選択します。これにより、新しいタブで**Microsoft 365 Defenderポータルが開きます。**
 
-5. In the **Site Collection Administrators** dialog box, the Global administrator account that was assigned by default to this role group is displayed in the data entry field. To the right of this account, enter **Alex**, select **Alex Wilber** from the list of users that appears, and then select **OK**. 
+9. Microsoft **365 Defender**ポータルに**[アラート]**ウィンドウが表示され、Lynne への電子メール通知をトリガーしたこのアラート アクティビティの [**サイト コレクション管理者アクセス許可]ウィンドウが自動的に開きます。**
 
-6. Since a new site collection admin has been added, an alert should automatically be sent to Lynne Robbins’ Inbox notifying her of this event. Perform the remaining steps to verify that Lynne received this email. You will verify whether this alert was sent to Lynne's mailbox on LON-CL2.
+   **[サイト コレクションの管理者権限]**ウィンドウを下にスクロールし、このアラート アクティビティに関するすべての情報を確認します。完了したら、**「閉じる」**を選択してペインを閉じます。
 
-	‎Switch to **LON-CL2**. 
+10. このラボの残りの演習では、LON-CL1 および LON-CL2 VM を開いたままにしておきます。
 
-7. On **LON-CL2**, you should still be logged into **Outlook on the web** as **Lynne Robbins** from the prior task. Monitor Lynne's Inbox to view the email generated by the alert that you just created. <br/>
+これで、SharePoint サイトのサイト コレクション管理者権限を監視する SharePoint アラートのテストが正常に完了しました。
 
-	**Note:** Lab testing has shown that in some cases, it can take up to 15 minutes or so for the email to be received in Lynne's Inbox. Do not proceed until the email has arrived.
-
-8. Once the email arrives in Lynne's Inbox, open the email and review the contents. Scroll to the bottom of the email and select the **View alert details** button. This opens the **Microsoft 365 Defender** portal in a new tab.
-
-9. The **Microsoft 365 Defender** portal displays the **Alerts** window, and it automatically opens the **Site collection admin permissions** pane for this alert activity that triggered the email notification to Lynne. <br/>
-
-	Scroll down through the **Site collection admin permissions** pane and review all the information for this alert activity. When you are done, select **Close** to close the pane.
-
-10. Leave your LON-CL1 and LON-CL2 VMs open for the remaining exercise in this lab.
-
-You have now successfully tested the SharePoint alert to monitor site collection admin permissions on SharePoint sites. 
-
-
-# Proceed to Lab 6 - Exercise 4
+# [ラボ 6 - 演習 4 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex3_SharePoint_Permission_Alert.md#proceed-to-lab-6---exercise-4)

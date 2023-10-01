@@ -1,125 +1,103 @@
-# Learning Path 8 - Lab 8 - Exercise 1 - Manage DLP Policies  
+# [ラーニング パス 8 - ラボ 8 - 演習 1 - DLP ポリシーの管理](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_08_Lab8_Ex1_Manage_DLP_Policies.md#learning-path-8---lab-8---exercise-1---manage-dlp-policies)
 
-In your role as Holly Dickson, Adatum’s new Microsoft 365 Administrator, you have Microsoft 365 deployed in a virtualized lab environment. As you proceed with your Microsoft 365 pilot project, your next steps are to implement Data Loss Prevention (DLP) policies at Adatum. You will begin by creating a custom DLP policy in this exercise, and then you’ll test DLP policies related to email message archiving and emails with sensitive data. 
+Adatum の新しい Microsoft 365 管理者である Holly Dickson としてのあなたの役割では、仮想化されたラボ環境に Microsoft 365 を展開しています。Microsoft 365 パイロット プロジェクトを進める際の次のステップは、Adatum でデータ損失防止 (DLP) ポリシーを実装することです。この演習では、まずカスタム DLP ポリシーを作成し、次に電子メール メッセージのアーカイブと機密データを含む電子メールに関連する DLP ポリシーをテストします。
 
-### Task 1 – Create a DLP policy with custom settings
+### [タスク 1 – カスタム設定を使用して DLP ポリシーを作成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_08_Lab8_Ex1_Manage_DLP_Policies.md#task-1--create-a-dlp-policy-with-custom-settings)
 
-In this task you will create a Data Loss Prevention policy in the Microsoft Purview portal to protect sensitive data from being shared by users. The DLP Policy that you create will inform your users if they want to share content that contains IP addresses. 
+このタスクでは、Microsoft Purview ポータルでデータ損失防止ポリシーを作成し、機密データがユーザーによって共有されないように保護します。作成した DLP ポリシーは、IP アドレスを含むコンテンツを共有したいかどうかをユーザーに通知します。
 
-The policy will contain two rules, or actions, each of which is dependent on the number of IP addresses in the message. If the message contains one IP address, the policy will notify people with a policy tip and still email the message. However, if the content contains two or more IP addresses, then the message will be blocked, an incident email with a high sensitivity level will be sent to the sender, and a policy tip will be displayed that allows the sender to override the email blockage if the sender provides a business justification within the policy tip.
+ポリシーには 2 つのルールまたはアクションが含まれており、それぞれのルールはメッセージ内の IP アドレスの数に依存します。メッセージに 1 つの IP アドレスが含まれている場合、ポリシーはユーザーにポリシー ヒントを通知し、メッセージを電子メールで送信します。ただし、コンテンツに 2 つ以上の IP アドレスが含まれている場合、メッセージはブロックされ、高機密レベルのインシデント電子メールが送信者に送信され、送信者が電子メールのブロックを上書きできるようにするポリシー ヒントが表示されます。送信者がポリシー ヒント内でビジネス上の正当な理由を提供した場合。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-2. In **Microsoft Edge**, the Microsoft Purview portal should still be open; if not, then open a new tab and navigate to **https://compliance.microsoft.com**.
+2. **Microsoft Edge**では、Microsoft Purview ポータルが開いたままになっているはずです。そうでない場合は、新しいタブを開いて**[https://compliance.microsoft.com](https://compliance.microsoft.com/)**に移動します。
 
-3. In the **Microsoft Purview** portal, in the left-hand navigation pane, select **Data loss prevention**, and then select **Policies**.
+3. **Microsoft Purview**ポータルの左側のナビゲーション ウィンドウで、**[データ損失防止]**を選択し、**[ポリシー]**を選択します。
 
-4. In the **Policies** page, select the **+Create policy** option on the menu bar to start the **Create policy** wizard.
+4. **[ポリシー]**ページで、メニュー バーの[ **+ポリシーの作成]オプションを選択して、****ポリシーの作成**ウィザードを開始します。
 
-5. On the **Start with a template or create a custom policy** page, the **Categories** column displays the policy categories. Each policy category provide templates that can be used to create that type of policy, except for the **Custom** category. This category does not provide any specific template; instead, it enables organizations to create custom policies from scratch. When you select a category, **Templates** column appears that displays the available templates to choose from for the selected category. When you select a template, another column appears that displays the type of information that is protected in that template. <br/> 
+5. **[テンプレートで開始するか、カスタム ポリシーを作成します]**ページの**[カテゴリ]**列にポリシー カテゴリが表示されます。**カスタム カテゴリを除く、各ポリシー**カテゴリには、そのタイプのポリシーの作成に使用できるテンプレートが用意されています。このカテゴリには特定のテンプレートは提供されません。代わりに、組織がカスタム ポリシーを最初から作成できるようになります。カテゴリを選択すると、**[テンプレート]**列が表示され、選択したカテゴリで選択できる使用可能なテンプレートが表示されます。テンプレートを選択すると、そのテンプレートで保護されている情報の種類を示す別の列が表示されます。
 
-    For example, select **Financial** in the left-hand pane and then scroll through the various templates that you can choose from in the **Templates** column. Select one or two of the templates to see what type of information it protects. If you want, select each of the remaining categories to see what type of templates are provided. 
-  
-6. For the purpose of this lab, you will create a custom DLP policy. Select **Custom** in the **Categories** column, select the **Custom policy** template in the **Templates** column, and then select **Next**.
+   たとえば、左側のペインで [**財務]を選択し、** **[テンプレート]**列で選択できるさまざまなテンプレートをスクロールします。1 つまたは 2 つのテンプレートを選択して、保護される情報の種類を確認します。必要に応じて、残りの各カテゴリを選択して、提供されているテンプレートの種類を確認します。
 
-7 In the **Name your DLP policy** page, enter the following information and then select **Next**:
+6. このラボの目的として、カスタム DLP ポリシーを作成します。**[カテゴリ]**列で**[カスタム]**を選択し、**[テンプレート]列で****カスタム ポリシー**テンプレートを選択して、 [**次へ]**を選択します。
 
-      - Name: Replace the default name with **IP Address DLP policy**
+7 **[DLP ポリシーに名前を付けます]**ページで、次の情報を入力し、**[次へ]**を選択します。
 
-      - Description: Replace the default description with **This policy detects the presence of IP addresses in emails. End users are notified of the detection and admins receive a notification. Emails with 2 or more IP addresses are blocked from being sent.**
+```
+  - Name: Replace the default name with **IP Address DLP policy**
 
-8. On the **Assign admin units (preview)** page, select **Next**. 
-
-9. On the **Choose locations to apply the policy** page, verify the **Status** toggle is set to **On** for the following locations (if any of these locations is not set to **On** by default, then set it to **On** now): <br/>
-
-    - **Exchange email**
-    - **SharePoint sites**
-    - **OneDrive accounts**
-    - **Teams chats and channel messages**
-
-    Set all other locations to **Off**, and then select **Next**.
-
-10. On the **Define policy settings** page, the **Create or customize advanced DLP rules** option should be set by default (if it isn't already selected by default, then select it now) and then select **Next**. 
-
-11. On the **Customize advanced DLP rules** page, select the **+Create rule** option on the menu bar.
-
-12. On the **Create rule** page, enter the following information:
-    
-      - Name: **Single IP Address rule**
-    
-      - Description: **Email contains an IP address**
-    
-      - In the **Conditions** section, select **+Add condition** and then select **Content contains** from the drop-down menu that appears. Then enter the following condition settings:
-    
-        - In the **Content contains** field, select the **Add** drop-down menu and then select **Sensitive info types**.
-        
-        - In the **Sensitive info types** pane, type **IP** inside the **Search** field and then hit Enter.
-        
-        - In the search results, select the **IP Address** check box and then select **Add**.
-        
-     - Scroll down to the **User notifications** section, set the **Use notifications to inform your users and help educate them on the proper use of sensitive info** toggle switch to **On**.
-
-    - Select the **Notify users in Office 365 service with a policy tip** checkbox. In the **Policy tips** section, select the **Customize the policy tip text** check box. Holly wants you to customize the Policy Tip message. <br/>
-
-    Enter the following text in this field: **ATTENTION! You have entered sensitive information (an IP address) in this message. You will not be prevented from sending this message, but please review whether the recipients are authorized to see this sensitive data.** 
-
-    - Select the **Show the policy tip as a dialog for the end user before send (available for Exchange workload only)** checkbox. 
-    
-    - In the **Incident reports** section, verify the **Send an alert to admins when a rule match occurs** toggle switch is set to **On** (if necessary, set it to **On**)
-
-    - Select the **Save** button at the bottom of the page.
-
-13. On the **Customize advanced DLP rules** page, the **Single IP Address rule** that you just created should now appear. Select the **+Create rule** option to create the second DLP rule. 
-
-14. On the **Create rule** page, enter the following information:
-    
-      - Name: **Multiple IP Address rule**
-    
-     - Description: **Email contains two or more IP addresses**
-    
-      - In the **Conditions** section, select **+Add condition** and then select **Content contains** from the drop-down menu that appears. Then enter the following condition settings:
-    
-        - In the **Content contains** field, select the **Add** drop-down menu and then select **Sensitive info types**.
-        
-        - In the **Sensitive info types** pane, type **IP** inside the **Search** field and then hit Enter.
-        
-        - Select the **IP Address** check box and then select **Add**.
-
-        - Under the **Sensitive Info types** section, the **IP Address** info type is displayed. On the right side of the IP Address row, the **Instance count** setting is set from **1** to **Any**. Change the value of the first field from 1 to **2**. By making this change, this rule will only apply if 2 or more IP addresses appear in the email. 
-    
-     - In the **Actions** section, select **+Add an action**. In the drop-down menu that appears, select **Restrict access or encrypt the content in Microsoft 365 locations**. Then enter the following action settings:
-
-        - If no options appear under the **Restrict access or encrypt the content in Microsoft 365 locations** section, then select it now to expand this section. This section should display the **Block users from receiving email or accessing shared SharePoint, OneDrive, and Teams files** option, which is selected by default. Keep this option selected.
-
-        - Under the **Block users from receiving email or accessing shared SharePoint, OneDrive, and Teams files** option, select the **Block everyone** option.
-    
-     - In the **User notifications** section, set the **Use notifications to inform your users and help educate them on the proper use of sensitive info** toggle switch to **On**. 
-
-    - Select the **Notify users in Office 365 service with a policy tip** checkbox. In the **Policy tips** section, select the **Customize the policy tip text** check box. Holly wants you to customize the Policy Tip message. <br/>
-
-    Enter the following text in this field: **ATTENTION! You have entered sensitive information (multiple IP addresses) in this message. You will be blocked if you attempt to send this message. Overriding this block indicates you have authorized sending this sensitive data to the recipients.** 
-
-    - Select the **Show the policy tip as a dialog for the end user before send (available for Exchange workload only)** checkbox. 
-    
-    - In the **User overrides** section, select the **Allow overrides from M365 services** check box. This enables additional settings that indicate how overrides will be handled. Select each of the check boxes for the following two options: <br/>
-
-    - **Require a business justification to override**
-    - **Override the rule automatically if they report it as a false positive**
-    
-    - In the **Incident reports** section, verify the **Send an alert to admins when a rule match occurs** toggle switch is set to **On** (if necessary, set it to **On**).
-
-    - Select the **Save** button at the bottom of the page.
-
-15. On the **Customize advanced DLP rules** page, both the **Single IP Address rule** and **Multiple IP Address rule** should now appear. Select **Next**.
-
-16. On the **Policy mode** page, select the **Turn it on right away** option and then select **Next**.
-
-17. On the **Review your policy and create it** page, review the policy that you just created. If anything needs to be corrected, select the appropriate **Edit** option and make your corrections. When everything appears OK, select **Submit**.
-
-I8. it may take a minute or so for the **New policy created** page to appear. When it does, select **Done**.
+  - Description: Replace the default description with **This policy detects the presence of IP addresses in emails. End users are notified of the detection and admins receive a notification. Emails with 2 or more IP addresses are blocked from being sent.**
+```
 
 
-You have now created a DLP policy that scans for IP addresses in emails and documents that are sent or shared in your organization.
 
+1. **[管理単位の割り当て (プレビュー)]**ページで、**[次へ]**を選択します。
 
-# Proceed to Lab 8 - Exercise 2 
+2. **[ポリシーを適用する場所の選択]**ページで、次の場所の**[ステータス]トグルが [****オン]に設定さ****れ**ていることを確認します(これらの場所のいずれかがデフォルトで [オン] に設定されていない場合は、ここで [**オン]**に設定します)。
+
+   - **メールを交換する**
+   - **SharePoint サイト**
+   - **OneDrive アカウント**
+   - **Teams チャットとチャネル メッセージ**
+
+   他のすべての場所を**[オフ]**に設定し、**[次へ]**を選択します。
+
+3. **[ポリシー設定の定義]**ページで、 **[高度な DLP ルールの作成またはカスタマイズ]**オプションがデフォルトで設定されている必要があります (デフォルトでまだ選択されていない場合は、今すぐ選択してください) し、 [**次へ]**を選択します。
+
+4. **[高度な DLP ルールのカスタマイズ]**ページで、メニュー バーの**[+ルールの作成]オプションを選択します。**
+
+5. **[ルールの作成]**ページで、次の情報を入力します。
+
+   - 名前:**単一 IP アドレス ルール**
+   - 説明:**電子メールには IP アドレスが含まれています**
+   - **[条件]**セクションで、**[+条件の追加]**を選択し、表示されるドロップダウン メニューから[コンテンツに**次の内容が含まれる]を選択します。**次に、次の条件設定を入力します。
+     - **[コンテンツに含まれる内容**] フィールドで、**[追加**] ドロップダウン メニューを選択し、**[機密情報の種類]**を選択します。
+     - **[機密情報の種類]**ペインで、**[検索]**フィールドに**「IP」**と入力し、Enter キーを押します。
+     - 検索結果で、**「IP アドレス」**チェックボックスを選択し、**「追加」**を選択します。
+   - **[ユーザー通知]**セクションまで下にスクロールし、**[通知を使用してユーザーに通知し、機密情報の適切な使用についての教育を支援する**] トグル スイッチを**[オン]**に設定します。
+   - **[Office 365 サービスのユーザーにポリシー ヒントを通知する**] チェックボックスをオンにします。**[ポリシー ヒント]**セクションで、**[ポリシー ヒント テキストをカスタマイズする**] チェック ボックスをオンにします。ホリーは、ポリシー ヒント メッセージをカスタマイズすることを望んでいます。
+
+   このフィールドに次のテキストを入力します。**注意! このメッセージには機密情報 (IP アドレス) が入力されました。このメッセージの送信が妨げられることはありませんが、受信者にこの機密データを表示する権限があるかどうかを確認してください。**
+
+   - **[送信前にエンド ユーザーにポリシー ヒントをダイアログとして表示する (Exchange ワークロードのみで使用可能)]**チェックボックスをオンにします。
+   - **[インシデント レポート]**セクションで、 **[ルール一致が発生した場合に管理者にアラートを送信する**] 切り替えスイッチが**[オン]**に設定されていることを確認します(必要に応じて、 [**オン]**に設定します)。
+   - ページの下部にある**[保存]**ボタンを選択します。
+
+6. **[詳細な DLP ルールのカスタマイズ]**ページに、作成したばかりの**単一 IP アドレス ルールが表示されます。****[+ルールの作成]**オプションを選択して、2 番目の DLP ルールを作成します。
+
+7. **[ルールの作成]**ページで、次の情報を入力します。
+
+   - 名前:**複数の IP アドレス ルール**
+   - 説明:**電子メールには 2 つ以上の IP アドレスが含まれています**
+   - **[条件]**セクションで、**[+条件の追加]**を選択し、表示されるドロップダウン メニューから[コンテンツに**次の内容が含まれる]を選択します。**次に、次の条件設定を入力します。
+     - **[コンテンツに含まれる内容**] フィールドで、**[追加**] ドロップダウン メニューを選択し、**[機密情報の種類]**を選択します。
+     - **[機密情報の種類]**ペインで、**[検索]**フィールドに**「IP」**と入力し、Enter キーを押します。
+     - **「IP アドレス」**チェックボックスを選択し、 **「追加」**を選択します。
+     - **[機密情報の種類]**セクションに、**IP アドレス**情報の種類が表示されます。[IP アドレス] 行の右側で、**[インスタンス数]設定が****1から [** **Any]**に設定されます。最初のフィールドの値を 1 から**2**に変更します。この変更を行うことにより、このルールは電子メールに 2 つ以上の IP アドレスが表示される場合にのみ適用されます。
+   - **[アクション]**セクションで、**[+アクションを追加]**を選択します。表示されるドロップダウン メニューで、 [**アクセスを制限するか、Microsoft 365 の場所のコンテンツを暗号化する]**を選択します。次に、次のアクション設定を入力します。
+     - **[アクセスを制限するか、Microsoft 365 の場所のコンテンツを暗号化する]**セクションにオプションが表示されない場合は、ここで選択してこのセクションを展開します。このセクションには、**[ユーザーによる電子メールの受信または共有 SharePoint、OneDrive、および Teams ファイルへのアクセスをブロックする]**オプションが表示されます。これは既定で選択されています。このオプションは選択したままにしてください。
+     - **[ユーザーによる電子メールの受信や共有 SharePoint、OneDrive、Teams ファイルへのアクセスをブロックする]**オプションで、 **[すべてのユーザーをブロックする**] オプションを選択します。
+   - **[ユーザー通知]**セクションで、 [**通知を使用してユーザーに通知し、機密情報の適切な使用についての教育に役立てる**] トグル スイッチを**[オン]**に設定します。
+   - **[Office 365 サービスのユーザーにポリシー ヒントを通知する**] チェックボックスをオンにします。**[ポリシー ヒント]**セクションで、**[ポリシー ヒント テキストをカスタマイズする**] チェック ボックスをオンにします。ホリーは、ポリシー ヒント メッセージをカスタマイズすることを望んでいます。
+
+   このフィールドに次のテキストを入力します。**注意! このメッセージに機密情報 (複数の IP アドレス) を入力しました。このメッセージを送信しようとするとブロックされます。このブロックをオーバーライドすると、この機密データを受信者に送信することを許可したことを示します。**
+
+   - **[送信前にエンド ユーザーにポリシー ヒントをダイアログとして表示する (Exchange ワークロードのみで使用可能)]**チェックボックスをオンにします。
+   - **[ユーザー オーバーライド]**セクションで、 **[M365 サービスからのオーバーライドを許可する**] チェック ボックスをオンにします。これにより、オーバーライドの処理方法を示す追加の設定が有効になります。次の 2 つのオプションのそれぞれのチェック ボックスをオンにします。
+   - **上書きするにはビジネス上の正当な理由が必要です**
+   - **誤検知として報告された場合、ルールを自動的にオーバーライドします**
+   - **[インシデント レポート]**セクションで、 **[ルール一致が発生した場合に管理者にアラートを送信する**] トグル スイッチが**[オン]**に設定されていることを確認します(必要に応じて、 [**オン]**に設定します)。
+   - ページの下部にある**[保存]**ボタンを選択します。
+
+8. **[詳細な DLP ルールのカスタマイズ]**ページに、**単一 IP アドレス ルール**と**複数 IP アドレス ルールの**両方が表示されるようになります。**「次へ」**を選択します。
+
+9. **[ポリシー モード]**ページで、 [**すぐに有効にする]**オプションを選択し、**[次へ]**を選択します。
+
+10. **[ポリシーを確認して作成します]**ページで、作成したポリシーを確認します。修正する必要がある場合は、適切な**編集**オプションを選択して修正を加えます。すべてOKと表示されたら、**[送信]**を選択します。
+
+I8. **[新しいポリシーが作成されました**] ページが表示されるまでに 1 分ほどかかる場合があります。完了したら、**「完了」**を選択します。
+
+これで、組織内で送信または共有される電子メールおよびドキュメント内の IP アドレスをスキャンする DLP ポリシーが作成されました。
+
+# [ラボ 8 - 演習 2 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_08_Lab8_Ex1_Manage_DLP_Policies.md#proceed-to-lab-8---exercise-2)

@@ -1,108 +1,100 @@
-# Learning Path 6 - Lab 6 - Exercise 4 - Test the Default eDiscovery Alert
+# [ラーニング パス 6 - ラボ 6 - 演習 4 - デフォルトの電子情報開示アラートをテストする](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex4_eDiscovery_Alert.md#learning-path-6---lab-6---exercise-4---test-the-default-ediscovery-alert)
 
-In this exercise you will test a default Microsoft 365 alert policy that notifies all tenant administrators, such as Holly Dickson, whenever an eDiscovery search has been created or exported.
+この演習では、電子情報開示検索が作成またはエクスポートされるたびに、Holly Dickson などのすべてのテナント管理者に通知する、既定の Microsoft 365 アラート ポリシーをテストします。
 
-**Note:** Creating an eDiscovery alert of this nature is important because an eDiscovery search, when left unregulated, can pull sensitive content that can be exported to an unauthorized source.
+**注:**この種の電子情報開示アラートを作成することは重要です。電子情報開示の検索が規制されていない場合、機密コンテンツが抽出され、不正なソースにエクスポートされる可能性があるためです。
 
-### Task 1 – Review the default eDiscovery Alert
+### [タスク 1 – デフォルトの電子情報開示アラートを確認する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex4_eDiscovery_Alert.md#task-1--review-the-default-ediscovery-alert)
 
-In this task, you will verify whether a default Microsoft 365 alert is triggered when somebody in your tenant creates an eDiscovery search or exports data from an existing search. Since Holly Dickson is assigned the Global Administrator role, she is automatically a member of the Tenant Admins and will be one of the recipients of this alert. 
+このタスクでは、テナント内の誰かが電子情報開示検索を作成するとき、または既存の検索からデータをエクスポートするときに、既定の Microsoft 365 アラートがトリガーされるかどうかを確認します。Holly Dickson にはグローバル管理者の役割が割り当てられているため、自動的にテナント管理者のメンバーとなり、このアラートの受信者の 1 人になります。
 
-1. You should still be in **LON-CL2** after completing the prior lab exercise. You should now switch back to **LON-CL1**.
+1. 前のラボ演習を完了した後も、まだ**LON-CL2**になっているはずです。**ここで、 LON-CL1**に切り替える必要があります。
 
-2. On **LON-CL1**, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+2. **LON-CL1**では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-3. In your Edge browser, select the **Alert policy - Microsoft 365 security** tab. This tab should still be displaying the **Alert policy** window from the prior lab exercise (if not, then in the left-hand navigation pane, select **Policies & rules** and then select **Alert policy**).
+3. Edge ブラウザーで、[**アラート ポリシー - Microsoft 365 セキュリティ]**タブを選択します。**このタブには、前のラボ演習で使用した[アラート ポリシー]**ウィンドウが表示されたままになっているはずです(表示されていない場合は、左側のナビゲーション ウィンドウで [**ポリシーとルール]を選択し、** **[アラート ポリシー]**を選択します)。
 
-4. On the **Alert policy** page, you want to search through the default System policies for a policy named **eDiscovery search started or exported**. Since there are so many pre-existing system policies, the easiest way to locate the policy is to search for it. In the **Search** field at the top of the screen, enter **eDiscovery** and then hit Enter. 
+4. **[アラート ポリシー]**ページで、デフォルトのシステム ポリシーを検索して**、電子情報開示検索の開始またはエクスポート**という名前のポリシーを検索します。既存のシステム ポリシーが非常に多いため、ポリシーを見つける最も簡単な方法は検索することです。画面上部の**検索**フィールドに**「eDiscovery」**と入力し、Enter キーを押します。
 
-5. In the policy list, select the **eDiscovery search started or exported** policy that appears. 
+5. ポリシー リストで、表示される**電子情報開示検索の開始ポリシーまたはエクスポートされた**ポリシーを選択します。
 
-6. An **eDiscovery search started or exported** pane should appear. Scroll down through the pane and verify the default settings for this predefined policy are configured as follows:
+6. 「**電子情報開示検索が開始されました」または「エクスポートされました」**ウィンドウが表示されます。ペインを下にスクロールし、この事前定義ポリシーのデフォルト設定が次のように構成されていることを確認します。
 
-	- Status: **On**
-	
-	- Conditions: Select the down arrow for the **Create alert settings** section to expand it, then verify the following settings:  <br/>
+   - ステータス:**オン**
+   - **条件: [アラート設定の作成]**セクションの下矢印を選択して展開し、次の設定を確認します。
+     - 条件:**アクティビティは eDiscoverySearchStartedOrExported です**
+     - 集約:**単一イベント**
+     - 範囲:**すべてのユーザー**
+   - **電子メール受信者: [受信者の設定]**セクションの下矢印を選択して展開し、次の設定を確認します。
+     - 受信者:**テナント管理者**
+     - 1 日あたりの通知制限:**制限なし**
 
-		- Conditions: **Activity is eDiscoverySearchStartedOrExported**
+7. ペインの上部にある**[ポリシーの編集]**ボタンを選択します。
 
-		- Aggregation: **Single event**
+8. **表示される[電子情報開示検索の開始またはエクスポート]**ウィンドウで、この既定のポリシーで編集できる設定は [**電子メール受信者]**設定のみです。このウィンドウでは、このポリシーがトリガーされたときに通知を受ける電子メール受信者を編集できます。ここでは値を変更しません。代わりに、この手順の目的は、実際の実装でデフォルトのシステム ポリシーの受信者リストを変更する方法を示すことです。
 
-		- Scope: **All users**
+   ウィンドウの下部にある**[キャンセル]**ボタンを選択します。
 
-	- Email recipients: Select the down arrow for the **Set your recipients** section to expand it, then verify the following settings:  <br/>
+9. **[開始された電子情報開示検索] ウィンドウまたは [エクスポートされた電子情報開示検索]**ウィンドウで、右上隅の[ **X]を選択してウィンドウを閉じます。**
 
-		- Recipients: **TenantAdmins**
+   **注:** **[アラート ポリシー]**ウィンドウのポリシーの行の右端にある**[アクション]**列の下にある垂直省略記号アイコンを選択して、ポリシーの設定を編集することもできます。
 
-		- Daily notification limit: **No limit**
+10. 次のタスクのために、Edge ブラウザーのタブはすべて開いたままにしておきます。
 
-7. At the top of the pane, select the **Edit policy** button.
+これで、電子情報開示検索が作成またはエクスポートされたときにテナント管理者に通知する、既定の Microsoft 365 電子情報開示アラートを確認しました。
 
-8. On the **eDiscovery search started or exported** window that appears, the only setting that can be edited for this default policy is the **Email recipients** setting. This window enables you to edit the email recipients who are notified when this policy is triggered. You will not change the value here; instead, the purpose of this step is to show you how to change the recipient list in your real-world implementations for any of the default system policies.  <br/>
+### [タスク 2 – デフォルトの電子情報開示アラートを検証する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex4_eDiscovery_Alert.md#task-2--validate-the-default-ediscovery-alert)
 
-	 Select the **Cancel** button at the bottom of the window.
+このデフォルトのアラートをテストするために、Holly Dickson は電子情報開示検索を作成します。このアクティビティによりアラート ポリシーがトリガーされ、すべてのテナント管理者にアラート通知電子メールが送信されます。Holly はグローバル管理者であり、デフォルトでは Tenant Admin グループのメンバーです。したがって、このアラートによって生成された電子メール通知を受信する必要があります。
 
-9. On the **eDiscovery search started or exported** pane, select the **X** in the upper-right corner to close it. <br/>
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-	**Note:** You can also edit a policy's setting by selecting the vertical ellipsis icon under the **Actions** column at the far-right end of the policy's row on the **Alert Policy** window. 
+2. **Microsoft Edge**ブラウザーで、**[Microsoft 365 管理センター]**タブを選択します。
 
-10. Leave all the Edge browser tabs open for the next task.
+3. **Microsoft 365 管理センター**の左側のナビゲーション ウィンドウで、**[管理センター]グループの下にある****[コンプライアンス]**を選択します。
 
-You have now reviewed the default Microsoft 365 eDiscovery alert that notifies tenant admins when an eDiscovery search is created or exported.
+4. **Microsoft Purview**ポータルの左側のナビゲーション ウィンドウで、**[ソリューション]**グループの下にある**[コンテンツ検索]**を選択します。
 
-### Task 2 – Validate the default eDiscovery Alert
+5. コンテンツ**検索ウィンドウには、** **「検索」**タブと**「エクスポート」**タブの2 つのタブがあります。「検索**」**タブはデフォルトで表示されます。メニュー バーに表示される**+新しい検索**オプションを選択します。これにより、**新規検索**ウィザードが開始されます。
 
-To test this default alert, Holly Dickson will create an eDiscovery search. This activity should trigger the alert policy, which should send an alert notification email to all Tenant Admins. Holly is a Global admin, who by default are members of the Tenant Admin group; therefore, she should receive the email notification generated by this alert. 
+6. **新しい検索**ウィザードの**[名前と説明]**ページで、 **[名前]**フィールドに**「Confidential search」**と入力し、 [**次へ]**を選択します。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+7. **「場所」**ページでは、**「特定の場所」**オプションがデフォルトで選択されています。このオプションには 3 つの位置グループがあり、それぞれのトグル スイッチでオンまたはオフにできます。**Exchange メールボックス**のトグル スイッチ**をオンに**しますが、他の 2 つの場所のトグル スイッチは**オフのままにします。**
 
-2. In your **Microsoft Edge** browser, select the **Microsoft 365 admin center** tab. 
+   **注:** **[含まれる]**設定は、デフォルトで**[すべて]**に設定されています。この値は、すべてのメールボックスが検索に含まれることを示します。実際の展開では、必要に応じて、 **[ユーザー、グループ、またはチームの選択]**を選択して特定のメールボックスを選択できます。このラボでは、すべてのメールボックスが検索されるように、値を**[すべて]に設定したままにしておきます。**
 
-3. In the **Microsoft 365 admin center**, in the left-hand navigation pane under the **Admin centers** group, select **Compliance**.
+   **警告:** 3 つの場所のうち少なくとも 1 つは**[オン]**に設定する必要があります。そうしないと、エラーが発生します。
 
-4. In the **Microsoft Purview** portal, in the left-hand navigation pane, under the **Solutions** group, select **Content search**.
+8. **「次へ」**を選択します。
 
-5. The **Content search** window has two tabs - a **Search** tab and an **Export** tab. The **Search** tab is displayed by default. Select the **+New search** option that appears on the menu bar. This initiates the **New search** wizard.
+9. **[検索条件の定義]**ページで、**[キーワードを入力してください]**フィールドに**「機密」**と入力し、 [**次へ]**を選択します。
 
-6. In the **New search** wizard, on the **Name and description** page, enter **Confidential search** in the **Name** field and then select **Next**.
+10. **[検索を確認して作成]**ページで、設定を確認し、(必要に応じて) 編集して修正します。すべての検索設定が正しい場合は、**[送信]**を選択します。
 
-7. In the **Locations** page, the **Specific locations** option is selected by default. There are three groups of locations under this option, each of which can be turned On or Off through its respective toggle switch. Turn the toggle switch **On** for **Exchange mailboxes**, but leave the toggle switches **Off** for the other two locations. 
+11. **[新しい検索が作成されました]**ページで、**[完了]**を選択します。
 
-	**Note:** The **Included** setting is set to **All** by default. This value indicates that all mailboxes will be included in the search. In a real-world deployment, you can optionally select **Choose users, groups, or teams** to choose specific mailboxes if you wish. For this lab, leave the value set to **All** so that it searches all mailboxes.
+12. **[コンテンツ検索]**ページで、ページの右端までスクロールします。**機密検索**の**ステータスが****「開始中」で**あることに注意してください。
 
-	**Warning:** At least one of the three locations must be set to **On**; otherwise, you will receive an error.  
+    **重要:**新しい検索を送信すると、システムは検索を保存し、すぐに実行します。この電子情報開示検索を保存すると、電子情報開示アラートがトリガーされ、テナント管理者権限を持つすべてのユーザーの受信トレイに送信される電子メール通知が作成されます。アラートが電子メール通知を送信したかどうかをテストする前に、検索が完了するのを待つ必要はありません。アラート通知システムは、検索の作成時に電子メールを処理します。
 
-8. Select **Next**. <br/>
+13. 作成した検索は完了するまでに数分しかかかりません。検索の実行中に次のステップに進むことも、必要に応じて、**ステータスが****Completed**に変わるまで 1 分ごとにメニュー バーの**[更新]**アイコンを選択することもできます。
 
-9. In the **Define your search conditions** page, enter **Confidential** in the **Enter keywords** field and then select **Next**.
+14. このアラートをテストするには、Edge ブラウザーで**[Outlook]タブを選択します。**これにはまだ Holly のメールボックスが表示されているはずです。以前に Outlook を閉じた場合は、ホーム**| [Microsoft 365]**タブのアプリケーション アイコンの列で、**[Outlook]**を選択します。
 
-10. In the **Review your search and create it** page, review the settings and edit any (if necessary) to make any corrections. Once all the search settings are correct, select **Submit**. 
+15. ホリーの Outlook メールボックスで、受信トレイに**情報重大度のアラートがないか監視します。電子情報開示検索が開始されたか、**アラート通知システムによって自動的に送信されたエクスポートされた電子メールです。このメッセージの目的は、電子情報開示検索が作成またはエクスポートされたことを Holly に通知することです。必要に応じて、URL アドレスの左側にある**[更新]アイコンを選択します。**メールを受信したら、メールを開いて内容を確認し、メッセージを閉じます。
 
-11. On the **New search created** page, select **Done**.
+    **注:**電子メールが Holly の受信箱に到着するまでに最大 10 分程度かかる場合があります。
 
-12. On the **Content search** page, scroll to the far-right side of the page. Note the **Status** of the **Confidential search** is **Starting**. <br/>
+16. **Edge**ブラウザーで、 **Microsoft Purview**ポータル ([**コンテンツ検索 - Microsoft Purview]**タブ)に戻り、左側のナビゲーション ウィンドウの [**ソリューション]グループで****[監査]**を選択します。
 
-	**Important:** When you submit a new search, the system saves the search and then immediately runs it. By saving this eDiscovery search, the eDiscovery alert should be triggered, thereby creating an email notification that should be sent to the Inbox of all users with Tenant Admin permissions. You do NOT have to wait for the Search to finish before testing whether the alert sent the email notification. The alert notification system will process the email at the time the search is created. 
-	
-13. The search that you created should only take a couple of minutes to complete. You can either proceed to the next step while the search is running, or if you wish, you can select the **Refresh** icon on the menu bar every minute or so until the **Status** changes to **Completed**.
-	
-14. To test this alert, select the **Outlook** tab in your Edge browser. This should still be displaying Holly's mailbox. If you previously closed Outlook, then in the **Home | Microsoft 365** tab, in the column of application icons, select **Outlook**.
+17. **[検索]**ボタンを選択すると、最近のアクティビティがすべて表示されます。これにより、このアラートを作成したアクティビティが表示されます。**検索にさらにフィルターを追加します**か? ダイアログ ボックスが表示されるので、**[検索の開始]**を選択します。
 
-15. In Holly's Outlook mailbox, monitor her Inbox for an **Informational-severity alert: eDiscovery search started or exported** email that was automatically sent by the Alerts notification system. The purpose of this message is to inform Holly that an eDiscovery search was created or exported. If necessary, select the **Refresh** icon to the left of the URL address. Once the email is received, open it and review the contents, then close the message. <br/>
+    **注:**検索結果が表示されるまでに最大 24 時間かかる場合があります。検索結果がすぐに表示されない場合は、後日もう一度確認してください。それでも結果が得られない場合は、翌日まで待ってから再度確認してください。
 
-	**Note:** It may take up to 10 minutes or so before the email arrives in Holly's Inbox.
+    **注:**検索結果のリストでは、以前のアラートの**ユーザーがHolly としてリストされているのに対し、電子情報開示アラートのユーザーは****Service Account**としてリストされていることに注目してください。これは、電子情報開示アラートが個々のユーザーによって作成されたカスタム アラートではなく、デフォルトのシステム アラートであるためです。
 
-16. In your **Edge** browser, switch back to the **Microsoft Purview** portal (the **Content search - Microsoft Purview** tab) and under the **Solutions** group in the left-hand navigation pane, select **Audit**. 
+18. 別のラボ演習ですぐに使用するため、ブラウザーで [Outlook] タブ ( **[メール] - [ホリー ディクソン] - [Outlook] ) を開いたままにしておきます。**他のブラウザのタブもすべて開いたままにしておきます。
 
-17. Select the **Search** button to display all recent activity. This will display the activity that created this alert. If an **Add more filters to your search?** dialog box appears, select **Start search**. <br/>
+これで、電子情報開示検索の作成または完了した検索からのデータのエクスポートを監視する Microsoft 365 電子情報開示システム アラートのテストが正常に完了しました。
 
-	**Note:** It may take up to 24 hours for the search results to be displayed. If search results do not appear immediately, check again later in the day. If there are still no results, wait until the following day before checking again.
-
-	**Note:** In the list of search results, note how the **User** for the prior alerts is listed as Holly, while the user for the eDiscovery alert is listed as **Service Account**. This is because the eDiscovery alert is a default system alert rather than a custom alert created by an individual user.
-
-18. In your browser, leave the Outlook tab (**Mail - Holly Dickson - Outlook**) open as you will use it shortly in another lab exercise. Leave all your other browser tabs open as well.
-
-You have now successfully tested the Microsoft 365 eDiscovery system alert that monitors the creation of an eDiscovery search or the export of data from a completed search.
-
-
-# Proceed to Lab 6 - Exercise 5
+# [ラボ 6 - 演習 5 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex4_eDiscovery_Alert.md#proceed-to-lab-6---exercise-5)

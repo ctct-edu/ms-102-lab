@@ -1,106 +1,99 @@
-# Learning Path 6 - Lab 6 - Exercise 2 - Implement Mailbox Permission Alert
+# [ラーニング パス 6 - ラボ 6 - 演習 2 - メールボックスのアクセス許可アラートの実装](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_06_Lab6_Ex2_Mailbox_Permission_Alert.md#learning-path-6---lab-6---exercise-2---implement-mailbox-permission-alert)
 
-In this exercise you will configure and test an alert that will notify Lynne Robbins when FullAccess permissions are granted to any mailbox within Adatum.
+この演習では、Adatum 内のメールボックスにフルアクセス許可が付与されたときに Lynne Robbins に通知するアラートを構成してテストします。
 
-### Task 1 – Create a Mailbox Permission Alert
+### [タスク 1 – メールボックスのアクセス許可アラートを作成する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_06_Lab6_Ex2_Mailbox_Permission_Alert.md#task-1--create-a-mailbox-permission-alert)
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as Holly Dickson. 
+1. LON-CL1 では、Edge ブラウザーで、Holly Dickson として Microsoft 365 にログインしているはずです。
 
-2. **Microsoft 365 Defender** should still be open in your Edge browser from the prior task. Select the **Microsoft 365 Defender** tab now. In the left-hand navigation pane, under the **Email & collaboration** section, select **Policies & rules**. 
+2. **Microsoft 365 Defender は、**前のタスクから Edge ブラウザーで開いたままになっているはずです。**ここで[Microsoft 365 Defender]**タブを選択します。左側のナビゲーション ウィンドウの**[電子メールとコラボレーション]**セクションで、**[ポリシーとルール]**を選択します。
 
-3. On the **Policies & rules** window, select **Alert policy**. If a dialog box appears indicating the alert policy portal has been updated, select the **Dismiss** button.
+3. **[ポリシーとルール]**ウィンドウで、**[アラート ポリシー]**を選択します。アラート ポリシー ポータルが更新されたことを示すダイアログ ボックスが表示された場合は、[**閉じる]**ボタンを選択します。
 
-4. In the **Alert Policy** window, note the message at the top of the page indicating the fact that mail flow alerts have moved to the Exchange admin center. Mail flow alerts can no longer be maintained in the Microsoft 365 Defender security portal. Since you will be creating a mailbox permission alert and not a mail flow alert, you can continue on with this task in the Microsoft 365 Defender portal. <br/> 
+4. **[アラート ポリシー]**ウィンドウで、メール フロー アラートが Exchange 管理センターに移動されたことを示すページ上部のメッセージに注目してください。メール フロー アラートは、Microsoft 365 Defender セキュリティ ポータルで維持できなくなりました。メール フロー アラートではなくメールボックス アクセス許可アラートを作成するため、Microsoft 365 Defender ポータルでこのタスクを続行できます。
 
-	In the **Alert Policy** window, review the list of preconfigured alert policies that are available in Microsoft 365. Select **+New Alert Policy** on the menu bar. This initiates the **New Alert Policy** wizard.
+   **[アラート ポリシー]**ウィンドウで、Microsoft 365 で使用できる事前構成されたアラート ポリシーのリストを確認します。メニュー バーで**[+新しいアラート ポリシー]を選択します。**これにより、**新しいアラート ポリシー**ウィザードが開始されます。
 
-5. On the **Name your alert, categorize it, and choose a severity** page, enter the following information:
+5. [アラートに**名前を付け、分類し、重大度を選択してください]**ページで、次の情報を入力します。
 
-	- Name: **Mailbox permission change**
+   - 名前:**メールボックス権限の変更**
+   - 説明:**このアラートは、Adatum Corporation のメールボックスにフルアクセス許可が付与された場合に、Lynne Robbins に通知します。**
+   - 重大度:**中**
+   - カテゴリ:**権限**
 
-	- Description: **This alert notifies Lynne Robbins when FullAccess permissions are granted to any mailbox in Adatum Corporation**
+6. **「次へ」**を選択します。
 
-	- Severity: **Medium**
+7. **[アクティビティ、条件、およびアラートをトリガーするタイミングを選択してください]**ページで、次の情報を入力します。
 
-	- Category: **Permissions**
+   - アクティビティ: フィールドのドロップダウン矢印を選択し、「**アクティビティの選択」**フィールドに**「メール」**と入力し、**メール**を含むアクティビティのリストから「**メールボックスのアクセス許可の付与」を選択します。**
+   - アラートをどのようにトリガーしますか?:**アクティビティがルールに一致するたびに**
 
-6. Select **Next**.
+8. **「次へ」**を選択します。
 
-7. On the **Choose an activity, conditions and when to trigger the alert** page, enter the following information:
+9. **[このアラートがトリガーされたときに人々に通知するかどうかを決定します**] ページで、次の情報を入力します。
 
-	- Activity is: select the drop-down arrow in the field, enter **mail** in the **Select an activity** field, and select **Granted mailbox permission** from the list of activities containing **mail**
+   - **電子メール受信者: Holly Dickson の**アカウントの右側にある「X」を選択して彼女を削除し、フィールドに**Lynne**と入力して、名前が**Lynneで始まるユーザーのリストから****Lynne Robbinsを選択します。**
+   - 1 日あたりの通知制限:**制限なし**
 
-	- How do you want the alert to be triggered?: **Every time an activity matches the rule**
+10. **「次へ」**を選択します。
 
-8. Select **Next**.
+11. **[設定の確認]**ページで設定を確認し、修正する必要がある場合は、対応する**[編集]**オプションを選択して必要な修正を加えます。
 
-9. On the **Decide if you want to notify people when this alert is triggered** page, enter the following information:
+    すべてが正しい場合は、**[ポリシーをすぐにオンにしますか?] の下に表示されます。**設定で、**「はい、すぐにオンにします」**を選択します。**[送信]**を選択します。
 
-	- Email recipients: Select the "X" to the right of **Holly Dickson's** account to remove her, the enter **Lynne** in the field, and then select **Lynne Robbins** from the list of users whose first name starts with **Lynne**
+12. **[新しいアラート ポリシー]**ウィンドウで、**[完了]**を選択します。
 
-	- Daily notification limit: **No limit**
+13. 新しいアラート ポリシーが [**アラート ポリシー]**ページのリストに表示され、その**[タイプ]が****[カスタム]**に設定され、その**ステータスが [****オン]**に設定されていることを確認します。
 
-10. Select **Next**.
+14. 次のタスクのために、Edge ブラウザの [アラート ポリシー] タブを開いたままにしておきます。
 
-11. On the **Review your settings** page, review the settings and if anything needs to be corrected, select its corresponding **Edit** option and make the necessary corrections. <br/>
+これで、メールボックスにフルアクセス許可が付与されたときにトリガーされるアクティビティ アラートが Microsoft 365 Defender に作成されました。
 
-	When everything is correct, under the **Do you want to turn the policy on right away?** setting, select **Yes, turn it on right away**. Select **Submit**.
+### [タスク 2 – メールボックスのアクセス許可アラートを検証する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_06_Lab6_Ex2_Mailbox_Permission_Alert.md#task-2--validate-the-mailbox-permission-alert)
 
-12. On the **New Alert Policy** window, select **Done**.
+前のタスクでは、Adatum 内のメールボックスにフルアクセス許可が付与されたときに Lynne Robbins に通知するアラートを構成しました。このアラートをテストするために、Holly Dickson は、Joni Sherman に彼のメールボックスへのフルアクセスを許可することで、Alex Wilber のメールボックスに対するフルアクセスのアクセス許可を変更します。このアクティビティにより、先ほど作成したアラート ポリシーがトリガーされ、Lynne Robbins のメールボックスにアラート通知電子メールが送信されます。次に、Lynne Robbins として LON-CL2 にログインし、彼女がこの電子メールを受信したかどうかを確認します。
 
-13. Verify your new alert policy appears in the list on the **Alert policy** page, its **Type** is set to **Custom**, and its **Status** in **On**.
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-14. Leave the Alert policy tab in your Edge browser open for the next task.
+2. Edge ブラウザーで**[Microsoft 365 管理センター]**タブを選択し、左側のナビゲーション ウィンドウの [**管理センター]**グループで**[Exchange]**を選択します。これにより、Exchange Online の Exchange 管理センターが開きます。
 
-You have now created an activity alert in Microsoft 365 Defender that is triggered when FullAccess permissions are granted to any mailboxes.
+3. **Exchange 管理センター**では、**[メールボックスの管理]**ウィンドウがデフォルトで表示されます (表示されない場合は、左側のナビゲーション ウィンドウの [**受信者]グループで****[メールボックス]**を選択します)。
 
+4. **[メールボックスの管理]**ウィンドウで、メールボックスのリストから**Alex Wilber**を選択します(Alex の名前を選択します。名前の左側のチェック ボックスは選択しないでください)。
 
-### Task 2 – Validate the Mailbox Permission Alert
+5. 表示される**Alex Wilber**ペインには、デフォルトで**「全般」**タブが表示されます。**「委任」**タブを選択します。
 
-In the prior task, you configured an alert that will notify Lynne Robbins when FullAccess permissions are granted to any mailbox within Adatum. To test this alert, Holly Dickson will change the FullAccess permission on Alex Wilber’s mailbox by granting Joni Sherman FullAccess to his mailbox. This activity should trigger the alert policy that you just created, which should send an alert notification email to Lynne Robbins’ mailbox. You will then log into LON-CL2 as Lynne Robbins and see if she received this email. 
+6. **[委任]**タブには、更新できる 3 つのメールボックス アクセス許可があります:**送信者**、**代理送信**、および**読み取りと管理 (フル アクセス)**。**Alex のメールボックスに対するこれらの各アクセス許可をJoni Sherman**に追加するとします。権限ごとに、次の手順を実行して、Joni をその権限に追加します。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+   - 権限の**「編集」**ボタンを選択します。
+   - **[メールボックス委任の管理]**ウィンドウで、**[+メンバーの追加]**を選択します。
+   - **表示されるユーザーのリストで、 Joni Sherman**のチェックボックスを選択し、 **[保存]**を選択します。
+   - [代理人のアクセス許可を追加**しますか?]** ペインで、**[確認]**を選択します。
+   - メールボックスのアクセス許可が Alex のメールボックスに追加されたら、ウィンドウの上部にある戻る矢印を選択します。
+   - **これにより、 [Alex Wilber]ペインの****[委任]**タブに戻り、3 つの権限が表示されます。残りの 2 つの権限ごとにこれらの手順を繰り返します。
 
-2. In your Edge browser, select the **Microsoft 365 admin center** tab, and then in the left-hand navigation pane, under the **Admin centers** group, select **Exchange**. This opens the Exchange admin center for Exchange Online.
+7. **[委任]**タブの 3 つの権限のそれぞれに Joni を割り当てたら、右上隅の[ **X]を選択して、** **[Alex Wilber]**ペインを閉じます。
 
-3. In the **Exchange admin center**, the **Manage Mailboxes** window appears by default (if it doesn't, then in the left-hand navigation pane, under the **Recipients** group, select **Mailboxes**). 
+8. **ホリー ディクソンは、**ジョニ シャーマンに自分のメールボックスへのフル アクセス許可を与えることで、アレックス ウィルバーのメールボックス アクセス許可を変更したため、このイベントを通知するアラート電子メールがリン ロビンスの受信箱に自動的に送信されるはずです。LON-CL2 で Lynne の受信箱をチェックすることで、この電子メールが送信されたことを確認できます。
 
-4. In the **Manage Mailboxes** window, select **Alex Wilber** from the list of mailboxes (select Alex's name; do not select the check box to the left of his name).
+   **LON-CL2**に切り替えます。
 
-5. In the **Alex Wilber** pane that appears, the **General** tab is displayed by default. Select the **Delegation** tab.
+9. **LON-CL2**では、ローカル**管理者**(lon-cl2\admin) アカウントとしてマシンにサインインする必要があります。**タスク バーでMicrosoft Edge**アイコンを選択し、(必要に応じて) ウィンドウを最大化し、アドレス バーに次の URL を入力します: **[https://outlook.office365.com](https://outlook.office365.com/)**
 
-6. On the **Delegation** tab, there are three mailbox permissions that can be updated: **Send as**, **Send on behalf**, and **Read and manage (Full Access)**. You want to add each of these permissions for Alex's mailbox to **Joni Sherman**. For each permission, perform the following steps to add Joni to that permission: <br/>
+10. **[アカウントの選択]**ウィンドウで、Lynne Robbins アカウント ( **[LynneR@xxxxxZZZZZZ.onmicrosoft.com](mailto:LynneR@xxxxxZZZZZZ.onmicrosoft.com)** ) がユーザー リストに表示されている場合は、今すぐそれを選択します。それ以外の場合は、**[別のアカウントを使用する]を選択し、** **[LynneR@xxxxxZZZZZZ.onmicrosoft.com](mailto:LynneR@xxxxxZZZZZZ.onmicrosoft.com)**としてサインインします(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。次に、ラボ ホスティング プロバイダーからテナント管理者アカウント (MOD 管理者アカウント) 用に提供されたものと同じ**Microsoft 365 テナント パスワードをLynne のパスワードとして入力します。**
 
-	- Select the **Edit** button for the permission. 
-	- On the **Manage mailbox delegation** pane, select **+Add members**.
-	- In the list of users that appears, select the check box for **Joni Sherman** and then select **Save**.
-	- In the **Add delegate permissions?** pane, select **Confirm**.
-	- Once the mailbox permission is added to Alex's mailbox, select the back arrow at the top of the pane. 
-	- This returns you to the **Delegation** tab on the **Alex Wilber** pane, which displays the three permissions. Repeat these steps for each of the two remaining permissions. 
+11. Lynne Robbins の**受信トレイ**には、Holly Dickson がメールボックスのアクセス許可を変更したことを通知する、アラート通知システム ( **[Office365Alerts@microsoft.com ) からの電子メールが含まれている必要があります。](mailto:Office365Alerts@microsoft.com)**
 
-7. Once you have assigned Joni to each of the three permissions on the **Delegation** tab, select the **X** in the upper right-hand corner to close the **Alex Wilber** pane. 
+    **警告:**ラボでのテストでは、場合によっては、Lynne の受信箱に電子メールが受信されるまでに最大 15 分程度かかることがわかっています。電子メールを受信するまで、Outlook を 1 回以上更新する必要がある場合があります。
 
-8. Since **Holly Dickson** has changed the mailbox permissions for Alex Wilber by giving Joni Sherman full access permissions to his mailbox, an alert email should automatically be sent to Lynne Robbins’ Inbox that notifies her of this event. You will verify this email was sent by checking Lynne's Inbox on LON-CL2. <br/>
+12. 通知メールが Lynne の受信箱に到着したら、メールを開いて内容を確認します。電子メールの一番下までスクロールし、**[アラートの詳細を表示]**ボタンを選択します。これにより、新しいタブで**Microsoft 365 Defenderポータルが開きます。**
 
-	‎Switch to **LON-CL2**. 
+13. Microsoft **365 Defender**ポータルに**[アラート]**ウィンドウが表示され、Lynne への電子メール通知をトリガーしたこのアラート アクティビティの [**メールボックス アクセス許可の変更]ウィンドウが自動的に開きます。**
 
-9. On **LON-CL2**, you should be signed into the machine as the local **administrator** (lon-cl2\admin) account. Select the **Microsoft Edge** icon in the taskbar, maximize the window (if necessary), and then enter the following URL in the address bar: **https://outlook.office365.com**
+    **[メールボックスのアクセス許可の変更]**ペインを下にスクロールし、このアクティビティのすべての情報を確認します。完了したら、**「閉じる」**を選択してペインを閉じます。
 
-10. In the **Pick an account** window, if Lynne Robbins account (**LynneR@xxxxxZZZZZZ.onmicrosoft.com**) appears in the user list, then select it now; otherwise, select **Use another account** and sign in as **LynneR@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider). Then enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) as Lynne's password.
+14. Edge ブラウザーで、**[アラートの表示 - Microsoft 365 セキュリティ]**タブを閉じます。次のラボ演習で使用するため、Lynne の**[Outlook]タブは開いたままにしておきます。**
 
-11. Lynne Robbins’ **Inbox** should include an email from the Alerts notification system (**Office365Alerts@microsoft.com**) to let her know that Holly Dickson has made a Mailbox permission change. <br/>
+ユーザーのメールボックスへのフルアクセスの付与に関してアラーム メッセージを送信するメールボックス アクセス許可アラートのテストが正常に完了しました。
 
-	**WARNING:** Lab testing has shown that in some cases, it can take up to 15 minutes or so for the email to be received in Lynne's Inbox. You may need to refresh Outlook one or more times until you receive the email.
-
-12. Once the notification email arrives in Lynne's Inbox, open the email and review the contents. Scroll to the bottom of the email and select the **View alert details** button. This opens the **Microsoft 365 Defender** portal in a new tab.
-
-13. The **Microsoft 365 Defender** portal displays the **Alerts** window, and it automatically opens the **Mailbox permission change** pane for this alert activity that triggered the email notification to Lynne. <br/>
-
-	Scroll down through the **Mailbox permission change** pane and review all the information for this activity. When you are done, select **Close** to close the pane.
-
-14. In your Edge browser, close the **View Alerts - Microsoft 365 security** tab. Leave Lynne's **Outlook** tab open, as you will use that in the next lab exercise.
-
-
-You have just successfully tested a mailbox permission alert that sent an alarm message on granting FullAccess to a user mailbox.
-
-# Proceed to Lab 6 - Exercise 3
+# [ラボ 6 - 演習 3 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_06_Lab6_Ex2_Mailbox_Permission_Alert.md#proceed-to-lab-6---exercise-3)

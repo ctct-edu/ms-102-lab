@@ -1,231 +1,220 @@
-# Learning Path 4 - Lab 4 - Exercise 1 - PIM Administrator approval
+# [ラーニング パス 4 - ラボ 4 - 演習 1 - PIM 管理者の承認](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_04_Lab4_Ex1_PIM_Admin_Approval.md#learning-path-4---lab-4---exercise-1---pim-administrator-approval)
 
-As part of her Microsoft 365 pilot project, Holly Dickson, Adatum's new Microsoft 365 Administrator, wants to implement Privileged Identity Management (PIM) within Azure Active Directory. PIM is an Azure AD service that enables you to manage, control, and monitor access to important resources in your organization. These resources include not only Azure, but other Microsoft Online Services, such as Microsoft 365 and Microsoft Intune.
+Microsoft 365 パイロット プロジェクトの一環として、Adatum の新しい Microsoft 365 管理者である Holly Dickson は、Azure Active Directory 内に Privileged Identity Management (PIM) を実装したいと考えています。PIM は、組織内の重要なリソースへのアクセスを管理、制御、監視できるようにする Azure AD サービスです。これらのリソースには、Azure だけでなく、Microsoft 365 や Microsoft Intune などの他の Microsoft Online Services も含まれます。
 
-One of Adatum's pain points in its existing system is that it has far too many users who have been assigned administrator roles. This has caused concern among management, who recognize this situation as an existential threat to Adatum's data security. They feel that too many people were originally assigned admin roles that shouldn't have been, and as such, these users have access to secure information and resources that could potentially compromise the organization. 
+Adatum の既存システムの問題点の 1 つは、管理者の役割が割り当てられているユーザーが多すぎることです。これは経営陣の間で懸念を引き起こしており、経営陣はこの状況が Adatum のデータ セキュリティに対する存続の脅威であると認識しています。彼らは、本来割り当てられるべきでない管理者ロールを割り当てられている人が多すぎるため、これらのユーザーが組織を侵害する可能性のある安全な情報やリソースにアクセスできるようになっていると感じています。
 
-Because there's a need to reduce the number of users with permanent administrator roles and yet still provide admin privileges to selected users when business justification warrants it, Holly has been tasked with implementing Azure Active Directory's Privileged Identity Management service. By implementing PIM, Adatum can reduce the number of users with admin roles and yet still be able to assign users with admin rights on an as-needed basis whenever necessary.
+永続的な管理者ロールを持つユーザーの数を減らしながらも、ビジネス上の正当な理由がある場合には選択したユーザーに管理者特権を提供する必要があるため、Holly は Azure Active Directory の Privileged Identity Management サービスを実装する任務を負っています。PIM を実装することで、Adatum は管理者ロールを持つユーザーの数を減らしながらも、必要に応じて必要に応じてユーザーに管理者権限を割り当てることができます。
 
-In this lab, you will perform the basic steps involved in implementing PIM for a given admin role:
+このラボでは、特定の管理者ロールに対する PIM の実装に関連する基本的な手順を実行します。
 
-- Configure the role to require approval and assign an approver
-- Assign an eligible user to the role
-- Submit a request from the eligible user to be assigned the role
-- Approve the request for the role
+- 承認を必要とするロールを構成し、承認者を割り当てる
+- 適格なユーザーをロールに割り当てます
+- ロールを割り当てる資格のあるユーザーからのリクエストを送信します。
+- 役割のリクエストを承認する
 
-In this exercise, you will perform these tasks for the Global administrator role. Holly will take on the role of the approver, and Patti Fernandez will be the user requesting access to the role.
+この演習では、全体管理者ロールに対して次のタスクを実行します。Holly が承認者の役割を引き受け、Patti Fernandez がその役割へのアクセスを要求するユーザーになります。
 
-**IMPORTANT:** In Task 3, Patti Fernandez will submit a request to be assigned the Global administrator role. The activation request process is set up to require Multi-Factor Authentication (MFA). If you do not have a phone to complete this process, notify your instructor. You can still complete Tasks 1 and 2, and you may be able to partner up with another student to watch them complete the remaining tasks.
+**重要:**タスク 3 では、Patti Fernandez が全体管理者の役割を割り当てるリクエストを送信します。アクティベーション要求プロセスは、多要素認証 (MFA) を要求するように設定されています。このプロセスを完了するための電話がない場合は、インストラクターに通知してください。タスク 1 と 2 は引き続き完了できます。また、他の生徒と協力して残りのタスクを完了する様子を観察できる場合もあります。
 
-**BEST PRACTICE REMINDER:** As a best practice in your real-world deployment, you should always write down the first Global admin account’s credentials (in this lab, it's the MOD Administrator account, whose username is admin@xxxxxZZZZZZ.onmicrosoft.com, where xxxxxZZZZZZ is the tenant prefix assigned by your lab hosting provider). You should store away this account for security reasons. This first Global admin account should be a non-personalized identity that owns the highest privileges possible in a tenant. It should **NOT** be MFA activated because it is not personalized. 
+**ベスト プラクティスのリマインダー:**実際の展開におけるベスト プラクティスとして、最初のグローバル管理者アカウントの資格情報を常に書き留める必要があります (このラボでは、ユーザー名が admin@xxxxxZZZZZZ.onmicrosoft.com である MOD 管理者アカウントです。xxxxxZZZZZZ[は](mailto:admin@xxxxxZZZZZZ.onmicrosoft.com)、は、ラボ ホスティング プロバイダーによって割り当てられたテナント プレフィックスです)。セキュリティ上の理由から、このアカウントは保管しておいてください。この最初のグローバル管理者アカウントは、テナント内で可能な限り最高の特権を所有する、個人化されていない ID である必要があります。パーソナライズされていないため、MFA をアクティブ化しない**で**ください。
 
-Because the username and password for this first Global admin account are typically shared among several users, this account is a perfect target for attacks; therefore, it's always recommended that organizations create personalized service admin accounts (for example, an Exchange admin, SharePoint admin, and so on) and keep as few non-personalized Global admins as possible. For those personal Global administrators that you do create in your real-world deployment, they should each be mapped to a single identity (such as Holly Dickson, Patti Fernandez, etc.), and they should each have Azure Active Directory Multi-Factor Authentication (MFA) enforced. That being said, you will not turn on MFA for Holly's account because time is limited in this training course, and we don't want to take up lab time by forcing you to log in using a second authentication method every time Holly logs in.
+この最初のグローバル管理者アカウントのユーザー名とパスワードは通常、複数のユーザー間で共有されるため、このアカウントは攻撃の完全なターゲットになります。したがって、組織は個人用のサービス管理者アカウント (Exchange 管理者、SharePoint 管理者など) を作成し、個人用以外のグローバル管理者の数をできるだけ少なくすることを常にお勧めします。実際の展開で作成する個人のグローバル管理者については、それぞれが 1 つの ID (Holly Dickson、Patti Fernandez など) にマップされ、それぞれが Azure Active Directory Multi-Factor Authentication を持っている必要があります。 (MFA) が施行されました。ただし、このトレーニング コースでは時間が限られているため、Holly のアカウントに対して MFA を有効にすることはありません。
 
+### [タスク 1 - 承認を必要とするように全体管理者ロールを構成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_04_Lab4_Ex1_PIM_Admin_Approval.md#task-1---configure-the-global-administrator-role-to-require-approval)
 
-### Task 1 - Configure the Global Administrator role to require approval
+Microsoft 365 グローバル管理者ロールでは、ユーザーは基本的にすべての Microsoft 365 リソースに無制限にアクセスできるため、セキュリティ上の理由から、このロールに割り当てられるユーザーの数は明らかに最小限に抑える必要があります。
 
-Since the Microsoft 365 Global Administrator role provides a user with basically unlimited access to all Microsoft 365 resources, the number of users assigned to this role should obviously be kept to a minimum for security purposes. 
+このトレーニング コースで使用される Microsoft 365 テナントでは、ラボ ホスティング プロバイダーが 7 つの事前定義されたユーザー アカウントにグローバル管理者の役割を割り当てました。Holly をグローバル管理者として追加すると、テナント内の 20 ライセンスのユーザー アカウントのうち 8 つがグローバル管理者になりました。これは、実際の展開では見られないことです。従うべきベスト プラクティス ガイドラインは、実際の Microsoft 365 展開に 2 ～ 4 人のグローバル管理者を配置することです。このテナントがその数を超えている理由は、複数のトレーニング コースで使用されており、それぞれに独自の VM 要件があるためです。これらの他のコースの中には、特定のユーザーがグローバル管理者である必要があるものもあります。これが、テナントに非常に多くのユーザーが存在する理由の説明になっています。
 
-In the Microsoft 365 tenant used by this training course, the lab hosting provider assigned the Global admin role to seven of the predefined user accounts. After you added Holly as a Global admin, eight of the 20 licensed user accounts in your tenant are now global admins, which is not something you would see in a real-world deployment. The best practice guideline that you should follow is to have from two to four Global admins in your real-world Microsoft 365 deployments. The reason this tenant exceeds that number is that it's used by multiple training courses, each of which have their own VM requirements. Some of these other courses require specific users to be Global admins, which explains why there are so many in the tenant.
+Adatum の新しい Microsoft 365 管理者である Holly Dickson は、Privileged Identity Management を使用して、グローバル管理者ロールへのアクセスを制限したいと考えています。そのためには、ユーザーに適格なロールとして割り当てる前に、まず承認が必要なロールを構成する必要があります。その後、適格なユーザーがロールのアクティブ化を要求したときは常に、自分自身を承認者として割り当てたいと考えています。
 
-Holly Dickson, Adatum's new Microsoft 365 Administrator, wants to use Privileged Identity Management to limit access to the Global admin role. To do so, she must first configure the role to require approval before it can be assigned as an eligible role for a user, and then she wants to assign herself as the approver whenever an eligible user requests activating the role.
+ホリーは、全体管理者ロールの通知設定も更新したいと考えています。Privileged Identity Management (PIM) を使用すると、ロールが割り当てられたときやアクティブ化されたときなど、Azure Active Directory (Azure AD) 組織で重要なイベントが発生したときにそれを知ることができます。PIM は、あなたと他の参加者に電子メール通知を送信することで、常に最新の情報を提供します。これらの電子メールには、役割のアクティブ化や更新など、関連するタスクへのリンクも含めることができます。このタスクでは、Holly は通知を更新して、承認がリアルタイムで事前に追跡されるようにしたいと考えています。
 
-Holly also wants to update the notification settings for the Global admin role. Privileged Identity Management (PIM) lets you know when important events occur in your Azure Active Directory (Azure AD) organization, such as when a role is assigned or activated. PIM keeps you informed by sending you and other participants email notifications. These emails can also include links to relevant tasks, such as activating or renewing a role. In this task, Holly wants to update the notifications to ensure that approvals are tracked in real-time in a proactive manner.
+1. 前のラボ演習では、Adatum のドメイン コントローラー (LON-DC1) を使用しました。このラボでは LON-CL1 を使用します。
 
-1. The prior lab exercise used Adatum's domain controller (LON-DC1). This lab will use LON-CL1.  <br/>
+   **LON-CL1**に切り替えます。
 
-    Switch back to **LON-CL1**. 
+2. **LON-CL1**では、引き続きローカル**adatum\administrator**アカウントとしてマシンにログインする必要があり、Edge ブラウザーでは引き続き Holly Dickson として Microsoft 365 にログインする必要があります。
 
-2. On **LON-CL1**, you should still be logged into the machine as the local **adatum\administrator** account, and in your Edge browser, you should still be logged into Microsoft 365 as Holly Dickson.
+3. ブラウザーで、**[Microsoft 365 管理センター]**タブを選択します。左側のナビゲーション ペインの [**管理センター]**セクションで、**[Azure Active Directory]**を選択します。
 
-3. In your browser, select the **Microsoft 365 admin center** tab. In the left-hand navigation pane under the **Admin centers** section, select **Azure Active Directory**.
+4. **ブラウザーで [Microsoft Entra へのサインイン]**タブが開き、 **[選択とアカウント**] ウィンドウが表示された場合は、Holly のアカウントを選択し、[パスワード**の入力**] ウィンドウに、ラボ ホスティング プロバイダーからテナント管理者アカウント用に提供されたものと同じ**Microsoft 365 テナント パスワードを**入力します。 MOD管理者アカウント）。滞在中に**サインインしていますか?** ウィンドウで、**「今後これを表示しない」**を選択し、次に**「はい」**を選択します。
 
-4. If a **Sign in to Microsoft Entra** tab opens in your browser displaying the **Pick and account** window, select Holly's account, and in the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account). On the **Stay signed in?** window, select **Don't show this again** and then select **Yes**.
+5. **Microsoft Entra 管理センター**では、デフォルトで**ホーム**ページが表示されます。「ホーム」ページの一番下までスクロールし、**「機能のハイライト」**セクションで**「Privileged Identity Management」**を選択します。
 
-5. In the **Microsoft Entra admin center**, the **Home** page is displayed by default. Scroll down towards the bottom of the Home page and in the **Feature highlights** section, select **Privileged Identity Management**.
+6. Privileged **Identity Management | クイック スタート**ウィンドウの中央ペインの**[管理]セクションの下にある****[Azure AD ロール]**を選択します。
 
-6. In the **Privileged Identity Management | Quick start** window, in the middle pane under the **Manage** section, select **Azure AD roles**.
+7. アダタムコーポレーションでは**| クイック スタート**ウィンドウの中央ペインの**[管理]セクションの下にある****[設定]**を選択します。
 
-7. In the **Adatum Corporation | Quick start** window, in the middle pane under the **Manage** section, select **Settings**. 
+8. アダタムコーポレーションでは**| 設定**ウィンドウで、**全体管理者の**役割を選択します。
 
-8. In the **Adatum Corporation | Settings** window, select the **Global Administrator** role. <br/>
+   **ヒント:**役割がアルファベット順に表示されない場合は、**「役割」**見出しを選択してアルファベットの昇順に並べ替えます。これにより、全体管理者の役割を見つけやすくなります。
 
-    **Tip:** If the roles are not displayed in alphabetical order, select the **Role** heading to sort them in ascending alphabetical order. This will make it easier to locate the Global administrator role.
+9. **[役割設定の詳細 - グローバル管理者]**ウィンドウで、ページをスクロールし、役割のアクティブ化、割り当て、および通知に関する情報を確認します。次に、ページ上部のメニュー バーで**[編集]を選択します。**
 
-9. In the **Role setting details -  Global Administrator** window, scroll through the page and review the information for role activation, assignment, and notification. Then select **Edit** on the menu bar at the top of the page.
+10. **「ロール設定の編集 - グローバル管理者」**ウィンドウには、デフォルトで**「アクティベーション」**タブが表示されます。このタブのアクティブ化スライダーの下で、[**アクティブ化時、必須]設定に****Azure MFA**オプションが既定で選択されていることを確認します(選択されていない場合は、ここで選択します)。これには、ロールのアクティベーションを要求する人は、多要素認証を使用してサインインし、本人であることを追加で証明する必要があります。
 
-10. In the **Edit role setting - Global Administrator** window, the **Activation** tab is displayed by default. In this tab, below the activation slider, verify the **Azure MFA** option is selected by default for the **On activation, require** setting (if it's not selected, then select it now). This will require that the person requesting activation of the role will have to sign in using multi-factor authentication to provide additional verification that they are who they say they are.
+11. ウィンドウには 3 つの設定のグループが表示され、それぞれに対応するチェック ボックスが付いています。**[アクティブ化するには承認が必要]**チェック ボックスをオンにします。これにより、**「承認者の選択」**セクションが有効になります。他の 2 つのチェック ボックスのデフォルト設定は変更しないでください。
 
-11. The window then displays a group of three settings, each of which has a corresponding check box. Select the **Require Approval to activate** check box. By doing so, the **Select approver(s)** section becomes enabled. Do not change the default settings of the other two check boxes.
+12. **「承認者の選択」**セクションでは、特定の承認者が選択されていません。ホリーは自分自身をこのロールの承認者として割り当てたいので、このセクションを選択します。右側に開く [**メンバーの選択]**ウィンドウで、通常はユーザーのリストをスクロールして、 **Holly Dickson**を選択します。ただし、前のラボ演習では 200 を超えるユーザーがオンプレミスの Active Directory から Azure AD に同期されたため、ユーザー リストをスクロールするのは非常に時間がかかります。
 
-12. In the **Select approver(s)** section, no specific approver has been selected. Holly wants to assign herself as the approver for this role, so select this section. In the **Select a member** pane that opens on the right, you would normally scroll through the list of users and select **Holly Dickson**. However, since over 200 users were synchronized from the on-premises Active Directory to Azure AD in the prior lab exercise, scrolling through the user list will be too time consuming. <br/>
+    したがって、**検索**ボックスに**「Holly」**と入力します。名前が Holly で始まるユーザーのリストで、onmicrosoft.com ドメインに属する Holly Dickson のユーザー アカウント ( **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)** ) を選択します。カスタム ドメインに適用される Holly のユーザー アカウントを選択しないでください。次に、**「選択」**ボタンを選択します。
 
-    Therefore, enter **Holly** in the **Search** box. In the list of users whose first name starts with Holly, select Holly Dickson's user account that pertains to the onmicrosoft.com domain (**Holly@xxxxxZZZZZZ.onmicrosoft.com**). Do NOT select Holly's user account that applies to the custom domain. Then select the **Select** button.
+13. **[ロール設定の編集 - グローバル管理者]**ウィンドウで、ページの上部にある**[通知]タブを選択します。**
 
-13. In the **Edit role setting - Global Administrator** window, select the **Notification** tab at the top of the page.
+14. **[通知]**タブで、通知の送信をトリガーできる 3 つのアクティビティに注目してください。**次の場合に通知を送信します。**
 
-14. On the **Notification** tab, note the three activities that can trigger a notification being sent: **Send notifications when...**    <br/>
+    - メンバーはこの役割に適任として割り当てられます
+    - メンバーはこのロールにアクティブとして割り当てられます
+    - 適格なメンバーがこのロールをアクティブ化します
 
-    - members are assigned as eligible to this role
-    - members are assigned as active to this role
-    - eligible members activate this role
+    これら 3 つのアクティビティごとに、アラートを送信できます (アクティビティに応じて、ロール割り当てアラートまたはロール アクティベーション アラートのいずれかになります)。これらの各アラートのデフォルト値は**Admin**で、これは全体管理者および任意の特権ロール管理者を指します。ホリーは、このアラート通知メールをこれらの管理者に送信するだけでなく、各アクティビティのアラートを MOD 管理者アカウントに送信することを望んでいます。
 
-    For each of these three activities, an alert can be sent (depending on the activity, it will either be a Role assignment alert or a Role activation alert). The default value for each of these alerts is **Admin**, which refers to the Global Administrators and any Privileged Role Administrators. Besides sending this alert notification email to these admins, Holly wants the alert for each activity sent to the MOD administrator account. <br/>
+    3 つのアラート (最初の 2 つの**アクティビティの役割割り当てアラート**と最後のアクティビティの役割**アクティブ化アラート**)のそれぞれの [追加受信**者**] フィールドに、MOD 管理者の電子メール ID **[admin@xxxxxZZZZZZ.onmicrosoft.com](mailto:admin@xxxxxZZZZZZ.onmicrosoft.com)**を入力します(xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス)。
 
-    In the **Additional recipients** field for each of the three alerts (the **Role assignment alert** for the first two activities and the **Role activation alert** for the final activity), enter the MOD administrator's email ID of **admin@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider).
+15. **[役割設定の編集 - グローバル管理者]**ウィンドウの下部で、 **[更新]**を選択します。
 
-15. At the bottom of the **Edit role setting - Global Administrator** window, select **Update**.
+16. 次のタスクのためにブラウザのタブはすべて開いたままにしておきます。
 
-16. Leave all browser tabs open for the next task.
+### [タスク 2 - 適格なグループを全体管理者ロールに割り当てる](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_04_Lab4_Ex1_PIM_Admin_Approval.md#task-2---assign-an-eligible-group-to-the-global-admin-role)
 
+Adatum の PIM パイロット プロジェクトにおいて、Holly は、グローバル管理者の役割を割り当てる資格のある唯一のユーザーとして Patti Fernandez を選択しました。ただし、今後の役割の割り当てを簡素化するために、ホリーはセキュリティ グループを作成し、そのグループに Patti を割り当ててから、そのグループを全体管理者役割に割り当てたいと考えています。
 
-### Task 2 - Assign an eligible group to the Global Admin role
+グループにロールを割り当てると、Azure AD でのロール割り当ての管理が簡素化されます。グローバル管理者 (Holly など) または特権ロール管理者が複数のユーザーにロールを個別に割り当てることを要求する代わりに、セキュリティ グループを作成して、そのグループがその特定のロールに適格となるようにすることができます。ユーザーがグループのメンバーとして割り当てられると、間接的にその役割を割り当てる資格が得られます。企業の既存のガバナンス ワークフローは、グループのメンバーシップの承認プロセスと監査を処理して、正当なユーザーのみがグループのメンバーであることを保証し、特定の役割が割り当てられるようにします。
 
-For Adatum's PIM pilot project, Holly has selected Patti Fernandez as the sole user who will be eligible to be assigned the Global admin role. However, to simplify future role assignments, Holly wants to create a security group, assign Patti to the group, and then assign the group to the Global admin role. 
+このタスクでは、Holly は、グローバル管理者ロールの資格のあるユーザー向けに、ロールを割り当て可能な新しいセキュリティ グループを作成します。次に、Patti をグループに割り当て、そのグループが全体管理者の役割に適格になるようにします。
 
-Assigning roles to groups can simplify the management of role assignments in Azure AD. Instead of requiring a Global admin (such as Holly) or a Privileged Role Administrator to assign a role to multiple people individually, they can create a security group and then enable the group to be eligible for that specific role. When people are assigned as members of the group, they indirectly become eligible to be assigned the role. The company's existing governance workflow can then take care of the approval process and auditing of the group's membership to ensure that only legitimate users are members of the group and are thus assigned the particular role. 
+1. LON-CL1 では、Edge ブラウザーで、Holly Dickson として Microsoft 365 にログインしているはずです。
 
-In this task, Holly will create a new, role-assignable security group for users who are eligible for the Global admin role. She will then assign Patti to the group, and then enable the group to be eligible for the Global Administrator role.
+2. **まず、Azure AD にPIM-Global-Administrators**というロール割り当て可能な新しいセキュリティ グループを作成し、Patti をグループのメンバーとして割り当てます。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as Holly Dickson.
+   **Edge**ブラウザーでは、 **Adatum Corporation |**が表示されているタブで**Microsoft Entra 管理センターが**開いているはずです。前のタスクの**設定ウィンドウ。**左側のナビゲーション ウィンドウで、**[グループ]**を選択し、**[すべてのグループ]**を選択します。
 
-2. You will begin by creating a new, role-assignable security group called **PIM-Global-Administrators** in Azure AD, and you will assign Patti as a member of the group. <br/>
+3. グループ内**| [すべてのグループ]**ウィンドウの右側の詳細ペインで、メニュー バーの**[新しいグループ]を選択します。**
 
-    In your **Edge** browser, you should still have the **Microsoft Entra admin center** open in a tab that's displaying the **Adatum Corporation | Settings** window from the prior task. In the left-hand navigation pane, select **Groups**, and then select **All groups**.
+4. **[新しいグループ]**ウィンドウで、次の情報を入力します。
 
-3. In the **Groups | All groups** window, in the detail pane on the right, select **New group** in the menu bar.
+   - グループタイプ -**セキュリティ**
+   - グループ名 - **PIM-Global-Administrators**
+   - グループの説明 - **PIM のグローバル管理者ロールに割り当てることができる適格なユーザーのグループ**
+   - Azure AD ロールをグループに割り当てることができます -**はい**
+   - メンバーシップの種類 -**割り当て済み**
+   - 所有者 - **[所有者が選択されていません]**を選択します。**[所有者の追加]**ウィンドウで、**検索**フィールドに**「Holly」**と入力し、**[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**ユーザー アカウントを選択します。
+   - メンバー - **「メンバーが選択されていません」**を選択します。**[メンバーの追加]**ウィンドウで、**検索**フィールドに**「Patti」**と入力し、Patti Fernandez のユーザー アカウントを選択します。
 
-4. In the **New group** window, enter the following information:
+5. ページの下部にある**「作成」**ボタンを選択します。
 
-    - Group type - **Security**
+6. ページの上部に、「**Azure AD ロールを割り当てることができるグループの作成は、後で変更できない設定です」という内容のダイアログ ボックスが表示されます。この機能を追加してもよろしいですか?** 。**[はい]**を選択します。
 
-    - Group name - **PIM-Global-Administrators**
+7. ここで、**PIM-Global-Administrators**グループを役割の割り当てに適格にする必要があります。左側のナビゲーションペインで、**「Identity Governance」**を選択してセクションを展開し、**「Privileged Identity Management」**を選択します。
 
-    - Group description - **Group of eligible users that can be assigned to the Global Administrator role in PIM**
+8. Privileged **Identity Management | クイック スタート**ウィンドウの中央ペインの**[管理]セクションの下にある****[Azure AD ロール]**を選択します。
 
-    - Azure AD roles can be assigned to the group - **Yes**
+9. アダタムコーポレーションでは**| クイック スタート**ウィンドウの右側の詳細ペインに、**Privileged Identity Management**ウィンドウが表示されます。このウィンドウには、「割り当て」、「アクティブ化」、「承認」、および「監査」のセクションが表示されます。**「割り当て」**セクションで、**「資格の割り当て」**ボタンを選択します。
 
-    - Membership type - **Assigned**
+10. アダタムコーポレーションでは**| [役割]**ウィンドウで、役割のリストを下にスクロールし、**[全体管理者]**を選択します。
 
-    - Owners - Select **No owners selected**. In the **Add owners** pane, enter **Holly** in the **Search** field and select the **Holly@xxxxxZZZZZZ.onmicrosoft.com** user account
+11. グローバル管理者**| [割り当て]**ウィンドウで、メニュー バーの**[+割り当ての追加]を選択します。**
 
-    - Members - Select **No members selected**. In the **Add members** pane, enter **Patti** in the **Search** field and select Patti Fernandez's user account
+12. **「割り当ての追加」**ウィンドウには、デフォルトで**「メンバーシップ」**タブが表示されます。**[メンバーの選択]**で、**[メンバーが選択されていません]**を選択します。
 
-5. Select the **Create** button at the bottom of the page.
+13. 右側に表示される**「メンバーの選択」**ペインで、 **「検索」**フィールドに**「PIM」**と入力します。**これにより、名前がPIM**で始まる対象となるユーザーおよびグループのリストが表示されます。**表示されるPIM-Global-Administrators**グループを選択し、**[選択]**ボタンを選択します。
 
-6. A dialog box appears at the top of the page that says: **Creating a group to which Azure AD roles can be assigned is a setting that cannot be changed later. Are you sure that you want to add this capability?**. Select **Yes**.
+14. **[割り当ての追加]**ウィンドウで、**[次へ]を選択します (これは、** **[設定]**タブを選択するのと同じことを行います)。
 
-7. You must now make the **PIM-Global-Administrators** group eligible for role assignment. In the left-hand navigation pane, select **Identity Governance** to expand the section, and then select **Privileged Identity Management**.
+15. **[割り当ての追加]**ウィンドウの**[設定]**タブで、 **[割り当ての種類]オプションが****[適格]**に設定されていることを確認します。また、**[永続的に適格]**チェック ボックスが選択されていることを確認し (選択されていない場合は、すぐに選択してください)、**[割り当て]**を選択します。
 
-8. In the **Privileged Identity Management | Quick start** window, in the middle pane under the **Manage** section, select **Azure AD roles**.
+16. グローバル管理者**| [割り当て]**ウィンドウで、**PIM-Global-Administrators**グループがグローバル管理者ロールへの適格な割り当てであることに注意してください。**PIM-Global-Administrators**はグループであるため、このグループ (Patti Fernandez で構成される) のすべてのメンバーがグローバル管理者の役割を割り当てる資格があることを意味します。
 
-9. In the **Adatum Corporation | Quick start** window, the detail pane on the right displays the **Privileged Identity Management** window. This window displays the following sections - Assign, Activate, Approve, and Audit. Under the **Assign** section, select the **Assign Eligibility** button.
+    **注:ラボでのテストでは、新しい割り当てが****[対象となる割り当て]**タブに表示されるまでに最大 30 分かかる場合があることがわかっています。**PIM-Global-Administrators が**すぐに表示されない場合は、数分間待ってから、メニュー バーの**[更新]オプションを選択します。****PIM-Global-Administrators が****[適格な割り当て]**のリストに表示されるまで、数分ごとに**[更新]**オプションを選択し続けます。
 
-10. In the **Adatum Corporation | Roles** window, scroll down through the list of roles and select **Global Administrator**.
+17. 次のタスクのためにブラウザのタブはすべて開いたままにしておきます。
 
-11. In the **Global Administrator | Assignments** window, select **+Add assignments** on the menu bar. 
+### [タスク 3 - グローバル管理者ロールのリクエストを送信する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_04_Lab4_Ex1_PIM_Admin_Approval.md#task-3---submit-a-request-for-the-global-admin-role)
 
-12. In the **Add assignments** window, the **Membership** tab is displayed by default. Under **Select member(s)**, select **No member selected**.
+**PIM-Global-Administrators**グループがグローバル管理者ロールの資格を取得したので、グループのメンバー (この場合は Patti Fernandez) に、Azure AD Privileged Identity Management を使用してグローバル管理者ロールを割り当てることができます。ホリーは、パイロット プロジェクトで PIM プロセスをテストしたいと考えています。このタスクでは、全体管理者ロールの権限を割り当てるリクエストを送信する Patti の役割を引き受けます。次のタスクでは、ホリーは自分のリクエストを確認して承認します。
 
-13. In the **Select a member** pane that appears on the right, enter **PIM** in the **Search** field. This will display the list of eligible users and groups whose name starts with **PIM**. Select the **PIM-Global-Administrators** group that appears, and then select the **Select** button.
+**注:**アクティベーション要求プロセスは、多要素認証 (MFA) を要求するように設定されています。このプロセスを完了するための電話がない場合は、インストラクターに通知してください。他の生徒と協力して、残りの 2 つのタスクを完了するのを観察できる場合があります。
 
-14. In the **Add assignments** window, select **Next** (this does the same thing as selecting the **Setting** tab). 
+1. LON-CL1 で、タスクバーの**Edge**アイコンを右クリックし、表示されるメニューで**[新しい InPrivate ウィンドウ]**を選択します。
 
-15. In the **Add assignments** window, under the **Setting** tab, verify the **Assignment type** option is set to **Eligible**. Also verify the **Permanently eligible** check box is selected (if not, then do so now), and then select **Assign**. 
+2. **InPrivate ブラウジング**セッションで、アドレス バーに次の URL を入力します: **[https://portal.azure.com](https://portal.azure.com/)**
 
-16. In the **Global Administrator | Assignments** window, note that the **PIM-Global-Administrators** group is an eligible assignment to the Global Administrator role. Because **PIM-Global-Administrators** is a group, it means that all members of this group (which consists of Patti Fernandez) are now eligible to be assigned the Global Administrator role.
+3. 次に、Patti Fernandez として Azure にログインします。**[サインイン]**ウィンドウで、**[「PattiF@xxxxxZZZZZZ.onmicrosoft.com](mailto:PattiF@xxxxxZZZZZZ.onmicrosoft.com)**」 (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) と入力し、 [**次へ]**を選択します。**[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 [**サインイン]**を選択します。サインインした状態で**滞在しますか?** ダイアログ ボックスで、**[今後これを表示しない]**チェック ボックスをオンにし、**[はい]**を選択します。
 
-    **Note:** Lab testing has shown that it can sometimes take up to 30 minutes for new assignments to appear under the **Eligible assignments** tab. If **PIM-Global-Administrators** doesn't appear immediately, wait a few minutes and then select the **Refresh** option on the menu bar. Continue to select the **Refresh** option every few minutes until **PIM-Global-Administrators** appears in the list of **Eligible assignments**.
+4. **表示される[Microsoft Azure へようこそ]**ダイアログ ボックスで、 **[後で]**を選択してツアーをスキップします。
 
-17. Leave all browser tabs open for the next task.
+5. **Microsoft Azure**ポータルでは、画面の中央に**Azure サービス**のセクションがあります。このセクションには、一連の Azure サービスとそれに関連するアイコンが表示されます。行の最後で、**[その他のサービス]** (前方向矢印アイコン付き) を選択します。これにより、**「すべてのサービス」**ウィンドウが開きます。
 
+6. **「すべてのサービス」**ウィンドウで、ページ上部の**検索**ボックスに**「priv」と入力します。**検索結果のリストで、**[Azure AD Privileged Identity Management]**を選択します。
 
-### Task 3 - Submit a request for the Global Admin role
+7. Privileged **Identity Management | クイック スタート**ウィンドウの左側のナビゲーション ペインの**[タスク]セクションで、** **[自分の役割]**を選択します。
 
-Now that the **PIM-Global-Administrators** group has been made eligible for the Global administrator role, the members of the group (in this case, Patti Fernandez) can be assigned the Global Administrator role using Azure AD Privileged Identity Management. Holly wants to test out the PIM process in her pilot project. In this task, you will take on the role of Patti, who will submit a request to be assigned Global administrator role privileges. In the next task, Holly will review her request and approve it.
+8. 私の**役割 | Azure AD ロール**ウィンドウでは、既定で**[適格な割り当て]**タブが表示されます。**前のタスクで、Holly が Patti をPIM-Global-Administrators**グループのメンバーとして割り当て、その後、Holly がそのグループをグローバル管理者ロールの適格グループとして割り当てたことを思い出してください。**そのため、このロールは[適格な割り当て]**のリストに表示されます。
 
-**NOTE:** The activation request process is set up to require multifactor authentication (MFA). If you do not have a phone to complete this process, notify your instructor. You may be able to partner with another student to watch them complete the remaining two tasks.
+   グローバル管理者ロールの**[アクション]**列で、 **[アクティブ化]**を選択します。
 
-1.  In LON-CL1, right-click on the **Edge** icon on the taskbar and in the menu that appears, select **New InPrivate window**. 
+9. **「アクティブ化 - グローバル管理者」**ペインでは、追加の検証が必要であることを示す警告メッセージがペインの上部に表示されます。続行するには、このメッセージを選択してください。
 
-2. In your **InPrivate browsing** session, enter the following URL in the address bar: **https://portal.azure.com**
+10. **表示される「詳細情報が必要です」**ウィンドウで、**「次へ」**を選択します。
 
-3. You're now going to log into Azure as Patti Fernandez. In the **Sign in** window, enter **PattiF@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) and then select **Next**. In the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in**. In the **Stay signed in?** dialog box, select the **Don't show this again** check box and then select **Yes**.
+11. **Microsoft Authenticator**ページでは、このモバイル アプリをダウンロードすることも、MFA 検証に別の方法を使用することもできます。このラボでは、このトレーニング クラス後に再度使用することのない Microsoft Authenticator アプリのインストールに時間を費やす必要がないように、携帯電話を使用することをお勧めします。
 
-4. In the **Welcome to Microsoft Azure** dialog box that appears, select **Maybe later** to skip the tour.
+    ページの下部にある「**別のメソッドを設定したい」**というハイパーリンク付きメッセージを選択します。
 
-5. In the **Microsoft Azure** portal, in the middle of the screen is the section of **Azure services**. This section displays a row of Azure services and their associated icons. At the end of the row, select **More services** (with the forward arrow icon). This opens the **All services** window.
+12. **表示される[別の方法を選択してください]**ダイアログ ボックスで、 **[どの方法を使用しますか?]**のドロップダウン矢印を選択します。フィールドで**[電話]**を選択し、**[確認]**を選択します。
 
-6. In the **All services** window, enter **priv** in the **Search** box at the top of the page. In the list of search results, select **Azure AD Privileged Identity Management**.
+13. **表示される[電話]**ウィンドウの**[どの電話番号を使用しますか?]**で、をクリックし、国または地域を選択し、その隣のフィールドに電話番号を入力します ( **nnn-nnn-nnnn**の形式)。**[コードをテキストで送信]**オプションが選択されていることを確認し、**[次へ]**を選択します。
 
-7. In the **Privileged Identity Management | Quick start** window, in the **Tasks** section in the left-hand navigation pane, select **My Roles**.
+14. 携帯電話に送信されたテキスト メッセージから確認コードを取得します。
 
-8. In the **My roles | Azure AD roles** window, the **Eligible assignments** tab is displayed by default. Remember, in the prior task Holly assigned Patti as a member of the **PIM-Global-Administrators** group, which Holly later assigned as an eligible group for the Global Administrator role. As such, this role appears in the list of **Eligible assignments**. <br/>
+15. **[電話]**ウィンドウの**[コードの**入力] フィールドに 6 桁の確認コードを入力し、**[次へ]**を選択します。
 
-    Under the **Action** column for the Global Administrator role, select **Activate**.
+16. 確認が完了し、電話が正常に登録されたことを示すメッセージを受信したら、**[次へ]**を選択します。
 
-9. In the **Activate - Global Administrator** pane, a warning message is displayed at the top of the pane indicating additional verification is required. Select this message to continue.
+17. 成功について**！**ページで、**「完了」**を選択します。
 
-10. In the **More information required** window that appears, select **Next**. 
+18. サインインがタイムアウトしたことを示すダイアログ ボックスが表示された場合は、Patti のパスワードを入力する必要があります。これは、ラボホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供される**Microsoft 365 テナント パスワードと同じです。**その後、別の確認コードが携帯電話に送信されます。**[コードの入力]**ウィンドウで、この新しいコードを入力し、**[確認]**を選択します。
 
-11. On the **Microsoft Authenticator** page, you can download this mobile app or use a different method for MFA verification. For the purposes of this lab, we recommend you use your mobile phone so that you do not have to take time installing the Microsoft Authenticator app that you may not use again after this training class. <br/>
+    **警告:**このプロセスの完了に時間がかかりすぎると、**「パスワードの入力」**ウィンドウが表示され、サインインプロセスの完了に時間がかかりすぎたためタイムアウトになることを示すメッセージが表示されます。これが発生した場合は、Holly のパスワードを使用して再度サインインする必要があります。このパスワードは、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供されているのと同じ**Microsoft 365 テナント パスワードです。**別の確認コードが携帯電話にテキストメッセージで送信されるので、表示される**[コードの入力]画面にそれを入力し、** **[確認]**を選択します。
 
-    Select the hyperlinked message at the bottom of the page that says: **I want to set up a different method**. 
+19. 画面の右側に表示される**[アクティブ化 - グローバル管理者]**ペインで、 **[理由]**フィールドに**「PIM のテスト」**と入力し、ペインの下部にある[**アクティブ化]ボタンを選択します。**
 
-12. On the **Choose a different method** dialog box that appears, select the drop-down arrow in the **Which method would you like to use?** field, select **Phone**, and then select **Confirm**. 
+20. 私の役割について**| Azure AD ロール**ウィンドウのメニュー バーに**[適格な割り当て]タブが表示されます。**その横に表示される**[アクティブな割り当て]**タブを選択します。全体管理者の役割はまだ表示されていないことに注意してください。ロールはアクティブ化されていますが、ホリーがパティのリクエストをまだ承認していないため、パティのアカウントには割り当てられていません。
 
-13. In the **Phone** window that appears, under **What phone number would you like to use?**, select your country or region, and then in the field next to it, enter your phone number (in the format **nnn-nnn-nnnn**). Verify the **Text me a code** option is selected and then select **Next**.
+    **注:**タスク 1 に戻り、Holly はユーザー アカウントのアクティブ化に承認が必要となるように全体管理者ロールを設定しました。Patti が行ったのは、自分のユーザー アカウントに対して全体管理者の役割をアクティブ化するよう要求したことです。これにより、ホリーにリクエストが送信され、ホリーはパティのロールのアクティブ化リクエストを承認または拒否できます。ホリーは、次のタスクでこのリクエストを確認して承認します。
 
-14. Retrieve the verification code from the text message that is sent to your phone.
+21. InPrivate ブラウズ セッションを開いたままにしておきます。ホリーがパティのリクエストを承認したら、次のタスクでそれに戻ります。
 
-15. In the **Phone** window, enter the 6-digit verification code in the **Enter code** field and then select **Next**.
+### [タスク 4 - グローバル管理者ロールのリクエストを承認する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_04_Lab4_Ex1_PIM_Admin_Approval.md#task-4----approve-the-request-for-the-global-admin-role)
 
-16. Once verification is complete and you receive a message indicating your phone was registered successfully, select **Next**.
+タスク 1 に戻り、ホリーは自分自身を全体管理者ロールの承認者として設定しました。パティはこの役割を割り当てるリクエストを送信したため、ホリーはリクエストを確認して、それを受け入れるか拒否するかを決定する必要があります。
 
-17. On the **Success!** page, select **Done**.
+1. LON-CL1 では、タスク バーの Edge アイコンの上にマウスを置くと、開いている 2 つの Edge セッションが表示されます。左側のウィンドウは、Holly Dickson として Microsoft 365 にサインインしている元の Edge**ブラウザー**セッション**です**。右側のウィンドウは、**Patti Fernandez**として**Azure AD**にサインインしている InPrivate Browser セッションです。
 
-18. If you receive a dialog box indicating your sign in has timed out, you will have to enter Patti's password, which is the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account). You will then be sent another verification code to your phone. On the **Enter code** window, enter this new code and then select **Verify**. <br/>
+   左側のウィンドウを選択して、**Holly Dickson**としてサインインしている元の Edge ブラウザー セッションに戻ります。
 
-    **WARNING:** If you take too long to complete this process, the **Enter password** window will appear with a message indicating you took too long to complete the sign in process, so you will be timed-out. If this occurs, you must sign in again with Holly's password, which is the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account). Another verification code will be texted to your phone, so enter it in the **Enter code** screen that appears and select **Verify**.
+2. ブラウザで、**グローバル管理者 |** **Microsoft Entra 管理センターに****[割り当て]**ウィンドウが表示されます。
 
-19. In the **Activate - Global Administrator** pane that appears on the right-side of the screen, enter **Testing PIM** in the **Reason** field, and then select the **Activate** button at the bottom of the pane.
+   ページ上部のナビゲーション スレッド (**ホーム > Privileged Identity Management | Azure AD ロール > Adatum Corporation | ロール**) で、**Privileged Identity Management |ロール を選択します。Azure AD のロール**。
 
-20. On the **My roles | Azure AD roles** window, the **Eligible assignments** tab is displayed on the menu bar. Select the **Active assignments** tab that appears next to it. Note the Global Administrator role does not yet appear. While the role has been activated, it has not been assigned to Patti's account since Holly has not yet approved Patti's request.  <br/>
+3. Privileged **Identity Management | クイック スタート**ウィンドウの中央ペインの**[タスク]の下にある****[リクエストの承認]**を選択します。
 
-     **Note:** If you recall, back in Task 1 Holly set up the Global Administrator role so that activation to a user account will require approval. What Patti just did was request that the Global Admin role be activated for her user account. This will send a request to Holly, who can then either approve or deny Patti's request for role activation. Holly will review and then approve this request in the next task.
+4. リクエストの**承認 | Azure AD ロールウィンドウの****[ロール アクティベーションのリクエスト]**セクションで、Patti Fernandez からの全体管理者リクエストの左側にあるチェック ボックスをオンにし、[**承認**]ボタンを選択します。
 
-21. Leave the InPrivate browsing session open. You will return to it in the next task once Holly approves Patti's request.
+5. 画面の右側に表示される**「リクエストの承認」**ペインで、 **「理由」**フィールドに**「PIM テスト」と入力し、** **「確認」**を選択します。
 
+6. タスクバーの**Edge**アイコンの上にマウスを置き、右側のウィンドウを選択して、Patti がサインインしている InPrivate Browser セッションに戻ります。
 
-### Task 4 -  Approve the request for the Global Admin role
+7. 私の**役割 | Azure AD ロール**ウィンドウでは、Patti の要求を承認する前の前のタスクから [**アクティブな割り当て]タブが現在選択されています。**
 
-Back in Task 1, Holly set herself up as the approver for the Global Administrator role. Since Patti has submitted a request to be assigned this role, Holly must review the request and determine whether to accept or deny it. 
+   メニューバーで**「更新」**を選択します。</br/>
 
-1.  In LON-CL1, hover your mouse over the Edge icon on your taskbar to see the two Edge sessions that you have open - the window on the left is the original Edge browser session in which you are signed into **Microsoft 365** as **Holly Dickson**, and the window on the right is the InPrivate Browser session in which you are signed into **Azure AD** as **Patti Fernandez**. <br/>
+   全体管理者ロールが Patti に対してどのようにアクティブ化されるかに注目してください。Azure AD Privileged Identity Management を使用して、Patti に全体管理者ロールが割り当てられていることを確認しました。
 
-    Select the window on the left to go back to the original Edge browser session in which you are signed in as **Holly Dickson**. 
+8. InPrivate ブラウザー セッションを閉じます。
 
-2.  In your browser, the **Global Administrator | Assignments** window should be displayed in the **Microsoft Entra admin center**. <br/>
+9. Edge ブラウザでは、次のラボのためにすべてのタブを開いたままにしておきます。
 
-    In the navigation thread at the top of the page (**Home > Privileged Identity Management | Azure AD roles > Adatum Corporation | Roles**), select **Privileged Identity Management | Azure AD roles**.
-
-3. In the **Privileged Identity Management | Quick start** window, in the middle pane under **Tasks**, select **Approve requests**.
-
-4. In the **Approve requests | Azure AD roles** window, in the **Requests for role activations** section, select the check box to the left of the Global Administrator request from Patti Fernandez, and then select the **Approve** button.
-
-5. In the **Approve Request** pane that appears on the right-side of the screen, enter **PIM testing** in the **Justification** field and then select **Confirm**.
-
-6.  Hover your mouse over the **Edge** icon on the taskbar and select the window on the right to go back to the InPrivate Browser session where Patti is signed in. 
-
-7. In the **My roles | Azure AD roles** window, the **Active assignments** tab is currently selected from the prior task, prior to approving Patti's request. <br/>
-
-    Select **Refresh** on the menu bar. </br/>
-
-    Note how the Global Administrator role is now activated for Patti. You have just verified that Patti has been assigned the Global Administrator role using Azure AD Privileged Identity Management.
-
-8. Close the InPrivate browser session.
-
-9. In your Edge browser, leave all the tabs open for the next lab.
-
-
-# Proceed to Lab 4 - Exercise 2
+# [ラボ 4 - 演習 2 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_04_Lab4_Ex1_PIM_Admin_Approval.md#proceed-to-lab-4---exercise-2)

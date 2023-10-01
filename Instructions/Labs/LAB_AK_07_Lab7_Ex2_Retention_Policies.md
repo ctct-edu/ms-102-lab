@@ -1,113 +1,106 @@
-# Learning Path 7 - Lab 7 - Exercise 2 - Configure In-place Archiving and Retention Policies  
+# [ラーニング パス 7 - ラボ 7 - 演習 2 - インプレースのアーカイブおよび保持ポリシーを構成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex2_Retention_Policies.md#learning-path-7---lab-7---exercise-2---configure-in-place-archiving-and-retention-policies)
 
-In this exercise, you will use the the Microsoft Exchange admin center to enable In-place archiving for Holly Dickson's mailbox. You will then configure two retention policies through the Microsoft Purview portal. 
+この演習では、Microsoft Exchange 管理センターを使用して、Holly Dickson のメールボックスのインプレース アーカイブを有効にします。次に、Microsoft Purview ポータルを通じて 2 つの保持ポリシーを構成します。
 
-### Task 1 – Activate In-Place Archiving for a new user's mailbox
+### [タスク 1 – 新しいユーザーのメールボックスに対してインプレース アーカイブをアクティブ化する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex2_Retention_Policies.md#task-1--activate-in-place-archiving-for-a-new-users-mailbox)
 
-In this next phase of your Adatum pilot project, you will access the Microsoft Exchange admin center to activate Holly Dickson’s archive mailbox. After Holly's archive mailbox is enabled, the default retention policy that's assigned to her mailbox does the following: <br/>
+Adatum パイロット プロジェクトの次のフェーズでは、Microsoft Exchange 管理センターにアクセスして、Holly Dickson のアーカイブ メールボックスをアクティブ化します。ホリーのアーカイブ メールボックスが有効になると、彼女のメールボックスに割り当てられた既定のアイテム保持ポリシーによって次の処理が実行されます。
 
-- Moves items that are two years or older from Holly's primary mailbox to her archive mailbox.
-- Moves items that are 14-days or older from the Recoverable Items folder in Holly's primary mailbox to the Recoverable Items folder in her archive mailbox.
+- 2 年以上前のアイテムを、ホリーのプライマリ メールボックスからアーカイブ メールボックスに移動します。
+- 14 日以上経過したアイテムを、ホリーのプライマリ メールボックスの回復可能なアイテム フォルダーからアーカイブ メールボックスの回復可能なアイテム フォルダーに移動します。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**.
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-2. In Microsoft Edge, in the **Microsoft 365 admin center**, under the **Admin centers** group, select **Exchange** to open the Exchange admin center.
+2. Microsoft Edge の**Microsoft 365 管理センターの****[管理センター]**グループで、 **[Exchange]**を選択してExchange 管理センターを開きます。
 
-5. In the **Exchange admin center**, the **Manage mailboxes** page appears by default. Note the users who have an **Archive status** that is set to **Active**. These archive mailboxes were enabled when the VM lab environment was built for this training course and these users were preconfigured in the tenant. However, since you added Holly's user account in one of the first labs at the start of this course, her archive mailbox is **Disabled** by default. <br/>
+3. **Exchange 管理センター**では、デフォルトで**[メールボックスの管理]**ページが表示されます。**アーカイブ ステータスが****[アクティブ]**に設定されているユーザーに注目してください。これらのアーカイブ メールボックスは、このトレーニング コース用に VM ラボ環境が構築され、これらのユーザーがテナントで事前構成されたときに有効になりました。ただし、このコースの開始時に最初のラボの 1 つで Holly のユーザー アカウントを追加したため、彼女のアーカイブ メールボックスはデフォルトで**無効に**なっています。
 
-	To enable Holly’s archive mailbox, select **Holly Dickson** in the user list. In the **Holly Dickson** pane that appears, select the **Others** tab. In the **Mailbox archive** section, note that Holly's archive mailbox is disabled. In this group, select **Manage mailbox archive**. 
+   Holly のアーカイブ メールボックスを有効にするには、ユーザー リストで**Holly Dicksonを選択します。**表示される**[Holly Dickson]**ペインで、 **[その他]**タブを選択します。**[メールボックス アーカイブ]**セクションで、Holly のアーカイブ メールボックスが無効になっていることに注意してください。このグループで、**[メールボックス アーカイブの管理]**を選択します。
 
-6. In the **Manage mailbox archive** pane that appears, select the toggle switch for **Mailbox archive status** to change it to **Enabled**. Select **Save** and then close the pane.
+4. **表示される[メールボックス アーカイブの管理]**ウィンドウで、 **[メールボックス アーカイブ ステータス]**の切り替えスイッチを選択して、 **[有効**] に変更します。**[保存]**を選択してペインを閉じます。
 
-7. It might take a few moments to create Holly's archive mailbox. In the **Manage mailboxes** page, select the **Refresh** icon on the menu bar above the list of users. Holly's archive mailbox should now be **Active** once the archive mailbox is created. You may have to wait a minute or two and refresh again until **Active** appears.
+5. Holly のアーカイブ メールボックスを作成するには、少し時間がかかる場合があります。**[メールボックスの管理]**ページで、ユーザーのリストの上にあるメニュー バーの**[更新]アイコンを選択します。**アーカイブ メールボックスが作成されると、Holly のアーカイブ メールボックスは**アクティブ**になるはずです。**[アクティブ] が**表示されるまで、1 ～ 2 分待ってから再度更新する必要がある場合があります。
 
-8. In your Microsoft Edge browser, leave your Edge browser and all its tabs open for the next task. 
- 
+6. Microsoft Edge ブラウザーでは、次のタスクのために Edge ブラウザーとそのすべてのタブを開いたままにしておきます。
 
-### Task 2 – Create an email retention policy for test users
+### [タスク 2 – テスト ユーザー用の電子メール保持ポリシーを作成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex2_Retention_Policies.md#task-2--create-an-email-retention-policy-for-test-users)
 
-As part of your pilot project for Adatum, you will configure email retention through the Microsoft Purview portal by creating a new retention policy. You will then assign this retention policy to Joni Sherman and Lynne Robbins’ mailboxes. Joni and Lynne are Holly's two test users for compliance testing. Holly wants to use this policy to test email retention for these two test users before creating a second retention policy in the next task that will be applied organization wide.
+Adatum のパイロット プロジェクトの一環として、新しい保持ポリシーを作成して、Microsoft Purview ポータルを通じて電子メールの保持を構成します。次に、このアイテム保持ポリシーを Joni Sherman と Lynne Robbins のメールボックスに割り当てます。Joni と Lynne は、Holly のコンプライアンス テスト用の 2 人のテスト ユーザーです。ホリーは、組織全体に適用される次のタスクで 2 番目の保持ポリシーを作成する前に、このポリシーを使用してこれら 2 人のテスト ユーザーの電子メール保持をテストしたいと考えています。
 
-1. On LON-CL1, your Microsoft Edge browser should still have the **Microsoft 365 admin center** open. Select the tab for the **Microsoft 365 admin center**. In the left-hand navigation pane, under the **Admin centers** section, select **Compliance**. Doing so will open the **Microsoft Purview** portal.
+1. LON-CL1 では、Microsoft Edge ブラウザーで**Microsoft 365 管理センターが**開いたままになっているはずです。**Microsoft 365 管理センター**のタブを選択します。左側のナビゲーション ウィンドウの [**管理センター]**セクションで、**[コンプライアンス]**を選択します。これにより、**Microsoft Purview**ポータルが開きます。
 
-2. In the **Microsoft Purview** portal, in the left-hand navigation pane, select **Data lifecycle management**, and then select **Microsoft 365**.
+2. **Microsoft Purview**ポータルの左側のナビゲーション ウィンドウで、**[データ ライフサイクル管理]**を選択し、**[Microsoft 365]**を選択します。
 
-3. In the **Data lifecycle management** window, in the list of tabs that appear across the top of the page, select **Retention policies**.
+3. **[データ ライフサイクル管理]**ウィンドウのページ上部に表示されるタブのリストで、**[保持ポリシー]**を選択します。
 
-4. On the **Retention policies** tab, select **+New retention policy** on the menu bar. This initiates the **Create retention policy** wizard.
+4. **[保持ポリシー]**タブで、メニュー バーの [ **+新しい保持ポリシー]を選択します。**これにより、**保持ポリシーの作成**ウィザードが開始されます。
 
-5. On the **Name your retention policy** page, enter **Test user email retention** in the **Name** field and then select **Next**.
+5. **[保持ポリシーに名前を付けます]**ページで、**[名前]**フィールドに**「テスト ユーザーの電子メール保持」**と入力し、**[次へ]**を選択します。
 
-6. On the **Choose the type of retention policy to create** field, select **Static** and then select **Next**.
+6. **[作成する保持ポリシーの種類を選択してください]**フィールドで、**[静的]を選択し、** **[次へ]**を選択します。
 
-7. On the **Choose where to apply the policy** page, note the Exchange email location. It's currently set to include **All recipients**. You want to change this to just apply to Joni Sherman and Lynne Robbins' mailboxes. Under **All mailboxes**, select **Edit**.
+7. **[ポリシーを適用する場所の選択]**ページで、Exchange の電子メールの場所をメモします。**現在、すべての受信者が**含まれるように設定されています。これを Joni Sherman と Lynne Robbins のメールボックスにのみ適用するように変更したいと考えています。**[すべてのメールボックス]**で**[編集]**を選択します。
 
-8. In the **Exchange email** pane that appears, hover your mouse over **Joni Sherman** and then select her check box. Do the same for **Lynne Robins**. <br/>
+8. **表示されるExchange 電子メール**ウィンドウで、 **Joni Sherman**の上にマウスを置き、チェック ボックスをオンにします。**リン・ロビンス**についても同じことを行います。
 
-	**Note:** If you select a user's name, the other check boxes that have been selected will be unselected. To select multiple users, you must hover your mouse over each user's name and select their check box that appears. <br/>
+   **注:**ユーザー名を選択すると、選択されていた他のチェック ボックスの選択が解除されます。複数のユーザーを選択するには、各ユーザーの名前の上にマウスを置き、表示されるチェック ボックスをオンにする必要があります。
 
-	Once both check boxes are selected, select **Done**.
+   両方のチェック ボックスをオンにしたら、**[完了]**を選択します。
 
-9. On the **Choose where to apply the policy** page, the **Exchange email** location should now indicate that **2 mailboxes** are included. <br/>
+9. **[ポリシーを適用する場所の選択]**ページで、**Exchange 電子メールの場所に****2 つのメールボックス**が含まれることが示されるはずです。
 
-	Since this policy will only apply to Exchange email for Joni and Lynne, set the **Status** toggle switch to **Off** for all other locations in which it's currently set to On (**SharePoint sites**, **OneDrive accounts**, and **Microsoft 365 Groups**). Select **Next**.
+   このポリシーは Joni と Lynne の Exchange 電子メールにのみ適用されるため、現在オンに設定されている他のすべての場所 ( **SharePoint サイト**、**OneDrive アカウント**、および**Microsoft 365 グループ**)では、**ステータス**トグル スイッチを**オフに設定します。****「次へ」**を選択します。
 
-10. On the **Decide if you want to retain content, delete it, or both** page, verify the **Retain items for a specific period** option is selected (if necessary, select it now). Then enter the following information for this option: <br/>
+10. **[コンテンツを保持するか削除するか、またはその両方を決定する]**ページで、[特定の期間アイテムを保持する] オプションが選択されていることを確認します(**必要**に応じて、ここで選択します)。次に、このオプションに次の情報を入力します。
 
-	- Retain items for a specific period - select in this field, and in the drop-down menu that appears, select **Custom**. Three fields will appear - years, months, and days. For testing purposes, Holly wants to test email retention for emails in Joni and Lynne's mailboxes by only retaining emails that are less than one year old. As such, set the time periods to the following values: **Years - 1, Months - 0, Days - 0**.
+    - アイテムを特定の期間保持します - このフィールドで選択し、表示されるドロップダウン メニューで [**カスタム]**を選択します。年、月、日の 3 つのフィールドが表示されます。テストの目的で、ホリーは、ジョニとリンのメールボックス内の電子メールの保存期間を、1 年未満の電子メールのみを保持することによってテストしたいと考えています。したがって、期間を次の値に設定します: **Years - 1、Months - 0、Days - 0**。
+    - **アイテムの作成時に**基づいて保存期間を開始します。
+    - 保存期間の終了時 -**アイテムは自動的に削除されます**
 
-	- Start the retention period based on - **When items were created**
+11. **「次へ」**を選択します。
 
-	- At the end of the retention period - **Delete items automatically**
+12. **[確認して終了]**ページで、選択内容を確認します。変更する必要がある場合は、適切な編集リンクを選択し、必要な変更を加えます。それ以外の場合は、すべてが正しい場合は、**[送信]**を選択します。
 
-11. Select **Next**.
+13. **[保持ポリシーが正常に作成されました]**ウィンドウで、**[完了]**を選択します。
 
-12. On the **Review and finish** page, review your selections. If anything needs to be changed, select the appropriate Edit link and make the necessary changes. Otherwise, if everything is correct, select **Submit**.
+14. 次のタスクで別の保持ポリシーを作成するため、Edge ブラウザーで**[データ ライフサイクル管理]**タブを開いたままにしておきます。
 
-13. On the **You successfully created a retention policy** window, select **Done**.
+### [タスク 3 – すべてのユーザーに対する電子メール保持ポリシーを作成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex2_Retention_Policies.md#task-3--create-an-email-retention-policy-for-all-users)
 
-14. Leave the **Data lifecycle management** tab open in your Edge browser as you will create another retention policy in the next task.
+ホリーは、前のタスクで作成した**テスト ユーザーの電子メール保持**ポリシーを使用して、ジョニとリンのメールボックスでの電子メール保持のテストを終了しました。Holly は現在、すべての Exchange Online メールボックスの内容を最後の変更から 5 年間削除されないように保存する保持ポリシーを作成したいと考えています。ホリーは電子メール保持テストを完了したため、まず**テスト ユーザーの電子メール保持**ポリシーを無効にしたいと考えています。これにより、Joni と Lynne のメールボックスは、このタスクで作成したすべての Adatum メールボックスに適用される保持ポリシーによって管理されるようになります。
 
+1. LON-CL1 では、Edge ブラウザーでは前のタスクで使用した**Microsoft Purview**ポータルが開いたままになっており、**データ ライフサイクル管理**ウィンドウが表示されているはずです。
 
-### Task 3 – Create an email retention policy for all users
+2. **[データ ライフサイクル管理]**ウィンドウのページ上部に表示されるタブのリストで、[**保持ポリシー]**を選択します(別のタブが選択されている場合)。
 
-Holly has concluded her testing of email retention on Joni and Lynne's mailboxes using the **Test user email retention** policy that you created in the prior task. Holly now wants to create a retention policy that preserves the content of all Exchange Online mailboxes from deletion for 5 years after the last modification. Since Holly has completed her email retention testing, she wants to first disable the **Test user email retention** policy. By doing so, Joni and Lynne's mailboxes will be governed by the retention policy that you create in this task that applies to all Adatum mailboxes. 
+3. **[保持ポリシー]**タブで、 **[ユーザーの電子メール保持をテストする]**の横にあるチェック ボックスをオンにし、メニュー バーで **[ポリシーを無効にする]を選択します。**
 
-1. On LON-CL1, your Edge browser should still have the **Microsoft Purview** portal open from the prior task, and it should be displaying the **Data lifecycle management** window.
+   ポリシーが無効になると、ポリシーが無効であることを示すメッセージがページの上部に一時的に表示されます。**これをテストするには、 [ユーザーの電子メール保持をテスト**する] の横にあるチェック ボックスをもう一度オンにします。メニュー バーには**[ポリシーを有効にする]**オプションが含まれていることに注意してください。このオプションは、ポリシーが現在無効であることを示します。これで、このタスクの残りの手順に進み、Adatum の公式の組織全体の電子メール保持ポリシーを作成できるようになります。
 
-2. In the **Data lifecycle management** window, in the list of tabs that appear across the top of the page, select **Retention policies** (if another tab is selected).
+4. **[保持ポリシー]**タブで、メニュー バーの [ **+新しい保持ポリシー]を選択します。**これにより、**保持ポリシーの作成**ウィザードが開始されます。
 
-3. On the **Retention policies** tab, select the check box next to **Test user email retention**, and then select **Disable policy** on the menu bar.  <br/>
+5. **[保持ポリシーに名前を付けます]**ページで、**[名前]**フィールドに**「Adatum 電子メールの保持」**と入力し、**[次へ]**を選択します。
 
-	Once the policy is disabled, a message will briefly appear at the top of the page indicating the policy is disabled. You can test this out by once again selecting the check box next to **Test user email retention**. Note that the menu bar includes an **Enable policy** option. This option indicates the policy is currently disabled. You can now proceed to the remaining steps in this task to create Adatum's official, organization-wide email retention policy.
+6. **[作成する保持ポリシーの種類を選択してください]**フィールドで、**[静的]を選択し、** **[次へ]**を選択します。
 
-4. On the **Retention policies** tab, select **+New retention policy** on the menu bar. This initiates the **Create retention policy** wizard.
+7. **[ポリシーを適用する場所の選択]**ページでは、このポリシーは**Exchange 電子メール**にのみ適用されます。**[ステータス**] が**[オン]**に設定されていることを確認します。**デフォルトでオンに**なっている他のすべての場所では、**ステータス**トグル スイッチを**オフ**に設定します。**Exchange 電子メールは、****Status が****On**に設定されている唯一の場所である必要があります。
 
-5. On the **Name your retention policy** page, enter **Adatum email retention** in the **Name** field and then select **Next**.
+8. **Exchange の電子メールの**場所については、現在**[すべてのメールボックス]**が含まれるように設定されていることに注意してください。このポリシーをすべてのユーザーのメールボックスに適用する必要があるため、この値は変更しないでください。**「次へ」**を選択します。
 
-6. On the **Choose the type of retention policy to create** field, select **Static** and then select **Next**.
+9. **[コンテンツを保持するか削除するか、またはその両方を決定する]**ページで、[特定の期間アイテムを保持する] オプションが選択されていることを確認します(**必要**に応じて、ここで選択します)。次に、このオプションに次の情報を入力します。
 
-7. On the **Choose where to apply the policy** page, this policy will only apply to **Exchange email**. Ensure that it's **Status** is set to **On**. Set the **Status** toggle switch to **Off** for all other locations that are turned **On** by default. **Exchange email** should be the only location whose **Status** is set to **On**. 
+   - アイテムを特定の期間 - **5 年間保持します**
+   - **アイテムが最後に変更されたときに**基づいて保存期間を開始します。
+   - 保存期間の終了時 -**アイテムは自動的に削除されます**
 
-8. For the **Exchange email** location, note that it's currently set to include **All mailboxes**. Do not change this value, since you want this policy to apply to all user mailboxes. Select **Next**.
+10. **「次へ」**を選択します。
 
-9. On the **Decide if you want to retain content, delete it, or both** page, verify the **Retain items for a specific period** option is selected (if necessary, select it now). Then enter the following information for this option: <br/>
+11. **[確認して終了]**ページで、選択内容を確認します。変更する必要がある場合は、適切な編集リンクを選択し、必要な変更を加えます。それ以外の場合は、すべてが正しい場合は、**[送信]**を選択します。
 
-	- Retain items for a specific period - **5 years**
+12. **[保持ポリシーが正常に作成されました]**ウィンドウで、**[完了]**を選択します。
 
-	- Start the retention period based on - **When items were last modified**
+13. Edge ブラウザでは、すべてのタブを開いたままにして次の演習に進みます。
 
-	- At the end of the retention period - **Delete items automatically**
+これで、Microsoft Purview ポータルで、すべてのメールボックスからのすべての Exchange 電子メールを最後の変更後 5 年間保持する新しい保持ポリシーが作成されました。
 
-10. Select **Next**.
-
-11. On the **Review and finish** page, review your selections. If anything needs to be changed, select the appropriate Edit link and make the necessary changes. Otherwise, if everything is correct, select **Submit**.
-
-12. On the **You successfully created a retention policy** window, select **Done**.
-
-13. In your Edge browser, leave all the tabs open as you proceed to the next exercise.
-
-You have now created a new retention policy in the Microsoft Purview portal that retains all Exchange emails from all mailboxes for 5 years after the last modification.
-
- # Proceed to Lab 7 - Exercise 3
- 
+# [ラボ 7 - 演習 3 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex2_Retention_Policies.md#proceed-to-lab-7---exercise-3)

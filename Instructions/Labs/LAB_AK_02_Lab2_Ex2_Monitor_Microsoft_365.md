@@ -1,180 +1,175 @@
-# Learning Path 2 - Lab 2 - Exercise 2 - Monitor and Troubleshoot Microsoft 365  
+# [ラーニング パス 2 - ラボ 2 - 演習 2 - Microsoft 365 の監視とトラブルシューティング](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex2_Monitor_Microsoft_365.md#learning-path-2---lab-2---exercise-2---monitor-and-troubleshoot-microsoft-365)
 
-In this exercise you will be introduced to some troubleshooting tools in Microsoft 365 that enable you to troubleshoot mail flow issues. You will then analyze Adatum’s Microsoft 365 service health by reviewing several of the key service health queries and reports that are available. You will conclude this exercise by reviewing how to submit a service request with the Microsoft Support team should you ever need assistance with a problem.
+この演習では、メール フローの問題のトラブルシューティングを可能にする Microsoft 365 のいくつかのトラブルシューティング ツールを紹介します。次に、利用可能ないくつかの主要なサービス正常性クエリとレポートを確認して、Adatum の Microsoft 365 サービス正常性を分析します。この演習は、問題に関してサポートが必要な場合に Microsoft サポート チームにサービス リクエストを送信する方法を確認して終了します。
 
-### Task 1 - Troubleshoot Mail Flow in Microsoft 365  
+### [タスク 1 - Microsoft 365 のメール フローのトラブルシューティング](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex2_Monitor_Microsoft_365.md#task-1---troubleshoot-mail-flow-in-microsoft-365)
 
-Holly Dickson, Adatum's new Microsoft 365 Administrator, wants to prepare herself for any potential mail flow problems that may occur within Adatum’s Exchange environment. As part of her pilot project, she has decided to create two test scenarios to analyze some of the troubleshooting options available to her. One email will be sent to an email address with an invalid domain (@alt.none). Another will be sent to an address with an invalid mailbox in a valid domain (@outlook.com). This task guides Holly though a variety of tools that she can use to troubleshoot different mail conflict scenarios. 
+Adatum の新しい Microsoft 365 管理者である Holly Dickson は、Adatum の Exchange 環境内で発生する可能性のあるメール フローの問題に備えたいと考えています。パイロット プロジェクトの一環として、彼女は利用可能なトラブルシューティング オプションのいくつかを分析するために 2 つのテスト シナリオを作成することにしました。無効なドメイン (@alt.none) のメール アドレスに 1 通のメールが送信されます。もう 1 つは、有効なドメイン (@outlook.com) 内の無効なメールボックスを持つアドレスに送信されます。このタスクでは、ホリーがさまざまなメール競合シナリオのトラブルシューティングに使用できるさまざまなツールについて説明します。
 
-1. You should still be logged into LON-CL1 after having completed the prior exercise, and you should still be logged into Microsoft 365 as Holly Dickson.
+1. 前の演習を完了した後も LON-CL1 にログインしており、Holly Dickson として Microsoft 365 にログインしているはずです。
 
-2. In your **Microsoft Edge** browser, select the **Home | Microsoft 365** tab to display Holly's Microsoft 365 Home page, which should still be open (if not, navigate to **https://portal.office.com** and log in as **Holly@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) with the **Microsoft 365 Tenant Password**).
+2. **Microsoft Edge**ブラウザで、 [**ホーム] | [ホーム]を選択します。[Microsoft 365]**タブをクリックして、Holly の Microsoft 365 ホーム ページを表示します。まだ開いているはずです (開いていない場合は、**[https://portal.office.comに移動し、 ](https://portal.office.com/)****[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**としてログインします(xxxxxZZZZZZ は提供されたテナント プレフィックスです)ラボ ホスティング プロバイダーによる)、**Microsoft 365 テナント パスワード**)。
 
-3. In the **Welcome to Microsoft 365** page, select the **Outlook** icon in the column of app icons on the left. 
+3. **[Microsoft 365 へようこそ]**ページで、左側のアプリ アイコンの列にある**Outlookアイコンを選択します。**
 
-4. If you're automatically signed into Outlook using Holly's account, then proceed to the next step. However, if a **Pick an account** window appears, select Holly's account of **Holly@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZis the tenant prefix provided by your lab hosting provider). <br/>
+4. Holly のアカウントを使用して Outlook に自動的にサインインしている場合は、次の手順に進みます。ただし、**[アカウントの選択]ウィンドウが表示された場合は、** **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**の Holly のアカウントを選択します(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。
 
-	If an **Enter password** window appears, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e., the MOD Administrator account) as Holly's password and select **Sign in**. <br/>
+   **[パスワードの入力]**ウィンドウが表示された場合は、ラボ ホスティング プロバイダーから提供されたテナント管理者アカウント (MOD 管理者アカウント) と同じ**Microsoft 365 テナント パスワードをHolly のパスワードとして入力し、** **[サインイン]**を選択します。
 
-	If a **Stay signed in?** window appears, select the **Don't show this again** check box and select **Yes**.
+   Stay がサインインしている場合は**?** ウィンドウが表示されたら、**「今後これを表示しない」**チェックボックスを選択し、**「はい」**を選択します。
 
-5. Holly's **Inbox** will be displayed in Outlook. If a **Welcome** window appears, select the **X** in the upper-right corner of the window to close it. <br/>
+5. Holly の**受信トレイ**が Outlook に表示されます。**ようこそ**ウィンドウが表示された場合は、ウィンドウの右上隅にある[ **X]を選択してウィンドウを閉じます。**
 
-	In Holly’s mailbox, at the top of the navigation pane, select the **New Mail** button to create a new email.
+   Holly のメールボックスのナビゲーション ウィンドウの上部にある**[新しいメール]**ボタンを選択して、新しい電子メールを作成します。
 
-6. In this email, you will send the mail to an email address in which the domain (alt.none) is an invalid domain. In the email pane that appears, enter **user@alt.none** in the **To** field. In the drop-down menu that appears, select **Use this address: user@alt.none**. 
+6. このメールでは、ドメイン (alt.none) が無効なドメインであるメール アドレスにメールを送信します。表示される電子メール ペインで、**[宛先]**フィールドに**[「user@alt.none」](mailto:user@alt.none)**と入力します。表示されるドロップダウン メニューで、[**このアドレスを使用する:** **[user@alt.none \]](mailto:user@alt.none)**を選択します。
 
-7. Enter **Testing invalid domain** in the **Subject** field and then send the email.  
+7. **[件名]**フィールドに**「無効なドメインのテスト」**と入力し、電子メールを送信します。
 
-8. Wait for the non-delivery report (NDR) message to appear in Holly’s Inbox, then double-click the message to open it in a new window. This will make it easier to copy the text of the message in the next step. 
+8. 配信不能レポート (NDR) メッセージが Holly の受信トレイに表示されるまで待ち、メッセージをダブルクリックして新しいウィンドウで開きます。これにより、次の手順でメッセージのテキストをコピーしやすくなります。
 
-9. In the message window, scroll down through the message until you reach the body of text that says **Diagnostic information for administrators**. Select the text in the body of the message starting AFTER **Diagnostic information for administrators** through the end of the message. With this text selected, press **Ctrl+C** to copy it to the clipboard, and then close the message window.
+9. メッセージ ウィンドウで、「**管理者向けの診断情報」**というテキストの本文が表示されるまでメッセージを下にスクロールします。メッセージ本文の「**管理者向け診断情報**の後に」からメッセージの最後までのテキストを選択します。このテキストを選択した状態で、**Ctrl+C**を押してクリップボードにコピーし、メッセージ ウィンドウを閉じます。
 
-10. Open a new tab in your web browser and enter the following URL in the address bar: **https://testconnectivity.microsoft.com**. 
+10. Web ブラウザーで新しいタブを開き、アドレス バーに次の URL を入力します: **[https://testconnectivity.microsoft.com](https://testconnectivity.microsoft.com/)**。
 
-11. This opens the **Microsoft Remote Connectivity Analyzer** portal. In the navigation bar on the left, select **Message Analyzer**. This opens the **Message Header Analyzer** tool.
+11. これにより、**Microsoft リモート接続アナライザー**ポータルが開きます。左側のナビゲーション バーで、**[メッセージ アナライザー]**を選択します。これにより、**メッセージ ヘッダー アナライザー**ツールが開きます。
 
-12. Take a moment to review the **Message Header Analyzer** tool. It consists of two sections: <br/>
+12. **メッセージ ヘッダー アナライザー**ツールを確認してください。これは 2 つのセクションで構成されています。
 
-	- In the top section, you will paste in the diagnostic data that you copied from the NDR email message.
-	- In the bottom section, the tool will display its analysis of this data. 
+    - 上部のセクションでは、NDR 電子メール メッセージからコピーした診断データを貼り付けます。
+    - 下部セクションには、ツールによるこのデータの分析が表示されます。
 
-13. In the **Message Analyzer Header** window, paste the NDR diagnostic data (right-click and select **Paste**, or press **Ctrl+V**) in the field that appears below the **Insert the message header you would like to analyze** row. Then select the **Analyze headers** button. 
+13. **[メッセージ アナライザー ヘッダー]**ウィンドウで、 **[分析するメッセージ ヘッダーを挿入します]**行の下に表示されるフィールドにNDR 診断データを貼り付けます (右クリックして [**貼り付け]**を選択するか、**Ctrl+V**を押します) 。次に、**「ヘッダーの分析」**ボタンを選択します。
 
-14. SMTP message headers contain a wealth of information that allow you to determine the origins of a message and how it made its way through one or more SMTP servers to its destination. Here’s a quick summary of the information found in this header analysis: <br/>
+14. SMTP メッセージ ヘッダーには、メッセージの発信元と、メッセージが 1 つ以上の SMTP サーバーを経由して宛先に到達した方法を判断できる豊富な情報が含まれています。このヘッダー分析で見つかった情報の簡単な概要は次のとおりです。
 
-	- **Summary section**: Displays the most important properties and total delivery time at a quick glance. Depending on the diagnostic data (for example, if a message was even sent), this section may or may not appear.
+    - **概要セクション**: 最も重要なプロパティと合計納期が一目で表示されます。診断データ (メッセージが送信された場合など) に応じて、このセクションが表示される場合と表示されない場合があります。
+    - **受信ヘッダー セクション**: より重要なヘッダーのプロパティと配信時間が表示されます。受信したヘッダーを分析し、メッセージ転送遅延の原因が検出されるたびに最長の遅延を迅速に表示できます。
+    - **その他のヘッダー セクション**: 最も長いメッセージ転送遅延が発生した場所を迅速に検出できます。すべてのヘッダーを出現番号、名前、または値で並べ替えることができます。
 
-	- **Received headers section**: Displays the more important header properties and delivery time. Enables you to analyze the received headers and displays the longest delays quickly for each discovery of sources of message transfer delays.
+    **この例 ( 「その他のヘッダー」**セクション、ホップ 1を参照) の主な問題は、電子メール アドレス**(@alt.none** )の DNS ドメインが存在しないことです。このラボ演習の目的で意図的に無効なドメインを入力しましたが、このエラーは通常、受信者のドメイン名のタイプミスが原因で発生し、問題を解決するには修正する必要があります。
 
-	- **Other headers section**: Enables you to quickly detect where the longest message transfer delays occurred. You can sort all headers by occurrence number, name, or value.   
+15. **「ヘッダーの分析」**ボタンの右側に表示される**「クリア」**オプションを選択します。これにより、メッセージ ヘッダー アナライザー ウィンドウがリセットされます。
 
-	The primary problem in this example (see the **Other headers** section, Hop 1) is that the DNS domain of the email address **(@alt.none**) does not exist. While you purposely entered an invalid domain for the purpose of this lab exercise, this error is normally caused by a typo in the recipient’s domain name that needs to be corrected to resolve the issue. 
+16. ブラウザで**[メール - ホリー ディクソン - Outlook]**タブを選択します。ホリーのメールボックスで、**[新しいメール]**を選択して新しいメールを作成します。
 
-15. Select the **Clear** option that appears to the right of the **Analyze headers** button; this will reset the Message Header Analyzer window. 
+17. このメールでは、有効なドメイン (outlook.com) 内の存在しないメールボックスにメールを送信します。**[宛先]**フィールドに、ランダムな一連の数字とその後に自分の名前が続く電子メール アドレスを入力します (例: **[nnnnnnnnYourName@outlook.com](mailto:nnnnnnnnYourName@outlook.com)** )。表示されるドロップダウン メニューで、 [**このアドレスを使用する: [nnnnnnnnYourName@outlook.com\]](mailto:nnnnnnnnYourName@outlook.com)**を選択します。
 
-16. Select the **Mail - Holly Dickson - Outlook** tab in your browser. In Holly's mailbox, select **New mail** to create a new email.
+18. **[件名]**フィールドに**「無効なメールボックスのテスト」**と入力し、電子メールを送信します。
 
-17. In this email, you will send the mail to a non-existent mailbox in a valid domain (outlook.com). In the **To** field, enter an email address consisting of a random series of numbers followed by your name (for example, **nnnnnnnnYourName@outlook.com**). In the drop-down menu that appears, select **Use this address: nnnnnnnnYourName@outlook.com**.
+19. 配信不能レポート (NDR) メッセージが Holly の受信トレイに表示されるまで待ち、メッセージをダブルクリックして新しいウィンドウで開きます。
 
-18. Enter **Testing invalid mailbox** in the **Subject** field and then send the email.  
+    **注:**電子メールを送信してから 1 分以内 (またはそれ以内) に NDR 応答を受信しない場合は、誰かが Outlook.com ドメインにそのメールボックスを作成したことになります。この問題が発生した場合は、完全に偽であると思われる別のメールボックス アドレスに別の電子メールを送信します。必要に応じて、NDR 応答を受信するまで別の電子メール アドレスを試し続けます。
 
-19. Wait for the non-delivery report (NDR) message to appear in Holly’s Inbox, then double-click the message to open it in a new window. <br/>
-	
-	**Note:** If you do not receive an NDR reply within a minute (or less) after sending the email, then someone has created that mailbox in the outlook.com domain. If this occurs, then send another email to a different mailbox address that you feel is completely bogus. If necessary, continue trying different email addresses until you receive an NDR reply.
+20. NDR 応答のウィンドウで、「**管理者向けの診断情報」**というテキストの本文が表示されるまでメッセージを下にスクロールします。メッセージ本文の「**管理者向け診断情報**の後に」からメッセージの最後までのテキストを選択します。このテキストを選択した状態で、**Ctrl+C**を押してクリップボードにコピーし、メッセージ ウィンドウを閉じます。
 
-20. In the window for the NDR reply, scroll down through the message until you reach the body of text that says **Diagnostic information for administrators**. Select the text in the body of the message starting AFTER **Diagnostic information for administrators** through the end of the message. With this text selected, press **Ctrl+C** to copy it to the clipboard, and then close the message window. 
+21. ブラウザで**[メッセージ ヘッダー アナライザー]**タブを選択します。
 
-21. Select the **Message Header Analyzer** tab in your browser. 
+22. **[メッセージ アナライザー ヘッダー]**ウィンドウで、 **[分析するメッセージ ヘッダーを挿入します]**行の下に表示されるフィールドに NDR 診断データを貼り付け、**[ヘッダーの分析]**を選択します。
 
-22. In the **Message Analyzer Header** window, paste the NDR diagnostic data in the field that appears below the **Insert the message header you would like to analyze** row, and then select **Analyze headers**.  <br/>
+    **注:**診断情報とメッセージが拒否されるまでにかかる時間を確認してください。先ほどのメールでは、メールアドレスのドメインが存在しませんでした。この電子メールでは、**「その他のヘッダー」**セクションのホップ 1 は、ユーザーのドメイン (outlook.com) は有効であったが、ユーザーのメールボックスが使用できなかったことを示しています。
 
-	**Note:** Review the diagnostic information and the time taken for the message to be rejected. In the prior email, the domain of the email address did not exist. In this email, Hop 1 in the **Other headers** section indicates the user's domain (outlook.com) was valid, but the user mailbox was unavailable. 
+23. Edge ブラウザーの**[メッセージ ヘッダー アナライザー]**タブと**[Microsoft リモート接続アナライザー]**タブの両方を閉じます。
 
-23. Close both the **Message Header Analyzer** tab and the **Microsoft Remote Connectivity Analyzer** tab in your Edge browser. 
+24. **[Microsoft 365 管理センター]**タブを選択します。このタブを閉じた場合は、[ホーム] **| [ホーム]を選択します。**Edge ブラウザーの**[Microsoft 365]**タブで、画面左上隅の**ホームアイコンの上に表示される****アプリ起動**アイコン (3 行の点で構成される四角形) を選択し、表示される**アプリウィンドウで****[管理者]**を選択します。 ; これにより、新しいブラウザー タブで**Microsoft 365 管理センターが開きます。**
 
-24. Select the **Microsoft 365 admin center** tab. If you had closed this tab, then select the **Home | Microsoft 365** tab in your Edge browser, select the **App launcher** icon (the square made up of 3 rows of dots) that appears above the **Home** icon in the top left corner of the screen, and then in the **Apps** pane that appears, select **Admin**; this opens the **Microsoft 365 admin center** in a new browser tab. 
+25. **Microsoft 365 管理センター**ページのナビゲーション ウィンドウで、**[すべて表示]** (必要な場合) を選択します。
 
-25. On the **Microsoft 365 admin center** page, in the navigation pane, select **Show all** (if necessary). 
+26. ナビゲーション ウィンドウを下にスクロールし、**[管理センター]で****[Exchange]**を選択します。これにより、新しいタブで Exchange 管理センターが開きます。
 
-26. Scroll down through the navigation pane, and under **Admin centers,** select **Exchange**. This will open the Exchange admin center in a new tab. <br/>
+    - **ツールバー**ウィンドウが表示された場合は、**[次へ]**ボタンを 2 回選択し、次に**[完了]**ボタンを選択して、3 つのウィンドウ間を移動します。
+    - **[新しいメニューについて学ぶ]**ウィンドウが表示された場合は、[X] を選択してウィンドウを閉じます。
 
-	- If a **Toolbar** window appears, select the **Next** button twice and then the **Finish** button to navigate through the three windows. 
-	- If a **Learn about the new menu** window appears, select the X to close it.
+27. **Exchange 管理センター**のナビゲーション ウィンドウで、**[メール フロー]**を選択し、**[メッセージ トレース]**を選択します。
 
-27. In the **Exchange admin center**, in the navigation pane, select **Mail flow**, and then select **Message trace**. 
+28. **[メッセージ トレース]**ウィンドウには、デフォルトで**[デフォルト クエリ]タブが表示されます。**このタブのメニュー バーで**[+トレースの開始]を選択します。**
 
-28. In the **Message trace** window, the **Default queries** tab is displayed by default. In this tab, select **+Start a trace** on the menu bar. 
+29. 表示される**[新しいメッセージ トレース]**ウィンドウでは、 **[送信者**] フィールドと**[受信者] フィールドの両方がデフォルトで****[すべて]**に設定されています。ホリーは、送信した電子メール メッセージのみを検索するようにトレースを構成したいと考えています。**「送信者」**フィールドに**「 Holly 」**と入力します。これにより、名前が Holly で始まるアクティブ ユーザーのリストが表示されます。表示されるユーザーのリストで、**Holly Dickson**を選択します。
 
-29. In the **New message trace** pane that appears, both the **Senders** and **Recipients** fields are set to **All** be default. Holly wants to configure the trace to just look for email messages that she sent. In the **Senders** field, enter **Holly**. This displays the list of active users whose name starts with Holly. In the list of users that appears, select **Holly Dickson**.
+30. **[時間範囲]**セクションで、 **1 日**の下のスライダー バーを選択します( **1 日の**見出しは選択しないでください。スライダー バー自体を選択する必要があります)。**1 日**以内にスライダーの円がどのように移動したかに注目してください。
 
-30. Under the **Time range** section, select the slider bar below **1 day** (don't select the **1 day** heading; you must select on the slider bar itself). Note how the slider circle moved under **1 day**.
+31. **[詳細検索オプション]**の右側にあるドロップダウン矢印は、デフォルトで選択されています。これには、配信ステータス、メッセージ ID、方向などのオプションが表示されます。**この情報が[詳細検索オプション]**に表示されない場合は、ドロップダウン矢印を選択してこのセクションを展開します。
 
-31. The drop-down arrow to the right of **Detailed search options** should be selected by default. This displays options such as Delivery status, Message ID, Direction, and others. If this information isn't displayed under **Detailed search options**, then select the drop-down arrow to expand this section.  <br/>
+    Holly は、失敗したメッセージを探すためにトレースをカスタマイズしたいと考えています。**[配信ステータス]**フィールドを選択し、表示されるドロップダウン メニューで**[失敗]**を選択します。
 
-	Holly wants to customize the trace to look for failed messages. Select the **Delivery status** field, and in the drop-down menu that appears, select **Failed**.
+32. **[レポート タイプ]オプションが****[概要レポート]**に設定されていることに注意してください。これは作成したいレポート タイプなので、このオプションは選択したままにしておきます。ページの下部にある**「検索」**ボタンを選択します。
 
-32. Note the **Report type** option is set to **Summary report**. This is the report type that you want to create, so leave this option selected. At the bottom of the page, select the **Search** button. 
+33. **表示されるメッセージ トレースの検索結果**ページで、失敗したメッセージ配信がリストに表示されない場合は、アイテム リストの上に表示される**[更新]ボタンを選択するまでに数分間待つ必要がある場合があります。**Holly が Outlook から送信した 2 つの失敗した電子メール メッセージが表示されます。1 つは**[user@alt.none](mailto:user@alt.none)**に、もう 1 つは**[nnnnnnnnYourName@outlook.com](mailto:nnnnnnnnYourName@outlook.com)**に送信されました。
 
-33. In the **Message trace search results** page that appears, if no failed message deliveries appear in the list, you may need to wait several minutes before selecting the **Refresh** button that appears above the item list. You should see the two failed email messages that Holly sent from Outlook - one to **user@alt.none**, and another to **nnnnnnnnYourName@outlook.com**.
+34. 最初に失敗したメッセージの日付と時刻の値 (ハイパーリンクされている) を選択して、そのメッセージのプロパティ ペインを表示します。これには、送信者、受信者、ステータス、エラー情報、および**修正方法の**手順が表示されます。**「メッセージ イベント」**セクションと**「詳細情報」**セクションの下矢印を選択して、これらのセクションを表示します。メッセージ情報の確認が完了したら、ウィンドウの右上隅にある[ **X]を選択してウィンドウを閉じます。**
 
-34. Select the date and time values (which are hyperlinked) for the first failed message to view the properties pane for that message. This displays the sender, recipient, status, and error information, as well as the **How to fix it** instructions. Select the down arrows for the **Message events** and **More information** sections to view those sections. Once you've finished reviewing the message information, select the **X** in the upper right corner of the pane to close it. <br/>
+    2 番目の失敗したメッセージに対してこの手順を繰り返します。
 
-	Repeat this step for the second failed message. 
+35. **[メッセージ トレースの検索結果]**ウィンドウで、画面上部のナビゲーション スレッドに注目してください ( **[ホーム] > [メッセージ トレース] > [メッセージ トレースの検索結果**])。このナビゲーション スレッドの**メッセージ トレース**部分を選択して、**メッセージ トレース**ウィンドウを表示します。次のタスクのためにこのタブを開いたままにしておきます。
 
-35. In the **Message trace search results** window, note the navigation thread at the top of the screen (**Home > Message trace > Message trace search results**). Select the **Message trace** portion of this navigation thread to display the **Message trace** window. Leave this tab open for the next task.
+36. Edge ブラウザで、**[メール] - [ホリー ディクソン] - [Outlook]**タブを閉じますが、次のタスクのために残りのタブは開いたままにしておきます。
 
-36. In your Edge browser, close the **Mail - Holly Dickson - Outlook** tab, but leave the remaining tabs open for the next task.
-  
+### [タスク 2 - サービスの健全性を監視し、レポートを分析する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex2_Monitor_Microsoft_365.md#task-2---monitor-service-health-and-analyze-reports)
 
-### Task 2 - Monitor Service Health and Analyze Reports 
+Adatum の CTO は、組織全体で最近明らかになったサービスの健全性の問題に懸念を抱いています。彼はホリーに、Adatum がサービスの健全性を監視するのに役立つ情報を認識できるように、いくつかの主要なサービスの健全性のクエリとレポートを確認するように依頼しました。
 
-Adatum's CTO is concerned with the service health issues that have recently come to light throughout the organization. He has asked Holly to review several of the key service health queries and reports so that she becomes aware of the information that's available to help Adatum monitor its service health.
+1. LON-CL1 VM で、Edge ブラウザー内の**[ユーザーの詳細パネル - Microsoft 365 管理センター]タブを選択します。**このタブには Microsoft 365 管理センターが含まれています。
 
-1. On the LON-CL1 VM, select the **User Details Panel - Microsoft 365 admin center** tab within your Edge browser. This tab contains the Microsoft 365 admin center. 
+2. **Microsoft 365 管理センターの**ナビゲーション ウィンドウで、**[正常性]を選択し、** **[サービスの正常性]**を選択します。
 
-2. In the **Microsoft 365 admin center** navigation pane, select **Health** and then select **Service health**. 
+3. **「サービス正常性」**ページには、デフォルトで**「概要」**タブが表示されます。**[問題履歴]**タブを選択します。
 
-3. On the **Service health** page, the **Overview** tab is displayed by default. Select the **Issue history** tab.  
+4. **[サービス正常性] ウィンドウの****[問題履歴]**タブでは、デフォルト オプションで過去 7 日間のアイテムのリストが表示されます (このフィルター オプションは [**検索**] フィールドの右側に表示されます)。サービス正常性インシデントのリストで、リスト内の任意のエントリの**タイトルを選択すると、インシデントの詳細が表示されます。**確認が完了したら、インシデント ウィンドウを閉じます。
 
-4. In the **Issue history** tab on the **Service health** window, the default option is to display a list of items from the past 7 days (this filter option appears to the right of the **Search** field). In the list of service health incidents, select the **Title** for any entry in the list to see further details about the incident. Close the incident window when you’re done reviewing it. 
+5. **Microsoft 365 管理センター**のナビゲーション ウィンドウで、**[レポート]**を選択し、**[使用状況] を選択します。**
 
-5. In the **Microsoft 365 admin center**, in the navigation pane, select **Reports**, and then select **Usage.** 
+6. **[使用状況]**ページで、下にスクロールして [**アクティブ ユーザー - Microsoft 365 サービス]**グラフを見つけます。
 
-6. On the **Usage** page, scroll down and locate the **Active users - Microsoft 365 Services** chart. 
+7. このグラフと同じ行に、**電子メール アクティビティ**グラフが表示されます。
 
-7. On the same row as this chart, view the **Email activity** chart.  <br/>
+   注**:**ラボ環境ではメールボックスの使用が制限されているため、データがほとんどまたはまったく表示されない場合があります。
 
-	‎**Note:** There may be little or no data shown due to the limited mailbox usage in the lab environment. 
+8. **[電子メール アクティビティ]**グラフの下で、**[さらに表示]**ボタンを選択します。これにより、**Exchange**レポート ダッシュボードが表示されます。ダッシュボードの上部には、デフォルトで**[電子メール アクティビティ]タブが表示されます。**その右側に表示される**「メールボックスの使用状況」**タブを選択します。
 
-8. Under the **Email activity** chart, select the **View more** button. This displays the **Exchange** report dashboard. At the top of the dashboard, the **Email activity** tab is displayed by default. Select the **Mailbox usage** tab that appears to the right of it.
+9. 最初に表示されるデフォルトのメールボックス使用量は**過去 30 日間です (この使用量係数は、** **[メールボックス使用量]**タブを含む行の右端に表示されます)。**[過去 30 日間]**の横に表示される下矢印を選択し、ドロップダウン メニューに表示される他のオプション ( **7 日間**、**90 日間**、および**180 日間**) のいずれかを選択して、表示がどのように変化するかを確認します。
 
-9. The default mailbox usage that is initially displayed is **Past 30 days** (this usage factor appears on the far-right side of the row containing the **Mailbox usage** tab). Select the down-arrow that appears next to **Past 30 days** and select one of the other options that appear in the drop-down menu (**7 days**, **90 days**, and **180 days**) to see how the display changes. 
+10. グラフの下にスクロールすると、各アクティブ ユーザーのメールボックスの詳細が表示されます。
 
-10. Scroll down below the charts to see mailbox details for each of the active users.
+11. ページの先頭までスクロールして戻ります。ページ上部のナビゲーション スレッド ( [**ホーム] > [使用状況] > [Exchange** ]) で、**[使用状況]**を選択して [使用状況の概要] ページに戻ります。
 
-11. Scroll back to the top of the page. On the navigation thread at the top of the page (**Home > Usage > Exchange**), select **Usage** to return to the Usage Overview page. 
+12. このページのさまざまなレポートを確認してください。各レポートのデータは限られているかまったくない場合がありますが、少なくとも利用可能なレポートの種類を把握することはできます。
 
-12. Review the various reports on this page. While there may be limited or no data for each report, you can at least get a feel for the type of reporting that's available. 
+13. **次に、 Exchange 管理センター**で利用できるレポートを確認します。ブラウザーでは、前のタスクで作成した**[メッセージ トレース - Exchange 管理センター]タブが開いているはずです。**その場合は、今すぐ選択してください。ただし、以前にこのタブを閉じた場合は、**Microsoft 365 管理センター**のナビゲーション ウィンドウの**[管理センター]**グループで**[Exchange]**を選択します。
 
-13. You now want to review the reports that are available in the **Exchange admin center**. In your browser, you should have the **Message trace - Exchange admin center** tab open from the prior task; if so, select it now. However, if you previously closed this tab, then in the **Microsoft 365 admin center**, under the **Admin centers** group in the navigation pane, select **Exchange**.
+14. **Exchange 管理センター**のナビゲーション ウィンドウで**[レポート]**を選択し、**[メール フロー]**を選択します。
 
-14. In the **Exchange admin center**, select **Reports** in the navigation pane, and then select **Mail flow**. 
+15. **[メール フロー レポート]**ウィンドウで、**[受信メッセージ レポート]**を選択します(このレポートには表示するデータがあります。他のレポートにはデータがありません)。このレポートに表示される情報を確認します。
 
-15. In the **Mail flow reports** window, select **Inbound messages report** (this report has data to view; none of the other reports have data). Review the information displayed for this report. 
+16. ページ上部のナビゲーション スレッド ( **[レポート] > [メール フロー] > [受信メッセージ レポート**]) で、**[メール フロー]**を選択してこのレポート ページに戻ります。
 
-16. On the navigation thread at the top of the page (**Reports > Mail flow > Inbound messages report**), select **Mail flow** to return to this reporting page. 
+17. **[メール フロー レポート]**ウィンドウで、利用可能なさまざまなレポートを確認します。
 
-17. In the **Mail flow reports** window, review the various reports that are available. 
+18. いくつかのレポートの確認が完了したら、Edge ブラウザーの**[Exchange 管理センター]タブを閉じます。ただし、次のタスクのために他のタブは開いたままにしておきます。**
 
-18. Once you have finished reviewing several of the reports, close the **Exchange admin center** tab in your Edge browser but leave the other tabs open for the next task.
- 
+### [タスク 3 – Microsoft サポートにヘルプ リクエストを送信する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex2_Monitor_Microsoft_365.md#task-3--submit-a-help-request-to-microsoft-support)
 
-### Task 3 – Submit a Help Request to Microsoft Support
+組織が Microsoft 365 で問題のサポートが必要な状況に遭遇した場合は、Microsoft サポート チームにサービス リクエストを送信する必要があります。Adatum のパイロット プロジェクトの一環として、Holly Dickson と Patti Fernandez (Adatum のサービス サポート管理者) は、コールバックを必要としないテスト リクエストを送信することにしました。彼らは、サービス リクエストのプロセスに慣れるためにこのタスクを実行しています。
 
-If an organization runs into a situation in Microsoft 365 where it needs assistance with a problem, it must submit a service request to the Microsoft Support team. As part of Adatum's pilot project, Holly Dickson and Patti Fernandez (Adatum's Service Support Administrator) have decided to submit a test request that does not require a call back. They are performing this task to become familiar with the service request process.
+1. LON-CL1 のEdge ブラウザーの**Microsoft 365 管理センター**タブで、ナビゲーション ウィンドウで**[サポート]を選択し、** **[サービス リクエストの表示]**を選択します。
 
-1. On LON-CL1, in the **Microsoft 365 admin center** tab of your Edge browser, select **Support** in the navigation pane, and then select **View service requests**. 
+   **注:**左側のナビゲーション ペインが最小化されており、テキストのないアイコンのみが表示されている場合は、ナビゲーション ペインの上部にあるナビゲーション メニュー アイコン (3 本の水平線) を選択して展開し、付随するテキストを表示します。
 
-	**Note:** If the left-hand navigation pane has been minimized and only displays icons without any text, select the Navigation menu icon (the three horizontal lines) at the top of the navigation pane to expand it and display the accompanying text. <br/>
+   [サービス**リクエスト履歴]**ウィンドウには、未処理のサービス リクエスト チケットが表示されます。このページにサービス リクエスト チケットが表示されないことを確認する必要があります。
 
-	The **Service request history** window displays any outstanding service request tickets. You should verify that no service request tickets appear on this page. <br/>
+2. ナビゲーション ウィンドウの**[サポート]**グループで、**[ヘルプとサポート]**を選択します。
 
-2. In the navigation pane, under the **Support** group, select **Help & Support**.
+3. 「どうすれ**ば助けられますか?」**表示されるペインで、**[メッセージ]**フィールド (現在**、例: Office をインストールできません と**表示されています) を選択し、次のメッセージを入力します: **Office をインストールできません**。次に、フィールドの横に表示される前向き矢印を選択します。これには、リクエストに役立つ洞察と推奨記事を含むセルフヘルプ ソリューションが表示されます。
 
-3. In the **How can we help?** pane that appears, select the **Message** field (which currently displays **Example: Can't install Office**) and type the following message: **Can't install Office**. Then select the forward arrow that appears next to the field. This displays self-help solutions with insights and recommended articles to assist with your request. 
+4. おすすめの記事から 1 つお選びください。記事を確認した後、記事を含む Edge ブラウザーのタブを閉じます。**これにより、サポート記事**ペインに戻ります。
 
-4. Select one of the recommended articles. After reviewing the article, close the Edge browser tab containing the article. This returns you to the **Support article** pane. 
+5. さらにサポートが必要で、Microsoft サポート エージェントに相談したい場合は、**サポート記事**ペインの上部にある**ヘッドセット**アイコン (中央のアイコン) を選択して、Microsoft サポート エージェントからサポートを受けてください。**ここでヘッドセットの**アイコンを選択します。
 
-5. If you need further assistance and would like to speak to a Microsoft support agent, select the **headset** icon (the middle icon) at the top of the **Support article** pane to get help from a Microsoft support agent. Select the **headset** icon now.
+6. **表示される[サポートに問い合わせる]**ウィンドウでは、情報を入力しないでください。代わりに、実際の状況でこのリクエストを完了するために入力する情報を確認してください。ページの下部にある **[連絡先]**を選択する前に、必要な書類を添付することもできます。
 
-6. In the **Contact support** pane that appears, do NOT enter any information; instead, just review the information that you would enter to complete this request in a real-world situation. You could also attach any necessary documents before selecting **Contact me** at the bottom of the page.   <br/>
+   重要**: ラボ環境ではこのフォームに記入しないでください。****[電話]**オプションを選択してこの要求を入力すると、Microsoft 365 サポート担当者から電話がかかります。トレーニング クラスの生徒からの電話で Microsoft サポート スペシャリストに迷惑をかけたくありません。
 
-	‎**IMPORTANT: Do NOT complete this form in your lab environment.** If you enter this request with the **Phone** option selected, you will receive a call from a Microsoft 365 support representative. We do not want to bother Microsoft Support specialists with calls from students in a training class. 
-	
-7. Select the **X** in the upper right-hand corner of the page to close the **Contact support** window.
-	
-8. Leave LON-CL1 and your Edge browser open for the next lab exercise.  
+7. ページの右上隅にある[ **X]**を選択して、**[サポートへのお問い合わせ]**ウィンドウを閉じます。
 
+8. 次のラボ演習まで、LON-CL1 と Edge ブラウザを開いたままにしておきます。
 
-# Proceed to Lab 2 - Exercise 3
+# [ラボ 2 - 演習 3 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex2_Monitor_Microsoft_365.md#proceed-to-lab-2---exercise-3)

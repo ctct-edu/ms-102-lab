@@ -1,87 +1,85 @@
-# Learning Path 7 - Lab 7 - Exercise 1 - Initialize Compliance 
+# [ラーニング パス 7 - ラボ 7 - 演習 1 - コンプライアンスの初期化](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex1_Compliance.md#learning-path-7---lab-7---exercise-1---initialize-compliance)
 
-In your role as Holly Dickson, Adatum’s new Microsoft 365 Administrator, you have Microsoft 365 deployed in a virtualized lab environment. As you proceed with your Microsoft 365 pilot project, your next steps are to implement archiving and retention at Adatum. You will begin by initializing compliance through the MDM auto-enrollment of new devices in your tenant. You will then configure retention tags and policies, and you will implement archiving with retention policies. 
+Adatum の新しい Microsoft 365 管理者である Holly Dickson としてのあなたの役割では、仮想化されたラボ環境に Microsoft 365 を展開しています。Microsoft 365 パイロット プロジェクトを進める際の次のステップは、Adatum でアーカイブと保持を実装することです。まず、テナント内の新しいデバイスの MDM 自動登録を通じてコンプライアンスを初期化します。次に、保持タグとポリシーを構成し、保持ポリシーを使用してアーカイブを実装します。
 
-### Task 1 - Create a security group for Compliance Testing
+### [タスク 1 - コンプライアンス テスト用のセキュリティ グループを作成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex1_Compliance.md#task-1---create-a-security-group-for-compliance-testing)
 
-To test archiving and retention in your Adatum pilot project, you will create a new mail-enabled security group and assign two users to the group – Joni Sherman and Lynne Robbins. This group will then be used in the next task when you configure MDM auto-enrollment for new devices in your tenant. 
+Adatum パイロット プロジェクトでアーカイブと保持をテストするには、新しいメールが有効なセキュリティ グループを作成し、そのグループに 2 人のユーザー (Joni Sherman と Lynne Robbins) を割り当てます。このグループは、テナント内の新しいデバイスの MDM 自動登録を構成する次のタスクで使用されます。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-2. In **Microsoft Edge**, select the **Microsoft 365 admin center** tab; if you closed this tab earlier, then open a new tab and go to **https://admin.microsoft.com.** <br/>
+2. **Microsoft Edge**で、**[Microsoft 365 管理センター]**タブを選択します。このタブを以前に閉じた場合は、新しいタブを開いて**[https://admin.microsoft.com](https://admin.microsoft.com/)に移動します。**
 
-	At this point, you may have quite a few tabs open in your browser. If you wish, you can take this opportunity to close every tab except for the **Office 365 Home** tab and the **Microsoft 365 admin center** tab.
+   この時点で、ブラウザでかなりの数のタブが開いている可能性があります。必要に応じて、この機会に、**[Office 365 ホーム]**タブと**[Microsoft 365 管理センター]**タブを除くすべてのタブを閉じることができます。
 
-3. In the **Microsoft 365 admin center**, in the left-hand navigation pane, select **Teams & groups** and then select **Active teams & groups** below it.
+3. **Microsoft 365 管理センター**の左側のナビゲーション ウィンドウで、**[チームとグループ]**を選択し、その下の**[アクティブなチームとグループ]を選択します。**
 
-4. On the **Active teams & groups** window, select the **Add a group** option on the menu bar to create a new group for compliance testing. This initiates the **Add a group** wizard.
+4. **[アクティブなチームとグループ]**ウィンドウで、メニュー バーの [**グループの追加]オプションを選択して、コンプライアンス テスト用の新しいグループを作成します。**これにより、**グループの追加**ウィザードが開始されます。
 
-5. On the **Choose a group type** page, select the **Mail-enabled security** option and then select **Next**.
+5. **[グループ タイプの選択]**ページで、**[メールが有効なセキュリティ]**オプションを選択し、**[次へ]**を選択します。
 
-6. On the **Set up the basics** page, enter **Compliance Test Users** in the **Name** field. Tab into the **Description** field to enable the **Next** button, and then select it.
+6. **「基本のセットアップ」**ページで、**「名前」**フィールドに**「Compliance Test Users」**と入力します。Tab キーを押して**「説明」フィールドに移動して****「次へ」**ボタンを有効にし、それを選択します。
 
-7. On the **Assign owners** page, select **+Assign owners**. 
+7. **[所有者の割り当て]**ページで、**[+所有者の割り当て]**を選択します。
 
-8. In the **Assign owners** pane that appears, select **Holly Dickson** and then select **Add(1)**. 
+8. **表示される[所有者の割り当て]**ウィンドウで、**[Holly Dickson]を選択し、** **[追加(1)]**を選択します。
 
-9. On the **Assign owners** page, select **Next**.
+9. **[所有者の割り当て]**ページで、**[次へ]**を選択します。
 
-10. On the **Assign members** page, select **+Add members**. 
+10. **[メンバーの割り当て]**ページで、**[+メンバーの追加]**を選択します。
 
-11. In the **Add members** pane that appears, select the check boxes for **Joni Sherman** and **Lynne Robbins**, and then select **Add(2)**.
+11. **表示される[メンバーの追加]**ウィンドウで、 **[Joni Sherman]**と**[Lynne Robbins]**のチェック ボックスをオンにし、**[追加(2)]**を選択します。
 
-12. On the **Add members** page, select **Next**.
+12. **[メンバーの追加]**ページで、**[次へ]**を選択します。
 
-13. On the **Edit settings** page, enter **comptestusers** in the **Group email address** field. <br/>
+13. **[設定の編集]**ページで、**[グループ電子メール アドレス]**フィールドに**comptestusers**と入力します。
 
-	**Note:** The Group email address domain (to the right of the group email address alias) displays the default domain for the company's Microsoft 365 tenant (in this case, **xxxxxZZZZZZ.onmicrosoft.com**, where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider). In a real-world scenario in which a company has multiple domains, you may need to select into this field to select the correct domain. <br/>
+    **注:**グループ メール アドレス ドメイン (グループ メール アドレス エイリアスの右側) には、会社の Microsoft 365 テナントの既定のドメインが表示されます (この場合、**xxxxxZZZZZZ.onmicrosoft.com**、 xxxxxZZZZZZ はラボ ホスティングによって提供されるテナント プレフィックスです)プロバイダ）。企業に複数のドメインがある実際のシナリオでは、正しいドメインを選択するためにこのフィールドを選択する必要がある場合があります。
 
-	Select **Next**.
+    **「次へ」**を選択します。
 
-14. On the **Review and finish adding group** window, review your selections. If anything needs to be changed, select the appropriate Edit link and make the necessary changes. Otherwise, if everything is correct, select **Create group**.
+14. **[グループの追加を確認して終了]**ウィンドウで、選択内容を確認します。変更する必要がある場合は、適切な編集リンクを選択し、必要な変更を加えます。それ以外の場合は、すべてが正しい場合は、**[グループの作成]**を選択します。
 
-15. Once the group is created, the **Compliance Test Users group created** window appears. Note the message at the top of the page that indicates it can take up to an hour for the group to appear in the Active teams & groups list. Lab testing has shown that the group normally appears within a few minutes. Select **Close**.
+15. グループが作成されると、**「Compliance Test Users グループが作成されました」**ウィンドウが表示されます。ページの上部にある、グループが [アクティブなチームとグループ] リストに表示されるまでに最大 1 時間かかることを示すメッセージに注意してください。臨床検査では、通常、このグループは数分以内に現れることが示されています。**[閉じる]**を選択します。
 
-16. This will return you to the **Active teams & groups** page. Remember, the tabs on this page reflect the four types of groups. By default, the **Microsoft 365** tab is displayed, which displays Microsoft 365 groups. Since you created a mail-enabled security group, select the **Mail-enabled security** tab to display this type of group. If the **Compliance Test Users** group does not appear in the list of mail-enabled security groups, select the **Refresh** icon on the menu bar to refresh the list of groups. <br/>
+16. **これにより、 [アクティブなチームとグループ]**ページに戻ります。このページのタブには 4 種類のグループが反映されていることに注意してください。デフォルトでは、**Microsoft 365**グループが表示される [Microsoft 365] タブが表示されます。メールが有効なセキュリティ グループを作成したので、[**メールが有効なセキュリティ]**タブを選択して、このタイプのグループを表示します。**Compliance Test Users**グループがメールが有効なセキュリティ グループのリストに表示されない場合は、メニュー バーの**[更新]アイコンを選択してグループのリストを更新します。**
 
-	**Important:** You cannot proceed until the Compliance Test Users group appears in the list; therefore, keep refreshing the list every few minutes until it appears.
+    **重要:** Compliance Test Users グループがリストに表示されるまで先に進むことはできません。したがって、リストが表示されるまで、数分ごとにリストを更新し続けてください。
 
-17. Leave your browser open to the Microsoft 365 admin center and proceed to the next task.
+17. ブラウザーで Microsoft 365 管理センターを開いたままにして、次のタスクに進みます。
 
+### [タスク 2 – コンプライアンス テスト用にモバイル デバイス管理を構成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex1_Compliance.md#task-2--configure-mobile-device-management-for-compliance-testing)
 
-### Task 2 – Configure Mobile Device Management for compliance testing
+このタスクでは、Adatum Corporation テナント内の新しいデバイスの MDM 自動登録をアクティブにします。デバイスは、前のタスクで作成した Compliance Test Users グループのメンバーに属します。また、Intune がモバイル デバイス管理 (MDM) 機関として既定で設定されていることも確認します。
 
-In this task you will activate MDM auto-enrollment for new devices in your Adatum Corporation tenant. The devices will belong to members of the Compliance Test Users group that you created in the prior task. You will also verify that Intune is set by default as your mobile device management (MDM) authority. 
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+2. **Microsoft 365 管理センター**の左側のナビゲーション ウィンドウで、 [**すべて表示]** (必要な場合) を選択し、 [**管理センター]**セクションで**[エンドポイント マネージャー]**を選択します。これにより、**Microsoft Intune 管理センター**が返されます。
 
-2. In the **Microsoft 365 admin center**, in the left-hand navigation pane, select **Show all** (if necessary), and then in the **Admin centers** section, select **Endpoint Manager**. This returns the **Microsoft Intune admin center**.
+3. **Microsoft Intune 管理センター**で、左側のナビゲーション ウィンドウで**[デバイス]を選択します。**
 
-3. In the **Microsoft Intune admin center**, select **Devices** in the left-hand navigation pane.
+4. これにより、**デバイス |が返されます。概要**ページ。中央ペインの**[デバイスの登録]**セクションで、 **[デバイスの登録]**を選択します。
 
-4. This returns the **Devices | Overview** page. Under the **Device enrollment** section in the middle pane, select **Enroll devices**.
+5. デバイスの**登録 | Windows の登録ページの****[全般]**セクションで、 **[自動登録]**を選択します。
 
-5. On the **Enroll devices | Windows Enrollment** page, in the **General** section, select **Automatic Enrollment**.
+6. これにより、**[構成]**ウィンドウが返され、そこから Microsoft Intune の MDM および MAM 設定を構成できます。**MDM ユーザー スコープ**オプションで、**[一部] を選択します。**これにより、 **MDM ユーザー スコープ**オプションの下に**グループ**オプションが表示されます。この機能を使用すると、ここで選択したグループのメンバーであるユーザーに属するデバイスを Intune に自動的に登録できます。
 
-6. This returns the **Configure** window, from which you can configure MDM and MAM settings for Microsoft Intune. For the **MDM user scope** option, select **Some.** This will display a **Groups** option below the **MDM user scope** option. This feature enables you to automatically enroll into Intune the devices that belong to users who are members of groups selected here.
+7. **[グループ]**オプションの右側で、**[グループが選択されていません]**を選択します。
 
-7. To the right of the **Groups** option, select **No groups selected**. 
+8. 表示される**[グループの選択]**ウィンドウで、 **[コンプライアンス テスト ユーザー]**を選択し、ウィンドウの下部にある [**選択]**ボタンを選択します。
 
-8. In the **Select groups** pane that appears, select **Compliance Test Users**, and then at the bottom of the pane select the **Select** button. <br/>
+   **注:** **Compliance Test Users**グループのメンバーに属するデバイスをMicrosoft Intune による MDM 管理に自動的に登録するように**MDM ユーザー スコープ**を構成しました。**ホリーが Adatum のパイロット プロジェクトでこの機能をテストし、その結果に満足していると仮定したら、 MDM ユーザー スコープを****All**に設定します。
 
-	**Note:** You just configured the **MDM user scope** to automatically enroll devices that belong to members of the **Compliance Test Users** group into MDM management with Microsoft Intune. Once Holly tests this feature in Adatum's pilot project, and assuming she is satisfied with the results, she will then set the **MDM user scope** to **All**.
-	
-9. This returns the **Configure** window. In the middle of the pane, select **Restore default MDM URLs** to ensure the correct URLs are set. 
+9. これにより、**「構成」**ウィンドウが戻ります。ペインの中央で、**[デフォルトの MDM URL を復元する]**を選択して、正しい URL が設定されていることを確認します。
 
-10. Select **Save** on the menu bar at the top of the page. Wait for the settings to be saved before proceeding to the next step.
+10. ページ上部のメニュー バーで**[保存]**を選択します。次のステップに進む前に、設定が保存されるまで待ちます。
 
-11. In the **Microsoft Intune admin center**, select **Tenant administration** in the left-hand navigation pane.
+11. **Microsoft Intune 管理センター**で、左側のナビゲーション ウィンドウで**[テナント管理]を選択します。**
 
-12. In the **Tenant admin | Tenant status** page, verify the **MDM authority** is set to **Microsoft Intune**.
+12. テナント**管理者 | テナント ステータス**ページで、**MDM 機関が****Microsoft Intune**に設定されていることを確認します。
 
-13. In your Microsoft Edge browser, you can close all tabs except for the **Microsoft Office Home** tab and the **Microsoft 365 admin center** tab. Leave these two tabs open for the next exercise.
+13. **Microsoft Edge ブラウザーでは、 Microsoft Office ホーム**タブと**Microsoft 365 管理センター**タブを除くすべてのタブを閉じることができます。次の演習のために、これら 2 つのタブを開いたままにしておきます。
 
-You have configured automatic enrollment in Intune for devices of users in the Compliance Test Users group, and you have verified the MDM authority for Adatum's tenant is set to Microsoft Intune.
+Compliance Test Users グループのユーザーのデバイスに対して Intune での自動登録を構成し、Adatum のテナントの MDM 機関が Microsoft Intune に設定されていることを確認しました。
 
-
-# Proceed to Lab 7 - Exercise 2
+# [ラボ 7 - 演習 2 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex1_Compliance.md#proceed-to-lab-7---exercise-2)

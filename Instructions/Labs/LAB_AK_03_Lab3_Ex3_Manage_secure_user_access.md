@@ -1,137 +1,106 @@
-# Learning Path 3 - Lab 3 - Exercise 3 - Manage secure user access 
+# [ラーニング パス 3 - ラボ 3 - 演習 3 - 安全なユーザー アクセスの管理](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_03_Lab3_Ex3_Manage_secure_user_access.md#learning-path-3---lab-3---exercise-3---manage-secure-user-access)
 
-As Holly Dickson, Adatum’s Microsoft 365 Administrator, you have been asked by Adatum’s CTO to deploy Pass-through Authentication (PTA) and Azure AD Smart Lockout as a means of strengthening password management throughout the organization. 
+Adatum の Microsoft 365 管理者である Holly Dickson は、Adatum の CTO から、組織全体のパスワード管理を強化する手段としてパススルー認証 (PTA) と Azure AD スマート ロックアウトを展開するように依頼されました。
 
-### Task 1: Deploy Azure AD Pass-Through Authentication 
+### [タスク 1: Azure AD パススルー認証を展開する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_03_Lab3_Ex3_Manage_secure_user_access.md#task-1-deploy-azure-ad-pass-through-authentication)
 
-Pass-through Authentication allows users to sign-in to cloud-based services using their on-premises passwords. All user passwords are only stored locally in the on-premises domains and NEVER synchronized to the cloud. When a user signs-in, the PTA agent takes the credentials to the user's on-premises environment to verify whether the password is correct. It then sends the result back to Azure AD.   
+パススルー認証を使用すると、ユーザーはオンプレミスのパスワードを使用してクラウドベースのサービスにサインインできます。すべてのユーザー パスワードはオンプレミス ドメインにローカルにのみ保存され、クラウドに同期されることはありません。ユーザーがサインインすると、PTA エージェントは資格情報をユーザーのオンプレミス環境に取り込み、パスワードが正しいかどうかを確認します。次に、結果を Azure AD に送り返します。
 
-‎Adatum's CTO wants to provide the company's users with a better sign-in experience (since PTA requires one less password to remember), as well as reduce Adatum’s IT helpdesk costs because with PTA their users are less likely to forget how to sign in. While this can also be achieved by employing Password Hash Synchronization as well as Active Directory Federation Services, Adatum has chosen to test PTA in its Microsoft 365 pilot project.
+Adatum の CTO は、同社のユーザーにより良いサインイン エクスペリエンスを提供したいと考えています (PTA では覚えておくべきパスワードが 1 つ少なくて済むため)。また、PTA を使用するとユーザーがサインイン方法を忘れる可能性が低くなるため、Adatum の IT ヘルプデスクのコストを削減したいと考えています。これは、パスワード ハッシュ同期や Active Directory フェデレーション サービスを採用することによっても実現できますが、Adatum は Microsoft 365 パイロット プロジェクトで PTA をテストすることを選択しました。
 
-1.  You should still be logged into **LON-DC1** as the local **adatum\administrator** from the prior task.
+1. 前のタスクのローカル**adatum\administratorとして****LON-DC1**にログインしている必要があります。
+2. LON-DC1 では、タスクバーの**[スタート]ボタンを選択し、** **[スタート]メニューで****[すべてのアプリ]**アイコンを選択して、インストールされているすべてのアプリケーションのリストを表示します。**Azure AD Connect**プログラム グループを選択し、 **[Azure AD Connect]**を選択します。これにより、**Microsoft Azure Active Directory Connect**ウィザードが開始されます。
+3. **[Azure AD Connect へようこそ]**ウィンドウに、このセットアップ ウィザードが閉じるまで同期サービス スケジューラーが一時停止されていることを示すページが表示されます。これは、Azure AD Connect インストール ウィザードを開始すると (前のタスクで実行しました)、スケジューラが一時的に停止されるためです。「構成」を選択します**。**
+4. **[追加タスク]**ページで、**[ユーザー サインインの変更]**タスクを選択し、**[次へ]**を選択します。
+5. **[Azure AD に接続]**ページで、Azure AD にサインインします。USERNAMEフィールドには**、**すでに**[Holly@xxxUPNxxx.onmicrosoft.com](mailto:Holly@xxxUPNxxx.onmicrosoft.com)**が入力されています。**[PASSWORD]**フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 テナント パスワード**を入力し、 [**次へ]**を選択します。
+6. **[ユーザー サインイン]**ページの [サインオン方法の選択] で、[**パススルー****認証]**を選択し、**[次へ]**を選択します。
+7. **[シングル サインオンの有効化]**ページで、**[資格情報の入力]**を選択します。
+8. **[フォレスト資格情報]**ダイアログ ボックスで、**ユーザー名**として**adatum\administrator を**入力し、**パスワード**として**Pa55w.rd を**入力し、**[OK]**を選択します。
+9. **資格情報が検証されると、 [資格情報の入力]**ボタンの右側にチェック マークが表示されます。**「次へ」**を選択します。
+10. **[構成の準備完了]**ページで、**[構成]**を選択します。構成が完了するまでに 1 分ほどかかる場合があります。
+11. **[構成の完了]**ページで、Azure AD の現在のサインオン方法が PTA であることを示すメッセージに注目してください。**[終了]**を選択します。これでパススルー認証が有効になりました。
+12. パススルー認証が正常に有効になっていることを確認するには、Edge ブラウザで新しいタブを選択し、アドレス バーに次の URL を入力します: **[https://entra.microsoft.com](https://entra.microsoft.com/)**
+13. これにより、**Microsoft Entra 管理センター**が開きます。左側のナビゲーション ウィンドウで、 [**さらに表示]をクリックして、** **[ハイブリッド管理]**の下の**[Azure AD Connect]**を選択します。
+14. AAD Connectについて**| [開始]**ページの中央のナビゲーション ウィンドウで、**[同期の接続]**を選択します。
+15. AAD Connectについて**| [同期の接続]**ページの右側の詳細ペインの [**ユーザー サインイン]セクションで、****パススルー認証**のステータスが [**有効] で**あることを確認し、**[パススルー認証]**を選択します。
+16. **[パススルー認証]**ページで、パススルー認証エージェントがインストールされているサーバーのリストを確認します。これにより、**LON-DC1.Adatum.com**が表示されるはずです。
+17. **[パススルー認証]**ページの右上隅にある[ **X]**を選択してページを閉じ、同じ操作を行って [ **AAD Connect | AAD Connect] ページを閉じます。****Sync**ページと**Adatum Corporation |を接続します。****概要**ページ。**Microsoft Entra 管理センター**に戻っているはずです。
+18. **Microsoft Entra 管理センターは**次のタスクで使用するため、開いたままにしておきます。
 
-2. On LON-DC1, select the **Start** button on the taskbar, and then in the **Start** menu, select the **All Apps** icon to display the list of all installed applications. Select the **Azure AD Connect** program group and then select **Azure AD Connect**. This will initiate the **Microsoft Azure Active Directory Connect** wizard.
+### [タスク 2: Azure AD スマート ロックアウトを展開する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_03_Lab3_Ex3_Manage_secure_user_access.md#task-2-deploy-azure-ad-smart-lockout)
 
-3. In the **Welcome to Azure AD Connect** window, you will receive a page indicating the synchronization service scheduler is suspended until this setup wizard is closed. This is because if you start the Azure AD Connect installation wizard (which you did in an earlier task), then the scheduler is temporarily suspended. Select **Configure.**
+Adatum の CTO は、ユーザーのパスワードを推測したり、ネットワークへの侵入を許可するためにブルート フォース手法を使用したりしようとする悪意のある攻撃者をロックアウトするのに役立つ Azure AD Smart Lockout を展開するようあなたに依頼しました。Smart Lockout は、有効なユーザーからのサインインを認識し、攻撃者やその他の不明なソースからのサインインとは異なる方法で処理します。
 
-4. On the **Additional tasks** page, select the **Change user Sign-in** task and then select **Next**. 
+CTO は、Adatum のユーザーが自分のアカウントにアクセスし続けて生産性を維持できる一方で、攻撃者をロックアウトできるため、Smart Lockout の実装に熱心です。CTO は、ユーザーが同じパスワードを複数回使用できないように、また、単純すぎるまたは一般的すぎると考えられるパスワードを使用できないように Smart Lockout を構成するようホリーに依頼しました。
 
-5. On the **Connect to Azure AD** page, sign into Azure AD. The **USERNAME** field is already filled with **Holly@xxxUPNxxx.onmicrosoft.com**. In the **PASSWORD** field, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account), and then select **Next**.
+1. LON-DC1 で、タスクバーの**サーバー マネージャーアイコンが既に開いている場合は選択します。**それ以外の場合は、今すぐ開きます。
 
-6. On the **User sign-in** page, under **Select the Sign On method**, select **Pass-through authentication** and then select **Next**. 
+2. **サーバー マネージャー**で、右上のメニュー バーで [**ツール]を選択し、ドロップダウン メニューで****[グループ ポリシー管理] を選択します。**
 
-7. On the **Enable single sign-on** page, select **Enter credentials**. 
+3. **グループポリシー管理**ウィンドウを最大化します。
 
-8. In the **Forest Credentials** dialog box, enter **adatum\administrator** as the **User name** and **Pa55w.rd** as the **Password**, and then select **OK**. 
+4. 組織のアカウント ロックアウト ポリシーを含むグループ ポリシーを編集したいと考えています。必要に応じて、左側のペインのルート コンソール ツリーで、**Forest:Adatum.com**を展開し、次に**Domains**、**Adatum.com**の順に展開します。
 
-9. When the credentials are verified, a check mark will appear to the right of the **Enter credentials** button. Select **Next**. 
+   **Adatum.com**で、 **[デフォルト ドメイン ポリシー]**を右クリックし、メニューから**[編集]を選択します。**
 
-10. On the **Ready to configure** page, select **Configure**. It may take a minute or so for the configuration to complete.
+5. **表示されるグループ ポリシー管理エディター**ウィンドウを最大化します。
 
-11. On the **Configuration complete** page, note the message indicating the current sign on method for Azure AD is PTA. Select **Exit**. Pass-Through Authentication has now been enabled. 
+6. 左側のペインの**[デフォルト ドメイン ポリシー]**ツリーの**[コンピュータの構成]で、** **[ポリシー]**、**[Windows の設定]**、**[セキュリティの設定]**、**[アカウント ポリシー]**の順に展開します。
 
-12. To verify that Pass-Through Authentication is successfully enabled, select a new tab in your Edge browser and enter the following URL in the address bar: **https://entra.microsoft.com**
+7. **[アカウント ポリシー]**フォルダーで、**[アカウント ロックアウト ポリシー]**を選択します。
 
-13. This opens the **Microsoft Entra admin center**. In the left-hand navigation pane, click on **Show more** in order to select **Azure AD Connect** under **Hybrid Management**. 
+8. 右側のペインにあるように、スマート ロックアウト パラメーターはいずれも定義されていません。**Microsoft Entra 管理センター**を使用して、Entra ID コンテキストに対応する値を割り当てます。
 
-17. On the **AAD Connect | Get started** page, in the middle navigation pane, select **Connect Sync**.
+9. タスク バーで Edge ブラウザー アイコンを選択します。これにより、**Microsoft Entra 管理センターが**表示されます。
 
-18. On the **AAD Connect | Connect Sync** page, in the detail pane on the right, under the **USER SIGN IN** section, verify that the status of **Pass-through authentication** is **Enabled**, and then select **Pass-through authentication**. 
+10. **Microsoft Entra 管理センター**の左側のナビゲーション ウィンドウで、**[保護]**サブメニューの**[認証方法]**を選択します。
 
-19. On the **Passthrough Authentication** page, review the list of servers on which your pass-through authentication agents are installed. This should display **LON-DC1.Adatum.com**.
+11. 認証方法**| 「ポリシー」ページの****「管理」**セクションの下の中央ペインで、**「パスワード保護」を選択します。**
 
-20. Select the **X** in the upper-right corner of the **Passthrough Authentication** page to close it, and then do the same to close the **AAD Connect | Connect Sync** page and the **Adatum Corporation | Overview** page. You should now be back to the **Microsoft Entra admin center**.
+12. 認証方法**| パスワード保護**ウィンドウの右側の詳細ペインに、次の情報を入力します。
 
-21. Leave the **Microsoft Entra admin center** open as you will use it in the next task.
-   
+    - **[カスタム スマート ロックアウト]**セクション:
+      - **ロックアウトしきい値:**このフィールドは、最初のロックアウトまでにアカウントで許可されるサインイン失敗の回数を示します。デフォルトは 10 です。テスト目的で、Adatum はこれを**3**に設定するように要求しました。
+      - **ロックアウト期間 (秒):**これは、各ロックアウトの長さ (秒) です。デフォルトは 60 秒 (1 分) です。**Adatum は、これを90**秒に変更するようリクエストしました。
+    - **「カスタム禁止パスワード」**セクション:
+      - **カスタム リストを強制する**: **[はい]を選択します。**
+      - **カスタム禁止パスワード リスト:**次の値を入力します (各値が別の行に表示されるように、各値を入力した後に Enter キーを押します)。
+        - **パスワード01**
+        - **F00tball01**
+        - **Se@Hawks1**
+        - **ネバーフォーゲット!!**
+    - **「モード」**セクションで、**「強制」を選択します。**
 
-### Task 2: Deploy Azure AD Smart Lockout
+13. ページ上部のメニュー バーで**[保存]**を選択します。
 
-Adatum’s CTO has asked you to deploy Azure AD Smart Lockout, which assists in locking out bad actors who are trying to guess your users’ passwords or use brute-force methods to get admitted into your network. Smart Lockout can recognize sign-ins coming from valid users and treat them differently than sign-ins from attackers and other unknown sources. 
+14. 次に、禁止されたパスワードの機能をテストする必要があります。画面の右上隅にある Holly Dickson のユーザー アイコンを選択し、表示されるメニューで [**パスワードの変更]**を選択します。
 
-The CTO is anxious to implement Smart Lockout because it will lock out the attackers while letting Adatum’s users continue to access their accounts and be productive. The CTO has asked Holly to configure Smart Lockout so that users can’t use the same password more than once, and they can’t use passwords that are considered too simplistic or common. 
+15. 新しいタブが開き、**「パスワードの変更」**ウィンドウが表示されます。**[古いパスワード]**フィールドに、Holly の既存のパスワードを入力します。これは、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供される**Microsoft 365 テナント パスワード**と同じです。
 
-1. On LON-DC1, select the **Server Manager** icon on the taskbar if it’s already open; otherwise, open it now.
+    Never4getに参加してください**!!** **[新しいパスワードの作成] フィールド**と**[新しいパスワードの確認]**フィールドに入力し、**[送信]**を選択します。表示されるエラー メッセージに注目してください。
 
-2. In **Server Manager**, select **Tools** in the upper-right menu bar, and in the drop-down menu, select **Group Policy Management.**
+16. ブラウザで、**[パスワードの変更]**タブを閉じます。
 
-3. Maximize the **Group Policy Management** window.
+17. 次に、ロックアウトしきい値機能をテストする必要があります。**[認証方法 - Azure Active Directory 管理センター]**タブで、画面の右上隅にある Holly Dickson のユーザー アイコンを選択し、表示されるメニューで [**サインアウト]**を選択します。
 
-4. You want to edit the group policy that includes your organization's account lockout policy. If necessary, in the root console tree in the left-hand pane, expand **Forest:Adatum.com**, then expand **Domains**, and then expand **Adatum.com**.  <br/>
+18. Holly としてサインアウトすると、**[Microsoft Azure へのサインイン]**タブに**[アカウントの選択]**ウィンドウが表示されます。あるユーザーとして Microsoft オンライン サービスからサインアウトし、別のユーザーとしてサインインし直すときのベスト プラクティスとして、[**サインアウト]**タブまたは**[サインイン]**タブを除くすべてのブラウザー タブを閉じます。この場合は、他のタブを閉じて、**[サインイン]**タブを開いたままにしてください。
 
-	‎Under **Adatum.com**, right-click on **Default Domain Policy** and then select **Edit** in the menu.
+    **[アカウントの選択]**ウィンドウで、**[別のアカウントを使用する]**を選択します。
 
-5. Maximize the **Group Policy Management Editor** window that appears.
+19. **[サインイン]**ウィンドウに**[「laura@xxxxxZZZZZZ.onmicrosoft.com」](mailto:laura@xxxxxZZZZZZ.onmicrosoft.com)**と入力し(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって割り当てられたテナント プレフィックスです)、 [**次へ]**を選択します。
 
-6. In the **Default Domain Policy** tree in the left-hand pane, under **Computer Configuration**, expand **Policies**, expand **Windows Settings**, expand **Security Settings**, and then expand **Account Policies.**
+20. **[パスワードの入力]**ウィンドウで、ランダムに組み合わせた文字を入力し、**[サインイン]**を選択します。無効なパスワードのエラー メッセージが表示されることに注意してください。
 
-7. In the **Account Policies** folder, select **Account Lockout Policy**.
+    この手順をさらに 2 回繰り返します。
 
-8. As you can see in the right-hand pane, none of the smart lockout parameters have been defined. You are going to use the **Microsoft Entra admin center** to assign corresponding values in the Entra ID context.  
+    **ロックアウトしきい値を****3**に設定したため、3 回目のサインイン試行の失敗後にアカウントがロックされていることを示すエラー メッセージが表示されます。
 
-9. ‎Select the Edge browser icon on the taskbar, which should be displaying the **Microsoft Entra admin center**. 
+    **ユーザー:** 3 回目の試行後にこのロックアウト メッセージを受信しない場合、システムはこのロックアウトしきい値の変更をサービス全体に伝達することをまだ完了していません。変更が有効になるまでに数分かかる場合があります。数分待ってから、偽のパスワードを使用して再度サインインします。このラボのテストではさまざまな結果が得られました。場合によっては、変更がほぼ即座に反映され、3 回目のサインイン試行後にロックアウトされることがあります。また、ロックアウト メッセージが表示されるまでに 5 ～ 10 分かかる場合もありました。ロックアウト メッセージを受信するまでこのプロセスを続けます。ロックアウト メッセージを受信すると、不正アクセスを防ぐために Laura のアカウントが一時的にロックされます。
 
-9. In the **Microsoft Entra admin center**, in the left-hand navigation pane, select **Authentication methods** under the **Protection** submenu.
+21. 前に設定した**90 秒のロックアウト期間**が経過するまで、Laura として再ログインすることは禁止されます。
 
-12. In the **Authentication methods | Policies** page, in the middle pane under the **Manage** section, select **Password protection.**
+    **[ロックアウトされたら、90 秒待ってから、 laura@xxxxxZZZZZZ.onmicrosoft.com](mailto:laura@xxxxxZZZZZZ.onmicrosoft.com)**としてサインインし直します(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって割り当てられたテナント プレフィックスです)。**[パスワード]**フィールドに、Laura のパスワードを入力します。これは、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供される**Microsoft 365 テナント パスワード**と同じです。Laura として正常にサインインできることを確認します。
 
-13. In the **Authentication methods | Password protection** window, in the detail pane on the right, enter the following information:
+22. ログインが成功したら、開いているアプリケーションをすべて閉じることができます。これは、LON-DC1 ドメイン コントローラーを使用した最後の実習となります。
 
-	- In the **Custom smart lockout** section:
-
-		- **Lockout threshold:** this field indicates how many failed sign-ins are allowed on an account before its first lockout. The default is 10. For testing purposes, Adatum has requested that you set this to **3**.
-
-		- **Lockout duration in seconds:** This is the length in seconds of each lockout. The default is 60 seconds (one minute). Adatum has requested that you change this to **90** seconds.
-
-	- In the **Custom banned passwords** section:
-
-		- **Enforce custom list**: select **Yes**
-
-		- **Custom banned password list:** Enter the following values (press Enter after entering each value so that each value is on a separate line):
-
-			- **Password01**
-
-			- **F00tball01**
-
-			- **Se@Hawks1**
-
-			- **Never4get!!**
-
-	- In the **Mode** section, select **Enforced**
-
-14. Select **Save** on the menu bar at the top of the page.
-
-15. You should now test the banned password functionality. Select Holly Dickson's user icon in the upper right corner of the screen, and in the menu that appears select **Change password**.
-
-16. A new tab will open displaying the **Change password** window. In the **Old password** field, enter Holly's existing password, which is the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account). <br/>
-
-	Enter **Never4get!!** in the **Create new password** and **Confirm new password** fields, and then select **Submit**. Note the error message that you receive.
-
-17. In your browser, close the **Change password** tab. 
-
-18. You should now test the lockout threshold functionality. In the **Authentication methods - Azure Active Directory admin center** tab, select Holly Dickson's user icon in the upper right corner of the screen, and in the menu that appears select **Sign out**.  
-
-19. Once you are signed out as Holly, the **Pick an account** window will appear in the **Sign in to Microsoft Azure** tab. As a best practice when signing out from a Microsoft online service as one user and signing back in as another, close all your browser tabs except for the **Sign out** or **Sign in** tab. In this case, close the other tabs now and leave the **Sign in** tab open.  <br/>
-
-	In the **Pick an account** window, select **Use another account**. 
-
-20. In the **Sign in** window, enter **laura@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix assigned to you by your lab hosting provider), and then select **Next**. 
-
-21. On the **Enter password** window, enter any random mix of letters and then select **Sign in**. Note the invalid password error message that appears. 
-
-	Repeat this step 2 more times. 
-	
-	Since you set the **Lockout threshold** to **3**, you should receive an error message indicating that your account is locked after your third failed sign-in attempt. <br/>
-
-	**User:** If you do not receive this lockout message after the third attempt, then the system has not yet finished propagating this lockout threshold change throughout the service. It may take several minutes for the change to take effect. Wait a few minutes and then sign-in again with a bogus password. Testing of this lab has seen varying results. The change sometimes propagates almost immediately so that you get locked out after the third sign-in attempt. Other times it has taken anywhere from 5 to 10 minutes before the lockout message is displayed. Continue this process until you receive the lockout message, at which point Laura's account will be temporarily locked to prevent unauthorized access.
-
-22. You will be prohibited from logging in again as Laura until after the **90 second lockout duration** that you set earlier. <br/>
-
-	Once you've been locked out, wait 90 seconds and then sign back in as **laura@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix assigned to you by your lab hosting provider). In the **Password** field, enter Laura's password, which is the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account). Verify that you are able to successfully sign-in as Laura.
-
-23. Once your log-in is successful, you can close all open applications. This will be your last lab exercise using the LON-DC1 domain controller.
- 
-
-# End of Lab 3
-
-
+# [ラボ 3 の終了](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_03_Lab3_Ex3_Manage_secure_user_access.md#end-of-lab-3)

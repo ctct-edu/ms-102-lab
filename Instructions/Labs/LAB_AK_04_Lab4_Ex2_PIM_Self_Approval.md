@@ -1,190 +1,171 @@
-# Learning Path 4 - Lab 4 - Exercise 2 - PIM Self-Approval
+# [ラーニング パス 4 - ラボ 4 - 演習 2 - PIM 自己承認](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex2_PIM_Self_Approval.md#learning-path-4---lab-4---exercise-2---pim-self-approval)
 
-Since taking on her role as Adatum's Microsoft 365 Administrator, Holly Dickson has been interrupted on several occasions with user support requests that have taken her attention away from the company's Microsoft 365 pilot project. Because Holly does not have the bandwidth to respond to the requests in a timely manner, she wants Alex Wilber and Joni Sherman to begin responding to these requests. This will require that Alex and Joni have Helpdesk Administrator role permissions.  However, Holly does not want to permanently assign this role to Alex and Joni, since this is not their regular role, and she doesn't want this role to impact other services. Holly also doesn't want Alex and Joni to submit approval requests each time they need to be assigned the Helpdesk Admin role.
+Adatum の Microsoft 365 管理者としての役割を引き受けて以来、Holly Dickson は、ユーザー サポートのリクエストによって何度か中断され、会社の Microsoft 365 パイロット プロジェクトから注意をそらされてしまいました。ホリーにはタイムリーにリクエストに応答するための帯域幅がないため、アレックス ウィルバーとジョニ シャーマンにこれらのリクエストに応答し始めてもらいたいと考えています。これには、Alex と Joni がヘルプデスク管理者ロールの権限を持っている必要があります。ただし、ホリーは、これが通常の役割ではなく、この役割が他のサービスに影響を与えることを望まないため、この役割をアレックスとジョニに永続的に割り当てたくありません。また、ホリーは、アレックスとジョニにヘルプデスク管理者の役割を割り当てる必要があるたびに承認リクエストを送信してほしくないと考えています。
 
-Given these requirements, Holly wants to take advantage of the Privileged Identity Management (PIM) feature that enables users to self-activate an Azure AD role on an as-needed basis. Instead of requiring a Global admin (such as Holly) or a Privileged Role Administrator to assign a role to multiple people individually, PIM enables an organization to create a security group and then enable the group to be eligible for that specific role. When people are assigned as members of the group, they indirectly become eligible to be assigned the role. Holly wants to employ this feature at Adatum by creating a security group of eligible users (Alex and Joni) for the Helpdesk administrator role. This opportunity will be a good test of this feature in Holly's pilot project.
+これらの要件を考慮して、Holly は、ユーザーが必要に応じて Azure AD ロールを自己アクティブ化できるようにする Privileged Identity Management (PIM) 機能を活用したいと考えています。グローバル管理者 (Holly など) または特権ロール管理者が複数のユーザーに個別にロールを割り当てる必要があるのではなく、PIM を使用すると、組織がセキュリティ グループを作成し、そのグループがその特定のロールに適格となるようにすることができます。ユーザーがグループのメンバーとして割り当てられると、間接的にその役割を割り当てる資格が得られます。Holly は、ヘルプデスク管理者の役割に適格なユーザー (Alex と Joni) のセキュリティ グループを作成して、Adatum でこの機能を採用したいと考えています。この機会は、Holly のパイロット プロジェクトにおけるこの機能の良いテストになります。
 
-Once Alex and Joni are made eligible for this role, whenever they must respond to their first user request, they will self-activate, or self-approve the role assignment. By doing so, they will have Helpdesk administrator control for a predetermined time period. In this case, Holly wants them to remain assigned to the role for 15 days. 
+Alex と Joni がこのロールの資格を取得すると、最初のユーザー要求に応答する必要があるときは常に、ロールの割り当てを自己アクティブ化または自己承認します。そうすることで、あらかじめ決められた期間、ヘルプデスク管理者を制御できるようになります。この場合、ホリーは、彼らに 15 日間その役割を割り当てたままにしてほしいと考えています。
 
-In addition, Holly doesn't want to be forced to approve the role assignment whenever Alex and Joni require this role assignment. Instead, Holly simply wants to be notified whenever Alex or Joni self-approve the role. PIM can send email notifications to selected individuals when important events occur in their Azure Active Directory organization, such as when a role is assigned or activated.  
+さらに、ホリーは、アレックスとジョニがこの役割の割り当てを要求するたびに、役割の割り当ての承認を強制されることを望んでいません。代わりに、ホリーは、アレックスまたはジョニがその役割を自己承認するたびに通知を受け取りたいだけです。PIM は、ロールの割り当てやアクティブ化など、Azure Active Directory 組織で重要なイベントが発生したときに、選択した個人に電子メール通知を送信できます。
 
+### [タスク 1 - ヘルプデスク管理者の役割に適格なグループを作成する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex2_PIM_Self_Approval.md#task-1---create-an-eligible-group-for-the-helpdesk-admin-role)
 
-### Task 1 - Create an eligible group for the Helpdesk Admin role
+前のラボ演習では、Holly Dickson は Privileged Identity Management を使用してグローバル管理者ロールへのアクセスを制限しました。彼女はまず、ユーザーに適格なロールとして割り当てる前に承認が必要になるようにロールを構成し、その後、適格なユーザーがロールのアクティブ化を要求するたびに自分自身を承認者として割り当てました。
 
-In the prior lab exercise, Holly Dickson limited access to the Global admin role using Privileged Identity Management. She first configured the role to require approval before it could be assigned as an eligible role for a user, and then she assigned herself as the approver whenever an eligible user requested activating the role. 
+Adatum のパイロット プロジェクトにおける PIM の次のテストのために、Holly はヘルプデスク管理者の役割に適格な Alex Wilber と Joni Sherman を選択しました。ただし、将来の役割の割り当てを簡素化するために、ホリーはセキュリティ グループを作成し、Alex と Joni をそのグループに割り当て、そのグループをヘルプデスク管理者の役割に割り当てたいと考えています。その後、Holly はグループがヘルプデスク管理者ロールの資格を得ることができるようにします。
 
-For this next test of PIM in Adatum's pilot project, Holly has selected Alex Wilber and Joni Sherman to be eligible for the Helpdesk admin role. However, to simplify future role assignments, Holly wants to create a security group, assign Alex and Joni to the group, and then assign the group to the Helpdesk admin role. Holly will then enable the group to be eligible for the Helpdesk admin role.
+1. LON-CL1 には引き続きローカルの**adatum\administrator**アカウントとしてログインする必要があり、Edge ブラウザーでは引き続き Holly Dickson として Microsoft 365 にログインする必要があります。
 
-1. You should still be logged into LON-CL1 as the local **adatum\administrator** account, and in your Edge browser, you should still be logged into Microsoft 365 as Holly Dickson.
+2. **Edge ブラウザーで、 Microsoft Entra 管理センター**を含むタブを選択します。このタブは、前のラボ演習で開いたままになっているはずです。
 
-2. In your Edge browser, select the tab containing the **Microsoft Entra admin center**, which should still be open from the prior lab exercise. 
+3. **Microsoft Entra 管理センター**の左側のナビゲーション ウィンドウで、**[グループ]を選択し、** **[すべてのグループ]**を選択します。
 
-3. In the **Microsoft Entra admin center**, in the left-hand navigation pane, select **Groups** and then select **All groups**.
+4. グループ内**| [すべてのグループ]**ウィンドウで、メニュー バーの**[新しいグループ]を選択します。**
 
-4. In the **Groups | All groups** window, select **New group** in the menu bar.
+5. **[新しいグループ]**ウィンドウで、次の情報を入力します。
 
-5. In the **New group** window, enter the following information:
+   - グループタイプ -**セキュリティ**
+   - グループ名 - **PIM-Helpdesk-Administrators**
+   - グループの説明 - **PIM でヘルプデスク管理者の役割を割り当てることができる適格なユーザーのグループ**
+   - Azure AD ロールをグループに割り当てることができます -**はい**
+   - メンバーシップの種類 -**割り当て済み**
+   - 所有者 - **[所有者が選択されていません]**を選択します。**[所有者の追加]**ウィンドウで、**[検索]**フィールドに**「Holly」**と入力し、**[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**ユーザー アカウントを選択します。
+   - メンバー - **「メンバーが選択されていません」**を選択します。**[メンバーの追加]**ウィンドウで、**[Alex Wilber]**を選択します。**[検索] フィールドに「Joni」**と入力し、**[Joni Sherman]**を選択します。
 
-    - Group type - **Security**
+6. **[新しいグループ]**ウィンドウで、ページの下部にある**[作成]ボタンを選択します。**
 
-    - Group name - **PIM-Helpdesk-Administrators**
+7. ページの上部に、「**Azure AD ロールを割り当てることができるグループの作成は、後で変更できない設定です」という内容のダイアログ ボックスが表示されます。この機能を追加してもよろしいですか?** 。**[はい]**を選択します。
 
-    - Group description - **Group of eligible users who can be assigned to the Helpdesk Administrator role in PIM**
+8. グループについて**| [すべてのグループ]**ウィンドウで、前のタスクで作成した PIM-Global-Administrators グループの下に PIM- **Helpdesk-Administrators**グループが表示されない場合は、メニュー バーの**[更新]を選択します。**
 
-    - Azure AD roles can be assigned to the group - **Yes**
+9. ここで、**PIM-Helpdesk-Administrators**グループを役割の割り当てに適格にする必要があります。左側のナビゲーションペインで、**「Identity Governance」**を選択してセクションを展開し、**「Privileged Identity Management」**を選択します。
 
-    - Membership type - **Assigned**
+10. Privileged **Identity Management | クイック スタート**ウィンドウの中央ペインの**[管理]セクションの下にある****[Azure AD ロール]**を選択します。
 
-    - Owners - Select **No owners selected**. In the **Add owners** pane, enter **Holly** in the **Search** field and select the **Holly@xxxxxZZZZZZ.onmicrosoft.com** user account.
+11. アダタムコーポレーションでは**| クイック スタートウィンドウの****[割り当て]**セクションで、 **[資格の割り当て]**ボタンを選択します。
 
-    - Members - Select **No members selected**. In the **Add members** pane, select **Alex Wilber**. Enter **Joni** in the Search field, and then select **Joni Sherman**.
+12. アダタムコーポレーションでは**| 「役割」**ウィンドウで役割のリストを下にスクロールし、**「ヘルプデスク管理者」**を選択します。
 
-6. In the **New group** window, select the **Create** button at the bottom of the page.
+13. ヘルプ**デスク管理者 | [割り当て]**ウィンドウで、メニュー バーの**[+割り当ての追加]を選択します。**
 
-7. A dialog box appears at the top of the page that says: **Creating a group to which Azure AD roles can be assigned is a setting that cannot be changed later. Are you sure that you want to add this capability?**. Select **Yes**.
+14. **「割り当ての追加」**ウィンドウには、デフォルトで**「メンバーシップ」**タブが表示されます。**[メンバーの選択]**で、**[メンバーが選択されていません]**を選択します。
 
-8. On the **Groups | All groups** window, if the **PIM-Helpdesk-Administrators** group does not appear below the PIM-Global-Administrators group that you created in the prior task, select **Refresh** on the menu bar.
+15. 右側に表示される**「メンバーの選択」**ペインで、 **「検索」**フィールドに**「PIM」**と入力します。**これにより、名前がPIM**で始まる対象となるユーザーおよびグループのリストが表示されます。**表示されるPIM-Helpdesk-Administrators**グループを選択し、**[選択]**ボタンを選択します。
 
-9. You must now make the **PIM-Helpdesk-Administrators** group eligible for role assignment. In the left-hand navigation pane, select **Identity Governance** to expand the section, and then select **Privileged Identity Management**.
+16. **[割り当ての追加]**ウィンドウで、**[次へ]を選択します (これは、** **[設定]**タブを選択するのと同じことを行います)。
 
-10. In the **Privileged Identity Management | Quick start** window, in the middle pane under the **Manage** section, select **Azure AD roles**.
+17. **[割り当ての追加]**ウィンドウの**[設定]**タブで、 **[割り当ての種類]オプションが****[適格]**に設定されていることを確認します。また、**[永続的に適格]**チェック ボックスが選択されていることを確認し (選択されていない場合は、すぐに選択してください)、**[割り当て]**を選択します。
 
-11. In the **Adatum Corporation | Quick start** window, under the **Assign** section, select the **Assign Eligibility** button.
+18. ヘルプ**デスク管理者 | [割り当て]**ウィンドウで、**PIM-Helpdesk-Administrators**グループがヘルプデスク管理者ロールへの適格な割り当てであることに注意してください。**PIM-Helpdesk-Administrators は**グループであるため、このグループ (Alex Wilber と Joni Sherman で構成される) のすべてのメンバーがヘルプデスク管理者の役割を割り当てる資格があることを意味します。
 
-12. In the **Adatum Corporation | Roles** window, scroll down through the list of roles and select **Helpdesk Administrator**.
+    **注:ラボでのテストでは、新しい割り当てが****[対象となる割り当て]**タブに表示されるまでに最大 30 分かかる場合があることがわかっています。**PIM-Helpdesk-Administrators が**すぐに表示されない場合は、数分間待ってから、メニュー バーの**[更新]オプションを選択します。****PIM-Helpdesk-Administrators が****[対象となる割り当て]**のリストに表示されるまで、数分ごとに**[更新]**オプションを選択し続けます。
 
-13. In the **Helpdesk Administrator | Assignments** window, select **+Add assignments** on the menu bar. 
+19. 次のタスクのためにブラウザのタブはすべて開いたままにしておきます。
 
-14. In the **Add assignments** window, the **Membership** tab is displayed by default. Under **Select member(s)**, select **No member selected**.
+### [タスク 2 - セルフアクティベーション用にヘルプデスク管理者ロールを構成する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex2_PIM_Self_Approval.md#task-2---configure-the-helpdesk-administrator-role-for-self-activation)
 
-15. In the **Select a member** pane that appears on the right, enter **PIM** in the **Search** field. This will display the list of eligible users and groups whose name starts with **PIM**. Select the **PIM-Helpdesk-Administrators** group that appears, and then select the **Select** button.
+次に、Holly は、Azure AD でヘルプデスク管理者のロール設定と通知設定を構成したいと考えています。Privileged Identity Management (PIM) を使用すると、ロールが割り当てられたときやアクティブ化されたときなど、Azure Active Directory (Azure AD) 組織で重要なイベントが発生したときにそれを知ることができます。PIM は、あなたと他の参加者に電子メール通知を送信することで、常に最新の情報を提供します。これらの電子メールには、役割のアクティブ化や更新など、関連するタスクへのリンクも含めることができます。このタスクでは、Holly は通知を更新して、自己承認がリアルタイムで事前に追跡されるようにしたいと考えています。
 
-16. In the **Add assignments** window, select **Next** (this does the same thing as selecting the **Setting** tab). 
+グローバル管理者ロールに関する以前のラボ演習では、ホリーはロールを更新して、そのロールのアクティブ化リクエストを承認する必要があるようにしました。ただし、ヘルプデスク管理者ロールの場合、グローバル管理者ロールと比較してロールの範囲がより限定されているため、ホリーは対象となるユーザーがロールの権限を乱用することについてあまり心配していません。ホリーは、サポート リクエストに応答するために必要な場合を除き、アレックスとジョニがロールをアクティブ化しないことを信頼しています。したがって、ホリーは、ロールをアクティブ化する必要がある場合は、アレックスとジョニに正当な理由を提供することのみを要求します。ホリーは、アレックスとジョニのためにその役割を 15 日間有効にしたいと考えています。こうすることで、Holly がアクティベーション リクエストを承認するのを待つ必要がなく、この役割を引き受ける必要があるときにいつでも正当な理由を提示して開始することができます。
 
-17. In the **Add assignments** window, under the **Setting** tab, verify the **Assignment type** option is set to **Eligible**. Also verify the **Permanently eligible** check box is selected (if not, then do so now), and then select **Assign**. 
+1. LON-CL1 の Edge ブラウザーでは、前のタスクで使用した Holly Dickson として Microsoft 365 にログインしているはずです。
 
-18. In the **Helpdesk Administrator | Assignments** window, note that the **PIM-Helpdesk-Administrators** group is an eligible assignment to the Helpdesk Administrator role. Because **PIM-Helpdesk-Administrators** is a group, it means that all members of this group (which consists of Alex Wilber and Joni Sherman) are now eligible to be assigned the Helpdesk Administrator role.
+2. ブラウザーでは、前のタスクで使用した**Microsoft Entra 管理センターが開いたままになっているはずです。**左側のナビゲーションペインの**「Identity Governance」**セクションで、**「Privileged Identity Management」**を選択します。
 
-    **Note:** Lab testing has shown that it can sometimes take up to 30 minutes for new assignments to appear under the **Eligible assignments** tab. If **PIM-Helpdesk-Administrators** doesn't appear immediately, wait a few minutes and then select the **Refresh** option on the menu bar. Continue to select the **Refresh** option every few minutes until **PIM-Helpdesk-Administrators** appears in the list of **Eligible assignments**.
+3. Privileged **Identity Management | クイック スタート**ウィンドウの中央ペインの**[管理]セクションの下にある****[Azure AD ロール]**を選択します。
 
-19. Leave all browser tabs open for the next task.
+4. アダタムコーポレーションでは**| クイック スタート**ウィンドウの中央ペインの**[管理]セクションの下にある****[設定]**を選択します。
 
+5. アダタムコーポレーションでは**| 設定**ウィンドウで、**ヘルプデスク管理者の**役割を選択します。
 
-### Task 2 - Configure the Helpdesk Administrator role for self-activation
+   **ヒント:**役割がアルファベット順に表示されない場合は、**「役割」**見出しを選択してアルファベットの昇順に並べ替えます。これにより、ヘルプデスク管理者の役割を見つけやすくなります。
 
-Next, Holly wants to configure the Helpdesk administrator role settings and notification settings in Azure AD. Privileged Identity Management (PIM) lets you know when important events occur in your Azure Active Directory (Azure AD) organization, such as when a role is assigned or activated. PIM keeps you informed by sending you and other participants email notifications. These emails can also include links to relevant tasks, such activating or renewing a role. In this task, Holly wants to update the notifications to ensure that self-approvals are tracked in real-time in a proactive manner.
+6. **[役割設定の詳細 - ヘルプデスク管理者]**ウィンドウで、ページをスクロールし、役割のアクティブ化、割り当て、および通知に関する情報を確認します。次に、ページ上部のメニュー バーで**[編集]を選択します。**
 
-In the prior lab exercise involving the Global administrator role, Holly updated the role so that she had to approve any activation requests for the role. However, for the Helpdesk admin role, Holly is less concerned about eligible users abusing the role permissions given the more limited scope of the role as compared to the Global Admin role. Holly trusts that Alex and Joni won't activate the role unless they're required to do so to respond to support requests. Therefore, Holly will only require that Alex and Joni provide justification whenever they must activate the role. Holly wants the role to be active for Alex and Joni for 15 days. This way, they won't be waiting for Holly to approve their activation requests, and they can simply provide justification and get started whenever they must take on this role.
+7. **「ロール設定の編集 - ヘルプデスク管理者」**ウィンドウには、デフォルトで**「アクティベーション」**タブが表示されます。**このタブでは、アクティベーションの最大期間 (時間)**設定のスライダーが**8**に設定されています。ホリーは、これを最大許容時間である**24**時間まで延長したいと考えています。スライダーを行末に移動するか、スライダーの隣のフィールドに**「24」と入力します。**
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as Holly Dickson from the prior task.
+   **注:** 24 より大きい値を入力しようとすると、自動的に 24 にリセットされます。
 
-2. In your browser, you should still have the **Microsoft Entra admin center** open from the prior task. In the left-hand navigation pane, under the **Identity Governance** section, select **Privileged Identity Management**.
+8. アクティベーション スライダーの下で、[**アクティベーション時、設定が必要] を****[なし]**に設定します。
 
-3. In the **Privileged Identity Management | Quick start** window, in the middle pane under the **Manage** section, select **Azure AD roles**.
+   **注:**前のラボ演習では、Holly は、Patti Fernandez がグローバル管理者ロールのアクティブ化を要求したときに、Azure MFA を使用してサインインすることを要求しました。そうすることで、Holly は Azure MFA サインインが機能することを確認しました。ただし、パイロット プロジェクトの目的では、Holly はヘルプデスク管理者ロールをアクティブにするときに多要素認証を使用した検証を必要としません (また、この MFA 機能は前のラボ演習ですでにテストしているため、授業で時間をかけて検証する必要はありません)再びそれを行う）。
 
-4. In the **Adatum Corporation | Quick start** window, in the middle pane under the **Manage** section, select **Settings**. 
+9. 次に、画面には 3 つの設定のグループが表示され、それぞれにチェック ボックスが付いています。3 つのチェック ボックスがすべて空白であることを確認します。デフォルトでチェック ボックスがオンになっている場合は、ここでチェックを外します (クリアします)。
 
-5. In the **Adatum Corporation | Settings** window, select the **Helpdesk Administrator** role.  <br/>
+   **注:**パイロット プロジェクトの場合、Holly は [**アクティベーション時に正当な理由が必要]**チェック ボックスをオンにしたくないと考えています。ホリーは、アレックスとジョニが必要な場合にのみロールをアクティブ化することを知っているため、ロールの割り当てをアクティブにするために彼らからの正当な理由は必要ありません (ただし、次のステップで、ホリーはロールを自分自身に割り当てるときに正当な理由を必要とします)。**[アクティブ化するには承認が必要]**設定をオフのままにすると、資格のあるユーザーが自己承認するか、別のユーザーの承認を必要とせずに自己アクティブ化できるようになります。
 
-    **Tip:** If the roles are not displayed in alphabetical order, select the **Role** heading to sort them in ascending alphabetical order. This will make it easier to locate the Helpdesk administrator role.
+10. **現在、 「アクティベーション」**タブが表示されています。隣に表示される**「割り当て」**タブを選択します。この役割がアレックスまたはジョニに割り当てられている場合、ホリーは 15 日後に割り当てが期限切れになることを望んでいます。この要件を実装するには、このタブで次の設定を構成します。
 
-6. In the **Role setting details -  Helpdesk Administrator** window, scroll through the page and review the information for role activation, assignment, and notification. Then select **Edit** on the menu bar at the top of the page.
+    - **[永続的なアクティブな割り当てを許可する]**チェック ボックスをオフ (クリア) にします。次に、[**アクティブな割り当てを期限切れにする**期限] フィールドを選択し、表示されるドロップダウン メニューで**[15 日]**を選択します。
+    - **[アクティブな割り当てに正当な理由が必要]**チェック ボックスがオンになっていることを確認します(オンになっていない場合は、ここでオンにします)。
 
-7. In the **Edit role setting - Helpdesk Administrator** window, the **Activation** tab is displayed by default. In this tab, the slider for the **Activation maximum duration (hours)** setting is set to **8**. Holly wants to increase this to the maximum allowable time, which is **24** hours. You can either move the slider to the end of the line, or you can type **24** in the field next to the slider. <br/>
+11. ウィンドウの上部で、**「通知」**タブを選択します。
 
-    **Note:** If you try to enter any value greater than 24, it will automatically reset to 24.
+12. **[通知]**タブで、通知の送信をトリガーできる 3 つのアクティビティに注目してください。**次の場合に通知を送信します。**
 
-8. Below the activation slider, set the **On activation, require** setting to **None**. <br/>
+    - メンバーはこの役割に適任として割り当てられます
+    - メンバーはこのロールにアクティブとして割り当てられます
+    - 適格なメンバーがこのロールをアクティブ化します
 
-    **Note:** In the prior lab exercise, Holly required that Patti Fernandez sign in using Azure MFA when she requested activation of the Global admin role. In doing so, Holly verified the Azure MFA sign-in worked. However, for the purpose of the pilot project, Holly will not require verification using multi-factor authentication when activating the Helpdesk administrator role (and since you already tested this MFA feature in the prior lab exercise, there's no reason to take time in class to do it again). 
+    **[資格のあるメンバーがこのロールをアクティブ化したときに通知を送信する]**セクションで、Holly は、Alex または Joni がこのロールを自己承認したときに通知を受け取ることを希望しています。したがって：
 
-9. The screen then displays a group of three settings, each with a check box. Verify that all three check boxes are blank. If any check box is selected by default, then un-check (clear) it now. <br/>
+    - **[役割アクティブ化アラート]**チェック ボックスがオンになっていることを確認します。
+    - **ロールのアクティブ化アラート**のデフォルトの受信者は**Admin**です。これは、グローバル管理者 (Holly) および任意の特権ロール管理者を指します。
+    - **[アクティブ化されたユーザー (要求者) への通知] のチェック**を外します (クリアします) 。Alex と Joni は自己承認するため、自己承認するときに通知を受け取る必要はありません。
 
-    **Note:** For the pilot project, Holly does not want the **Require justification on activation** check box selected. Holly knows that Alex and Joni will only activate the role when needed, so she doesn't require a justification from them to activate the role assignment (however, in the next step, Holly will require justification when they assign the role to themselves). Leaving the **Require approval to activate** setting unchecked will enable an eligible user to self-approve, or self-activate without requiring another user's approval.
+13. ウィンドウの下部にある**「更新」**ボタンを選択します。
 
-10. You're currently in the **Activation** tab. Select the **Assignment** tab that appears next to it. When this role is assigned to Alex or Joni, Holly wants the assignment to expire after 15 days. To implement this requirement, configure the following settings on this tab: <br/>
+14. 次のタスクのためにブラウザのタブはすべて開いたままにしておきます。
 
-    - Uncheck (clear) the **Allow permanent active assignment** check box. Then select the **Expire active assignments after** field, and in the drop-down menu that appears, select **15 days**.
+### [タスク 3 - ヘルプデスク管理者ロールを自己アクティブ化する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex2_PIM_Self_Approval.md#task-3---self-activate-the-helpdesk-admin-role)
 
-    - Verify the **Require justification on active assignment** check box is selected (if not, select it now).
+Holly のパイロット プロジェクトのこの時点で、**PIM-Helpdesk-Administrators**グループはヘルプデスク管理者ロールの資格を与えられています。Azure AD Privileged Identity Management を使用して、グループのメンバー (Alex Wilber と Joni Sherman) にヘルプデスク管理者ロールを割り当てることができるようになりました。ホリーは、パイロット プロジェクトで PIM プロセスをテストしたいと考えています。このタスクでは、ユーザー アカウントにヘルプデスク管理者の役割を割り当てる自己承認リクエストを送信する Alex Wilber の役割を引き受けます。
 
-11. At the top of the window, select the **Notification** tab.
+1. LON-CL1 で、タスクバーの**Edge**アイコンを右クリックし、表示されるメニューで**[新しい InPrivate ウィンドウ]**を選択します。
 
-12. On the **Notification** tab, note the three activities that can trigger a notification being sent: **Send notifications when...**    <br/>
+2. InPrivate ブラウジング セッションで、アドレス バーに次の URL を入力します: **[https://portal.azure.com](https://portal.azure.com/)**
 
-    - members are assigned as eligible to this role
-    - members are assigned as active to this role
-    - eligible members activate this role
+3. これから、Alex Wilber として Azure にログインします。**[サインイン]**ウィンドウに**[「AlexW@xxxxxZZZZZZ.onmicrosoft.com」](mailto:AlexW@xxxxxZZZZZZ.onmicrosoft.com)**と入力し(xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)、 [**次へ]**を選択します。**[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 [**サインイン]**を選択します。サインインした状態で**滞在しますか?** ダイアログ ボックスで、**[今後これを表示しない]**チェック ボックスをオンにし、**[はい]**を選択します。
 
-    Under the **Send notifications when eligible members activate this role** section, Holly wants to be notified when Alex or Joni self-approve this role. Therefore:
+4. **表示される[Microsoft Azure へようこそ]**ダイアログ ボックスで、 **[後で]**を選択してツアーをスキップします。
 
-    - Verify the **Role activation alert** check box is selected.
-    - The default recipient for the **Role activation alert** is **Admin**. This refers to the Global Administrators (Holly) and any Privileged Role Administrators. 
-    - Un-check (clear) the **Notification to activated user (requestor)**. Since Alex and Joni will be self-approving, they don't need to receive a notification when they do so.
+5. **Microsoft Azure**ポータルでは、画面の中央に**Azure サービス**のセクションがあります。このセクションには、一連の Azure サービスとそれに関連するアイコンが表示されます。行の最後で、**[その他のサービス]** (前方向矢印アイコン付き) を選択します。これにより、**「すべてのサービス」**ウィンドウが開きます。
 
-13. Select the **Update** button at the bottom of the window.
+6. **[すべてのサービス]**ウィンドウで、ページ上部の**[フィルター サービス]**検索ボックスに**「priv」と入力します。**検索結果のリストで、**[Azure AD Privileged Identity Management]**を選択します。
 
-14. Leave all browser tabs open for the next task.
+7. Privileged **Identity Management | クイック スタート**ウィンドウの左側のナビゲーション ペインの**[タスク]セクションで、** **[自分の役割]**を選択します。
 
+8. 私の**役割 | Azure AD ロール**ウィンドウでは、既定で**[適格な割り当て]**タブが表示されます。**前のタスクで、Holly が Alex をPIM-Helpdesk-Administrators**グループのメンバーとして割り当てたことを思い出してください。その後、Holly はこのグループをヘルプデスク管理者ロールの適格グループとして割り当てました。そのため、このロールはAlex の**適格な割り当て**のリストに表示されます。
 
-### Task 3 - Self-activate the Helpdesk Admin role
+   **[アクティブな割り当て]**タブを選択します。Alex のアカウントにはまだ Azure AD ロールが割り当てられていないことに注意してください。
 
-At this point in Holly's pilot project, the **PIM-Helpdesk-Administrators** group has been made eligible for the Helpdesk administrator role. The members of the group (Alex Wilber and Joni Sherman) can now be assigned the Helpdesk Administrator role using Azure AD Privileged Identity Management. Holly wants to test out the PIM process in her pilot project. In this task, you will take on the role of Alex Wilber, who will submit a request to self-approve assigning the Helpdesk Administrator role to his user account. 
+9. Alex は、ヘルプデスク管理者の役割を自己承認または自己アクティブ化する準備ができました。**[適格な割り当て]**タブを選択します。**ヘルプデスク管理者ロールの****[アクション]**列で、**[アクティブ化]**を選択します。
 
-1. In LON-CL1, right-click on the **Edge** icon on the taskbar and in the menu that appears, select **New InPrivate window**. 
+10. **表示される[アクティブ化 - ヘルプデスク管理者]**ペインで、**解決が必要な営業チーム メンバーからのサポート リクエストを****[理由]**フィールドに入力します。これが、アレックスがこの役割を自らアクティブ化したい理由です。次に、ペインの下部にある**「アクティブ化」ボタンを選択します。**
 
-2. In your InPrivate browsing session, enter the following URL in the address bar: **https://portal.azure.com**
+    **[アクティブ化 - ヘルプデスク管理者]**ペインに表示されるアクティブ化の 3 つの段階と、各段階での進行状況に注目してください。3 つのステージすべてが自動的に完了するまで待ちます (通常、ステージ 2 に最も時間がかかります)。最終段階が完了すると、**「アクティブ化 - ヘルプデスク管理者」ペインが自動的に閉じ、** **「自分の役割」 | 「自分の役割」**に戻ります。**Azure AD ロール**ウィンドウ。
 
-3. You're now going to log into Azure as Alex Wilber. In the **Sign in** window, enter **AlexW@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) and then select **Next**. In the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in**. In the **Stay signed in?** dialog box, select the **Don't show this again** check box and then select **Yes**.
+11. 私の役割について**| Azure AD ロールウィンドウでは、まだ****[適格な割り当て]**タブが表示されていることに注意してください。また、ウィンドウの上部に「**アクティブな役割が変更されました」というメッセージが表示されることにも注目してください。現在の役割を表示するには、ここをクリックしてください**。このメッセージを選択してください。これは単に**[アクティブな割り当て]**タブを表示するだけであり、メッセージを選択する代わりに自分で選択することもできます。
 
-4. In the **Welcome to Microsoft Azure** dialog box that appears, select **Maybe later** to skip the tour.
+12. **「アクティブな割り当て」**タブに、**「ヘルプデスク管理者」**ロールが表示されることに注目してください。このロールをアクティブ化する前に、以前にこのタブをチェックしたが、Azure AD ロールが表示されなかったことを思い出してください。**Alex がヘルプデスク管理者の**役割を自己承認したので、その役割が彼のユーザー アカウントに割り当てられました。
 
-5. In the **Microsoft Azure** portal, in the middle of the screen is the section of **Azure services**. This section displays a row of Azure services and their associated icons. At the end of the row, select **More services** (with the forward arrow icon). This opens the **All services** window.
+13. InPrivate ブラウザー セッションを閉じます。**これにより、 Microsoft Entra 管理センター**に戻り、 **Adatum Corporation |**が表示されるはずです。**設定**ページ。
 
-6. In the **All services** window, enter **priv** in the **Filter services** search box at the top of the page. In the list of search results, select **Azure AD Privileged Identity Management**.
+14. 次のタスクのためにブラウザとすべてのタブを開いたままにしておきます。
 
-7. In the **Privileged Identity Management | Quick start** window, in the **Tasks** section in the left-hand navigation pane, select **My Roles**.
+Alex Wilber として、ヘルプデスク管理者の役割を自己承認しました。これにより、Alex のユーザー アカウントにロールが自動的に割り当てられました。
 
-8. In the **My roles | Azure AD roles** window, the **Eligible assignments** tab is displayed by default. Remember, in the prior task Holly assigned Alex as a member of the **PIM-Helpdesk-Administrators** group, which Holly later assigned as an eligible group for the Helpdesk Administrator role. As such, this role appears in the list of **Eligible assignments** for Alex. <br/>
+### [タスク 4 - PIM 通知が発行されたことを確認する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex2_PIM_Self_Approval.md#task-4----verify-a-pim-notification-was-issued)
 
-    Select the **Active assignments** tab. Note that no Azure AD roles have yet to be assigned to Alex's account. 
+以前にヘルプデスク管理者の役割を構成したときに、対象となるユーザーがその役割をアクティブ化するたびに Holly に通知されるように通知機能を設定しました。Alex Wilber がロールを自己アクティブ化したばかりなので、Holly はこのアクティビティの通知を受け取るはずです。このタスクでは、Holly が通知を受信したことを確認します。
 
-9. Alex is now ready to self-approve, or self-activate the Helpdesk administrator role. Select the **Eligible assignments** tab. Under the **Action** column for the **Helpdesk Administrator** role, select **Activate**.
+1. LON-CL1 では、Edge ブラウザーで、Holly Dickson として Microsoft 365 にログインしているはずです。Edge ブラウザで、[**ホーム] | [ホーム]を選択します。「Microsoft 365」**タブ。
+2. **[Microsoft 365 へようこそ]**ページの画面左側にあるアプリケーション アイコンの列で、**Outlook**アイコンを選択します。これにより、Holly Dickson の Outlook メールボックスが新しいタブで開きます。
+3. ホリーの Outlook メールボックスには、デフォルトで**受信トレイ**が表示されます。Holly が、**Alex Wilber がヘルプデスク管理者の役割の割り当てを有効にした**ことを示す、PIM で生成された電子メールを受信したことを確認します。
+4. 電子メールを選択して開きます。電子メール内の情報を確認して、電子メールを閉じます。
+5. Alex のヘルプデスク管理者ロールの自己承認に関連するアクティビティの監査済みリストを確認するには、Edge ブラウザーで**[Microsoft Entra 管理センター]タブを選択します。**
+6. **Microsoft Entra 管理センター**で、**[Adatum Corporation - 設定]**ページが表示されます。ここは、前のタスクで中断した場所です。中央ペインのページ下部にある**「アクティビティ」セクションで、** **「リソース監査」**を選択します。
+7. アダタムコーポレーションでは**| リソース監査**ページで、PIM アクティビティのリストを確認します。最新の 2 つのアクティビティに注目してください。これには、ヘルプデスク管理者の役割への割り当てを求める Alex のリクエストと、Alex のリクエストの完了が含まれます。
+8. 次のタスクのためにブラウザとすべてのタブを開いたままにしておきます。
 
-10. In the **Activate - Helpdesk Administrator** pane that appears, enter **Support requests from Sales team members that require resolution** in the **Reason** field. This is the reason why Alex wants to self-activate this role. Then select the **Activate** button at the bottom of the pane. <br/>
-
-    Note the three stages of activation that appear in the **Activate - Helpdesk Administrator** pane and the progress made on each stage. Wait for all three stages to automatically complete (Stage 2 typically takes the longest). After the final stage is completed, the **Activate - Helpdesk Administrator** pane will automatically close, and you will be returned to the **My roles | Azure AD roles** window.
-
-11. On the **My roles | Azure AD roles** window, note that you're still in the **Eligible assignments** tab. Also note the message at the top of the window indicating **Your active roles have changed. Click here to view your active roles**. Select this message. This simply displays the **Active assignments** tab, which you could have selected yourself instead of selecting the message. 
-
-12. In the **Active assignments** tab, note the **Helpdesk Administrator** role now appears. Prior to activating this role, remember that you checked this tab earlier and no Azure AD roles appeared. Now that Alex has self-approved the **Helpdesk Administrator** role, it's now been assigned to his user account. 
-
-13. Close the InPrivate browser session. This should return you to the **Microsoft Entra admin center**, which should be displaying the **Adatum Corporation | Settings** page.
-
-14. Leave your browser and all tabs open for the next task.
-
-As Alex Wilber, you have now self-approved the Helpdesk Administrator role. This has automatically assigned the role to Alex's user account.
-
-
-### Task 4 -  Verify a PIM notification was issued
-
-When you earlier configured the Helpdesk Administrator role, you set up the notification feature so that Holly would be notified any time an eligible user activated the role. Since Alex Wilber just self-activated the role, Holly should receive a notification of this activity. This task will verify that Holly received a notification. 
-
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as Holly Dickson. In your Edge browser, select the **Home | Microsoft 365** tab.
-
-2. On the **Welcome to Microsoft 365** page, in the column of application icons on the left-side of the screen, select the **Outlook** icon. This will open Outlook for Holly Dickson's mailbox in a new tab.
-
-3. In Holly's Outlook mailbox, her **Inbox** is displayed by default. Verify that Holly received a PIM generated email indicating that **Alex Wilber activated the Helpdesk Administrator role assignment**. 
-
-4. Select the email to open it. Review the information in the email and then close it. 
-
-5. To review the audited list of activities related to Alex's self-approval of the Helpdesk Administrator role, select the **Microsoft Entra admin center** tab in your Edge browser. 
-
-6. In the **Microsoft Entra admin center**, the **Adatum Corporation - Settings** page should be displayed. This is where you left off in the prior task. In the middle pane, under the **Activity** section towards the bottom of the page, select **Resource audit**.
-
-7. In the **Adatum Corporation | Resource audit** page, review the list of PIM activities. Note the two most recent activities, which include Alex's request to be assigned to the Helpdesk Administrator role, and the completion of Alex's request. 
-
-8. Leave your browser and all tabs open for the next task.
-
-
-# Proceed to Lab 4 - Exercise 3
+# [ラボ 4 - 演習 3 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_04_Lab4_Ex2_PIM_Self_Approval.md#proceed-to-lab-4---exercise-3)

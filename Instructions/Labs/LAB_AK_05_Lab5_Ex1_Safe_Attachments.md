@@ -1,57 +1,54 @@
-# Learning Path 5- Lab 5 - Exercise 1 - Implement a Safe Attachments policy 
+# [ラーニング パス 5 - ラボ 5 - 演習 1 - 安全な添付ファイル ポリシーを実装する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_05_Lab5_Ex1_Safe_Attachments.md#learning-path-5--lab-5---exercise-1---implement-a-safe-attachments-policy)
 
-In this phase of Adatum's Microsoft 365 pilot project, Holly Dickson wants to create a Safe Attachments policy and turn on Microsoft Defender for Office 365. Doing so will provide advanced threat protection for SharePoint, OneDrive, and Microsoft Teams.
+Adatum の Microsoft 365 パイロット プロジェクトのこのフェーズでは、Holly Dickson は安全な添付ファイル ポリシーを作成し、Microsoft Defender for Office 365 を有効にしたいと考えています。これにより、SharePoint、OneDrive、および Microsoft Teams に高度な脅威保護が提供されます。
 
-**Note:** You will not be able to validate the Safe Attachments policy that you create. To do so would require that you attach a virus or malware-infected file to an email, which is something that Microsoft does not recommend.
+**注:**作成した安全な添付ファイル ポリシーを検証することはできません。そのためには、ウイルスまたはマルウェアに感染したファイルを電子メールに添付する必要がありますが、これは Microsoft では推奨していません。
 
-### Task 1 – Create a Safe Attachment policy and turn on Microsoft Defender for Office 365
+### [タスク 1 – 安全な添付ファイル ポリシーを作成し、Microsoft Defender for Office 365 を有効にする](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_05_Lab5_Ex1_Safe_Attachments.md#task-1--create-a-safe-attachment-policy-and-turn-on-microsoft-defender-for-office-365)
 
-In this task, you will turn on Microsoft Defender for Office 365, which provides advanced threat protection for SharePoint, OneDrive, and Microsoft Teams. You will also create a Safe Attachments policy that will test email attachments for malware that are sent to recipients within the xxxxxZZZZZZ.onmicrosoft.com domain created for this lab by your lab hosting provider. You will configure the policy so that if an attachment is blocked, it will be removed from the email that is sent to the recipient, and a copy of the email will be redirected to Joni Sherman for additional review.
+このタスクでは、SharePoint、OneDrive、および Microsoft Teams に高度な脅威保護を提供する Microsoft Defender for Office 365 を有効にします。また、ラボ ホスティング プロバイダーによってこのラボ用に作成された xxxxxZZZZZZ.onmicrosoft.com ドメイン内の受信者に送信される電子メールの添付ファイルにマルウェアがないかテストする安全な添付ファイル ポリシーも作成します。添付ファイルがブロックされた場合、受信者に送信される電子メールから添付ファイルが削除され、追加のレビューのために電子メールのコピーが Joni Sherman にリダイレクトされるようにポリシーを構成します。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**.
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-2. In your Edge browser, select the **Microsoft 365 admin center** tab. In the left-hand navigation pane, under **Admin centers**, select **Security**. This will open a new tab in your browser for **Microsoft 365 Defender**. 
+2. Edge ブラウザーで、**[Microsoft 365 管理センター]**タブを選択します。左側のナビゲーション ウィンドウの [**管理センター]で、** **[セキュリティ]**を選択します。これにより、ブラウザーに**Microsoft 365 Defender**の新しいタブが開きます。
 
-3. In the **Microsoft 365 Defender** portal, scroll down to the bottom of the **Email & collaboration** section in the left-hand navigation pane and select **Policies & rules** .
+3. **Microsoft 365 Defender**ポータルで、左側のナビゲーション ウィンドウの**[電子メールとコラボレーション]**セクションの一番下までスクロールし、 **[ポリシーとルール]**を選択します。
 
-4. In the **Policies & rules** window, select **Threat policies**.
+4. **[ポリシーとルール]**ウィンドウで、**[脅威ポリシー]**を選択します。
 
-5. In the **Threat policies** window, under the **Policies** section, select **Safe attachments**.
+5. **[脅威ポリシー]**ウィンドウの**[ポリシー]**セクションで、**[安全な添付ファイル]**を選択します。
 
-6. In the **Safe attachments** window, select **Global settings** on the menu bar.
+6. **[安全な添付ファイル]**ウィンドウで、メニュー バーの**[グローバル設定]を選択します。**
 
-7. In the **Global settings** pane that appears, set the following options and then select **Save** (if necessary):
+7. **表示されるグローバル設定**ペインで、次のオプションを設定し、(必要に応じて)**保存を選択します。**
 
-    - **Turn on Defender for Office 365 for SharePoint, OneDrive, and Microsoft Teams** - verify the toggle switch is set to **On** (set it to **On** if necessary). This enables Microsoft Defender for Office 365.
+   - **SharePoint、OneDrive、および Microsoft Teams の Defender for Office 365 をオンにします**。トグル スイッチが**オン**に設定されていることを確認します (必要に応じて**オン**に設定します)。これにより、Microsoft Defender for Office 365 が有効になります。
+   - **Office クライアントの安全なドキュメントをオンにします**- トグル スイッチが**オン**に設定されていることを確認します (必要に応じて**オン**に設定します)。
 
-    - **Turn on Safe Documents for Office clients** - verify the toggle switch is set to **On** (set it to **On** if necessary)
+   **注:両方のトグル スイッチがすでに****[オン]**に設定されている場合は、変更が加えられていないため、ペインの下部にある**[保存]ボタンは無効のままになります。**この場合は、**「キャンセル」**を選択してください。
 
-    **Note:** If both toggle switches are already set to **On**, then the **Save** button at the bottom of the pane will remain disabled since no changes were made. In this case, select **Cancel**.
+8. **[安全な添付ファイル]**ウィンドウで、メニュー バーの**[+作成]を選択して、****安全な添付ファイルの作成ポリシー**ウィザードを開始します。
 
-8. On the **Safe attachments** window, select **+Create** on the menu bar to initiate the **Create Safe Attachments policy** wizard.
+9. **[ポリシーに名前を付けます]**ページで、**[名前]**フィールドに**「AttachmentPolicy1」**と入力し、**[次へ]**を選択します。
 
-9. On the **Name your policy** page, enter **AttachmentPolicy1** in the **Name** field and then select **Next**.
+10. **[ユーザーとドメイン]**ページでは、新しいポリシーが適用される特定のユーザー、グループ、およびドメインを定義できます。**AttachmentPolicy1 は**Adatum の xxxxxZZZZZZ.onmicrosoft.com ドメイン内のすべてのユーザーとグループに適用されるため、そのドメイン値のみを入力します。
 
-10. On the **Users and domains** page, you can define specific users, groups, and domains to which the new policy will apply. Since **AttachmentPolicy1** will apply to all users and groups in Adatum's xxxxxZZZZZZ.onmicrosoft.com domain, you're only going to enter that domain value. <br/>
+    **「ドメイン」**フィールドに**「on」**と入力します。この値を含む推奨ドメインを示すメニューが表示されたら、Adatum の**xxxxxZZZZZZonmicrosoft.com**ドメインを選択します (xxxxxZZZZZZ は、ラボ ホスティング プロバイダーが提供するテナント プレフィックスに相当します)。**Adatum のドメインが[ドメイン]**フィールドの下に表示されます。**「次へ」**を選択します。
 
-    Enter **on** in the **Domains** field. In the menu that appears showing the suggested domains that include this value, select Adatum's **xxxxxZZZZZZonmicrosoft.com** domain (where xxxxxZZZZZZ equals the tenant prefix provided by your lab hosting provider). Adatum's domain will now appear below the **Domains** field. Select **Next**.
+11. **[設定]**ページで、[**動的配信 (メッセージのプレビュー)]**オプションを選択します。このオプションでは、すべての電子メール メッセージが配信されます。ただし、添付ファイルのある電子メールの場合は、ファイルを保持してテストし、ファイルがスキャンされて許容可能とマークされたら、そのファイルをメッセージに再添付します。
 
-11. On the **Settings** page, select the **Dynamic Delivery (Preview messages)** option. This option will deliver all email messages; however, for an email with attachments, it will hold the files, test them, and then reattach the files to the messages once the files are scanned and marked acceptable. 
+12. **[検出された添付ファイルを含むメッセージをリダイレクトする]**セクションで、 [**リダイレクトを有効にする**] チェック ボックスをオンにします。
 
-12. Under the **Redirect messages with detected attachments** section, select the **Enable redirect** check box. 
+13. **[監視対象の添付ファイルを含むメッセージを指定した電子メール アドレスに送信する]**フィールドに、**[「JoniS@xxxxxZZZZZZ.onmicrosoft.com](mailto:JoniS@xxxxxZZZZZZ.onmicrosoft.com)**」 (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) と入力し、 [**次へ]**を選択します。
 
-13. In the **Send messages that contain monitored attachments to the specified email address** field, enter **JoniS@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider), and then select **Next**.
+14. **[確認]**ページで、構成したオプションを確認します。修正する必要がある場合は、適切な**編集**オプションを選択し、必要な修正を加えます。すべての設定が正しければ、**[送信]**を選択します。
 
-14. On the **Review** page, review the options that you configured. If any need to be corrected, select the appropriate **Edit** option and make the necessary corrections. Once all the settings are correct, select **Submit**.
+15. **[新しい安全な添付ファイル ポリシーが作成されました]**ページで、**[完了]**を選択します。作成した新しい**AttachmentPolicy1**ポリシーが、安全な添付ファイル ポリシーのリストに表示されます。
 
-15. On the **New Safe Attachments policy created** page, select **Done**. The new **AttachmentPolicy1** policy that you just created should now appear in the list of Safe Attachment policies.
+16. 次のラボまで、Edge ブラウザーのすべてのタブを開いたままにしておきます。
 
-16. Leave all the tabs in your Edge browser open for the next lab.
+**注:**残念ながら、作成したばかりの安全な添付ファイル ポリシーを検証できるトレーニング ラボを作成できません。そのためには、悪意のある添付ファイルを含む電子メールを送信する必要があります。EICAR テスト ウイルスなど、利用可能な一般的なテスト ウイルスがいくつかあります。ただし、EICAR などのよく知られたテスト ウイルスの場合、ウイルスが添付されたメッセージは、Microsoft Defender for Office 365 で処理される前にメール サーバーによって隔離されます。安全な添付ファイル機能は、未知のウイルスやゼロウイルスから保護することを目的としているため、ウイルスやマルウェアの可能性があるため、このような添付ファイルを作成することは非常に困難であり、お勧めできません。
 
-**NOTE:** Unfortunately, we are unable to create a training lab in which you can validate the Safe Attachments policy that you just created. To do so, you must send an email that contains a malicious attachment. There are some common test viruses that are available, such as the EICAR test virus. However, with well-known test viruses such as EICAR, the messages in which they are attached get quarantined by mail servers before they can be processed by Microsoft Defender for Office 365. Since the Safe Attachments functionality is meant to protect against unknown and zero-day viruses and malware, it is very difficult, and not recommended, to create such an attachment.
+ただし、実際の環境で安全な添付ファイル ポリシーを定義した後、サービスがどのように機能しているかを確認する良い方法の 1 つは、Microsoft Defender for Office 365 のセキュリティ関連レポートを表示することです。 これらのレポートの使用方法の詳細については、「Microsoft Defender for Office 365」を参照してください。安全なリンクと安全な添付ファイルのポリシーを検証するには、「[Microsoft 365 Defender ポータルで Defender for Office 365 レポートを表示する」を](https://learn.microsoft.com/microsoft-365/security/office-365-security/view-reports-for-mdo)参照してください。
 
-That being said, after you have defined Safe Attachment policies in your real-world environment, one good way to see how the service is working is by viewing the security-related reports in Microsoft Defender for Office 365. For more information on using these reports to validate your Safe Links and Safe Attachment policies, see [View Defender for Office 365 reports in the Microsoft 365 Defender portal](https://learn.microsoft.com/microsoft-365/security/office-365-security/view-reports-for-mdo).
-
-
-# Proceed to Lab 5 - Exercise 2
-
+# [ラボ 5 - 演習 2 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_05_Lab5_Ex1_Safe_Attachments.md#proceed-to-lab-5---exercise-2)

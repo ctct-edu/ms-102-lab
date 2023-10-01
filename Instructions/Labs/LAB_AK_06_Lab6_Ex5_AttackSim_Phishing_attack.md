@@ -1,151 +1,149 @@
-# Learning Path 6 - Lab 6 - Exercise 5 - Conduct a Spear Phishing attack using Attack Simulation training
+# [ラーニング パス 6 - ラボ 6 - 演習 5 - 攻撃シミュレーション トレーニングを使用してスピア フィッシング攻撃を実行する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex5_AttackSim_Phishing_attack.md#learning-path-6---lab-6---exercise-5---conduct-a-spear-phishing-attack-using-attack-simulation-training)
 
-Holly Dickson is concerned that some users at Adatum may require education about phishing attacks. As part of her pilot project, Holly has decided to use the Microsoft 365 Attack simulation training feature to determine her users' susceptibility to phishing attacks.
+Holly Dickson 氏は、Adatum の一部のユーザーがフィッシング攻撃に関する教育を必要とする可能性があることを懸念しています。パイロット プロジェクトの一環として、ホリーは Microsoft 365 の攻撃シミュレーション トレーニング機能を使用して、ユーザーがフィッシング攻撃を受けやすいかを判断することにしました。
 
+### [タスク 1: 全体管理者の多要素認証を有効にする](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex5_AttackSim_Phishing_attack.md#task-1-enable-multifactor-authentication-for-the-global-admin)
 
-### Task 1: Enable Multifactor Authentication for the Global Admin
-To use Microsoft's Attack simulation training feature to simulate a phishing attack, you must first enable Multifactor Authentication (MFA) for either your entire organization or for just the Global admin who will run the simulation. For her pilot project, Holly does not want to set up MFA for all the Adatum users at this point in time; therefore, she will enable MFA for her user account only, and then after she finishes running the Attack simulation training, she will turn MFA back off. 
+Microsoft の攻撃シミュレーション トレーニング機能を使用してフィッシング攻撃をシミュレートするには、まず組織全体、またはシミュレーションを実行する全体管理者のみに対して多要素認証 (MFA) を有効にする必要があります。パイロット プロジェクトでは、ホリーは現時点ではすべての Adatum ユーザーに対して MFA を設定したくありません。したがって、彼女は自分のユーザー アカウントに対してのみ MFA を有効にし、攻撃シミュレーション トレーニングの実行が終了した後、MFA をオフに戻します。
 
-**Important:** To implement MFA, you will need to use your mobile phone to receive a verification code so that you can enter it into your tenant as a second form of authentication. If you do not have a phone, you will have to skip this lab. If this is the case, notify your instructor, who can potentially partner you with another student to follow along through this lab.
+**重要:** MFA を実装するには、2 番目の認証形式としてテナントに入力できるように、携帯電話を使用して確認コードを受信する必要があります。電話をお持ちでない場合は、このラボをスキップする必要があります。この場合は、インストラクターに通知してください。インストラクターは、このラボを一緒に進める別の学生と協力してくれる可能性があります。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**.  
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-2. To enable MFA for Holly Dickson's user account, select the **Microsoft 365 admin center** tab in your browser, and then in the left hand-navigation pane, select **Users** and then select **Active users**.
+2. **Holly Dickson のユーザー アカウントの MFA を有効にするには、ブラウザーで[Microsoft 365 管理センター]**タブを選択し、左側のナビゲーション ウィンドウで [**ユーザー]**、 [**アクティブ ユーザー]**の順に選択します。
 
-3. In the **Active users** window, on the menu bar at the top of the user list, select **Multi-factor authentication**. If this option does not appear on the menu bar, select the **ellipsis (More actions)** icon, and in the drop-down menu that appears, select  **Multi-factor authentication**.
+3. **[アクティブなユーザー]**ウィンドウのユーザー リストの上部にあるメニュー バーで、**[多要素認証]**を選択します。このオプションがメニュー バーに表示されない場合は、**省略記号 (その他のアクション)**アイコンを選択し、表示されるドロップダウン メニューで **[多要素認証]**を選択します。
 
-4. A **Configure multifactor authentication (MFA)** window appears in a new Edge browser tab. Below the paragraph of text at the top of the page is an Information box that displays the message **Not what you're looking for? To configure MFA on an individual per-users level, select Legacy per-user MFA.** Select the **Legacy per-user MFA** link in this message. <br/>
+4. 新しい Edge ブラウザー タブに**[多要素認証 (MFA) の構成]**ウィンドウが表示されます。ページ上部のテキストの段落の下には、「**探しているものではありませんか?」というメッセージが表示される情報ボックスがあります。個々のユーザーごとのレベルで MFA を構成するには、「従来のユーザーごとの MFA」を選択します。**このメッセージ内の**「従来のユーザーごとの MFA」**リンクを選択します。
 
-	On the **multi-factor authentication** page that appears, the **users** tab at the top of the page is displayed by default. Note the MFA status for all existing user accounts is **Disabled**. Select the check box for **Holly Dickson**, and in Holly's properties pane that appears on the right, select **Enable**.
+   表示される**多要素認証**ページでは、ページの上部に**「ユーザー」タブがデフォルトで表示されます。**すべての既存のユーザー アカウントの MFA ステータスが**[無効] で**あることに注意してください。**Holly Dickson**のチェック ボックスをオンにし、右側に表示される Holly のプロパティ ペインで**[有効にする]**を選択します。
 
-5. On the **About enabling multi-factor auth** dialog box that appears, select the **enable multi-factor auth** button. 
+5. **表示される[多要素認証の有効化について**] ダイアログ ボックスで、 **[多要素認証を有効にする]**ボタンを選択します。
 
-6. When the **Updates successful** dialog box appears, select **close**. In the **multi-factor authentication** window, verify Holly's MFA Status has changed to **Enabled**. Close the **Multi-factor authentication** tab in your Edge browser. This should return you to the **Microsoft 365 admin center** tab.
+6. **[アップデートが成功しました]**ダイアログ ボックスが表示されたら、**[閉じる]**を選択します。**多要素認証**ウィンドウで、Holly の MFA ステータスが**Enabled**に変更されたことを確認します。Edge ブラウザの**[多要素認証]**タブを閉じます。**これにより、 Microsoft 365 管理センター**タブに戻るはずです。
 
-7. You must now sign out of Microsoft 365 as Holly, close your browser session (to clear cache), open a new session, and then log back in as Holly using MFA. The first time you sign back in after having MFA enabled for your user account, you will be asked for the authentication information needed for MFA, such as your phone number and authentication options. You will then be texted a verification code to validate the authentication process works. You will perform these steps in the remaining portion of this task.<br/>
+7. ここで、Holly として Microsoft 365 からサインアウトし、ブラウザー セッションを閉じて (キャッシュをクリアするため)、新しいセッションを開いて、MFA を使用して Holly として再度ログインする必要があります。ユーザー アカウントで MFA を有効にした後、初めてサインインし直すと、電話番号や認証オプションなど、MFA に必要な認証情報の入力を求められます。その後、認証プロセスが機能することを検証するための確認コードがテキストメッセージで送信されます。このタスクの残りの部分では、これらの手順を実行します。
 
-	You must begin by signing out of Microsoft 365 as Holly, so select the **HD** user icon in the upper right corner of the browser and in the **Holly Dickson** window that appears, select **Sign out**. 
+   まず、Holly として Microsoft 365 からサインアウトする必要があるため、ブラウザーの右上隅にある**HD**ユーザー アイコンを選択し、表示される**Holly Dicksonウィンドウで****[サインアウト]**を選択します。
 
-8. Once you are signed out, close all the browser tabs. This will close your Edge browser.
+8. サインアウトしたら、ブラウザーのタブをすべて閉じます。これにより、Edge ブラウザが閉じられます。
 
-9. Select the **Edge** icon on your taskbar to open a new browser session. In your browser go to the **Microsoft Office Home** page by entering the following URL in the address bar: **https://portal.office.com/** 
+9. タスクバーの**Edge**アイコンを選択して、新しいブラウザー セッションを開きます。ブラウザでアドレス バーに次の URL を入力して、**Microsoft Office ホームページに移動します:** **https://portal.office.com/**
 
-10. In the **Pick an account** window, select **Holly@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) and then select **Next**. In the **Enter password** window, enter the same Microsoft 365 Tenant Password provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and select **Sign in**.
+10. **[アカウントの選択]**ウィンドウで、**[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)** (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) を選択し、 [**次へ]**を選択します。**[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたテナント管理者アカウント (つまり MOD 管理者アカウント) と同じ Microsoft 365 テナント パスワードを入力し、 [**サインイン]**を選択します。
 
-11. Because MFA is enabled for Holly, a **More information required** window appears. Select **Next**.
+11. Holly では MFA が有効になっているため、[**詳細情報が必要です]**ウィンドウが表示されます。**「次へ」**を選択します。
 
-12. On the **Microsoft Authenticator** page, you can download this mobile app or use a different method for MFA verification. For the purposes of this lab, we recommend you use your mobile phone so that you do not have to take time installing the Microsoft Authenticator app that you may not use again after this training class. Select the **I want to set up a different method** option at the bottom of the page. 
+12. **Microsoft Authenticator**ページでは、このモバイル アプリをダウンロードすることも、MFA 検証に別の方法を使用することもできます。このラボでは、このトレーニング クラス後に再度使用することのない Microsoft Authenticator アプリのインストールに時間を費やす必要がないように、携帯電話を使用することをお勧めします。ページの下部にある「**別の方法を設定したい**」オプションを選択します。
 
-13. On the **Choose a different method** dialog box that appears, select the drop-down arrow in the **Which method would you like to use?** field, select **Phone**, and then select **Confirm**. 
+13. **表示される[別の方法を選択してください]**ダイアログ ボックスで、 **[どの方法を使用しますか?]**のドロップダウン矢印を選択します。フィールドで**[電話]**を選択し、**[確認]**を選択します。
 
-14. In the **Phone** window that appears, under **What phone number would you like to use?** field, select your country or region, and then in the field next to it, enter your phone number (in the format **nnn-nnn-nnnn**). Verify the **Text me a code** option is selected and then select **Next**.
+14. **表示される[電話]**ウィンドウの**[どの電話番号を使用しますか?]**で、**フィールドで国または地域を選択し、その隣のフィールドに電話番号を入力します ( nnn-nnn-nnnn**の形式)。**[コードをテキストで送信]**オプションが選択されていることを確認し、**[次へ]**を選択します。
 
-15. Retrieve the verification code from the text message that is sent to your phone.
+15. 携帯電話に送信されたテキスト メッセージから確認コードを取得します。
 
-16. In the **Phone** window, enter the 6-digit verification code in the code field and then select **Next**. When the **Phone** window displays a message indicating your phone was registered successfully, select **Next**.
+16. **[電話]**ウィンドウで、コード フィールドに 6 桁の確認コードを入力し、**[次へ]**を選択します。**[電話]**ウィンドウに電話が正常に登録されたことを示すメッセージが表示されたら、 **[次へ]**を選択します。
 
-17. On the **Success!** page, select **Done**.
+17. 成功について**！**ページで、**「完了」**を選択します。
 
-18. If a **Stay signed in?** dialog box appears, select the **Don’t show this again** check box and then select **Yes.** 
+18. Stay がサインインしている場合は**?** ダイアログ ボックスが表示されたら、[**今後これを表示しない]**チェック ボックスをオンにして、[**はい] を選択します。**
 
-19. On the **Microsoft Office Home** tab, select the **Admin** icon that appears in the column of app icons on the left-side of the screen. This opens the **Microsoft 365 admin center** in a new browser tab. This will prepare you for the next lab exercise when you disable MFA for Holly Dickson after completing the Attack simulation training.
+19. **[Microsoft Office ホーム]**タブで、画面左側のアプリ アイコンの列に表示される**管理者アイコンを選択します。**これにより、新しいブラウザー タブで**Microsoft 365 管理センターが開きます。**これにより、攻撃シミュレーション トレーニングの完了後に Holly Dickson の MFA を無効にするときの次のラボ演習の準備が整います。
 
-20. In the **Microsoft 365 admin center**, select **Show all** in the navigation pane. Under **Admin centers**, select **Security**. This will open the **Microsoft 365 Defender** portal. You will resume from here in the next task when you launch a spear phishing attack using Attack simulation training.  
+20. **Microsoft 365 管理センター**で、ナビゲーション ウィンドウで**[すべて表示]を選択します。****[管理センター]**で、**[セキュリティ]**を選択します。**これにより、 Microsoft 365 Defender**ポータルが開きます。攻撃シミュレーション トレーニングを使用してスピア フィッシング攻撃を開始するときは、次のタスクでここから再開します。
 
-21. You have now configured MFA for Holly Dickson, you have signed into the **Office 365** portal as Holly using MFA, you have opened the Microsoft 365 admin center for future labs, and you are ready to run the Attack simulator training in the Microsoft 365 Defender portal. Leave everything as is in your VM and proceed to the next task.
+21. これで、Holly Dickson の MFA が構成され、MFA を使用して Holly として**Office 365**ポータルにサインインし、今後のラボ用に Microsoft 365 管理センターを開き、Microsoft 365 Defender ポータルで攻撃シミュレーター トレーニングを実行する準備が整いました。 。VM 内のすべてをそのままにして、次のタスクに進みます。
 
+### [タスク 2: スピア フィッシング攻撃を設定して開始する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex5_AttackSim_Phishing_attack.md#task-2-configure-and-launch-a-spear-phishing-attack)
 
-### Task 2: Configure and launch a Spear Phishing attack
+ホリーは MFA を有効にしたので、Microsoft 365 の攻撃シミュレーション トレーニング機能を実行し、シミュレートされたスピア フィッシング攻撃を開始する準備が整いました。これにより、Adatum がこの種のセキュリティ攻撃にどの程度対処できるかを可視化できます。
 
-Now that Holly has turned on MFA, she is ready to run Microsoft 365's Attack simulation training feature and launch a simulated spear phishing attack. This will provide visibility into how well Adatum is prepared to handle this type of security attack. 
+Microsoft 365 には、シミュレーションを作成し、すべてのユーザーまたは選択したユーザー グループに対して実行できる攻撃シミュレーション トレーニング機能が含まれています。各フィッシング攻撃には、「ペイロード」と呼ばれるものが含まれます。これは、ハッカーが情報収集や悪意のあるコードのデポジットなどに使用する悪意のあるコンポーネントを含む電子メール内のメッセージです。攻撃シミュレーション トレーニング機能には、選択できる多数のペイロード テンプレートが含まれており、必要に応じて独自のペイロードを作成できます。
 
-Microsoft 365 includes an Attack simulation training feature that enables you to create simulations and run them against all your users or a select group of users. Each phishing attack includes what is referred to as the "payload", which is the message in the email that contains the malicious component hackers use to gather information, deposit malicious code, and so on. The Attack simulation training feature includes a number of payload templates that you can choose from, and you can create your own payload if you so desire. 
+このラボ演習では、既存のペイロード テンプレートの 1 つを使用します。次のラボ演習では、独自のカスタム ペイロードを作成します。
 
-In this lab exercise, you will use one of the existing payload templates. In the next lab exercise, you will create your own custom payload.
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+2. 前のタスクで作成した**Microsoft 365 Defenderポータルが****Edge**ブラウザーで開いたままになっているはずです。そうでない場合は、アドレス バーに**[https://security.microsoft.comと入力し、2 番目の認証形式を求めるダイアログ ボックスが表示された場合は、検証プロセスに進みます。](https://security.microsoft.com/)**そうでない場合は、Holly のユーザー ID とパスワードを使用してサインインします。
 
-2. You should still have the **Microsoft 365 Defender** portal open in your **Edge** browser from the prior task. If not, enter **https://security.microsoft.com** in the address bar, and then if you receive the dialog box asking for a second form of authentication, proceed through the verification process. If not, sign-in using Holly's user id and password.
+3. **Microsoft 365 Defender**ポータルの左側のナビゲーション ウィンドウの [**電子メールとコラボレーション]**セクションで、 **[攻撃シミュレーション トレーニング]**を選択します。**[攻撃シミュレーション トレーニングへようこそ]**ウィンドウが表示された場合は、**[閉じる]**を選択します。
 
-3. In the **Microsoft 365 Defender** portal, under the **Email & collaboration** section in the left-hand navigation pane, select **Attack simulation training**. If a **Welcome to Attack simulation training** window appears, select **Close**.
+4. **攻撃シミュレーション トレーニング**ページで、ホリーは、URL を使用してユーザー名とパスワードの取得を試みる、アカウント侵害のシミュレーションを実行することを決定しました。これは、攻撃シミュレーターでは**Credentials Harvest**攻撃と呼ばれます。
 
-4. On the **Attack simulation training** page, Holly has decided to conduct a simulated account breach in which she will use a URL to try and obtain usernames and passwords. This is referred to in the Attack Simulator as a **Credentials Harvest** attack. <br/>
+   **この攻撃は、 [シミュレーション]**タブから実行するか、 **[概要]ページの****[シミュレーションの起動]**リンクを選択して実行できます。**[概要]**タブには追加情報があり、**攻撃シミュレーション トレーニング**サービスを選択するときのデフォルト ページであるため、このタイプの攻撃の詳細を学ぶためにそこからサービスを起動することをお勧めします。
 
-	You can launch this attack either from **Simulations** tab or selecting the **Launch a simulation** link on the **Overview** page. Since the **Overview** tab has additional information and is the default page when selecting the **Attack simulation training** service, it is recommended that you launch it from there so that you can learn about the specifics of this type of attack. <br/>
-	
-	On the **Overview** tab, scroll down to the **Recommendations** section. Under the **Launch a phishing simulation using other social engineering techniques** recommendation, select **Create another simulation with new technique**. This initiates the **Create Simulation** wizard.
+   **[概要]**タブで、 **[推奨事項]**セクションまで下にスクロールします。**[他のソーシャル エンジニアリング技術を使用してフィッシング シミュレーションを開始する]**推奨事項で、**[新しい技術を使用して別のシミュレーションを作成する]**を選択します。これにより、**シミュレーションの作成**ウィザードが開始されます。
 
-5. On the **Select Technique** page, review the specific information related to the **Credentials Harvest** attack type option. At the bottom of the **Credential Harvest** option, select the **View details of Credential harvest** link. This opens a **Credential Harvest** pane on the right. Review the **Description** and the **Simulation steps** for this type of attack. When you're done, close the **Credential Harvest** pane.
+5. **[テクニックの選択]**ページで、 **[認証情報ハーベスト]**攻撃タイプ オプションに関連する特定の情報を確認します。**[資格情報収集]**オプションの下部にある**[資格情報収集の詳細を表示]**リンクを選択します。これにより、右側に**[Credential Harvest]ペインが開きます。****このタイプの攻撃の説明**と**シミュレーションの手順**を確認してください。完了したら、**[Credential Harvest]**ペインを閉じます。
 
-6. On the **Select Technique** page, select the **Credentials Harvest** attack type if it's not already selected by default, and then select **Next**.
+6. **[テクニックの選択]**ページで、デフォルトで**[認証情報収集]**攻撃タイプが選択されていない場合は選択し、 [**次へ]**を選択します。
 
-7. In the **Simulation** wizard, the steps involved in the simulation are displayed in the left-hand pane. While you can manually create a phishing campaign, it is recommended that you take advantage of the available templates that will prefill most of the information for you. The key to a successful phishing attack is to create a very intriguing, real-world looking email, and the templates provide very creative solutions. <br/>
+7. **シミュレーション**ウィザードでは、シミュレーションに含まれるステップが左側のペインに表示されます。フィッシング キャンペーンを手動で作成することもできますが、ほとんどの情報が事前に入力される利用可能なテンプレートを利用することをお勧めします。フィッシング攻撃を成功させる鍵は、非常に魅力的で現実世界に見える電子メールを作成することであり、テンプレートは非常に創造的なソリューションを提供します。
 
-	On the **Name Simulation** page, provide the following information: 
-	- Simulation Name: **PhishingTest1**
-	- Description: **This simulation provides insight on targeted email threats against users inside the company**
+   **[名前のシミュレーション]**ページで、次の情報を入力します。
 
-8. Select **Next**.
+   - シミュレーション名: **PhishingTest1**
+   - 説明:**このシミュレーションは、社内のユーザーに対する標的型電子メールの脅威に関する洞察を提供します。**
 
-9. On the **Select payload and login page** window, select the check box to the left of the **2 Failed Messages** payload. Select **Next**. 
+8. **「次へ」**を選択します。
 
-10. On the **Target Users** page, select the **Include all users in my organization** option. This will display all of Adatum's users. Select **Next**, and then on the **Exclude users** page, select **Next** again.
+9. **[ペイロードとログイン ページの選択]**ウィンドウで、 **2 つの失敗したメッセージ**ペイロードの左側にあるチェック ボックスをオンにします。**「次へ」**を選択します。
 
-11. On the **Assign Training** page, under the **Preferences** section, the **Assign training for me (Recommended)** option should be selected by default (if not, select it now). Select the **Due Date** field. In the drop-down menu that appears, select **7 days after Simulation ends** and then select **Next**.
+10. **[対象ユーザー]**ページで、**[組織にすべてのユーザーを含める**] オプションを選択します。これにより、Adatum のすべてのユーザーが表示されます。**[次へ]**を選択し、**[ユーザーの除外]ページでもう一度****[次へ]**を選択します。
 
-12. On the **Select Phish landing page** window, the **Global landing pages** tab should be displayed by default. Select the **Microsoft Landing Page Template 1** name to preview the page. 
+11. **[トレーニングの割り当て]**ページの**[設定]**セクションで、 **[自分にトレーニングを割り当てる (推奨)]**オプションがデフォルトで選択されている必要があります (選択されていない場合は、ここで選択します)。**[期日]**フィールドを選択します。表示されるドロップダウン メニューで、 [**シミュレーション終了後 7 日]**を選択し、**[次へ]**を選択します。
 
-13. A preview of the **Microsoft landing page** for this template appears in a new pane. This preview pane provides an example of what the landing page will look like when someone experiences a phishing attack and the simulation uses **Microsoft Landing Page Template 1**. Scroll down through this preview panel and review the features. When you're finished, select the **Close** button at the bottom of the preview pane. 
+12. **[フィッシング ランディング ページの選択]**ウィンドウには、デフォルトで**[グローバル ランディング ページ]**タブが表示されます。**Microsoft Landing Page Template 1 の**名前を選択して、ページをプレビューします。
 
-14. You will now look at some of the other landing page templates until you find one that you want to use for this simulation. On the **Select Phish landing page** window, select one of the other templates (select the name of the template and not its checkbox). Examine the preview pane and note how the landing page for this template is different from **Microsoft Landing Page Template 1**. When you're finished, select the **Close** button at the bottom of the preview pane.
+13. **このテンプレートのMicrosoft ランディング ページ**のプレビューが新しいペインに表示されます。このプレビュー ウィンドウには、誰かがフィッシング攻撃に遭遇し、シミュレーションで**Microsoft Landing Page Template 1**を使用した場合にランディング ページがどのように表示されるかの例が表示されます。このプレビュー パネルを下にスクロールして、機能を確認します。完了したら、プレビュー ペインの下部にある**[閉じる]ボタンを選択します。**
 
-15. Repeat the prior step and select another template. Note how this template is different from the other two you looked at. <br/>
+14. このシミュレーションに使用するランディング ページ テンプレートが見つかるまで、他のランディング ページ テンプレートをいくつか見ていきます。**[フィッシング ランディング ページの選択]**ウィンドウで、他のテンプレートのいずれかを選択します (チェックボックスではなく、テンプレートの名前を選択します)。プレビュー ウィンドウを調べて、このテンプレートのランディング ページが**Microsoft Landing Page Template 1**とどのように異なるかを確認します。完了したら、プレビュー ペインの下部にある**[閉じる]ボタンを選択します。**
 
-	Repeat this step as many times as you would like until you find a template that you want to use for this simulation. When you're finished reviewing templates, select the checkbox for the template that you want to use on the **Select Phish landing page** and then select **Next**.
+15. 前の手順を繰り返して、別のテンプレートを選択します。このテンプレートが、先ほど確認した他の 2 つのテンプレートとどのように異なるかに注目してください。
 
-16. On the **Select end user notification** page, choose how you want the end user to be notified. For the purpose of this lab, select **Microsoft default notification (recommended)**. In the list of notifications that appears, configure the following notifications:
+    このシミュレーションに使用するテンプレートが見つかるまで、この手順を好きなだけ繰り返します。**テンプレートの確認が完了したら、 [フィッシングの選択] ランディング ページ**で使用するテンプレートのチェックボックスをオンにし、[**次へ]**を選択します。
 
-	 - Microsoft default positive reinforcement notification - set **Delivery preferences** to **Deliver after simulation ends**
-	 - Microsoft default training reminder notification - set **Delivery preferences** to  **Weekly**
+16. **[エンド ユーザー通知の選択]**ページで、エンド ユーザーへの通知方法を選択します。このラボでは、**[Microsoft のデフォルト通知 (推奨)]**を選択します。表示される通知のリストで、次の通知を構成します。
 
-17. Select **Next**.
+    - Microsoft のデフォルトの正の強化通知 -**配信設定を****シミュレーション終了後に配信する**ように設定します
+    - Microsoft のデフォルトのトレーニング リマインダー通知 -**配信設定を****毎週**に 設定します
 
-18. On the **Launch Details** page, select the **Launch this simulation as soon as I'm done** option and then select **Next**.
+17. **「次へ」**を選択します。
 
-19. On the **Review Simulation** page, review the entered information. If anything needs to be changed, select the appropriate **Edit** option to make the change. Once everything is correct, select **Submit**. It may take a few minutes before you receive a confirmation stating **Simulation has been scheduled for launch**. Select **Done**.
+18. **[起動の詳細]**ページで、 [**完了したらすぐにこのシミュレーションを起動する]**オプションを選択し、 [**次へ]**を選択します。
 
+19. **[シミュレーションの確認]**ページで、入力した情報を確認します。変更する必要がある場合は、適切な**編集**オプションを選択して変更を加えます。すべてが正しければ、**「送信」**を選択します。**シミュレーションの起動がスケジュールされたことを**示す確認メッセージが表示されるまでに、数分かかる場合があります。**[完了]**を選択します。
 
-### Task 3: Review the attack simulation results
+### [タスク 3: 攻撃シミュレーション結果を確認する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex5_AttackSim_Phishing_attack.md#task-3-review-the-attack-simulation-results)
 
-In this task, you will verify whether Adatum has received the email that you configured in the Attack simulation training. You will then review the diagnostic feedback associated with the Spear Phishing attack that you simulated.
+このタスクでは、攻撃シミュレーション トレーニングで設定した電子メールを Adatum が受信したかどうかを確認します。次に、シミュレーションしたスピア フィッシング攻撃に関連する診断フィードバックを確認します。
 
-1. Switch to **LON-CL2**, where you should be logged into the machine as the local **adatum\administrator** account.
+1. **LON-CL2**に切り替えます。ローカルの**adatum\administrator**アカウントとしてマシンにログインする必要があります。
 
-2. On LON-CL2, open your Edge browser and enter the following URL in the address bar: **https://outlook.office365.com**.
- 
-3. In the **Pick an account** window, select **Use another account**. 
+2. LON-CL2 で、Edge ブラウザを開き、アドレス バーに次の URL を入力します: **[https://outlook.office365.com](https://outlook.office365.com/)**。
 
-4. In the **Sign in** window, enter **LynneR@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix ID provided by your lab hosting provider), and then in the **Enter password** window, enter the same Microsoft 365 Tenant Password provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and select **Sign in**. 
+3. **[アカウントの選択]**ウィンドウで、**[別のアカウントを使用する]**を選択します。
 
-5. In Lynne's Outlook Inbox, you should see the spear phishing email that was sent by the Attack Simulator. The subject of the message should be **2 Failed messages to you**. Select the email to open it and review the details in the body of the message. 
+4. **[サインイン]**ウィンドウに**[「LynneR@xxxxxZZZZZZ.onmicrosoft.com」](mailto:LynneR@xxxxxZZZZZZ.onmicrosoft.com)**と入力し(xxxxxZZZZZZ はラボ ホスティング プロバイダーから提供されたテナント プレフィックス ID)、[パスワードの**入力**] ウィンドウにラボ ホスティングから提供されたものと同じ Microsoft 365 テナント パスワードを入力します。テナント管理者アカウント (つまり、MOD 管理者アカウント) のプロバイダーを選択し、**[サインイン]**を選択します。
 
-	**NOTE!** It can take up to 15 minutes for the email to arrive.  Wait for the email before proceeding.
+5. Lynne の Outlook 受信トレイに、攻撃シミュレーターによって送信されたスピア フィッシング メールが表示されるはずです。メッセージの件名は、「**あなたへの 2 つの失敗したメッセージ」**でなければなりません。電子メールを選択して開き、メッセージ本文の詳細を確認します。
 
-6. Select the **View Returned Messages** button in the email. Even though you know this is a spear phishing attack, this will enable you to see the effect of doing so in the Attack Simulator report that tracks the results of the spear phishing campaign.
+   **注記！**メールが届くまでに最大 15 分ほどかかる場合があります。続行する前にメールを待ってください。
 
-7. In the **Sign in** dialog box that appears, enter **LynneR@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix ID provided by your lab hosting provider), and then enter the same Microsoft 365 Tenant Password provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) in the **Enter password** window. Select **Sign in**. 
+6. 電子メール内の「**返信されたメッセージを表示」**ボタンを選択します。これがスピア フィッシング攻撃であることがわかっていても、スピア フィッシング キャンペーンの結果を追跡する攻撃シミュレーター レポートでその効果を確認できるようになります。
 
-8. This displays a web page that explains how you have been redirected to it as part of a Phishing awareness test being run by your organization. Read through the contents of this site, which uses the landing page template that you selected in the prior task when setting up the attack simulation.
+7. **表示される[サインイン]**ダイアログ ボックスに**[「LynneR@xxxxxZZZZZZ.onmicrosoft.com」](mailto:LynneR@xxxxxZZZZZZ.onmicrosoft.com)**と入力し (xxxxxZZZZZZ はラボ ホスティング プロバイダーから提供されたテナント プレフィックス ID)、ラボ ホスティング プロバイダーから提供されたものと同じ Microsoft 365 テナント パスワードを入力します。**[パスワードの入力]**ウィンドウでテナント管理者アカウント (つまり、MOD 管理者アカウント) を入力します。**[サインイン]**を選択します。
 
-9. Leave the Outlook tab open for Lynne's mailbox in your Edge browser. Do **NOT** sign out or close it. You will access Lynne's mailbox on LON-CL2 in the next lab exercise. 
+8. これにより、組織が実施しているフィッシング認識テストの一環として、どのようにリダイレクトされたかを説明する Web ページが表示されます。このサイトのコンテンツを最後まで読んでください。このサイトでは、攻撃シミュレーションを設定するときに前のタスクで選択したランディング ページ テンプレートが使用されています。
 
-10. Switch back to **LON-CL1**.
+9. Edge ブラウザーで、Lynne のメールボックスの [Outlook] タブを開いたままにします。サインアウトしたり閉じたり**しない**でください。次のラボ演習では、LON-CL2 上の Lynne のメールボックスにアクセスします。
 
-11. In LON-CL1, in your Edge browser session where you are logged in as Holly Dickson, you should still be on the **Attack simulation training** page. If the **PhishingTest1** simulation does not appear in the **Recent Simulations** list, select the **Refresh** icon to the left of the URL on the address bar. The **PhishingTest1** simulation should now appear. Select the **PhishingTest1** simulation to view the diagnostic results that were captured for this simulation.
+10. **LON-CL1**に切り替えます。
 
-12. A **PhishingTest1** page should appear. Review all the information collected for this simulated attack. When you're finished, select the **X** in the upper right-hand corner of the window to close it. 
+11. LON-CL1 では、Holly Dickson としてログインしている Edge ブラウザ セッションで、**攻撃シミュレーション トレーニング**ページがまだ表示されているはずです。**PhishingTest1シミュレーションが****[最近のシミュレーション]**リストに表示されない場合は、アドレス バーの URL の左側にある**[更新]アイコンを選択します。**PhishingTest1シミュレーション**が**表示されます。**PhishingTest1**シミュレーションを選択して、このシミュレーションでキャプチャされた診断結果を表示します。
 
-13. Leave your browser open in LON-CL1 and do not close any of the tabs.
-    
+12. **PhishingTest1**ページが表示されます。このシミュレートされた攻撃のために収集されたすべての情報を確認します。完了したら、ウィンドウの右上隅にある[ **X]を選択してウィンドウを閉じます。**
 
-# Proceed to Lab 6 - Exercise 6
+13. LON-CL1 でブラウザを開いたままにし、どのタブも閉じないでください。
+
+# [ラボ 6 - 演習 6 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex5_AttackSim_Phishing_attack.md#proceed-to-lab-6---exercise-6)

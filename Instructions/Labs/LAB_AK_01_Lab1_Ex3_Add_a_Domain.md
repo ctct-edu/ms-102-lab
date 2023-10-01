@@ -1,185 +1,187 @@
-# Learning Path 1 - Lab 1 - Exercise 3 - Add a Custom Domain
+# [学習パス 1 - ラボ 1 - 演習 3 - カスタム ドメインの追加](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_01_Lab1_Ex3_Add_a_Domain.md#learning-path-1---lab-1---exercise-3---add-a-custom-domain)
 
-Not every company has just one domain; in fact, many companies have more than one domain. Adatum has just purchased a new domain (xxxUPNxxx.xxxCustomDomainxxx.xxx; the exact name of which is provided by your lab hosting provider) that resides in Microsoft Azure but not in Adatum's on-premises environment. To support Adatum’s new custom domain, your lab hosting provider took on the role of Adatum’s third-party domain registrar. 
+すべての企業がドメインを 1 つだけ持っているわけではありません。実際、多くの企業は複数のドメインを持っています。Adatum は、Adatum のオンプレミス環境ではなく Microsoft Azure に存在する新しいドメイン (xxxUPNxxx.xxxCustomDomainxxx.xxx、正確な名前はラボ ホスティング プロバイダーによって提供されます) を購入したところです。Adatum の新しいカスタム ドメインをサポートするために、ラボ ホスティング プロバイダーが Adatum のサードパーティ ドメイン レジストラーの役割を引き受けました。
 
-In this exercise, you will gain experience adding this domain to Adatum' Microsoft 365 deployment. When you add a domain to Microsoft 365, it's called an accepted, or custom domain. Custom domains allow companies to have their own branding on emails and accounts so that customers can verify who is emailing them (for example, @contoso.com). Adding a new domain is a three-step process:
+この演習では、このドメインを Adatum の Microsoft 365 展開に追加する経験を積みます。Microsoft 365 にドメインを追加すると、そのドメインは承認済みドメイン、またはカスタム ドメインと呼ばれます。カスタム ドメインを使用すると、企業は電子メールとアカウントに独自のブランドを設定できるため、顧客は電子メールの送信者 (@contoso.com など) を確認できます。新しいドメインの追加は、次の 3 つのステップからなるプロセスです。
 
- - You must first add a new zone for the domain in your on-premises DNS.
- - You must add the domain in Microsoft 365. 
- - When adding the new domain in Microsoft 365, you must also add the corresponding DNS records to the domain in DNS. These DNS records are necessary to support the services required by the company for the new domain. 
+- まず、オンプレミス DNS にドメインの新しいゾーンを追加する必要があります。
+- Microsoft 365 にドメインを追加する必要があります。
+- Microsoft 365 に新しいドメインを追加する場合は、対応する DNS レコードを DNS のドメインに追加する必要もあります。これらの DNS レコードは、会社が新しいドメインに対して必要とするサービスをサポートするために必要です。
 
-Most companies do not personally manage their domains' DNS records themselves; instead, they have a third-party resource that manages these records for them. To assist in this effort, Microsoft 365 provides certain third-party domain registrars with an automation tool that automatically adds and replaces a company’s DNS records. The automation tool also federates the sign-in credentials for the third-party registrars and Microsoft 365. Using a tool to automatically maintain DNS records is a much-welcomed improvement from the days when companies had to manually maintain these records, which oftentimes introduced human error into a rather complicated process. Because these tools eliminate the need to manually add the DNS records, they eliminate human error from the process.
+ほとんどの企業は、ドメインの DNS レコード自体を個人的に管理していません。代わりに、これらのレコードを管理するサードパーティのリソースが用意されています。この取り組みを支援するために、Microsoft 365 は、企業の DNS レコードを自動的に追加および置換する自動化ツールを特定のサードパーティ ドメイン レジストラーに提供します。この自動化ツールは、サードパーティのレジストラーと Microsoft 365 のサインイン資格情報も連携します。ツールを使用して DNS レコードを自動的に維持することは、企業がこれらのレコードを手動で維持する必要があり、多くの場合人的労力が必要だった時代からの非常に歓迎される改善です。かなり複雑なプロセスにエラーが発生します。これらのツールを使用すると、DNS レコードを手動で追加する必要がなくなるため、プロセスから人的エラーが排除されます。
 
-**However, for the purpose of this lab, you will be asked to manually create the necessary DNS records required by this new custom domain so that you gain experience and understanding of what the DNS records are about, and why they are required for a new domain.**
+**ただし、このラボの目的では、DNS レコードの内容と、新しいドメインに DNS レコードが必要な理由について経験と理解を得るために、この新しいカスタム ドメインに必要な DNS レコードを手動で作成するように求められます。 。**
 
-### Task 1 - Add a Custom Domain
+### [タスク 1 - カスタム ドメインの追加](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_01_Lab1_Ex3_Add_a_Domain.md#task-1---add-a-custom-domain)
 
-In your hosted lab environment, Adatum already has an existing on-premises domain titled **adatum.com**, along with a Microsoft 365 domain titled **xxxxxZZZZZZ.onmicrosoft.com**. In this lab, you will create a second Microsoft 365 domain for Adatum that will be titled **xxxUPNxxx.xxxCustomDomainxxx.xxx**; you will replace **xxxUPNxxx** with the UPN name (tenant prefix) assigned to your tenant by your lab hosting provider, and you will replace **xxxCustomDomainxxx.xxx** with your lab hosting provider's custom domain name. Your instructor will provide you with your lab hosting provider's custom domain name, as well as show you how to locate the UPN name.
+**ホストされたラボ環境では、Adatum には、 xxxxxZZZZZZ.onmicrosoft.com**という名前の Microsoft 365 ドメインとともに、**adatum.com**という名前の既存のオンプレミス ドメインがすでにあります。**このラボでは、 xxxUPNxxx.xxxCustomDomainxxx.xxx**という名前の Adatum 用の 2 番目の Microsoft 365 ドメインを作成します。**xxxUPNxxx は、**ラボ ホスティング プロバイダーによってテナントに割り当てられた UPN 名 (テナント プレフィックス) に置き換えます。また、 **xxxCustomDomainxxx.xxx**は、ラボ ホスティング プロバイダーのカスタム ドメイン名に置き換えます。インストラクターは、ラボ ホスティング プロバイダーのカスタム ドメイン名を提供し、UPN 名の検索方法を説明します。
 
-1. In the prior lab exercises, you worked in LON-CL1. In this lab, you will be working from Adatum's domain controller, LON-DC1. <br/>
+1. 前のラボ演習では、LON-CL1 で作業しました。このラボでは、Adatum のドメイン コントローラー LON-DC1 から作業します。
 
-	Switch to **LON-DC1**.
+   **LON-DC1**に切り替えます。
 
-2. On **LON-DC1**, you must select **Ctrl+Alt+Delete** to log in (your instructor will guide you on how to find this option in your VM environment). Log into LON-DC1 as the local Adatum administrator account that was created by your lab hosting provider (**Administrator**) with the password **Pa55w.rd**. 
+2. **LON-DC1**では、 **Ctrl+Alt+Delete**を選択してログインする必要があります(VM 環境でこのオプションを見つける方法については、インストラクターが説明します)。**ラボ ホスティング プロバイダー ( Administrator** )によって作成されたローカル Adatum 管理者アカウントとして、パスワード**Pa55w.rd**を使用して LON-DC1 にログインします。
 
-3. On LON-DC1, **Server Manager** automatically starts at boot-up. Do not close it, as you will use it later in this task. For now, simply minimize the Server Manager window. 
+3. LON-DC1 では、**サーバー マネージャーが**起動時に自動的に起動します。このタスクの後半で使用するため、閉じないでください。ここでは、サーバー マネージャー ウィンドウを最小化するだけです。
 
-4. To create a new domain, you must first create a new Forward Lookup Zone in your on-premises DNS. To do so, you must open an elevated instance of **Windows PowerShell**. Select the magnifying glass (Search) icon on the taskbar at the bottom of the screen and type **power** in the Search box that appears. In the list of Apps in the search results, right-click on **Windows PowerShell** (do not select Windows PowerShell ISE) and select **Run as administrator** in the drop-down menu. 
+4. 新しいドメインを作成するには、まずオンプレミス DNS に新しい前方参照ゾーンを作成する必要があります。**これを行うには、 Windows PowerShell**の昇格されたインスタンスを開く必要があります。画面下部のタスクバーにある虫眼鏡 (検索) アイコンを選択し、表示される検索ボックスに「**power」と入力します。**検索結果のアプリの一覧で、**[Windows PowerShell]**を右クリックし([Windows PowerShell ISE] は選択しないでください)、ドロップダウン メニューで**[管理者として実行]を選択します。**
 
-5. Maximize your PowerShell window. In **Windows PowerShell**, type the following command at the command prompt to create a new Forward Lookup Zone in your on-premises DNS. When doing so, replace **xxxUPNxxx** with the unique UPN name (tenant prefix) assigned to your tenant by your lab hosting provider, and replace **xxxCustomDomainxxx.xxx** with your lab hosting provider's custom domain name. <br/>
+5. PowerShell ウィンドウを最大化します。**Windows PowerShell**で、コマンド プロンプトに次のコマンドを入力して、オンプレミス DNS に新しい前方参照ゾーンを作成します。その際、**xxxUPNxxx を**ラボ ホスティング プロバイダーによってテナントに割り当てられた一意の UPN 名 (テナント プレフィックス) に置き換え、**xxxCustomDomainxxx.xxx**をラボ ホスティング プロバイダーのカスタム ドメイン名に置き換えます。
 
-		dnscmd /zoneadd xxxUPNxxx.xxxCustomDomainxxx.xxx /DsPrimary
-    
-6. Minimize your Windows PowerShell window (do NOT close it as you will use it later).
+   ```
+    dnscmd /zoneadd xxxUPNxxx.xxxCustomDomainxxx.xxx /DsPrimary
+   ```
 
-7. On the taskbar at the bottom of your screen, select the **Microsoft Edge** icon. If necessary, maximize your browser window when it opens.
+   
 
-8. In your Edge browser, go to the **Microsoft 365 Home** page by entering the following URL in the address bar: **https://portal.office.com** 
+6. Windows PowerShell ウィンドウを最小化します (後で使用するため、閉じないでください)。
 
-9. In the **Sign in** window, enter **Holly@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider). Select **Next**.
+7. 画面下部のタスクバーで、**Microsoft Edge**アイコンを選択します。必要に応じて、ブラウザを開いたときにウィンドウを最大化します。
 
-10. In the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in**. 
+8. Edge ブラウザーで、アドレス バーに次の URL を入力して、**Microsoft 365 ホームページに移動します:** **[https://portal.office.com](https://portal.office.com/)**
 
-11. In the **Stay signed in?** window, select **Don't show this again** and then select **Yes**. In the **Save password** window, select **Never**.
+9. **[サインイン]**ウィンドウに**[「Holly@xxxxxZZZZZZ.onmicrosoft.com」](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**と入力します(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。**「次へ」**を選択します。
 
-12. If a **Welcome to Microsoft 365** dialog box appears in the middle of the screen, there's no option to close it. Instead, to the right of the window, select the right arrow icon (**>**) two times and then select the check mark icon to advance through the slides in this messaging window. 
+10. **[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 [**サインイン]**を選択します。
 
-13. If a **Find more apps** window appears, select the **X** in the upper right-hand corner of the window to close it. 
+11. サインインした状態で**滞在しますか?** ウィンドウで、**「今後これを表示しない」**を選択し、次に**「はい」**を選択します。**[パスワードの保存]**ウィンドウで、**[しない]**を選択します。
 
-14. The **Welcome to Microsoft 365** page appears in your Edge browser in the **Home | Microsoft 365** tab. This is Holly's Microsoft 365 home page. In the column of application icons that appears on the far left-side of the screen, select **Admin**. This opens the Microsoft 365 admin center in a new browser tab. 
+12. **[Microsoft 365 へようこそ]**ダイアログ ボックスが画面の中央に表示された場合、それを閉じるオプションはありません。代わりに、ウィンドウの右側にある右矢印アイコン ( **>** ) を 2 回選択し、次にチェック マーク アイコンを選択して、このメッセージ ウィンドウ内のスライドを進めます。
 
-15. In the **Microsoft 365 admin center**, in the left-hand navigation pane, select **...Show all**, select **Settings**, and then under the **Settings** group select **Domains**. 
+13. **[さらにアプリを検索]**ウィンドウが表示された場合は、ウィンドウの右上隅にある[ **X]を選択してウィンドウを閉じます。**
 
-16. On the **Domains** page, note that in the list of domains, only the **xxxxxZZZZZZ.onmicrosoft.com** domain appears. The existing on-premises **adatum.com** domain does not appear in the list of Microsoft 365 domains. To add Adatum's new Microsoft 365 domain, select **+Add domain** in the menu bar that appears above the list of domains. This will start the **Add domain** setup wizard. 
+14. **[Microsoft 365 へようこそ]**ページが Edge ブラウザーの [**ホーム] | [ホーム]**に表示されます。**「Microsoft 365」**タブ。これは Holly の Microsoft 365 ホームページです。画面の左端に表示されるアプリケーション アイコンの列で、**[管理者]**を選択します。これにより、新しいブラウザー タブで Microsoft 365 管理センターが開きます。
 
-17. In the **Add domain** setup wizard, on the **Add a domain** page, enter the new domain name in the **Domain name** field. This should be the same domain name that you entered in the PowerShell command in step 5 when you created the new zone in DNS. Then select the **Use this domain** button that appears at the bottom of the page. 
+15. **Microsoft 365 管理センター**の左側のナビゲーション ウィンドウで、**[...すべて表示] を**選択し、**[設定]**を選択し、 [**設定]**グループで [**ドメイン]**を選択します。
 
-18. In the **Verify you own your domain** page, you must select a verification method to prove you own the domain. For this lab, verify the **Add a TXT record to the domain's DNS records** option is selected by default (select this option if necessary) and then select **Continue**. 
+16. **[ドメイン]**ページでは、ドメインのリストに**xxxxxZZZZZZ.onmicrosoft.com**ドメインのみが表示されることに注意してください。既存のオンプレミスの**adatum.com**ドメインは、Microsoft 365 ドメインの一覧に表示されません。Adatum の新しい Microsoft 365 ドメインを追加するには、ドメインのリストの上に表示されるメニュー バーで**[+ドメインの追加]を選択します。****これにより、ドメインの追加**セットアップ ウィザードが開始されます。
 
-19. On the **Add a record to verify ownership** page, you must copy the **TXT value** (NOT the TXT name) so that you can configure the domain later on in DNS Manager. To do so, select the **Copy record** icon that appears to the left of the **TXT value** (to the left of **MS=msXXXXXXXX**). If a dialog box appears, select **Allow access** to copy this value from the webpage to your clipboard.  <br/>
+17. **ドメインの追加**セットアップ ウィザードの[**ドメインの追加]ページで、** **[ドメイン名]**フィールドに新しいドメイン名を入力します。これは、DNS に新しいゾーンを作成したときに手順 5 の PowerShell コマンドに入力したのと同じドメイン名である必要があります。次に、ページの下部に表示される [**このドメインを使用する]ボタンを選択します。**
 
-    ‎**IMPORTANT:** Do NOT select the **Verify** button at this point; instead, proceed to the next step. However, if you did select the **Verify** button, you will receive an error indicating the system could not find the record you added for this domain (you can do this if you want to see the error; there is no harm in it). Therefore, you must complete the next series of steps to add the TXT record to this domain in **DNS Manager**. Once you finish that process, you will be instructed to return back to this page and select the **Verify** button so that you can complete the process of adding this domain in the Microsoft 365 admin center. Therefore, proceed to the next step now.
+18. **[ドメインの所有者の確認]**ページで、ドメインの所有者であることを証明するための確認方法を選択する必要があります。このラボでは、**[ドメインの DNS レコードに TXT レコードを追加する]**オプションがデフォルトで選択されていることを確認し (必要に応じてこのオプションを選択します)、 [**続行]**を選択します。
 
-20. Before you can verify you own this domain in the **Add domain** wizard, you must first add a DNS record for this domain in Server Manager. Select the **Server Manager** icon that appears in your taskbar at the bottom of the page. Maximize the Server Manager window if necessary.
+19. **[所有権を確認するためのレコードの追加]**ページで、後で DNS マネージャーでドメインを構成できるように、**TXT 値**(TXT 名ではありません)をコピーする必要があります。これを行うには、**TXT 値**の左側( **MS=msXXXXXXXX**の左側)に表示される**レコードのコピーアイコンを選択します。**ダイアログ ボックスが表示された場合は、**[アクセスを許可する]**を選択して、この値を Web ページからクリップボードにコピーします。
 
-21. In **Server Manager Dashboard,** select **Tools** in the top right corner of the window. In the drop-down menu that appears, select **DNS**, which will open **DNS Manager**. Maximize the DNS Manager window.
+    重要**:**この時点では**[確認]**ボタンを選択しないでください。代わりに、次のステップに進みます。**ただし、 [確認]**ボタンを選択した場合は、このドメインに追加したレコードがシステムで見つからなかったことを示すエラーが表示されます (エラーを確認したい場合はこれを実行できます。害はありません)。**したがって、 DNS マネージャー**でこのドメインに TXT レコードを追加するには、次の一連の手順を完了する必要があります。**このプロセスが完了したら、このページに戻って[確認]**ボタンを選択して、Microsoft 365 管理センターでこのドメインを追加するプロセスを完了するように指示されます。したがって、今すぐ次のステップに進んでください。
 
-22. In the **DNS Manager** window, in the **File Explorer** section in the left-hand pane, select **LON-DC1** to expand it (if necessary). Under LON-DC1, expand the **Forward Lookup Zones** folder. In the list of Forward Lookup Zones in the left-hand pane, select the **xxxUPNxxx.xxxCustomDomainxxx.xxx** zone that you previously added in Windows PowerShell. Make sure you select this zone in the left-hand pane and not in the right-hand detail pane.
+20. **ドメインの追加**ウィザードでこのドメインの所有者であることを確認する前に、まずサーバー マネージャーでこのドメインの DNS レコードを追加する必要があります。ページ下部のタスクバーに表示される**サーバー マネージャー**アイコンを選択します。必要に応じて、サーバー マネージャー ウィンドウを最大化します。
 
-23. Right-click on this **xxxUPNxxx.xxxCustomDomainxxx.xxx** zone that you previously selected in the left-hand pane. In the menu that appears, select **Other New Records...** (Note: If you right-click on the zone in the right-hand detail pane, the **Other New Records...** option will be disabled).
+21. **サーバー マネージャー ダッシュボード**で、ウィンドウの右上隅にある**[ツール]**を選択します。表示されるドロップダウン メニューで**[DNS]を選択すると、** **[DNS Manager]**が開きます。DNS マネージャー ウィンドウを最大化します。
 
-24. In the **Resource Record Type** window that appears, in the **Select a resource record type** field, scroll down and select **Text (TXT),** and then select the **Create Record...** button at the bottom of the window.
+22. **[DNS マネージャー]**ウィンドウの左側のペインの**[ファイル エクスプローラー]セクションで、** **[LON-DC1]**を選択して展開します (必要な場合)。LON-DC1 の下で、**Forward Lookup Zones**フォルダーを展開します。左側のペインの前方参照ゾーンの一覧で、以前に Windows PowerShell に追加した**xxxUPNxxx.xxxCustomDomainxxx.xxxゾーンを選択します。**このゾーンは、右側の詳細ウィンドウではなく、左側のウィンドウで選択していることを確認してください。
 
-25. In the **New Resource Record** window that appears, in the **Text (TXT)** tab, leave the **Record name** field blank. However, right-click in the **Text** field and select **Paste** from the menu that appears. This will paste in the TXT value of **MS=msXXXXXXXX** that you copied to the clipboard when you were in the Microsoft 365 admin center.
+23. 左側のペインで前に選択したこの**xxxUPNxxx.xxxCustomDomainxxx.xxx**ゾーンを右クリックします。表示されるメニューで、**「その他の新規レコード...」**を選択します(注: 右側の詳細ペインでゾーンを右クリックすると、「**その他の新規レコード...」**オプションが無効になります)。
 
-26. Select **OK** to create the record. 
+24. **表示される[リソース レコード タイプ]**ウィンドウの [リソース**レコード タイプの選択]**フィールドで、下にスクロールして [**テキスト (TXT)] を選択し、**ウィンドウの下部にある [**レコードの作成...]**ボタンを選択します。
 
-27. In the **Resource Record Type** window, select **Done**. Note how this Text (TXT) record appears in the right-hand detail pane for the xxxUPNxxx.xxxCustomDomainxxx.xxx domain that you previously created. <br/>
+25. 表示される**[新しいリソース レコード]**ウィンドウの**[テキスト (TXT)]**タブで、**[レコード名]**フィールドを空白のままにします。**ただし、 「テキスト」**フィールドを右クリックし、表示されるメニューから**「貼り付け」を選択します。**これにより、Microsoft 365 管理センターにいたときにクリップボードにコピーした**MS=msXXXXXXXX**の TXT 値が貼り付けられます。
 
-	Leave your **DNS Manager** window open but minimize it as you will return to it in a later step in this task.  Minimize the **Server Manager** window as well. 
+26. **[OK]**を選択してレコードを作成します。
 
-28. You are now ready to return to the Microsoft 365 admin center and resume adding the domain record. If you’ll recall, when you were earlier adding the domain in the Microsoft 365 admin center, you indicated that you wanted to verify the domain using a TXT record. At that point you had to switch to DNS Manger and add the TXT record. Now that you’ve added the TXT record, you can go back to the Microsoft 365 admin center and proceed with the domain verification process.<br/>
+27. **[リソース レコード タイプ]**ウィンドウで、**[完了]**を選択します。このテキスト (TXT) レコードが、以前に作成した xxxUPNxxx.xxxCustomDomainxxx.xxx ドメインの右側の詳細ペインにどのように表示されるかに注目してください。
 
-	‎In your Edge browser, you should be back in the **Microsoft 365 admin center** tab that displays the **Add a record to verify ownership** page. The **TXT name** should display your UPN name (xxxUPNxxx) and the **TXT value** should display your MS=msXXXXXXXX value.
+    **「DNS マネージャー」**ウィンドウは開いたままにしておきますが、このタスクの後の手順でこのウィンドウに戻るため、ウィンドウを最小化します。**サーバー マネージャー**ウィンドウも最小化します。
 
-29. Select the **Verify** button that appears at the bottom of the page.  <br/>
+28. これで、Microsoft 365 管理センターに戻り、ドメイン レコードの追加を再開する準備が整いました。思い出してください。以前、Microsoft 365 管理センターにドメインを追加したときに、TXT レコードを使用してドメインを確認することを指定しました。その時点で、DNS マネージャーに切り替えて TXT レコードを追加する必要がありました。TXT レコードを追加したので、Microsoft 365 管理センターに戻ってドメイン検証プロセスを続行できます。
 
-	**Note:** If you selected **Verify** in the prior step when you copied the TXT value just to see the error that you would receive, the **Verify** button changed to **Try again**. In you did this, then select **Try again** rather than **Verify**. <br/>
-	
-	**WARNING:** It can sometimes take up 5 to 10 minutes for the DNS Manager change that you just made to propagate through the system, and sometimes it can take significantly longer depending on your registrar (in this case, your lab hosting provider). If you receive an error indicating the system could not detect the record that you added, wait 5 minutes and select the **Try again** button. Continue to do so every 5 minutes or so until the TXT record is successfully verified, at which point the **How do you want to connect to your domain?** window will appear.  <br/>
+    **Edge ブラウザーで、 [所有権を確認するためのレコードの追加]ページが表示される****[Microsoft 365 管理センター]**タブに戻るはずです。TXT**名には**UPN 名 (xxxUPNxxx) が表示され、**TXT 値に**は MS=msXXXXXXXX 値が表示されます。
 
-    ‎**CAUTION:** If you had a typo or any other configuration mistakes, the domain will not be verified. If this occurs, the **How do you want to connect to your domain?** window in the next step will not appear. In this case, select the **Back** button to repeat this task. Take your time when configuring the domain to make sure you don’t run into similar issues at this step in the process.
+29. ページの下部に表示される **「確認」**ボタンを選択します。
 
-30. If your Text (TXT) record was successfully verified, the **How do you want to connect to your domain?** window will appear. Select **Continue**.
+    **注:**受信するエラーを確認するためだけに TXT 値をコピーするときに、前の手順で[検証**]**を選択した場合、 **[検証]ボタンは****[再試行]**に変わります。これを実行したら、**「 Verify 」**ではなく**「 Try again 」**を選択します。
 
-31. In the **Add DNS records** window, it enables you to add DNS records for three services that DNS supports - Exchange and Exchange Online Protection, Skype for Business, and Intune and Mobile Device Management for Microsoft 365. <br/>
+    **警告:**行ったばかりの DNS マネージャーの変更がシステムに反映されるまでに最大 5 ～ 10 分かかる場合があります。また、レジストラー (この場合はラボ ホスティング プロバイダー) によっては、かなり長い時間がかかる場合もあります。追加したレコードをシステムが検出できなかったことを示すエラーが表示された場合は、5 分待ってから [**再試行]**ボタンを選択します。TXT レコードが正常に検証されるまで、これを 5 分ごとに繰り返します。検証が完了すると、[**ドメインにどのように接続しますか?] というメッセージが表示されます。**ウィンドウが表示されます。
 
-	**Exchange and Exchange Online Protection** is displayed by default and its check box is also selected by default. To see the other two services, scroll down and select **Advanced Options**. Note that under **Advanced Options**, neither the **Skype for Business** nor the **Intune and Mobile Device Management for Microsoft 365** check boxes are selected. This is sufficient for Adatum; you should NOT select either of these two check boxes. Only the **Exchange and Exchange Online Protection** check box should be selected. <br/>
-	
-	Under the **Exchange and Exchange Online Protection** service, the description indicates that 3 DNS records are needed for it to work properly: a Mail Exchanger (MX) record, an Alias (CNAME) record, and an additional Text (TXT) record. You must now switch back and forth between this **Add DNS records** page and **DNS Manager** to add these three additional DNS records for the new domain. For each DNS record that you add in DNS Manager, you will copy information from this **Add DNS records** page and then paste it into each corresponding record that you create in DNS Manager.  <br/>
+    注意**:**タイプミスやその他の設定ミスがある場合、ドメインは検証されません。この問題が発生した場合、「**ドメインにどのように接続しますか?」**次の手順のウィンドウは表示されません。この場合、**「戻る」**ボタンを選択してこのタスクを繰り返します。ドメインを構成するときは時間をかけて、プロセスのこのステップで同様の問題が発生しないようにしてください。
 
-	On the **Add DNS records** page, under the **Exchange and Exchange Online Protection** section, select the forward arrow (**>**) in the **MX Records (1)** section to expand it. This displays the **Expected value** that the domain setup wizard expects to see in the MX record that you create for this domain in DNS Manager. <br/>
-	
-	Then select the forward arrows (**>**) in the **CNAME Records (1)** section and the **TXT Records (1)** section. All three record types should now be expanded.
-	
-32. You will begin by adding the **MX record** required by the **Exchange and Exchange Online Protection** service.  <br/>
+30. テキスト (TXT) レコードが正常に検証された場合は、「**ドメインにどのように接続しますか?」**ウィンドウが表示されます。**[続行]**を選択します。
 
-	a. In the **MX Records (1)** section, under the **Points to address or value** column, select the copy icon that appears to the left of the expected value (for example, xxxUPNxxx-xxxCustomDomainxxx-xxx.mail.protection.outlook.com) to copy this value to the clipboard. If a dialog box appears, select **Allow access** to allow the webpage to copy the value to the clipboard.
-	
-	b. You must now switch to DNS Manager. On the taskbar at the bottom of the page, select the **DNS Manager** icon.
+31. **[DNS レコードの追加]**ウィンドウでは、DNS がサポートする 3 つのサービス (Exchange と Exchange Online Protection、Skype for Business、Microsoft 365 の Intune とモバイル デバイス管理) の DNS レコードを追加できます。
 
-	c. In **DNS Manager**, under **Forward Lookup Zones** in the left-hand pane, the **xxxUPNxxx.xxxCustomDomainxxx.xxx** domain should be selected from when you earlier left off. If not, select this zone now. You should see the **TXT** record that you created earlier. You must now create a **Mail Exchanger (MX)** record for this domain. Under **Forward Lookup Zones**, right-click the **xxxUPNxxx.xxxCustomDomainxxx.xxx** domain and select **New Mail Exchanger (MX)...**
+    **Exchange および Exchange Online Protection**はデフォルトで表示され、そのチェック ボックスもデフォルトでオンになっています。他の 2 つのサービスを表示するには、下にスクロールして**[詳細オプション]**を選択します。**[詳細オプション]**で、**[Skype for Business]**チェック ボックスも [Intune]および**[Microsoft 365 のモバイル デバイス管理]**チェック ボックスも選択されていないことに注意してください。Adatum にはこれで十分です。これら 2 つのチェック ボックスはどちらもオンにしないでください。**[Exchange および Exchange Online Protection]**チェック ボックスのみを選択する必要があります。
 
-	d. In the **New Resource Record** window, in the **Mail Exchanger (MX)** tab, leave the **Host or child domain** field blank, but right-click in the **Fully qualified domain name (FQDN) of mail server** field and select **Paste** from the menu that appears. This will paste in the expected **Points to address or value** that you copied to the clipboard in **step a** above.
-	
-	e. In the **New Resource Record** window, select **OK**. Note how this Mail Exchanger (MX) record appears in the detail pane on the right for the xxxUPNxxx.xxxCustomDomainxxx.xxx domain that you previously created. Leave your DNS Manager window open as you will return to it in a later step in this task.
-	
-	f. Switch back to the **Add DNS records** page in the Microsoft 365 admin center by selecting the **Microsoft Edge** icon on the taskbar at the bottom of the page. At this point, you can either select **Continue** at the bottom of the **Add DNS records** page to verify the MX record that you just added, or you can wait until you have added all three DNS records and then select **Continue** to verify all three records at once. 
-	
-	**For the purposes of this lab, you will verify each DNS record as you create it.** Therefore, select **Continue**. It will display either a checkmark or an exclamation point next to **MX Records (1)**. A checkmark in a green circle indicates that it successfully validated the MX record for this domain in DNS Manager, but an exclamation point in a red circle indicates there was a problem with the MX record and it did not validate successfully. If the MX record did not validate successfully, then review the DNS record in DNS Manager to ensure you entered the proper information, make any necessary corrections, and then select **Continue** again. <br/>
+    **Exchange および Exchange Online Protection**サービスでは、サービスが適切に動作するには、メール エクスチェンジャー (MX) レコード、エイリアス (CNAME) レコード、および追加のテキスト (TXT) レコードの 3 つの DNS レコードが必要であることが説明に示されています。**ここで、この[DNS レコードの追加]**ページと**DNS マネージャーの**間を行ったり来たりして、新しいドメインにこれら 3 つの追加 DNS レコードを追加する必要があります。**DNS マネージャーで追加する各 DNS レコードについて、この[DNS レコードの追加]**ページから情報をコピーし、DNS マネージャーで作成する対応する各レコードに貼り付けます。
 
-	**Note:** Since you only created an MX Record in DNS Manager, an exclamation point in a red circle should appear next to the **CNAME records (1)** section and the **TXT Records (1)** section. **This is to be expected, since you have yet to create their corresponding DNS records.** Also, note that a message appears in a red message box at the top of the page indicating that it detected missing records. This too is to be expected since you only created the MX record and not the CNAME and TXT records. Ignore this message. 
+    **[DNS レコードの追加]**ページの**[Exchange および Exchange Online Protection]セクションで、** **[MX レコード (1)]**セクションの前向き矢印 ( **>** )を選択して展開します。これにより、DNS マネージャーでこのドメインに対して作成する MX レコードにドメイン セットアップ ウィザードが期待する**期待値が表示されます。**
 
-33. Once a checkmark appears next to **MX Records**, you must perform the following steps to add the **CNAME record** required by Exchange and Exchange Online Protection service.  <br/>
+    **次に、 [CNAME レコード (1)]**セクションと**[TXT レコード (1)]**セクションで前向き矢印 ( **>** )を選択します。これで、3 つのレコード タイプがすべて展開されるはずです。
 
-	a. On the **Add DNS records** page, in the **CNAME Records (1)** section, under the **Points to address or value** column, select the copy icon that appears to the left of the expected value (for example, autodiscover.outlook.com). <br/>
-		
-	**Important:** You will NOT copy the expected **Host Name** value. The value listed here as the expected host name is **autodiscover.xxxUPNxxx** (where xxxUPNxxx is your UPN name). However, if you paste this value in the **Alias name** field in the CNAME record in DNS Manager, the CNAME record validation on this page will fail. When you create the CNAME record in DNS Manager in the following steps, you will simply enter **autodiscover** as the **Alias name** and NOT **autodiscover.xxxUPNxxx**. <br/>
-	
-	The reason for using only **autodiscover** as the **Alias name** is that Autodiscover is an Exchange service that minimizes configuration and deployment. For small, single SMTP namespace organizations such as Adatum, only autodiscover is needed as the Alias, as opposed to autodiscover.xxxUPNxxx for larger organizations with multiple SMTP namespaces. By adding the CNAME record to your on-premises DNS server, you're creating a redirect record that allows users to configure Outlook and access Outlook Web App (OWA) by using either Basic Authentication or Modern Authentication(OAUTH). <br/>
-	
-	Therefore, the only value you need to copy for the CNAME record is the expected value for the **Points to address or value** column (for example, autodiscover.outlook.com). <br/>
+32. **まず、 Exchange および Exchange Online Protection**サービスに必要な**MX レコード**を追加します。
 
-	b. On the taskbar at the bottom of the page, select the **DNS Manager** icon.
+    ａ．**[MX レコード (1)]**セクションの [**アドレスまたは値のポイント]**列で、予想される値 (例: xxxUPNxxx-xxxCustomDomainxxx-xxx.mail.protection.outlook.com) の左側に表示されるコピー アイコンを選択します。この値をクリップボードにコピーします。ダイアログ ボックスが表示された場合は、**[アクセスを許可]**を選択して、Web ページが値をクリップボードにコピーできるようにします。
 
-	c. In **DNS Manager**, under **Forward Lookup Zones**, right-click the **xxxUPNxxx.xxxCustomDomainxxx.xxx** domain and select **New Alias (CNAME)...**
+    b. ここで DNS マネージャーに切り替える必要があります。ページの下部にあるタスクバーで、**[DNS マネージャー]**アイコンを選択します。
 
-	d. In the **New Resource Record** window, enter **autodiscover** in the **Alias name (uses parent domain if left blank)** field. 
-	
-	e. Right-click in the **Fully qualified domain name (FQDN) for target host** field and select **Paste** from the menu that appears. This will paste in the expected **Points to address or value** that you earlier copied to the clipboard.
-	
-	f. In the **New Resource Record** window, select **OK**. Note how this Alias (CNAME) record appears in the detail pane on the right for the xxxUPNxxx.xxxCustomDomainxxx.xxx domain that you previously created. Leave your DNS Manager window open as you will return to it in a later step in this task.
-	
-	g. Select the **Edge** browser icon on your taskbar to switch back to the Microsoft 365 admin center. Since you're validating each DNS record as you create them, on the **Add DNS records** page, select **Continue** at the bottom of the page to verify the CNAME record. <br/>
-	
-	The verification process will display either a checkmark or an exclamation point next to **CNAME Records (1)**. A checkmark in a green circle indicates that it successfully validated the CNAME record for this domain in DNS Manager, but an exclamation point in a red circle indicates there was a problem with the CNAME record and it did not validate successfully. If the CNAME record did not validate successfully, then review the DNS record to ensure you entered the proper information, make any necessary corrections, and then select **Continue** again.  <br/>
+    c. **DNS マネージャー**の左側ペインの**前方参照ゾーン**で、以前に中断したときから**xxxUPNxxx.xxxCustomDomainxxx.xxxドメインが選択されているはずです。**そうでない場合は、ここでこのゾーンを選択してください。前に作成した**TXT**レコードが表示されるはずです。ここで、このドメインの**Mail Exchanger (MX)**レコードを作成する必要があります。**[前方参照ゾーン]**で、 **xxxUPNxxx.xxxCustomDomainxxx.xxx**ドメインを右クリックし、**[新しいメール エクスチェンジャー (MX)...]を選択します。**
 
-	**Note:** Since you only created a CNAME Record in DNS Manager, an exclamation point in a red circle should appear next to the **TXT Records (1)** section. **This is to be expected, since you have yet to create its corresponding DNS record.** Also, note that a message appears in a red message box at the top of the page indicating that it detected missing records. This too is to be expected since you only created the MX and CNAME records and not the TXT record. Ignore this message. 
-	
-34. Once a checkmark appears next to **CNAME Records (1)**, you will finish by adding the **TXT record** required by Exchange and Exchange Online Protection service.  <br/>
+    d. **[新しいリソース レコード]**ウィンドウの**[メール エクスチェンジャー (MX)]**タブで、**[ホストまたは子ドメイン]フィールドを空白のままにし、** **[メール サーバーの完全修飾ドメイン名 (FQDN)]**フィールドを右クリックし、表示されるメニューから [**貼り付け]**を選択します。 。**これにより、上記の手順 a**でクリップボードにコピーした、予想される**アドレスまたは値にポイント**が貼り付けられます。
 
-	a. On the **Add DNS records** page, in the **TXT Records (1)** section, under the **TXT value** column, select the copy icon that appears to the left of the expected value (for example, v=spf1 include:spf.protection.outlook.com -all) to copy this value to the clipboard.
+    e. **[新しいリソース レコード]**ウィンドウで、**[OK]**を選択します。このメール エクスチェンジャー (MX) レコードが、以前に作成した xxxUPNxxx.xxxCustomDomainxxx.xxx ドメインの右側の詳細ペインにどのように表示されるかに注目してください。このタスクの後の手順で [DNS マネージャー] ウィンドウに戻るため、[DNS マネージャー] ウィンドウは開いたままにしておきます。
 
-	b. On the taskbar at the bottom of the page, select the **DNS Manager** icon.
+    f. ページの下部にあるタスク バーの**Microsoft Edge**アイコンを選択して、Microsoft 365 管理センターの [ **DNS レコードの追加]**ページに戻ります。この時点で、**[DNS レコードの追加]**ページの下部にある**[続行]**を選択して追加した MX レコードを検証するか、3 つの DNS レコードすべてを追加するまで待ってから [続行] を選択して3 つのレコードすべてを検証する**こと**ができます。一度。
 
-	c. In **DNS Manager**, under **Forward Lookup Zones**, right-click the **xxxUPNxxx.xxxCustomDomainxxx.xxx** domain and select **Other New Records...**
-	
-	d. In the **Resource Record Type** window that appears, in the **Select a resource record type** field, scroll down and select **Text (TXT),** and then select the **Create Record...** button at the bottom of the window.
+    **このラボでは、各 DNS レコードを作成時に検証します。**したがって、**[続行]**を選択します。**[MX Records (1)]**の横にチェックマークまたは感嘆符が表示されます。緑色の円内のチェックマークは、DNS マネージャーでこのドメインの MX レコードが正常に検証されたことを示しますが、赤色の円内の感嘆符は、MX レコードに問題があり、正常に検証されなかったことを示します。MX レコードが正常に検証されなかった場合は、DNS マネージャーで DNS レコードを確認して適切な情報が入力されていることを確認し、必要な修正を行ってから、もう一度 [**続行]**を選択します。
 
-	e. In the **New Resource Record** window, in the **Text (TXT)** tab, leave the **Record name** field blank. However, right-click in the **Text** field and select **Paste** from the menu that appears. This will paste in the expected **TXT value** that you earlier copied to the clipboard.
-	
-	f. In the **New Resource Record** window, select **OK**. 
-	
-	g. On the **Resource Record Type** window, select **Done**. 
+    **注: DNS マネージャーで MX レコードを作成しただけなので、** **CNAME レコード (1)**セクションと**TXT レコード (1)**セクションの横に赤い円内の感嘆符が表示されます。**対応する DNS レコードをまだ作成していないため、これは想定内のことです。**また、ページ上部の赤いメッセージ ボックスに、欠落レコードが検出されたことを示すメッセージが表示されることに注意してください。CNAME レコードと TXT レコードではなく MX レコードのみを作成したため、これも予想されることです。このメッセージは無視してください。
 
-35. In **DNS Manager**, you should now see the TXT record that you originally created to verify the domain, along with the MX, CNAME, and TXT records that you created for the Exchange service to work within this domain. <br/>
+33. **[MX Records]**の横にチェックマークが表示されたら、次の手順を実行して、Exchange および Exchange Online Protection サービスに必要な **CNAME レコードを追加する必要があります。**
 
-	Minimize the **DNS Manager** window. 
+    ａ．**[DNS レコードの追加]**ページの[ **CNAME レコード (1)]セクションの****[アドレスまたは値のポイント]**列で、予想される値 (例: autodiscover.outlook.com) の左側に表示されるコピー アイコンを選択します。
 
-36. This should return you to the **Add DNS records** page in your Edge browser. Select **Continue** to complete the new domain setup. If you selected **Continue** after adding the MX and CNAME records, and if each validated successfully, then only the TXT record will be validated at this point. However, if you did not select **Continue** after adding the MX and CNAME records, then all three records will be validated at this point. <br/>
-	
-	If all three records have been successfully validated, then the **Domain setup is complete** page will appear. If this occurs, then select the **Done** button to complete the domain setup process. <br/>
-	
-	However, if any of the three records did not validate successfully, then the **Add DNS records** window will return, and it will display either a checkmark or an exclamation point next to each record type to indicate which ones validated successfully and which ones did not. An exclamation point in a red circle indicates that there was a problem with the corresponding DNS record and it did not validate successfully (note that the Actual value for the record is left blank). If this occurs, you must correct the data on the corresponding record in DNS Manager and then select **Continue** again. You must repeat this process until all three records have successfully validated and the **Domain setup is complete** page appears.
+    **重要:予期される****ホスト名の**値はコピーしません。予想されるホスト名としてここにリストされている値は**autodiscover.xxxUPNxxx** (xxxUPNxxx は UPN 名です) です。**ただし、この値を DNS マネージャーの CNAME レコードの[エイリアス名]**フィールドに貼り付けると、このページの CNAME レコードの検証は失敗します。**次の手順で DNS マネージャーで CNAME レコードを作成するときは、エイリアス名**として**autodiscover.xxxUPNxxx**ではなく、単に**autodiscover**と入力します。
 
-37. Once the domain setup process is complete and the three DNS records validated successfully for the **Exchange and Exchange Online Protection** service, the **Domains** page will be displayed. Verify the **Domain status** is **Healthy** for the **xxxUPNxxx.xxxCustomDomainxxx.xxx** domain, which should now appear in the list of domains. This new domain should also be flagged as the Default domain for Adatum. 
+    **エイリアス名**として**自動検出**のみを使用する理由は、自動検出が構成と展開を最小限に抑える Exchange サービスであるためです。Adatum などの小規模で単一の SMTP 名前空間を持つ組織の場合、エイリアスとして autodiscover のみが必要になります。これとは対照的に、複数の SMTP 名前空間を持つ大規模な組織の場合は autodiscover.xxxUPNxxx が必要です。CNAME レコードをオンプレミスの DNS サーバーに追加すると、ユーザーが基本認証または最新認証 (OAUTH) を使用して Outlook を構成し、Outlook Web App (OWA) にアクセスできるようにするリダイレクト レコードが作成されます。
 
-38. Holly is not yet ready to implement the new domain in Adatum's Microsoft 365 deployment. Therefore, she wants to reset the **xxxxxZZZZZZ.onmicrosoft.com** domain as the default Microsoft 365 domain. On the **Domains** page, select the vertical ellipsis (**More actions**) icon to the right of the **xxxxxZZZZZZ.onmicrosoft.com** domain. Select **Set as default** that appears in the drop-down menu.
+    **したがって、CNAME レコードにコピーする必要がある唯一の値は、[アドレスまたは値のポイント] 列**の予期される値(例: autodiscover.outlook.com) です。
 
-39. In the **Set this domain as default?** dialog box that appears, select the **Set as default** button. This domain should now appear as the Default domain in **Domains** page.
+    b. ページの下部にあるタスクバーで、**[DNS マネージャー]**アイコンを選択します。
 
-40. Remain logged into the LON-DC1 VM with both **Microsoft Edge** and **Windows PowerShell** left open. You will return to LON-DC1 in a later lab that performs identity synchronization. 
+    c. **DNS マネージャー**の**[前方参照ゾーン]**で、 **xxxUPNxxx.xxxCustomDomainxxx.xxx**ドメインを右クリックし、**[新しいエイリアス (CNAME)...]を選択します。**
 
+    d. **[新しいリソース レコード]**ウィンドウで、**[エイリアス名 (空白のままにした場合は親ドメインを使用)]**フィールドに**「autodiscover」**と入力します。
 
+    e. **[ターゲット ホストの完全修飾ドメイン名 (FQDN)] フィールド**を右クリックし、表示されるメニューから**[貼り付け]を選択します。**これにより、以前にクリップボードにコピーした、予想される**アドレスまたは値へのポイントが**貼り付けられます。
 
-# End of  Lab 1
+    f. **[新しいリソース レコード]**ウィンドウで、**[OK]**を選択します。このエイリアス (CNAME) レコードが、以前に作成した xxxUPNxxx.xxxCustomDomainxxx.xxx ドメインの右側の詳細ペインにどのように表示されるかに注目してください。このタスクの後の手順で [DNS マネージャー] ウィンドウに戻るため、[DNS マネージャー] ウィンドウは開いたままにしておきます。
+
+    g. **タスク バーのEdge**ブラウザー アイコンを選択して、Microsoft 365 管理センターに戻ります。各 DNS レコードを作成するときに検証するので、[ **DNS レコードの追加]**ページで、ページの下部にある**[続行]を選択して CNAME レコードを検証します。**
+
+    **検証プロセスでは、 CNAME レコード (1)**の横にチェックマークまたは感嘆符が表示されます。緑色の円内のチェックマークは、DNS マネージャーでこのドメインの CNAME レコードが正常に検証されたことを示しますが、赤色の円内の感嘆符は、CNAME レコードに問題があり、正常に検証されなかったことを示します。CNAME レコードが正常に検証されなかった場合は、DNS レコードを確認して適切な情報を入力したことを確認し、必要な修正を行ってから、もう一度 [**続行]**を選択します。
+
+    **注:** DNS マネージャーで CNAME レコードを作成しただけなので、[ **TXT レコード (1)]**セクションの横に赤い円内の感嘆符が表示されます。**対応する DNS レコードをまだ作成していないため、これは想定内のことです。**また、ページ上部の赤いメッセージ ボックスに、欠落レコードが検出されたことを示すメッセージが表示されることに注意してください。TXT レコードではなく、MX レコードと CNAME レコードのみを作成したため、これも想定内のことです。このメッセージは無視してください。
+
+34. **[CNAME レコード (1)]**の横にチェックマークが表示されたら、 Exchange および Exchange Online Protection サービスに必要な **TXT レコード**を追加して終了します。
+
+    ａ．**[DNS レコードの追加]**ページの[ **TXT レコード (1)]セクションの****[TXT 値]**列で、予想される値 (たとえば、v=spf1 include:spf.protection.outlook) の左側に表示されるコピー アイコンを選択します。 com -all) を実行して、この値をクリップボードにコピーします。
+
+    b. ページの下部にあるタスクバーで、**[DNS マネージャー]**アイコンを選択します。
+
+    c. **DNS マネージャー**の**[前方参照ゾーン]**で、 **xxxUPNxxx.xxxCustomDomainxxx.xxx**ドメインを右クリックし、**[その他の新しいレコード...]を選択します。**
+
+    d. **表示される[リソース レコード タイプ]**ウィンドウの [リソース**レコード タイプの選択]**フィールドで、下にスクロールして [**テキスト (TXT)] を選択し、**ウィンドウの下部にある [**レコードの作成...]**ボタンを選択します。
+
+    e. **[新しいリソース レコード]**ウィンドウの**[テキスト (TXT)]**タブで、**[レコード名]**フィールドを空白のままにします。**ただし、 「テキスト」**フィールドを右クリックし、表示されるメニューから**「貼り付け」を選択します。**これにより、前にクリップボードにコピーした予期される**TXT 値が**貼り付けられます。
+
+    f. **[新しいリソース レコード]**ウィンドウで、**[OK]**を選択します。
+
+    g. **[リソース レコード タイプ]**ウィンドウで、**[完了]**を選択します。
+
+35. **DNS マネージャー**には、ドメインを確認するために最初に作成した TXT レコードと、このドメイン内で Exchange サービスが動作するように作成した MX、CNAME、および TXT レコードが表示されます。
+
+    **DNS マネージャー**ウィンドウを最小化します。
+
+36. これにより、Edge ブラウザの**[DNS レコードの追加]**ページに戻ります。**[続行]**を選択して、新しいドメインのセットアップを完了します。MX レコードと CNAME レコードを追加した後に**[続行]**を選択し、それぞれが正常に検証された場合、この時点では TXT レコードのみが検証されます。ただし、 MX レコードと CNAME レコードを追加した後に**[続行]**を選択しなかった場合は、この時点で 3 つのレコードすべてが検証されます。
+
+    3 つのレコードすべてが正常に検証されると、[**ドメインのセットアップが完了しました**] ページが表示されます。この問題が発生した場合は、**[完了]**ボタンを選択してドメインのセットアップ プロセスを完了します。
+
+    ただし、3 つのレコードのいずれかが正常に検証されなかった場合は、[ **DNS レコードの追加]**ウィンドウに戻り、各レコード タイプの横にチェックマークまたは感嘆符が表示され、どのレコードが正常に検証され、どのレコードが検証されなかったかが示されます。赤い円内の感嘆符は、対応する DNS レコードに問題があり、正常に検証されなかったことを示します (レコードの実際の値が空白のままであることに注意してください)。この問題が発生した場合は、DNS マネージャーで対応するレコードのデータを修正し、もう一度**[続行]**を選択する必要があります。3 つのレコードすべてが正常に検証され、[**ドメインのセットアップが完了しました]**ページが表示されるまで、このプロセスを繰り返す必要があります。
+
+37. ドメインのセットアップ プロセスが完了し、**Exchange および Exchange Online Protection**サービスに対して 3 つの DNS レコードが正常に検証されると、**[ドメイン]**ページが表示されます。**xxxUPNxxx.xxxCustomDomainxxx.xxx**ドメインの**ドメイン ステータス**が**[正常] で**あることを確認します。このドメインはドメインのリストに表示されます。この新しいドメインには、Adatum のデフォルト ドメインとしてもフラグを設定する必要があります。
+
+38. Holly は、Adatum の Microsoft 365 展開に新しいドメインを実装する準備がまだ整っていません。**したがって、 xxxxxZZZZZZ.onmicrosoft.com**ドメインを既定の Microsoft 365 ドメインとしてリセットしたいと考えています。**[ドメイン]**ページで、 **xxxxxZZZZZZ.onmicrosoft.com**ドメインの右側にある縦方向の省略記号 ( [**その他のアクション**] ) アイコンを選択します。ドロップダウン メニューに表示される**[デフォルトとして設定]**を選択します。
+
+39. **「このドメインをデフォルトとして設定しますか?**」表示されるダイアログ ボックスで、**[デフォルトとして設定]**ボタンを選択します。**このドメインは、 [ドメイン]**ページのデフォルト ドメインとして表示されます。
+
+40. **Microsoft Edge**と**Windows PowerShell の**両方を開いたままにして、LON-DC1 VM にログインしたままにしてください。ID 同期を実行する後のラボで LON-DC1 に戻ります。
+
+# [ラボ 1 の終了](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_01_Lab1_Ex3_Add_a_Domain.md#end-of--lab-1)

@@ -1,227 +1,225 @@
-# Learning Path 2 - Lab 2 - Exercise 3 - Manage a Microsoft 365 Apps for enterprise installation
+# [ラーニング パス 2 - ラボ 2 - 演習 3 - Microsoft 365 Apps for enterprise のインストールを管理する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex3_M365_Apps.md#learning-path-2---lab-2---exercise-3---manage-a-microsoft-365-apps-for-enterprise-installation)
 
-You have taken on the persona of Holly Dickson, Adatum's new Microsoft 365 Administrator, and you have Microsoft 365 deployed in a virtualized lab environment. In this exercise, you will perform the tasks necessary to manage a user-driven Microsoft 365 Apps for enterprise installation. Performing a user-driven Microsoft 365 Apps for enterprise installation is a two-step process: 
+あなたは Adatum の新しい Microsoft 365 管理者である Holly Dickson になり、仮想化されたラボ環境に Microsoft 365 を展開しました。この演習では、ユーザー主導の Microsoft 365 Apps for enterprise インストールを管理するために必要なタスクを実行します。ユーザー主導の Microsoft 365 Apps for enterprise インストールの実行は、次の 2 段階のプロセスです。
 
-- Configuring the user account so the user is eligible to download and install the Office 365 deployment tool.
-- Performing the installation. 
+- ユーザーが Office 365 展開ツールをダウンロードしてインストールできるようにユーザー アカウントを構成します。
+- インストールを実行します。
 
-In the first two tasks in this exercise, you will verify the following conditions that affect whether a user can be blocked from downloading the Microsoft 365 Apps for enterprise suite: <br/>
+この演習の最初の 2 つのタスクでは、ユーザーによる Microsoft 365 Apps for enterprise スイートのダウンロードをブロックできるかどうかに影響する次の条件を確認します。
 
-- Whether the user has an appropriate Microsoft 365 license (which you will verify in Task 1). 	
-- Whether an admin has turned off the global Office download setting that controls the downloading of mobile and desktop apps for all users (which you will verify in Task 2).
+- ユーザーが適切な Microsoft 365 ライセンスを持っているかどうか (タスク 1 で確認します)。
+- 管理者が、すべてのユーザーのモバイル アプリとデスクトップ アプリのダウンロードを制御するグローバルな Office ダウンロード設定をオフにしているかどうか (タスク 2 で確認します)。
 
-In the final task in this exercise, you will install the Microsoft 365 Apps for enterprise suite for one of Adatum's users.
+この演習の最後のタスクでは、Adatum のユーザーの 1 人に Microsoft 365 Apps for enterprise スイートをインストールします。
 
+### [タスク 1 – ライセンスがエンタープライズ向け Microsoft 365 Apps のインストールにどのような影響を与えるかを確認する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex3_M365_Apps.md#task-1--verify-how-licensing-affects-installing-microsoft-365-apps-for-enterprise)
 
-### Task 1 – Verify how licensing affects installing Microsoft 365 Apps for enterprise
+このタスクでは、Holly は、適切な Microsoft 365 ライセンスが割り当てられていないユーザーが Microsoft 365 Apps for enterprise をダウンロードできるかどうかをテストします。このテストでは、 Microsoft 365 管理センターの**アクティブ ユーザー**リストに表示される既存のユーザーを使用することはできません。これらのユーザーは Microsoft 365 アカウント (xxxxxZZZZZZ.onmicrosoft.com アカウント) のみを持っています。adatum ドメインには対応するオンプレミス アカウントがありません。オンプレミス アカウントがないと、これらのユーザーとしてクライアント 2 (LON-CL2) VM にログインして、クライアント コンピューターに Microsoft 365 Apps for enterprise をインストールすることはできません。
 
-In this task, Holly will test whether a user who has not been assigned an appropriate Microsoft 365 license can download Microsoft 365 Apps for enterprise. For this test, you can't use any of the existing users that appear in the **Active Users** list in the Microsoft 365 admin center. These users only have Microsoft 365 accounts (xxxxxZZZZZZ.onmicrosoft.com accounts); they do not have corresponding on-premises accounts in the adatum domain. Without an on-premises account, you can't log into the Client 2 (LON-CL2) VM as any of these users to install Microsoft 365 Apps for enterprise on the client machine. 
+したがって、ラボ ホスティング プロバイダーによってオンプレミス ドメイン (adatum.com) に読み込まれた Adatum のオンプレミス ユーザー アカウントの 1 つを使用する必要があります。**このテストでは、 Laura Atkins**を使用します。Laura の Microsoft 365 アカウントを作成しますが、最初は Laura に Microsoft 365 ライセンスを割り当てません。これにより、ライセンスがないことが、ユーザーが Microsoft 365 Apps for enterprise をインストールする能力にどのような影響を与えるかを確認できます。
 
-Therefore, you must use one of Adatum's on-premises user accounts that has been loaded in its on-premises domain (adatum.com) by your lab hosting provider. For this test, you will use **Laura Atkins**. You will create a Microsoft 365 account for Laura, but initially you will not assign her a Microsoft 365 license. This will enable you to see how not having a license affects a user's ability to install Microsoft 365 Apps for enterprise. 
+1. LON-CL1 では、Edge ブラウザーで Holly Dickson として Microsoft 365 にログインする必要があります。
 
-1. On LON-CL1, you should be logged into Microsoft 365 as Holly Dickson in your Edge browser. 
+2. **Microsoft 365 管理センター**のナビゲーション ウィンドウで、**[ユーザー]を選択し、** **[アクティブなユーザー]**を選択します。
 
-2. In the **Microsoft 365 admin center**, in the navigation pane, select **Users** and then select **Active users**. 
+3. **まず、適切な Microsoft 365 ライセンスを持たない**ユーザーがMicrosoft 365 Apps for enterprise をインストールできるかどうかをテストします。**このテストでは、 Laura Atkins**を使用します。ラボ ホスティング プロバイダーはすでに Laura のオンプレミス ユーザー アカウントを作成していますが、彼女は Microsoft 365 ユーザー アカウントを持っていません。Laura の Microsoft 365 アカウントを作成しますが、彼女に Microsoft 365 ライセンスを割り当てません。
 
-3. You will begin by testing whether a user **without** an appropriate Microsoft 365 license can install Microsoft 365 Apps for enterprise. For this test, you will use **Laura Atkins**. Your lab hosting provider has already created an on-premises user account for Laura, but she does not have a Microsoft 365 user account. You will create a Microsoft 365 account for Laura, but you will NOT assign her a Microsoft 365 license.  <br/>
+   **[アクティブなユーザー]**ウィンドウの上部にあるメニュー バーで**[ユーザーの追加]**を選択します。これにより、**ユーザーの追加**ウィザードが開始されます。
 
-	At the top of the **Active users** window, select **Add a user** on the menu bar. Doing so initiates the **Add a user** wizard.
+4. **ユーザーの追加**ウィザードの**「基本のセットアップ」**ウィンドウで、次の情報を入力します。
 
-4. In the **Add a user** wizard, in the **Set up the basics** window, enter the following information:
-	- First name: **Laura**
-	- Last name: **Atkins** 
-	- Display name: When you tab into this field, **Laura Atkins** will appear
-	- Username: **Laura**
+   - 名前：**ローラ**
+   - 姓:**アトキンス**
+   - 表示名: このフィールドにタブで移動すると、**Laura Atkins**が表示されます
+   - ユーザー名:**ローラ**
 
-	**IMPORTANT:** To the right of the Username field is the domain field. You want this value to be Adatum's **xxxxxZZZZZZ.onmicrosoft.com** domain (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider). However, if the custom domain that you added in a prior lab is set as the default domain, then this field will be prefilled with the custom **xxxUPNxxx.xxxCustomDomainxxx.xxx** on-premises domain (where xxxUPNxxx is your UPN number and xxxCustomDomainxxx.xxx is the custom domain). If the custom domain is displayed in this field, you must select the drop-down arrow and select the **xxxxxZZZZZZ.onmicrosoft.com** cloud domain instead.  <br/>
+   **重要:** [ユーザー名] フィールドの右側には、ドメイン フィールドがあります。**この値を Adatum のxxxxxZZZZZZ.onmicrosoft.com**ドメインにします(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。ただし、前のラボで追加したカスタム ドメインがデフォルト ドメインとして設定されている場合、このフィールドにはカスタム**xxxUPNxxx.xxxCustomDomainxxx.xxx**オンプレミス ドメインが事前に入力されます (xxxUPNxxx は UPN 番号、xxxCustomDomainxxx.xxx はカスタム ドメイン)。このフィールドにカスタム ドメインが表示されている場合は、ドロップダウン矢印を選択し、代わりに**xxxxxZZZZZZ.onmicrosoft.com**クラウド ドメインを選択する必要があります。
 
-	After configuring this field, Laura’s **Username** should appear as: **Laura@xxxxxZZZZZZ.onmicrosoft.com**
+   このフィールドを構成すると、Laura の**ユーザー名は**次のように表示されます: **[Laura@xxxxxZZZZZZ.onmicrosoft.com](mailto:Laura@xxxxxZZZZZZ.onmicrosoft.com)**
 
-	- Password settings: Clear (uncheck) the **Automatic create a password** option
-	- Password: Enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) 
-	- Clear (uncheck) the **Require this user to change their password when they first sign in** check box 
-	
-5. Select **Next**.
+   - パスワード設定: [**パスワードの自動作成]**オプションをクリア (チェックを外します)
+   - パスワード:テナント管理者アカウント (つまり、MOD 管理者アカウント) に対してラボ ホスティング プロバイダーから提供されたものと同じ**Microsoft 365 テナント パスワードを入力します。**
+   - **[このユーザーに最初のサインイン時にパスワードの変更を要求する**] チェック ボックスをオフにします (チェックを外します)。
 
-6. In the **Assign product licenses** window, select the **Create user without product license (not recommended)** option, and then select **Next**.
+5. **「次へ」**を選択します。
 
-7. In the **Optional settings** window, select **Next**. 
+6. **[製品ライセンスの割り当て]**ウィンドウで、**[製品ライセンスなしでユーザーを作成する (推奨されません)]**オプションを選択し、**[次へ]**を選択します。
 
-8. On the **Review and finish** window, review your selections. If anything needs to be changed, select the appropriate **Edit** link and make the necessary changes. Otherwise, if everything looks good, select **Finish adding**. 
+7. **[オプション設定]**ウィンドウで、**[次へ]**を選択します。
 
-9. On the **Laura Atkins added to active users** page, select **Close**. If a survey form appears, select **Cancel**. 
+8. **[確認して終了]**ウィンドウで、選択内容を確認します。変更する必要がある場合は、適切な**編集**リンクを選択し、必要な変更を加えます。それ以外の場合は、すべてが正常であれば、**[追加を終了]**を選択します。
 
-10. Switch to **LON-CL2**. 
+9. **[アクティブ ユーザーに追加された Laura Atkins]**ページで、**[閉じる]**を選択します。アンケートフォームが表示された場合は、**「キャンセル」**を選択します。
 
-11. On **LON-CL2**, you want to log into the machine as **Laura Atkins**. If the Edge browser is still open from the previous lab exercise, then close it now. You should be on the LON-CL2's desktop, where it should indicate that you are logged on as **lon-cl2\admin**. Since you want to log on to the LON-CL2 machine using Laura Atkins' local account (adatum\laura), select the **Ctrl+Alt+Delete** function for your VM environment. On the menu screen that appears, select **Switch user**. <br/>
+10. **LON-CL2**に切り替えます。
 
-	The lower-left portion of the desktop displays the **Admin** and **Other user** options. Select **Other user**.
+11. **LON-CL2**では、 **Laura Atkins**としてマシンにログインするとします。前回のラボ演習で Edge ブラウザーがまだ開いている場合は、ここで閉じます。**LON-CL2 のデスクトップが表示され、 lon-cl2\admin**としてログオンしていることが示されます。Laura Atkins のローカル アカウント (adatum\laura) を使用して LON-CL2 マシンにログオンする必要があるため、VM 環境に対して**Ctrl+Alt+Delete機能を選択します。**表示されるメニュー画面で、**「ユーザーの切り替え」**を選択します。
 
-12. In the **Other user** log in, enter **adatum\laura** in the **Username** field, enter **Pa55w.rd** as the **Password**, and then select the forward arrow to log in.  
+    デスクトップの左下部分には、「**管理者」**および**「その他のユーザー」**オプションが表示されます。**[他のユーザー]**を選択します。
 
-13. Select the **Microsoft Edge** icon on the taskbar.
+12. **「その他のユーザーの**ログイン」で、 **「ユーザー名」**フィールドに**「adatum\laura」**と入力し、**「パスワード」**として**「Pa55w.rd」**と入力し、前方向矢印を選択してログインします。
 
-14. In **Microsoft Edge**, maximize your browser if necessary. If you receive a **Welcome to Microsoft Edge** window that displays a message indicating **Let's start by signing you in and bringing over your passwords, history, and more**, perform the following steps to initialize your Edge browser and navigate to the Microsoft 365 Home page:  <br/>
+13. タスクバーの**Microsoft Edge**アイコンを選択します。
 
-	- On the first screen, select the **Start without your data** button.
-	- On the second screen, select the **Continue without this data** button.
-	- On the third screen, unselect (clear) the **Make your Microsoft experience more useful to you** check box and then select the **Confirm and start browsing** button.  
-	- In the Edge browser, go to the **Microsoft 365 Home** page by entering the following URL in the address bar: **https://portal.office.com/**
+14. **Microsoft Edge**では、必要に応じてブラウザを最大化します。**「サインインしてパスワードや履歴などを引き継ぎましょう」 という**メッセージが表示された [ **Microsoft Edge へようこそ**] ウィンドウが表示された場合は、次の手順を実行して Edge ブラウザーを初期化し、Microsoft 365 ホーム ページに移動します。
 
-15. In the **Sign in** window, enter **Laura@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) and then select **Next**.
+    - 最初の画面で、**「データなしで開始」**ボタンを選択します。
+    - 2 番目の画面で、**「このデータなしで続行」**ボタンを選択します。
+    - **3 番目の画面で、 [Microsoft エクスペリエンスをより便利にする]**チェック ボックスの選択を解除 (クリア) し、 **[確認して参照を開始]**ボタンを選択します。
+    - Edge ブラウザーで、アドレス バーに次の URL を入力して**Microsoft 365 ホームページに移動します:** **https://portal.office.com/**
 
-16. In the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in.**
+15. **[サインイン]**ウィンドウで、**[「Laura@xxxxxZZZZZZ.onmicrosoft.com」](mailto:Laura@xxxxxZZZZZZ.onmicrosoft.com)** (xxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) と入力し、 **[次へ]**を選択します。
 
-17. In the **Stay signed in?** window, select the **Don't show this again** check box and then select **Yes**. In the **Save password** window, select **Never**.
+16. **[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、[**サインイン] を選択します。**
 
-18. In the **Welcome to Microsoft 365** dialog box that appears in the middle of the screen, select the forward arrow twice and then the check mark. 
+17. サインインした状態で**滞在しますか?** ウィンドウで、**「今後これを表示しない」**チェックボックスを選択し、**「はい」**を選択します。**[パスワードの保存]**ウィンドウで、**[しない]**を選択します。
 
-18. In the **Welcome to Microsoft 365** window (which is Laura's Microsoft 365 home page), notice that no column of Microsoft 365 app icons appears in the navigation pane on the left-side of the screen. This is because Laura has not been assigned a Microsoft 365 license. <br/>
+18. 画面の中央に表示される [ **Microsoft 365 へようこそ]**ダイアログ ボックスで、前向き矢印を 2 回選択し、チェック マークを選択します。
 
-	Select the **Install apps** button, and then in the drop-down menu that appears, select **Other install options**. This opens the **My account** window for Laura.
+19. **[Microsoft 365 へようこそ]**ウィンドウ (Laura の Microsoft 365 ホーム ページ)では、画面左側のナビゲーション ウィンドウに Microsoft 365 アプリ アイコンの列が表示されていないことに注目してください。これは、Laura に Microsoft 365 ライセンスが割り当てられていないためです。
 
-19. In Laura's **My account** window, under the **Office apps & devices** tile, select **View apps & devices**. Note the message that appears at the top of page. Laura has not been assigned a license that includes the Office desktop apps, so she’s unable to install Microsoft 365 Apps for enterprise. <br/>
-	
-	‎**Important:** You have just verified that a user can't download Microsoft 365 Apps for enterprise if they haven't been assigned an appropriate Microsoft 365 license. 
-	
-20. Leave LON-CL2 open and remain signed into Microsoft 365 as Laura Atkins for the next task. In your Edge browser, close the **My account** tab and the **Welcome to Microsoft Edge** tab, but leave the **Home | Microsoft 365** tab open for the next task.
+    **[アプリのインストール]**ボタンを選択し、表示されるドロップダウン メニューで**[その他のインストール オプション]**を選択します。これにより、Laura の**[マイ アカウント]ウィンドウが開きます。**
 
+20. Laura の**[マイ アカウント]**ウィンドウの**[Office アプリとデバイス]**タイルで、**[アプリとデバイスの表示]**を選択します。ページの上部に表示されるメッセージに注目してください。Laura には Office デスクトップ アプリを含むライセンスが割り当てられていないため、Microsoft 365 Apps for enterprise をインストールできません。
 
-### Task 2 – Verify how the global Office download setting affects installing Microsoft 365 Apps for enterprise
+    重要**:**ユーザーに適切な Microsoft 365 ライセンスが割り当てられていない場合、ユーザーは Microsoft 365 Apps for enterprise をダウンロードできないことが確認されました。
 
-Microsoft 365 includes a global Office download setting that controls the downloading of mobile and desktop apps for all users. Holly is now going to test whether users can be prohibited from downloading Microsoft 365 Apps for enterprise if an admin turns off this setting. In this test, Holly will once again use Laura Atkins as her test case. However, since you just proved in the prior task that Laura can't install Microsoft 365 Apps for enterprise without a proper license, you must first assign her a license. 
+21. LON-CL2 を開いたままにし、次のタスクのために Laura Atkins として Microsoft 365 にサインインしたままにしておきます。Edge ブラウザーで、**[マイ アカウント]**タブと [ **Microsoft Edge へようこそ]**タブを閉じますが、[**ホーム] | [Microsoft Edge へようこそ] タブはそのままにしておきます。**次のタスクのために**[Microsoft 365]タブが開きます。**
 
-**License Note:** If you recall from the earlier lab exercise when you created Holly Dickson's Microsoft 365 account, there were no available Microsoft 365 E5 or Enterprise Mobility + Security E5 licenses available. As such, you had to first unassign one of each license from an existing user so that you could assign them to Holly. The same situation exists here with Laura. You must first unassign one of each license from an existing user so that you can assign them to Laura.
-	
-1. Switch back to **LON-CL1**. In your Edge browser, you should still be logged into Microsoft 365 as Holly Dickson, Adatum’s Microsoft 365 Administrator.
+### [タスク 2 – Office のグローバル ダウンロード設定が Microsoft 365 Apps for enterprise のインストールにどのような影響を与えるかを確認する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex3_M365_Apps.md#task-2--verify-how-the-global-office-download-setting-affects-installing-microsoft-365-apps-for-enterprise)
 
-2. On **LON-CL1**, Holly wants to turn off the global Office download setting. To do so, select the **Microsoft 365 admin center** tab in your browser, and then if necessary, select **...Show all** in the navigation pane. Select **Settings**, and then within the Settings group, select **Org Settings**. 
+Microsoft 365 には、すべてのユーザーのモバイル アプリとデスクトップ アプリのダウンロードを制御するグローバルな Office ダウンロード設定が含まれています。ホリーはこれから、管理者がこの設定をオフにした場合に、ユーザーが Microsoft 365 Apps for enterprise をダウンロードすることを禁止できるかどうかをテストする予定です。このテストでは、ホリーはテスト ケースとして再びローラ アトキンスを使用します。ただし、前のタスクで Laura が適切なライセンスなしでは Microsoft 365 Apps for enterprise をインストールできないことを証明したばかりなので、最初に彼女にライセンスを割り当てる必要があります。
 
-3. In the **Org settings** window, the **Services** tab is displayed by default. Scroll down through the list of services and select **Microsoft 365 installation options**.
+**ライセンスに関するメモ:** Holly Dickson の Microsoft 365 アカウントを作成したときの以前のラボ演習を思い出してください。利用可能な Microsoft 365 E5 ライセンスまたは Enterprise Mobility + Security E5 ライセンスはありませんでした。そのため、Holly に割り当てることができるように、まず既存のユーザーから各ライセンスの 1 つを割り当て解除する必要がありました。ローラにも同じ状況が存在します。Laura に割り当てることができるように、まず既存のユーザーから各ライセンスの 1 つを割り当て解除する必要があります。
 
-4. In the **Microsoft 365 installation options** pane that appears, the **Feature Updates** tab is displayed by default. Select the **Installation** tab that appears next to it. Then under the **Apps for Windows and mobile devices** section, the **Office (includes Skype for Business)** check box is currently selected. Select this check box to clear it. This disables the ability of users to download Office apps through Microsoft 365 Apps for enterprise. 
+1. **LON-CL1**に切り替えます。Edge ブラウザーでは、Adatum の Microsoft 365 管理者である Holly Dickson として Microsoft 365 にログインしているはずです。
 
-5. Select **Save**. 
+2. **LON-CL1**で、ホリーは Office のグローバル ダウンロード設定をオフにしたいと考えています。これを行うには、ブラウザーで**[Microsoft 365 管理センター]**タブを選択し、必要に応じて、ナビゲーション ウィンドウで**[...すべて表示]を選択します。****[設定]**を選択し、[設定] グループ内で**[組織の設定]**を選択します。
 
-6. At the top of the **Microsoft 365 app installation options** pane, select the **X** in the upper-right corner of this window to close it. 
+3. **[組織設定]**ウィンドウには、デフォルトで**[サービス]タブが表示されます。**サービスのリストを下にスクロールし、**Microsoft 365 インストール オプションを**選択します。
 
-7. You should now test whether turning off this global download setting affects a **licensed** user from installing Microsoft 365 Apps for enterprise. In this case, you’re once again going to use **Laura Atkins**, so you must assign Laura a Microsoft 365 license. However, since there are no available licenses, you must first unassign a license from an existing Microsoft 365 user account. In this case, Holly will unassign Pradeep Gupta's licenses, since he has taken on a new role and will no longer be involved in Adatum's Microsoft 365 pilot project.  <br/>
+4. 表示される**Microsoft 365 インストール オプション**ウィンドウには、既定で**[機能更新]**タブが表示されます。その横に表示される**「インストール」**タブを選択します。**[Windows およびモバイル デバイス用アプリ]**セクションでは、現在**[Office (Skype for Business を含む)]**チェック ボックスがオンになっています。このチェック ボックスをオフにするには、このチェック ボックスをオンにします。これにより、ユーザーは Microsoft 365 Apps for enterprise を通じて Office アプリをダウンロードできなくなります。
 
-	In the **Microsoft 365 admin center** navigation pane, select **Users** and then select **Active users**. On the **Active users** page, select **Pradeep Gupta**.
+5. **[保存]**を選択します。
 
-8. In the **Pradeep Gupta** pane that appears, the **Account** tab is displayed by default. Select the **Licenses and apps** tab. Under **Licenses (2)**, select the **Enterprise Mobility + Security E5** and **Microsoft 365 E5** check boxes to clear them, and then select **Save Changes**. Close the **Pradeep Gupta** pane. The licenses that were previously assigned to Pradeep are now available for Laura.  
+6. **Microsoft 365 アプリのインストール オプション**ウィンドウの上部で、このウィンドウの右上隅にある[ **X]を選択してウィンドウを閉じます。**
 
-9. In the **Active users** list, scroll down to **Laura Atkins**. The value in the **Licenses** column for Laura currently indicates that she is **Unlicensed**. Select **Laura Atkins**.
+7. ここで、このグローバル ダウンロード設定をオフにすることが、**ライセンスを取得した**ユーザーの Microsoft 365 Apps for enterprise のインストールに影響するかどうかをテストする必要があります。この場合、再び**Laura Atkins**を使用することになるため、Laura に Microsoft 365 ライセンスを割り当てる必要があります。ただし、使用可能なライセンスがないため、まず既存の Microsoft 365 ユーザー アカウントからライセンスの割り当てを解除する必要があります。この場合、Holly は Pradeep Gupta のライセンスの割り当てを解除します。これは、彼が新しい役割を引き受け、Adatum の Microsoft 365 パイロット プロジェクトに関与しなくなるためです。
 
-10. In **Laura Atkins** account pane, select the **Licenses and apps** tab. In the **Licenses** section, select the **Enterprise Mobility + Security E5** and **Microsoft 365 E5** check boxes and then select **Save changes**. Once the changes are saved, close Laura’s account pane. <br/>
+   **Microsoft 365 管理センターの**ナビゲーション ウィンドウで、**[ユーザー]を選択し、** **[アクティブなユーザー]**を選択します。**[アクティブ ユーザー]**ページで、**[Pradeep Gupta]**を選択します。
 
-	In the **Active users** list, note how the value in the **Licenses** column for Laura now displays **Enterprise Mobility + Security E5, Microsoft 365 E5**. 
+8. 表示される**[Pradeep Gupta]**ペインには、デフォルトで**[アカウント]**タブが表示されます。**[ライセンスとアプリ]**タブを選択します。**[ライセンス (2)]**で、**[Enterprise Mobility + Security E5]**および**[Microsoft 365 E5]**チェック ボックスをオンにしてオフにし、 [**変更の保存]**を選択します。**「Pradeep Gupta」**ペインを閉じます。以前に Pradeep に割り当てられていたライセンスが、Laura にも使用できるようになりました。
 
-11. You should now check whether Laura can download Microsoft 365 Apps for enterprise to her client PC when the global Office download setting has been turned Off. <br/>
+9. **[アクティブ ユーザー]**リストで、 **[Laura Atkins]**まで下にスクロールします。**Laura のLicenses**列の値は、現在、彼女が**Unlicensed で**あることを示しています。**ローラ・アトキンス**を選択します。
 
-	To do this, you must first switch back to **LON-CL2**.
+10. **Laura Atkins**アカウント ペインで、 **[ライセンスとアプリ]**タブを選択します。**[ライセンス]**セクションで、**[Enterprise Mobility + Security E5]**および**[Microsoft 365 E5]**チェック ボックスをオンにし、**[変更の保存]**を選択します。変更を保存したら、Laura のアカウント ウィンドウを閉じます。
 
-12. In **LON-CL2**, your Edge browser should still be open, and you should still be logged into Microsoft 365 as Laura Atkins (verify Laura's **LA** initials appear in the upper-right corner of the browser; note that Laura's name doesn't appear because she's not a member of the M365 pilot project group that was assigned to the custom theme). In your browser, verify you're on the **Home | Microsoft 365** tab. When you left off after the prior lab task, this page didn't display any Microsoft 365 apps in the navigation pane on the left because Laura wasn't assigned a Microsoft 365 license. Let's see what happens now that Laura has been assigned a license. <br/>
+    **[アクティブ ユーザー]**リストで、 Laura の**[ライセンス]**列の値に**Enterprise Mobility + Security E5、Microsoft 365 E5**が表示されることに注目してください。
 
-	Select the **Refresh** icon that appears to the left of the address bar at the top of your browser. <br/>
+11. ここで、Office のグローバル ダウンロード設定がオフになっている場合に、Laura が Microsoft 365 Apps for enterprise をクライアント PC にダウンロードできるかどうかを確認する必要があります。
 
-	After refreshing the page, notice the Microsoft 365 app icons that now appear on the left-side of the screen because Laura has been assigned a Microsoft 365 license. <br/>
+    **これを行うには、まずLON-CL2**に切り替える必要があります。
 
-	If a **Find more apps** window appears, select the **X** to close it.
+12. **LON-CL2**では、Edge ブラウザーが開いたままで、Laura Atkins として Microsoft 365 にログインしているはずです (ブラウザーの右上隅にLaura の**LA の**イニシャルが表示されていることを確認します。Laura の名前は表示されないことに注意してください)彼女はカスタム テーマに割り当てられた M365 パイロット プロジェクト グループのメンバーではありません)。ブラウザで、[**ホーム] | [ホーム]にアクセスしていることを確認します。「Microsoft 365」**タブ。前のラボ タスクの後に中断したとき、Laura には Microsoft 365 ライセンスが割り当てられていなかったため、このページの左側のナビゲーション ウィンドウに Microsoft 365 アプリは表示されませんでした。Laura にライセンスが割り当てられた後、何が起こるかを見てみましょう。
 
-13. Select the **Install apps** button, and then in the drop-down menu, select **Other install options**.
-	
-14. This will open Laura's **My account** window. Under the **Office apps & devices** tile, select **View apps & devices**. 
+    ブラウザ上部のアドレス バーの左側に表示される**[更新]**アイコンを選択します。
 
-15. In the **Apps & devices** window, a message is displayed under the **Office** section that indicates the admin has turned off Office installs. <br/>
-	
-	‎**Important:** You have just verified that a licensed user is unable to download Microsoft 365 Apps for enterprise if the global Office download setting has been turned Off.
+    ページを更新すると、Laura には Microsoft 365 ライセンスが割り当てられているため、Microsoft 365 アプリのアイコンが画面の左側に表示されるようになりました。
 
-16. At this point Holly wants to turn the global Office download setting back On so that Laura can download Microsoft 365 Apps for enterprise. <br/>
+    **「さらにアプリを検索」**ウィンドウが表示された場合は、**「X」**を選択してウィンドウを閉じます。
 
-	To do this, switch back to **LON-CL1**. 
+13. **[アプリのインストール]**ボタンを選択し、ドロップダウン メニューで**[その他のインストール オプション]**を選択します。
 
-17. On **LON-CL1**, you should still be logged into Microsoft 365 as Holly Dickson. In the **Microsoft 365 admin center**, under the **Settings** section in the navigation pane, select **Org Settings**. 
+14. **これにより、Laura の[マイ アカウント]**ウィンドウが開きます。**[Office アプリとデバイス]**タイルの下で、**[アプリとデバイスの表示]**を選択します。
 
-18. In the **Org settings** window, the **Services** tab is displayed by default. Scroll down through the list of services and select **Microsoft 365 installation options**.
+15. **[アプリとデバイス]ウィンドウの****[Office]**セクションの下に、管理者が Office のインストールをオフにしたことを示すメッセージが表示されます。
 
-19. In the **Microsoft 365 installation options** pane, select the **Installation** tab, then under the **Apps for Windows and mobile devices** section, the **Office (includes Skype for Business)** check box is currently blank. Select this check box so that it displays a check mark, which now turns this feature back On.
+    重要**:** Office のグローバル ダウンロード設定がオフになっている場合、ライセンスを取得したユーザーは Microsoft 365 Apps for enterprise をダウンロードできないことが確認されました。
 
-20. Select **Save**, and then once the update has been saved, select the **X** in the upper-right corner of this window to close it. 
+16. この時点で、ホリーは、ローラがエンタープライズ向け Microsoft 365 アプリをダウンロードできるように、Office のグローバル ダウンロード設定をオンに戻したいと考えています。
 
-21. Now that this global Office download option is turned back On, you should see if it affects Laura’s ability to download Microsoft 365 Apps for enterprise. <br/>
+    **これを行うには、 LON-CL1**に切り替えます。
 
-	To do this, switch back to **LON-CL2**.
+17. **LON-CL1**では、Holly Dickson として Microsoft 365 にログインしているはずです。**Microsoft 365 管理センター**のナビゲーション ウィンドウの**[設定]**セクションで、 **[組織の設定]**を選択します。
 
-22. In **LON-CL2**, your Edge browser should still be open, and you should still be logged into Microsoft 365 as Laura Atkins. The **Office apps and devices** page should be displayed along with the message that indicated your admin has turned off Office installs. Since you just turned this global option back On, you need to refresh this page to see how it affects Laura’s ability to download Microsoft 365 Apps for enterprise. <br/>
+18. **[組織設定]**ウィンドウには、デフォルトで**[サービス]タブが表示されます。**サービスのリストを下にスクロールし、**Microsoft 365 インストール オプションを**選択します。
 
-	Select the **Refresh** icon that appears to the left of the address bar at the top of your browser. 
+19. **Microsoft 365 のインストール オプション**ウィンドウで、[**インストール]**タブを選択し、[ **Windows およびモバイル デバイス用アプリ]**セクションで、[ **Office (Skype for Business を含む)]**チェック ボックスは現在空白です。このチェック ボックスをオンにするとチェック マークが表示され、この機能がオンに戻ります。
 
-23. In the **My account** window that appears, under the **Office apps & devices** tile, an **Install Office** button appears along with a message indicating you can install Office on up to 5 PCs or Macs, 5 tablets, and 5 smartphones.  <br/>
-	
-	‎**Important:** You have just verified that a user with a Microsoft 365 license is able to download Microsoft 365 Apps for enterprise if the global Office download setting is turned On. Do **NOT** select the **Install Office** button at this time. You will do that in the next task.
+20. **[保存]**を選択し、更新が保存されたら、このウィンドウの右上隅にある[ **X]を選択してウィンドウを閉じます。**
 
-24. Remain on LON-CL2 and continue to the next task to perform the user-driven installation for Laura Atkins.
+21. このグローバル Office ダウンロード オプションがオンに戻ったので、Laura が Microsoft 365 Apps for enterprise をダウンロードする機能に影響するかどうかを確認する必要があります。
 
+    **これを行うには、 LON-CL2**に切り替えます。
 
-### Task 3 – Perform a User-Driven Installation of Microsoft 365 Apps for enterprise 
+22. **LON-CL2**では、Edge ブラウザーが開いたままになっており、Laura Atkins として Microsoft 365 にログインしているはずです。[ Office**アプリとデバイス]**ページが、管理者が Office のインストールを無効にしたことを示すメッセージとともに表示されます。このグローバル オプションをオンに戻したばかりなので、このページを更新して、Laura が Microsoft 365 Apps for enterprise をダウンロードする機能にどのような影響を与えるかを確認する必要があります。
 
-In the prior task, you logged into Laura Atkins’ client PC, and you verified that she could download Microsoft 365 Apps for enterprise once she was assigned a Microsoft 365 license and the global Office download setting was turned On. In this task, you will continue the process by having Laura perform a user-driven installation of the Microsoft 365 Apps for enterprise suite from the Microsoft 365 portal.  
+    ブラウザ上部のアドレス バーの左側に表示される**[更新]**アイコンを選択します。
 
-1. On **LON-CL2**, your Edge browser should be open, and you should be logged into Microsoft 365 as Laura Atkins. 
+23. 表示される**[マイ アカウント]ウィンドウの****[Office アプリとデバイス]**タイルの下に、Office を最大 5 台の PC または Mac、5 台のタブレット、および 5 台のスマートフォンにインストールできることを示すメッセージとともに [Office のインストール] ボタンが表示されます **。**
 
-2. You should still be in Laura’s **My account** window since this is where you left off at the end of the prior task. Under the **Office apps & devices** section, the **Install Office** button now appears since Laura is assigned a Microsoft 365 E5 license and the global Office download setting is turned On.<br/>
+    重要**:** Office のグローバル ダウンロード設定がオンになっている場合、Microsoft 365 ライセンスを持つユーザーがエンタープライズ向け Microsoft 365 アプリをダウンロードできることが確認されました。この時点では**[Office のインストール]**ボタンを選択し**ない**でください。これは次のタスクで行います。
 
-	‎**Important:** Selecting this **Install Office** button will install the 64-bit, English version of Microsoft 365 Apps for enterprise. However, if you want to install a different language or version, then select **View apps & devices**, which opens the **Apps & devices** page; this enables you to select a different language and version of Microsoft 365 Apps for enterprise to install.  <br/>
+24. LON-CL2 のままで次のタスクに進み、Laura Atkins のユーザー主導のインストールを実行します。
 
-	Since Laura wants to install the 64-bit English version of Microsoft 365 Apps for enterprise, select the **Install Office** button now.
-		
-3. If a **Just a few more steps** window appears, select **Close**.
+### [タスク 3 – Microsoft 365 Apps for enterprise のユーザー主導のインストールを実行する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex3_M365_Apps.md#task-3--perform-a-user-driven-installation-of-microsoft-365-apps-for-enterprise)
 
-4. In the **Downloads** window that appears at the top right-side of the page, notice the system is downloading the **OfficeSetup.exe** installation program to the LON-CL2 client PC. This is the 64-bit Microsoft 365 Apps for enterprise installation wizard.
+前のタスクでは、Laura Atkins のクライアント PC にログインし、彼女に Microsoft 365 ライセンスが割り当てられ、Office のグローバル ダウンロード設定がオンになったら、彼女が Microsoft 365 Apps for enterprise をダウンロードできることを確認しました。このタスクでは、Laura に Microsoft 365 ポータルから Microsoft 365 Apps for enterprise スイートのユーザー主導のインストールを実行させることでプロセスを続行します。
 
-5. Once **OfficeSetup.exe** has finished downloading, select **Open file** that appears below **OfficeSetup.exe** in the **Downloads** window.
+1. **LON-CL2**では、Edge ブラウザーが開いており、Laura Atkins として Microsoft 365 にログインしているはずです。
 
-6. If a **Do you want to allow this app to make changes to your device?** dialog box appears, enter **adatum\administrator** in the **username** box, type **Pa55w.rd** in the **Password** box, and then select **Yes**. 
+2. Laura の**[マイ アカウント]**ウィンドウがまだ表示されているはずです。これは、前のタスクの最後で中断した場所であるためです。Laura には Microsoft 365 E5 ライセンスが割り当てられており、Office のグローバル ダウンロード設定がオンになっているため、[Office**アプリとデバイス]**セクションに**[Office のインストール]ボタンが表示されます。**
 
-7. You may receive a **Continuing could be expensive** dialog box that displays a warning message indicating that it may be expensive to continue downloading because you're connected to a network that limits downloads every month. <br/>
+   重要**:**この**[Office のインストール]**ボタンを選択すると、Microsoft 365 Apps for enterprise の 64 ビット英語版がインストールされます。ただし、別の言語またはバージョンをインストールする場合は、[**アプリとデバイスの表示]を選択すると、** **[アプリとデバイス]**ページが開きます。これにより、インストールする Microsoft 365 Apps for enterprise の別の言語とバージョンを選択できるようになります。
 
-	**Important:** If you receive this dialog box, it may appear in the taskbar but not on the desktop. If this occurs, hover your mouse over the **Office** icon on the taskbar, and then select the **Continuing could be expensive** dialog box if it appears. If you receive this dialog box, the Office install will NOT proceed until you select **Continue** (the Office window will just keep displaying the **We’re getting things ready** message, but it won’t actually do anything). <br/>
-	
-	If you received the **Continuing could be expensive** dialog box, select **Continue**.
+   Laura は Microsoft 365 Apps for enterprise の 64 ビット英語版をインストールしたいので、**[Office のインストール]**ボタンを今すぐ選択します。
 
-8. The installation may take several minutes to complete. Once the installation finishes, select **Close** in the **You're all set!** window.
+3. **[あと少しの手順]**ウィンドウが表示された場合は、**[閉じる]**を選択します。
 
-9. To validate Laura's Microsoft 365 Apps for enterprise installation, select the **Start** icon in the lower-left corner of the taskbar. Note all the Office apps that were just installed on LON-CL2, including Word, PowerPoint, Outlook, OneNote, and Excel, among others.
+4. ページの右上に表示される**ダウンロード**ウィンドウで、システムが**OfficeSetup.exe**インストール プログラムを LON-CL2 クライアント PC にダウンロードしていることに注目してください。これは、64 ビット Microsoft 365 Apps for enterprise のインストール ウィザードです。
 
-10. In the **Start** menu, select **Word**.
+5. **OfficeSetup.exe**のダウンロードが完了したら、 **[ダウンロード]**ウィンドウの**OfficeSetup.exe**の下に表示される**ファイルを開く**を選択します。
 
-11. On the **Sign in to get started with Office** page, select **Sign in or create account**. On the **Activate Office** page, enter **Laura@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider). In the **Password** field, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account).
+6. **このアプリがデバイスに変更を加えることを許可しますか**? ダイアログ ボックスが表示されたら、**ユーザー名**ボックスに**「adatum\administrator」**と入力し、 「**パスワード」**ボックスに**「Pa55w.rd」**と入力して、「**はい」**を選択します。
 
-12. On the **Stay signed in to all your apps** window, select **OK**.
+7. 毎月ダウンロードが制限されているネットワークに接続しているため、ダウンロードを続けると費用がかかる可能性があることを示す警告メッセージを表示する、「続行すると費用がかかる可能性があります」ダイアログ ボックスが表示される場合があります**。**
 
-13. On the **You're all set!** window, select **Done**.
+   **重要:**このダイアログ ボックスが表示された場合、タスク バーには表示されますが、デスクトップには表示されない場合があります。**この問題が発生した場合は、タスク バーのOffice**アイコンの上にマウスを置き、[**続行するとコストがかかる可能性があります**] ダイアログ ボックスが表示されたら選択します。**このダイアログ ボックスが表示された場合、 [続行] を**選択するまで Office のインストールは続行されません(Office ウィンドウには**「準備を整えています」という**メッセージが表示され続けるだけで、実際には何も行われません)。
 
-14. On the **Accept the license agreement** window, select **Accept**, and then select **Close**.
+   **[継続すると費用がかかる可能性があります**] ダイアログ ボックスが表示された場合は、**[続行]**を選択します。
 
-15. Verify that Word is functioning properly by opening a blank Word document, entering some text, and saving the document to the **Documents** folder. <br/>
+8. インストールが完了するまでに数分かかる場合があります。インストールが完了したら、[**準備は完了です!]**で**[閉じる]を選択します。**窓。
 
-	**Note:** If a **Check out our new look** dialog box appears, select **Not now**.
+9. Laura の Microsoft 365 Apps for enterprise のインストールを検証するには、タスク バーの左下隅にある**[スタート]アイコンを選択します。**LON-CL2 にインストールされたすべての Office アプリ (Word、PowerPoint、Outlook、OneNote、Excel など) に注目してください。
 
-16. Close Word.
+10. **[スタート]**メニューで、**[Word]**を選択します。
 
-17. Now that you have completed this lab exercise by installing Microsoft 365 Apps for enterprise, you should log out of Microsoft 365 as Laura Atkins. Select Laura's icon in the upper-right corner of the screen (the circle with LA in it), and then in Laura's property window, select **Sign out**.
+11. **[サインインして Office の使用を開始する]**ページで、**[サインインするかアカウントを作成する]**を選択します。**[Office のライセンス認証]**ページで、**[「Laura@xxxxxZZZZZZ.onmicrosoft.com」](mailto:Laura@xxxxxZZZZZZ.onmicrosoft.com)**と入力します(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。**[パスワード]**フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 テナント パスワードを入力します。**
 
-18. Once Laura is signed out, close your Microsoft Edge browser. 
+12. **[すべてのアプリにサインインしたままにする]**ウィンドウで、**[OK]**を選択します。
 
-19. You now want to log out of LON-CL2 as Laura Atkins and log back in as the Adatum administrator. This will prepare LON-CL2 for the next lab that uses this PC. <br/>
+13. これで**準備は完了です。**ウィンドウで、**「完了」**を選択します。
 
-	On LON-CL2, select the **Ctrl+Alt+Delete** function in your VM lab environment. 
-	
-18. On the desktop menu, select **Switch user**. 
+14. **[使用許諾契約に同意する]**ウィンドウで、**[同意する]**を選択し、**[閉じる]**を選択します。
 
-19. On the desktop, the **Admin** is selected by default. Enter **Pa55w.rd** in the **Password** field and then select the forward arrow.  <br/>
+15. 空の Word 文書を開いてテキストを入力し、文書を「**ドキュメント」**フォルダーに保存することで、Word が適切に機能していることを確認します。
 
-	The desktop should now display the logged-on user as **lon-cl2\admin**. LON-CL2 is now ready for the next lab that uses it.
+    **注:** **[新しい外観をチェックアウト]**ダイアログ ボックスが表示された場合は、 **[今は行わない]**を選択します。
 
-# End of Lab 2
+16. Wordを閉じます。
+
+17. Microsoft 365 Apps for enterprise をインストールしてこのラボ演習を完了したので、Laura Atkins として Microsoft 365 からログアウトする必要があります。画面の右上隅にある Laura のアイコン (LA が入った円) を選択し、Laura のプロパティ ウィンドウで [**サインアウト]**を選択します。
+
+18. Laura がサインアウトしたら、Microsoft Edge ブラウザーを閉じます。
+
+19. 次に、Laura Atkins として LON-CL2 からログアウトし、Adatum 管理者として再度ログインします。これにより、この PC を使用する次のラボ用に LON-CL2 が準備されます。
+
+    LON-CL2 で、VM ラボ環境で**Ctrl+Alt+Delete機能を選択します。**
+
+20. デスクトップ メニューで、**[ユーザーの切り替え]**を選択します。
+
+21. デスクトップでは、デフォルトで**管理者が**選択されています。**「パスワード」**フィールドに**「Pa55w.rd」**と入力し、前方向矢印を選択します。
+
+    デスクトップには、ログオンしたユーザーが**lon-cl2\admin**として表示されるはずです。LON-CL2 は、次のラボで使用する準備が整いました。
+
+# [ラボ 2 の終了](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex3_M365_Apps.md#end-of-lab-2)

@@ -1,107 +1,109 @@
-# Learning Path 5 - Lab 5 - Exercise 2 - Implement a Safe Links Policy
+# [ラーニング パス 5 - ラボ 5 - 演習 2 - 安全なリンク ポリシーを実装する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_05_Lab5_Ex2_Safe_Links.md#learning-path-5---lab-5---exercise-2---implement-a-safe-links-policy)
 
-Having created a Safe Attachments policy, Holly Dickson now wants to create a Safe Links policy and then validate the policy to ensure that it works properly.
+安全な添付ファイル ポリシーを作成した後、Holly Dickson は安全なリンク ポリシーを作成し、そのポリシーが適切に機能することを確認するために検証したいと考えています。
 
-**IMPORTANT:** This lab exercise consists of two tasks. The first task creates a Safe Links policy, and then the second task validates the policy. The problem with this lab is that when you create a safe links policy, it takes at least 30 minutes for the new policy to propagate through the system. **This means that after performing Task 1, you must wait at least 30 minutes before performing Task 2. If you perform Task 2 immediately after performing Task 1, then Task 2 will fail.** After completing Task 1, you should continue with the training class. Your instructor will provide guidance on when you can perform Task 2 depending on the next break that occurs in the class schedule.
+**重要:**このラボ演習は 2 つのタスクで構成されています。最初のタスクで安全なリンク ポリシーを作成し、次に 2 番目のタスクでポリシーを検証します。このラボの問題は、安全なリンク ポリシーを作成すると、新しいポリシーがシステムに反映されるまでに少なくとも 30 分かかることです。**これは、タスク 1 を実行した後、タスク 2 を実行するまで少なくとも 30 分待つ必要があることを意味します。タスク 1 を実行した直後にタスク 2 を実行すると、タスク 2 は失敗します。**タスク 1 を完了したら、トレーニング クラスを続行する必要があります。クラススケジュールで発生する次の休憩に応じて、インストラクターがタスク 2 をいつ実行できるかについてガイダンスを提供します。
 
-### Task 1 – Create a Safe Links Policy
+### [タスク 1 – 安全なリンク ポリシーを作成する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_05_Lab5_Ex2_Safe_Links.md#task-1--create-a-safe-links-policy)
 
-In this task, you will create a Safe Links policy that applies to all users in your tenant. You will then add the **http://tailspintoys.com** URL to the company-wide list of blocked URLs that you will define in the Safe Links global settings. The blocked URLs and other options defined in the Safe Links global settings are only applied to users who are included in active Safe Links policies. There is no built-in or default Safe Links policy, so you must create at least one Safe Links policy for these global settings to be active.  
+このタスクでは、テナント内のすべてのユーザーに適用される安全なリンク ポリシーを作成します。次に、安全なリンクのグローバル設定で定義する全社的なブロック URL リストに**[http://tailspintoys.com](http://tailspintoys.com/)** URLを追加します。安全なリンクのグローバル設定で定義されたブロックされた URL およびその他のオプションは、アクティブな安全なリンク ポリシーに含まれているユーザーにのみ適用されます。組み込みまたはデフォルトの安全なリンク ポリシーはないため、これらのグローバル設定を有効にするには、少なくとも 1 つの安全なリンク ポリシーを作成する必要があります。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**.
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-2. After finishing the previous task, you should still be in the **Microsoft 365 Defender** portal. If not, then in your browser, enter **https://security.microsoft.com** in the address bar.
+2. 前のタスクを完了した後も、**Microsoft 365 Defender**ポータルが表示されたままになっているはずです。そうでない場合は、ブラウザのアドレス バーに**[https://security.microsoft.comと入力します。](https://security.microsoft.com/)**
 
-3. In the **Microsoft 365 Defender** portal, you should still be on the **Safe attachments** page after completing the previous task. In the navigation thread at the top of the page (**Policies & rules > Threat policies > Safe attachments**), select **Threat policies**. <br/>
+3. **Microsoft 365 Defender**ポータルでは、前のタスクを完了した後も**[安全な添付ファイル]**ページが表示されているはずです。ページ上部のナビゲーション スレッド ( [**ポリシーとルール] > [脅威ポリシー] > [安全な添付ファイル**]) で、**[脅威ポリシー]**を選択します。
 
-    **NOTE:** If you had closed the **Safe Attachments** tab after the prior task, then navigate to the **Threat policies** page by selecting **Policies & rules** in the left-hand navigation pane, and then selecting **Threat policies**.
+   **注:**前のタスクの後に**[安全な添付ファイル]**タブを閉じた場合は、左側のナビゲーション ペインで**[ポリシーとルール]**を選択し、次に [脅威ポリシー] を選択して、 [脅威ポリシー] ページ**に****移動**します。
 
-4. In the **Threat policies** window, under the **Policies** section, select **Safe Links**. 
+4. **[脅威ポリシー]**ウィンドウの [ポリシー] セクションで、**[**安全**なリンク]**を選択します。
 
-5. On the **Safe links** page, select **+Create** on the menu bar. This initiates the **Create safe links policy** wizard.
+5. **[安全なリンク]**ページで、メニュー バーの**[+作成]を選択します。**これにより、**安全なリンクの作成ポリシー**ウィザードが開始されます。
 
-6. On the **Name your policy** page, enter **LinkPolicy1** in the **Name** field and then select **Next**.
+6. **[ポリシーに名前を付けます]**ページで、**[名前]**フィールドに**LinkPolicy1 と**入力し、**[次へ]**を選択します。
 
-7. On the **Users and domains** page, enter **on** in the **Domains** field. In the menu of suggested domains that appears, select Adatum's **xxxxxZZZZZZonmicrosoft.com** domain. Adatum's domain will now appear below the **Domains** field. Select **Next**.
+7. **「ユーザーとドメイン」**ページで、**「ドメイン」**フィールドに**「on」**と入力します。表示される推奨ドメインのメニューで、Adatum の**xxxxxZZZZZZonmicrosoft.com**ドメインを選択します。**Adatum のドメインが[ドメイン]**フィールドの下に表示されます。**「次へ」**を選択します。
 
-8. On the **URL & click protection settings** page, update the following settings and then select **Next**: 
+8. **[URL とクリック保護の設定]**ページで、次の設定を更新し、**[次へ**] を選択します。
 
-    - Under the **Email** section, verify that all check boxes are selected (if any are not selected by default, then select them now):
-    - Under the **Click protection settings** section:
-        - **Track user clicks** - Adatum does not want to track user clicks, so clear this check box if it's selected by default
-   
-9. On the **Notification** page, verify the **Use the default notification text** option is selected (if necessary, select it now) and then select **Next**.
+   - **[電子メール]**セクションで、すべてのチェック ボックスがオンになっていることを確認します (デフォルトでオンになっていない場合は、ここでオンにします)。
 
-10. On the **Review** page, review the options that you selected. If any need to be corrected, select the appropriate **Edit** option and make the necessary corrections. Once they all appear correct, select **Submit**. 
+   - 
 
-11. On the **New Safe Links policy created** page, select **Done**. Once the **LinkPolicy1** policy is created, it will appear in the Safe links list. 
+     [クリック保護設定]
 
-12. In the navigation thread at the top of the page (**Policies & rules > Threat policies > Safe links**), select **Threat policies**.
+     セクションで次の操作を行います。
 
-13. In the **Threat policies** page, under the **Rules** section, select **Tenant Allow/Block Lists**.
+     - **ユーザーのクリックを追跡**- Adatum はユーザーのクリックを追跡したくないため、デフォルトでオンになっている場合はこのチェック ボックスをオフにします。
 
-14. On the **Tenant Allow/Block Lists** page, the **Domains & addresses** tab is displayed by default. Select the **URLs** tab.
+9. **[通知]**ページで、 **[デフォルトの通知テキストを使用する]**オプションが選択されていることを確認し (必要に応じて、今すぐ選択します)、 [**次へ]**を選択します。
 
-15. On the **URLs** tab, select **+Block** on the menu bar. In the **Block URLs** pane that appears, enter **http://tailspintoys.com** in the field and then select **Add**.
+10. **[確認]**ページで、選択したオプションを確認します。修正する必要がある場合は、適切な**編集**オプションを選択し、必要な修正を加えます。すべて正しいことが確認できたら、**[送信]**を選択します。
 
-**STOP!!** As mentioned at the start of this lab exercise, now that you have created a Safe Links policy, you must wait at least 30 minutes for the policy to propagate through the system before you can perform the next task in this exercise. 
+11. **[新しい安全なリンク ポリシーが作成されました]**ページで、**[完了]**を選択します。**LinkPolicy1**ポリシーが作成されると、安全なリンクのリストに表示されます。
 
-**Do NOT proceed to the next task!** You can continue with the training course and perform the next task when your instructor feels it's appropriate given the class' training schedule. 
+12. ページ上部のナビゲーション スレッド ( [**ポリシーとルール] > [脅威ポリシー] > [安全なリンク**]) で、**[脅威ポリシー]**を選択します。
 
-### Task 2 – Validate the Safe Links policy
+13. **[脅威ポリシー]**ページの**[ルール]**セクションで、 **[テナントの許可/ブロック リスト]**を選択します。
 
-After having waited at least 30 minutes since completing Task 1, you will now test the Safe Links policy that you created that blocks links to the http://tailspintoys.com URL.
+14. **[テナントの許可/ブロック リスト]**ページには、デフォルトで**[ドメインとアドレス]**タブが表示されます。**「URL」**タブを選択します。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**.
+15. **[URL]**タブのメニュー バーで**[+ブロック]を選択します。****表示される[ブロック URL]**ペインで、フィールドに**[http://tailspintoys.com](http://tailspintoys.com/)****と入力し、 [追加]**を選択します。
 
-2. In your **Microsoft Edge** browser, select the **Home | Microsoft 365** tab and then in the column of app icons on the left side of the screen, select the **Outlook** icon. This will open Holly Dickson's mailbox.
+**停止！！**この実習の冒頭で述べたように、安全なリンク ポリシーを作成したので、この実習の次のタスクを実行する前に、ポリシーがシステムに伝達されるまで少なくとも 30 分待つ必要があります。
 
-3. **Outlook** will open in a new tab in your browser, and Holly's **Inbox** will be displayed.
+**次のタスクに進まないでください。**インストラクターがクラスのトレーニング スケジュールを考慮して適切であると判断した場合は、トレーニング コースを続行し、次のタスクを実行できます。
 
-4. Select the **New mail** button in the upper left part of the screen.
+### [タスク 2 – 安全なリンク ポリシーを検証する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_05_Lab5_Ex2_Safe_Links.md#task-2--validate-the-safe-links-policy)
 
-5. In the email form that appears in the right-hand pane, enter the following information:
+[タスク 1 を完了してから少なくとも 30 分待った後、 http://tailspintoys.com](http://tailspintoys.com/) URL へのリンクをブロックする作成した安全なリンク ポリシーをテストします。
 
-    - To: You will be sending an email to the MOD Administrator, so enter **mod** in the **To** field and then select the **MOD Administrator** email address from the user list.
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-    - Add a subject: **Free stuff for Adatum users**
+2. **Microsoft Edge**ブラウザで、 [**ホーム] | [ホーム]を選択します。[Microsoft 365]**タブをクリックし、画面左側のアプリ アイコンの列で**Outlook**アイコンを選択します。これにより、Holly Dickson のメールボックスが開きます。
 
-    - Body of the message: **Please click on me for free toys from Tailspin Toys.**
+3. **Outlook が**ブラウザの新しいタブで開き、Holly の**受信トレイ**が表示されます。
 
-6. Select the entire text string that you just added in the body of the message.
+4. 画面左上にある**「新規メール」**ボタンを選択します。
 
-7. A row of formatting icons should appear. Select the **Link** icon, which depicts two half-ovals with a line in between. 
+5. 右側のペインに表示される電子メール フォームに、次の情報を入力します。
 
-8. In the **Insert link** window that appears, the text that you highlighted in the body of the message should be displayed in the **Display as** field. In the **Web address (URL)** field, enter the following URL: **http://tailspintoys.com/aboutus/freetoys**.
+   - 宛先: MOD 管理者に電子メールを送信するため、**[宛先]**フィールドに**「mod」**と入力し、ユーザー リストから**MOD 管理者の**電子メール アドレスを選択します。
+   - 件名を追加: **Adatum ユーザー向けの無料コンテンツ**
+   - メッセージ本文: **Tailspin Toys の無料おもちゃを入手するには、私をクリックしてください。**
 
-9. Select **OK**. In the body of the email, the message should now be hyperlinked. 
+6. メッセージ本文に追加したテキスト文字列全体を選択します。
 
-10. Select the **Send** button. Select Holly's **Sent Items** folder to verify the message was sent.
+7. 書式設定アイコンの行が表示されます。**[リンク]**アイコンを選択します。このアイコンは、間に線が入った 2 つの半楕円を表します。
 
-11. You now want to go the MOD Administrator's Inbox in Outlook and validate whether the Safe Links policy you created in the prior task worked on the email that you just sent from Holly to the MOD Administrator.<br/>
+8. **表示される[リンクの挿入]**ウィンドウで、メッセージ本文で強調表示したテキストが [**表示形式]**フィールドに表示されます。**「Web アドレス (URL)」**フィールドに、次の URL を入力します: **http://tailspintoys.com/aboutus/freetoys**。
 
-    To do this, you must first switch to the Client 2 VM (**LON-CL2**). 
+9. **[OK]**を選択します。電子メールの本文で、メッセージにハイパーリンクが設定されているはずです。
 
-12. At the end of Lab 2, you should have logged into LON-CL2 as the local **Administrator** account (lon-cl2\admin). <br/>
+10. **「送信」**ボタンを選択します。Holly の**送信済みアイテム**フォルダーを選択して、メッセージが送信されたことを確認します。
 
-    If you didn't do this, and you're still logged in as Laura Atkins from the end of Lab 2, then select **Ctrl+Alt+Delete**, select **Switch user**, and then log in as the local **Administrator** with a password of **Pa55w.rd**.
+11. 次に、Outlook で MOD 管理者の受信トレイに移動し、前のタスクで作成した安全なリンク ポリシーが、Holly から MOD 管理者に送信したばかりの電子メールに対して機能したかどうかを検証します。
 
-13. On **LON-CL2**, select the **Microsoft Edge** icon in the taskbar, maximize the window and then enter the following URL in the address bar: **https://outlook.office365.com**
+    これを行うには、まずクライアント 2 VM ( **LON-CL2** ) に切り替える必要があります。
 
-14. In the **Pick an account** window, select **Use another account**, and then in the **Sign in** window, enter the username and password for the MOD Administrator account (**admin@xxxxxZZZZZZ.onmicrosoft.com**).
+12. ラボ 2 の最後には、ローカル**管理者**アカウント (lon-cl2\admin) として LON-CL2 にログインしているはずです。
 
-15. In the **Enter password** window, enter the tenant password provided by your lab hosting provider and select **Sign in**.
+    これを行わず、ラボ 2 の最後から Laura Atkins としてログインしている場合は、**Ctrl+Alt+Deleteを選択し、****ユーザーの切り替え を**選択して、パスワード**Pa55wを使用してローカル****管理者**としてログインします。**.rd**。
 
-16. In the MOD Administrator's **Inbox**, select the email that was sent by Holly regarding free stuff for Adatum users.
+13. **LON-CL2**で、タスクバーの**Microsoft Edgeアイコンを選択し、ウィンドウを最大化して、アドレス バーに次の URL を入力します:** **[https://outlook.office365.com](https://outlook.office365.com/)**
 
-17. Select the hyperlink in the body of the message to navigate to the site. 
+14. **[アカウントの選択]**ウィンドウで**[別のアカウントを使用する]**を選択し、**[サインイン]**ウィンドウで MOD 管理者アカウント ( **[admin@xxxxxZZZZZZ.onmicrosoft.com](mailto:admin@xxxxxZZZZZZ.onmicrosoft.com)** ) のユーザー名とパスワードを入力します。
 
-18. A new tab should open in your **Edge** browser that takes you to the URL you just saw in the prior step. This site should display the following warning message: **This website is classified as malicious.** This not only indicates that opening this website may not be safe, but it also verifies that the Safe Links policy you just created is working properly.
+15. **[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたテナント パスワードを入力し、**[サインイン]**を選択します。
 
-19. You should now prepare LON-CL2 for the next lab that will use it. In your Edge browser, in the Outlook tab, select the circle with the **MA** initials in the upper right-hand corner. In the **MOD Administrator** profile window that appears, select **Sign out**.
+16. MOD 管理者の**受信箱**で、Adatum ユーザー向けの無料コンテンツに関して Holly から送信された電子メールを選択します。
 
-20. Once you are signed out of Outlook, close the Edge Browser. LON-CL2 is now ready for use in Lab 6.
+17. メッセージ本文のハイパーリンクを選択して、サイトに移動します。
 
+18. **Edge**ブラウザで新しいタブが開き、前の手順で確認した URL に移動します。このサイトには次の警告メッセージが表示されます。**この Web サイトは悪意のあるものとして分類されています。**これは、この Web サイトを開くのが安全ではない可能性があることを示すだけでなく、作成したばかりの安全なリンク ポリシーが適切に機能していることも検証します。
 
-# End of Lab 5
+19. ここで、LON-CL2 を使用する次のラボ用に LON-CL2 を準備する必要があります。Edge ブラウザの [Outlook] タブで、右上隅にある**MA の**イニシャルが付いた円を選択します。表示される**MOD 管理者**プロファイル ウィンドウで、 **[サインアウト]**を選択します。
 
+20. Outlook からサインアウトしたら、Edge ブラウザを閉じます。LON-CL2 は Lab 6 で使用できるようになりました。
+
+# [ラボ 5 の終了](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_05_Lab5_Ex2_Safe_Links.md#end-of-lab-5)

@@ -1,345 +1,330 @@
-# Learning Path 9 - Lab 9 - Exercise 1 - Implement Sensitivity labels with Azure Information Protection Unified Labels client
+# [ラーニング パス 9 - ラボ 9 - 演習 1 - Azure Information Protection Unified Labels クライアントを使用して機密ラベルを実装する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_09_Lab9_Ex1_Implement Sensitivity labels.md#learning-path-9---lab-9---exercise-1---implement-sensitivity-labels-with-azure-information-protection-unified-labels-client)
 
-In your role as Holly Dickson, Adatum’s new Microsoft 365 Administrator, you have Microsoft 365 deployed in a virtualized lab environment. As you proceed with your Microsoft 365 pilot project, your next steps are to implement Sensitivity Labels with Azure Information Protection (AIP) at Adatum. In this lab, you will create and publish a label, and you will test a published label. However, in doing so, you won't test the label that you create in this lab. You will test a different label.
+Adatum の新しい Microsoft 365 管理者である Holly Dickson としてのあなたの役割では、仮想化されたラボ環境に Microsoft 365 を展開しています。Microsoft 365 パイロット プロジェクトを進める際の次のステップは、Adatum で Azure Information Protection (AIP) を使用して機密ラベルを実装することです。このラボでは、ラベルを作成して公開し、公開されたラベルをテストします。ただし、その際、このラボで作成したラベルはテストされません。別のラベルをテストします。
 
-**IMPORTANT:** If you recall, back on the first day of this class, you ran a lab setup script that created and published a sensitivity label and sensitivity label policy. Running that script was necessary to support this lab due to a timing issue with sensitivity labels. Once you publish a label policy, it takes 24 hours for the published label policy to propagate through Microsoft 365. As such, you won't be able to test the label and label policy that you create and publish in this lab.
+**重要:**思い起こせば、このクラスの初日に、機密ラベルと機密ラベル ポリシーを作成して公開するラボ セットアップ スクリプトを実行しました。機密ラベルのタイミングの問題のため、このラボをサポートするにはそのスクリプトを実行する必要がありました。ラベル ポリシーを発行すると、発行されたラベル ポリシーが Microsoft 365 に反映されるまで 24 時間かかります。そのため、このラボでは、作成して発行したラベルとラベル ポリシーをテストすることはできません。
 
-To address this timing issue, you ran that PowerShell script back on day 1 to create and publish a sensitivity label and label policy. Now that you've reached this lab, that label policy will have propagated through the system, and you'll be able to test it.
+このタイミングの問題に対処するために、1 日目に PowerShell スクリプトを実行して、秘密度ラベルとラベル ポリシーを作成して公開しました。このラボに到達したので、そのラベル ポリシーがシステム全体に伝播され、テストできるようになります。
 
-Because we want you to gain experience creating and publishing a label and label policy using the Microsoft 365 UI, you will still create a sensitivity label and label policy in this lab. However, when you perform the tasks to test the label and label policy, you won't test the ones that you created and published in the UI, since that label and label policy won't be available to test for 24 hours. Instead, you will test the label and label policy that you created and published using the script that you ran back on day 1 of this class.
+Microsoft 365 UI を使用したラベルとラベル ポリシーの作成と発行の経験を積んでほしいため、このラボでも秘密度ラベルとラベル ポリシーを作成します。ただし、ラベルとラベル ポリシーをテストするタスクを実行する場合、そのラベルとラベル ポリシーは 24 時間テストできないため、UI で作成して公開したものはテストされません。代わりに、このクラスの 1 日目に実行したスクリプトを使用して、作成および公開したラベルとラベル ポリシーをテストします。
 
+### [タスク 1 – Azure Information Protection Unified Labeling クライアントをインストールする](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_09_Lab9_Ex1_Implement Sensitivity labels.md#task-1--install-the-azure-information-protection-unified-labeling-client)
 
-### Task 1 – Install the Azure Information Protection Unified Labeling client
+Adatum のパイロット プロジェクトの一部として機密ラベルを実装するには、まず Microsoft ダウンロード センターから AIP クライアントをインストールする必要があります。
 
-To implement Sensitivity labels as part of your pilot project at Adatum, you must first install the AIP client from the Microsoft Download Center.
+1. 前のラボの終了時点では、LON-CL2 を使用していました。**LON-CL1**に切り替えます。
 
-1. At the end of the prior lab, you were on LON-CL2. Switch to **LON-CL1**.  <br/>
+   **LON-CL1 には引き続きローカルのadatum\administrator**アカウントとしてログインし、Edge ブラウザーでは引き続き**Holly Dickson**として Microsoft 365 にログインする必要があります。
 
-	You should still be logged into LON-CL1 as the local **adatum\administrator** account, and in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+2. **Microsoft Edge**で、新しいタブを開き、アドレス バーに次の URL を入力 (またはコピーして貼り付け) します: **https://www.microsoft.com/en-us/download/confirmation.aspx?id=53018**
 
-2. In **Microsoft Edge**, open a new tab and enter (or copy and paste) the following URL in the address bar: **https://www.microsoft.com/en-us/download/confirmation.aspx?id=53018** <br/>
+   これにより、AIP Unified ラベル クライアントのダウンロードが開始されます。
 
-	This will start the download for the AIP Unified label client.
+3. [Microsoft ダウンロード センター] タブのページ下部の通知バーに、ダウンロード中の**AzInfoProtection_UI.exeファイルが表示されます。**ファイルのダウンロードが完了したら、ファイル名の下に表示される**「ファイルを開く」リンクを選択します。**
 
-3. In the Microsoft download center tab, on the notification bar at the bottom of the page, you will see the **AzInfoProtection_UI.exe** file being downloaded. Once the file has finished downloading, select the **Open file** link that appears below the file name.
+4. Microsoft **Azure Information Protection**ウィザードが開きます。ウィザードがデスクトップに表示されない場合は、タスクバーのウィザードのアイコンを選択してウィザードを表示します。
 
-4. The **Microsoft Azure Information Protection** wizard will open. If the wizard does not display on the desktop, select the icon for the wizard on the taskbar to display the wizard.
+5. ウィザードの**[Azure Information Protection クライアントのインストール]ページで、** **[使用状況統計を Microsoft に送信して Azure Information Protection の改善に協力する]**チェック ボックスをオフにして (チェックを外し) 、 [**同意する**]ボタンを選択します。
 
-5. In the wizard, on the **Install the Azure Information Protection client** page, clear (uncheck) the **Help improve Azure Information Protection by send usage statistics to Microsoft** check box and then select the **I agree** button.
+6. アプリによるこのデバイスへの変更を許可するかどうかを尋ねる**ユーザー アカウント制御通知**ダイアログ ボックスが表示された場合は、 **[はい]**を選択します。
 
-6. If a **User Account Control notification** dialog box appears that asks whether the app is allowed to make changes to this device, select **Yes**.
+7. インストールが完了したら、**「閉じる」**を選択します。
 
-7. Once the installation is complete, select **Close**.
+8. Edge ブラウザーで、このタスクで開いた**[ダウンロード]タブを閉じて、Azure Information Protection クライアントをダウンロードします。**
 
-8. In your Edge browser, close the **Download** tab that you opened in this task to download the Azure Information Protection client.
+AIP Unified Label クライアントがクライアント 1 VM に正常にインストールされました。
 
-You have successfully installed the AIP Unified Label client on the Client 1 VM.
+### [タスク 2 – 機密ラベルを作成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_09_Lab9_Ex1_Implement Sensitivity labels.md#task-2--create-a-sensitivity-label)
 
+この演習では、機密ラベルを作成し、それをデフォルト ポリシーに追加して、Adatum テナントのすべてのユーザーに有効にするようにします。
 
-### Task 2 – Create a Sensitivity Label
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-In this exercise you will create a Sensitivity Label and add it to the default policy so that it’s valid for all users of the Adatum tenant.
+2. **Edge ブラウザーでは、 Microsoft 365 管理センター**のタブが開いたままになっているはずです。そうでない場合は、新しいタブを開いて次の URL を入力します: **[https://admin.microsoft.com](https://admin.microsoft.com/)**。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**.
+3. **Microsoft 365 管理センター**で、必要に応じて**[... すべて表示]**を選択します。**[管理センター]**グループの下の**[コンプライアンス]**を選択します。
 
-2. In your Edge browser, you should still have a tab open for the **Microsoft 365 admin center**. If not, open a new tab and enter the following URL: **https://admin.microsoft.com**.
+4. **Microsoft Purview**ポータルの左側のナビゲーション ウィンドウで、**[情報保護]を選択し、** **[ラベル]**を選択します。
 
-3.  On the **Microsoft 365 admin center**, if necessary, select **... Show all**. Select **Compliance** under the **Admin centers** group.
+5. **[ラベル]**ページでは、次の内容を示す警告メッセージがページの中央に表示されます。**暗号化された機密ラベルが適用され、OneDrive および SharePoint に保存されている Office オンライン ファイルのコンテンツを処理する機能が組織で有効になっていません。ここでオンにすることができますが、複数地域環境では追加の構成が必要であることに注意してください。**
 
-4. On the **Microsoft Purview** portal, in the left-hand navigation pane, select **Information protection** and then select **Labels**. 
+   このメッセージの右側に表示される「**今すぐオンにする」**ボタンを選択します。これにより、Adatum は Microsoft 365 環境内で機密ラベルを適用できるようになります。
 
-5. On the **Labels** page, a warning message is displayed in the middle of the page indicating: **Your organization has not turned on the ability to process content in Office online files that have encrypted sensitivity labels applied and are stored in OneDrive and SharePoint. You can turn on here, but note that additional configuration is required for Multi-Geo environments.** <br/>
+   メッセージが次のように変更されたことに注意してください。Teams **、SharePoint サイト、および Microsoft 365 グループのプライバシーとアクセス制御設定を使用して秘密度ラベルを作成できるようになりました。**
 
-    Select the **Turn on now** button that appears on the right side of this message. This will enable Adatum to apply the Sensitivity labels inside its Microsoft 365 environment. <br/>
+6. **[ラベル]**ページで、画面中央のメニュー バー (前のメッセージの下) に表示される[ **+ ラベルの作成]オプションを選択します。**これにより、**新しい秘密度ラベル**ウィザードが開始されます。
 
-    Note how the message has now changed to indicate: **You can now create sensitivity labels with privacy and access control settings for Teams, SharePoint sites, and Microsoft 365 Groups.**	
+7. **新しい機密ラベル**ウィザードの**[名前とツールチップ]**ページで、次の情報を入力します。
 
-6. On the **Labels** page, select the **+Create a label** option that appears on the menu bar in the middle of the screen, below the previous message. This initiates the **New sensitivity label** wizard.
+   - 名前: **PII**
+   - 表示名: **PII**
+   - ユーザー向けの説明: **PII を含むドキュメント、ファイル、電子メール**
+   - 管理者向けの説明: **PII を含むドキュメント、ファイル、電子メール**
+   - ラベルの色: 機密ラベルに割り当てる色の 1 つを選択します。
 
-7. In the **New sensitivity label** wizard, on the **Name and tooltip** page, enter the following information:
+8. **「次へ」**を選択します。
 
-	- Name: **PII**
-	
-	- Display name: **PII**
+9. **[このラベルのスコープを定義します]**ページで、**[項目]**チェック ボックスがオンになっていることを確認し (必要に応じてここで選択します)、 [**次へ]**を選択します。
 
-	- Description for users: **Documents, files, and emails with PII**
+10. **[ラベル付きアイテムの保護設定の選択]**ページで、 **[暗号化の適用または削除]**と**[コンテンツ マーキングの適用]**の両方のチェック ボックスをオンにし、 [**次へ]**を選択します。
 
-	- Description for admins: **Documents, files, and emails with PII**
+11. **[暗号化]**ページで、このラベルが適用されたアイテムにアクセスできるユーザーを定義します。**[ファイルまたは電子メールが暗号化されている場合は暗号化を削除する]**オプションを選択し、**[次へ]**を選択します。
 
-	- Label color: select one of the colors that you want to assign to your sensitivity labels
+12. **[コンテンツ マーキング]**ページで、**[コンテンツ マーキング]**トグル スイッチを**[オン]**に設定します。ファイルと電子メールにマークを付ける方法をカスタマイズできる 3 つのオプションが表示されます。
 
-8. Select **Next**.
+    3 つのチェック ボックスをすべてオンにします。各設定で、**[テキストのカスタマイズ]**を選択します。これにより、特定の設定をカスタマイズするためのペインが開きます。**各オプションの[カスタマイズ]**ペインに次の情報を入力します(各オプションの設定を入力した後、 **[保存]**を選択します)。
 
-9. On the **Define the scope for this label** page, verify the **Items** check box is selected (select it now if necessary) and then select **Next**.
+    - **透かしを追加する**
+      - 透かしテキスト:**機密 - 共有しない**(ヒント: この値を入力した後、他の 2 つのテキスト設定に貼り付けることができるようにコピーしてください)
+      - フォントサイズ: **25**
+      - 文字色：**青**
+      - 文字レイアウト:**斜め**
+    - **ヘッダーを追加する**
+      - ヘッダー テキスト:**機密情報 - 共有しないでください**
+      - フォントサイズ: **25**
+      - 文字色：**赤**
+      - テキストの配置:**中央揃え**
+    - **フッターを追加する**
+      - フッター テキスト:**機密情報 - 共有しないでください**
+      - フォントサイズ: **25**
+      - 文字色：**赤**
+      - テキストの配置:**中央揃え**
 
-10. On the **Choose protection settings for labeled items** page, select both check boxes for **Apply or remove encryption** and **Apply content marking**, and then select **Next**.
+13. **[コンテンツ マーキング]**ページで、**[次へ]**を選択します。
 
-11. On the **Encryption** page, you will define who can access items that have this label applied. Select the **Remove encryption if the file or email is encrypted** option and then select **Next**.
+14. **[ファイルと電子メールの自動ラベル付け]**ページで、**[ファイルと電子メールの自動ラベル付け]**トグル スイッチを**[オン]**に設定します。これにより、次の手順で更新する一連のオプションが有効になります。
 
-12. On the **Content Marking** page, set the **Content Marking** toggle switch to **On**. This displays three options that enable you to customize how you want to mark files and emails. <br/>
+15. **[これらの条件に一致するコンテンツを検出する]**で、**[+条件を追加]**を選択し、[コンテンツに次の**内容が含まれる]**を選択します。
 
-	Select all three check boxes. Under each setting, select **Customize text**. This opens a pane to customize that particular setting. Enter the following information in the **Customize** pane for each option (select **Save** after entering the settings for each option): <br/>
+16. **[コンテンツが含まれています**] ウィンドウで、**[追加**] ドロップダウン矢印を選択し、**[機密情報の種類]**を選択します。
 
-	- **Add a watermark** 
-		- Watermark text: **Sensitive - Do Not Share** (Hint: after entering this value, copy it so that you can paste it in the other two text settings)
-		- Font size: **25**
-		- Font color: **Blue**
-		- Text layout: **Diagonal**
-			
-	- **Add a header** 
-		- Header text: **Sensitive - Do Not Share**
-		- font size: **25**
-		- Font color: **Red**
-		- Align text: **Center**
-			
-	- **Add a footer**
-		- Footer text: **Sensitive - Do Not Share**
-		- font size: **25**
-		- Font color: **Red**
-		- Align text: **Center**
+17. **[機密情報の種類]**ウィンドウで、 **[名前]**列見出しの左側にマウスを置きます。表示されるチェック ボックスをオンにすると、すべての機密情報の種類が自動的に選択されます。**[追加]**を選択すると、これらすべての機密情報の種類がラベルに追加されます。
 
-13. On the **Content Marking** page, select **Next**. 
+18. **[ファイルと電子メールの自動ラベル付け]**ページには、選択したすべての機密情報の種類が表示されます。ウィンドウを一番下までスクロールし、次の設定を更新します。
 
-14. On the **Auto-labeling for files and emails** page, set the **Auto-labeling for files and emails** toggle switch to **On**. This enables a series of options that you will update in the next steps.
+    - コンテンツがこれらの条件に一致する場合: **[ラベルを自動的に適用する]を選択します。**
+    - ラベルが適用されると、次のメッセージをユーザーに表示します。 「**機密コンテンツが検出されたため、暗号化されます」 と**入力します。
 
-15. Under **Detect content that matches these conditions**, select **+Add condition** and then select **Content contains**.
+19. **「次へ」**を選択します。
 
-16. In the **Content contains** window, select the **Add** drop-down arrow and then select **Sensitive info types**.
+20. **[グループとサイトの保護設定の定義]**ページで、両方のチェック ボックスを空白のままにして、**[次へ]**を選択します。
 
-17. In the **Sensitive info types** window, hover your mouse to the left of the **Name** column heading. Select the check box that appears, which automatically selects all the sensitive information types. Select **Add**, which will add all these sensitive information types to your label.
+21. **[スキーマ化されたデータ資産の自動ラベル付け (プレビュー)]**ページで、[スキーマ化されたデータ資産の自動ラベル付け (プレビュー)] を有効にしないでください。**「次へ」**を選択します。
 
-18. On the **Auto-labeling for files and emails** page, all of the sensitive information types that you selected will be displayed. Scroll to the bottom on the window and update the following settings:
+22. **[設定を確認して終了]**ページで、入力した情報を確認します。設定を修正する必要がある場合は、対応する**編集**オプションを選択し、必要な変更を加えます。すべての情報が正しいと思われたら、**[ラベルの作成]**を選択します。
 
-	- When content matches these conditions: select **Automatically apply the Label**
+23. 作成しようとしているラベルに対して生成されたルール BLOB が長すぎることを示す**エラー**ダイアログボックスが表示されます。ルールごとに一度に選択できる機密情報の種類の最大サイズは**49152**です。数ステップ前の [**機密情報の種類]**ウィンドウで行ったようにすべての機密情報の種類を選択すると、この制限を超えてしまいます。
 
-	- Display this message to users when the label is applied: enter **Sensitive content has been detected and will be encrypted**.
-		
-19. Select **Next**.
+    **注: このエラーが表示されるように、意図的にすべての機密情報の種類を選択するようにしました。**このエラーが実稼働環境で発生した場合に、エラーが発生した理由とその修正方法を理解できるように、このエラーを実際に体験していただきたいと考えました。
 
-20. On the **Define protection settings for groups and sites** page, leave both check boxes blank and select **Next**.
+    この問題を修正するには、**[エラー]**ダイアログ ボックスで**[OK]**を選択し、**[設定を確認して終了]ページで****[ファイルと電子メールの自動ラベル付け]**セクションまで下にスクロールして、**[編集]**を選択します。
 
-21. On the **Auto-labeling for schematized data assets (preview)** page, do not enable Auto-labeling for schematized data assets (preview). Select **Next**. 
+24. これにより、ウィザードの [**ラベル付きアイテムの保護設定の選択]**ページに戻ります。このページで**[次へ]**を選択し、 **[暗号化]**ページで**[次へ]**を選択してから、[**コンテンツ マーキング]**ページで**[次へ]**を選択します。**これにより、 [ファイルと電子メールの自動ラベル付け]**ページが表示されます。
 
-22. On the **Review your settings and finish** page, review the information you entered. If any settings need to be corrected, select the corresponding **Edit** option and make any necessary changes. When all information appears correct, select **Create label**.
+25. **[ファイルと電子メールの自動ラベル付け]**ページで、 **[コンテンツが含まれる**] 条件の右側にある**ゴミ箱アイコン を**選択します。これにより、作成した**PIIラベルの既存の****コンテンツが含まれる**条件が削除されます。
 
-23. An **Error** dialog box should appear that states the generated rule blob for the label you are attempting to create is too long. The maximum size of sensitive information type selections you can make at one time per rule is **49152**. By selecting all the sensitive information types like you did in the **Sensitive info types** window a few steps back, you have exceeded this limit. <br/>
+    残りの手順では、最初に行ったすべての機密情報タイプではなく、2 つの機密情報タイプのみを含む新しい条件を追加します。
 
-	**NOTE: We purposely had you select all the sensitive information types so that you would receive this error.** We wanted you to experience this error so that if it happens in your production environments, you will know why you received the error and how you can correct it.  <br/>
+26. **[ファイルと電子メールの自動ラベル付け]**ページの**[これらの条件に一致するコンテンツを検出する]**で、 **[+条件を追加]**を選択し、**[コンテンツに次の内容が含まれる]**を選択します。
 
-	To correct this issue, select **OK** in the **Error** dialog box, and then on the **Review your settings and finish** page, scroll down to the **Auto-labeling for files and emails** section and select **Edit**.
-	
-24. This will return you to the **Choose protection settings for labeled items** page in the wizard. Select **Next** on this page, select **Next** on the **Encryption** page, and then select **Next** on the **Content Marking** page. This will take you to the **Auto-labeling for files and emails** page. 
+27. **[コンテンツが含まれています**] ウィンドウで、**[追加**] ドロップダウン矢印を選択し、**[機密情報の種類]**を選択します。
 
-25. On the **Auto-labeling for files and emails** page, to the right of the **Content contains** condition, select the **trash can icon**. This will remove the existing **Content contains** condition for the **PII** label that you created. <br/>
+28. **[機密情報の種類]**ウィンドウの機密情報の種類のリストで、今回は**ABA ルーティング番号**と**米国社会保障番号 (SSN)**のチェック ボックスのみを選択し、**[追加]**を選択します。**[ファイルと電子メールの自動ラベル付け]**ページに戻ると、これらの機密情報の種類が両方とも表示されます。**「次へ」**を選択します。
 
-	In the remaining steps, you will add a new condition that only contains two sensitivity information types rather than all the sensitivity information types like you did originally.
+29. **[グループとサイトの保護設定の定義]**ページで、2 つのチェック ボックスを空白のままにして、**[次へ]**を選択します。
 
-26. On the **Auto-labeling for files and emails** page, under **Detect content that matches these conditions**, select **+Add condition** and then select **Content contains**.
+30. **[スキーマ化されたデータ資産の自動ラベル付け (プレビュー)]**ページでは、データベース列の自動ラベル付けを有効にしないでください。**「次へ」**を選択します。
 
-27. In the **Content contains** window, select the **Add** drop-down arrow and then select **Sensitive info types**.
+31. **[設定を確認して終了]**ページで、**[ラベルの作成]**を選択します。
 
-28. In the **Sensitive info types** window, in the list of sensitive information types, this time only select the **ABA routing number** and the **U.S. Social security Number (SSN)** check boxes, and then select **Add**. Back on the **Auto-labeling for files and emails** page, both of these sensitive information types will appear. Select **Next**.
+32. **[秘密度ラベルが作成されました]**ページで、**[ポリシーをまだ作成しない]**を選択し、**[完了]**を選択します。
 
-29. On the **Define protection settings for groups and sites** page, leave the two check boxes blank and select **Next**.
+33. 次に、**PII**ラベルを公開します。**[情報保護]**ウィンドウには、デフォルトで**[ラベル]**タブが表示されます。ラベルのリストに**PII**ラベルが表示されない場合は、メニュー バーの**[更新]を選択します。****PII**ラベルが表示されたら、その左側に表示されるチェック ボックスをオンにします。
 
-30. On the **Auto-labeling for schematized data assets (preview)** page, do not enable Auto-labeling for database columns. Select **Next**.
+34. ラベルのリストの上にあるメニュー バーに表示される [**ラベルの発行]**オプションを選択します。これにより、**ポリシーの作成**ウィザードが開始されます。
 
-31. On the **Review your settings and finish** page, select **Create label**.
+35. **ポリシーの作成**ウィザードの**[公開する機密ラベルの選択]**ページに**PIIラベルがすでにリストされているため、** **[次へ]**を選択し、 **[管理単位の割り当て (プレビュー)]**で[**次へ]**を選択します。
 
-32. On the **Your sensitivity label was created** page, choose **Don't create a policy yet** and then select **Done**.
+36. **[ユーザーとグループに公開]**ページで、 **[すべての**ユーザーとグループ]を選択することも、特定のユーザーとグループを選択することもできます。**[ユーザーまたはグループの選択]**を選択します。
 
-33. Now it's time to publish the **PII** label. On the **Information protection** window, the **Labels** tab is displayed by default. In the list of labels, if the **PII** label does not appear, select **Refresh** on the menu bar. Once the **PII** label appears, select the check box that appears to the left of it. 
+37. [**ユーザーとグループ]**ペインが表示され、すべての Adatum ユーザーとグループが表示されます。**「名前」**列見出しの左側にマウスを置き、表示されるチェックボックスを選択します。これにより、すべてのチェック ボックスが自動的にオンになります。**[完了]**を選択します。
 
-34. Select the **Publish label** option that appears in the menu bar above the list of labels. This initiates a **Create policy** wizard.
+38. **[ユーザーとグループに公開]**ページで、**[次へ]**を選択します。
 
-35. In the **Create policy** wizard, on the **Choose sensitivity labels to publish** page, the **PII** label is already listed, so select **Next** and select **Next** for **Assign admin units (preview)**.
+39. **[ポリシー設定]**ページで、 [**ユーザーはラベルを削除するか、分類を下げるには正当な理由を提供する必要があります]**チェック ボックスをオンにし、 [**次へ]**を選択します。
 
-36. On the **Publish to users and groups** page, you can either select **All** users and groups, or you can select specific users and groups. Select **Choose user or group**.
+40. **[ドキュメントにデフォルトのラベルを適用する]**ページで、表示されるドロップダウン メニューから**[PII]を選択し、** **[次へ]**を選択します。
 
-37. A **Users and groups** pane appears that displays all the Adatum users and groups. Hover your mouse to the left of the **Name** column heading and select the check box that appears. This will automatically select all the check boxes. Select **Done**.
+41. **[電子メールにデフォルトのラベルを適用する]**ページで、表示されるドロップダウン メニューから**[PII]を選択し、** **[次へ]**を選択します。
 
-38. On the **Publish to users and groups** page, select **Next**.
+42. **[Power BI コンテンツに既定のラベルを適用する]**ページで、表示されるドロップダウン メニューから**[PII]を選択し、** **[次へ]**を選択します。
 
-39. On the **Policy settings** page, select the **Users must provide a justification to remove a label or lower its classification** check box, and then select **Next**. 
+43. **[会議とカレンダー イベントにデフォルトのラベルを適用する]**ページで、表示されるドロップダウン メニューから**[PII]を選択し、** **[次へ]**を選択します。
 
-40. On the **Apply a default label to documents** page, select **PII** in the drop-down menu that appears, and then select **Next**.
+44. **[ポリシーに名前を付ける]**ページで、**[名前**] フィールドに**「PII ポリシー」**と入力し、この機密ラベル ポリシーに関する次の説明を入力 (またはコピーして貼り付け) します。**このポリシーの目的は、ABA 銀行ルーティング番号や、ABA 銀行ルーティング番号などの機密情報を検出することです。電子メールや文書に米国の社会保障番号が含まれており、発見された場合にはこの情報を暗号化します。****ユーザーは、分類ラベルを削除するための説明を提供する必要があります。****「次へ」**を選択します。
 
-41. On the **Apply a default label to emails** page, select **PII** in the drop-down menu that appears, and then select **Next**.
+45. **[確認して終了]**ページで、入力した情報を確認します。修正する必要がある場合は、対応する**編集**オプションを選択し、必要な修正を加えます。すべての情報が正しい場合は、**[送信]**を選択します。
 
-42. On the **Apply a default label to Power BI content** page, select **PII** in the drop-down menu that appears, and then select **Next**.
+46. **[新しいポリシーが作成されました]**ページで、**[完了]**を選択します。
 
-43. On the **Apply a default label to meetings and calendar events** page, select **PII** in the drop-down menu that appears, and then select **Next**.
+### [タスク 3 – 文書に機密ラベルを割り当てる](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_09_Lab9_Ex1_Implement Sensitivity labels.md#task-3--assign-a-sensitivity-label-to-a-document)
 
-43. On the **Name your policy** page, enter **PII Policy** in the **Name** field, and then enter (or copy and paste) the following description for this sensitivity label policy: **The purpose of this policy is to detect sensitive information such as ABA bank routing numbers and US social security numbers in emails and documents, and to encrypt this information when it's discovered. The user must provide an explanation for removing the classification label.** Select **Next**.
+このラボの最初の手順で示したように、前のタスクで作成したばかりの機密ラベルとラベル ポリシーをテストすることはできません。そのラベル ポリシーが Microsoft 365 に反映されてから、そのラベルが Microsft Word、Outlook などに表示されるまでに最大 24 時間かかります。
 
-44. On the **Review and finish** page, review the information you entered. If anything needs to be corrected, select the corresponding **Edit** option and make the necessary corrections. When all information is correct, select **Submit**.
+**重要:**次の 2 つのタスクでテストするラベルとラベル ポリシーは、クラスの初日にラボ 1 で PowerShell スクリプトを実行したときに作成されたラベルとラベル ポリシーになります。
 
-45. On the **New policy created** page, select **Done**.
+**注:**前のタスクで作成したラベルとラベル ポリシーは、実習 1 で PowerShell スクリプトを実行したときに作成したラベルとラベル ポリシーとまったく同じ設定を持ちます。 2 つのラベルと 2 つのラベル ポリシーの唯一の違いは、彼らの名前でなければなりません。これらのラベルとラベル ポリシーの名前は次のとおりです。
 
+- 前のタスクで作成したラベルのタイトルは**PII**でした。
+- 実習 1 で実行したスクリプトによって作成されたラベルのタイトルは**PII-V1**でした。
+- 前のタスクで作成したラベル ポリシーには、**「PII Policy」**というタイトルが付けられました。
+- ラボ 1 で実行したスクリプトによって作成されたラベル ポリシーには、**「PII Policy-V1」**というタイトルが付けられました。
 
-### Task 3 – Assign a Sensitivity Label to a document
+次の 2 つのタスクで**PII - V1**ラベルと**PII ポリシー - V1**ラベル ポリシーをテストすると、 **PII**ラベルと**PII ポリシー**ラベル ポリシーで設定したのと同じ結果が表示されるはずです。
 
-As the instructions at the start of this lab indicated, you can't test the sensivity label and label policy that you just created in the prior task. It will take up to 24 hours for that label policy to propagate through Microsoft 365 before its label appears in Microsft Word, Outlook, and so on. 
+1. LON-CL1 では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-**Important:** The label and label policy that you will test in these next two tasks will be the label and label policy that were created when you ran the PowerShell script in Lab 1 on the first day of class. 
+2. クラスの初日にラボ 1 で PowerShell スクリプトを実行したときに作成および公開した秘密度ラベルを検証するには、まず Microsoft 365 から Holly としてサインアウトし、Alex Wilber として再度サインインする必要があります。
 
-**Note:** The label and label policy that you created in the prior task  have the same exact settings as the label and label policy that were created when you ran the PowerShell script in Lab 1. The only difference between the two labels and the two label policies should be their names. The names of these labels and label policies are:
+   Edge ブラウザーで、**Microsoft 365 管理センター**タブを選択し、画面の右上隅にある Holly Dickson の HD のイニシャルが描かれた円を選択します。**[Holly Dickson]**ウィンドウで、**[サインアウト]**を選択します。
 
-- The label that you created in the prior task was titled **PII**. 
-- The label that was created by the script that you ran in Lab 1 was titled **PII - V1**. 
-- The label policy that you created in the prior task was titled **PII Policy**. 
-- The label policy that was created by the script that you ran in Lab 1 was titled **PII Policy - V1**. 
+3. サインアウトしたら、Edge ブラウザーの**[サインアウト]**タブを除くすべてのタブを閉じます。
 
-As you test the **PII - V1** label and the **PII Policy - V1** label policy in these next two tasks, you should see the same results that you configured in the **PII** label and **PII Policy** label policy. 
+4. **[サインアウト]**タブで、アドレス バーに次の URL を入力します: **https://portal.office.com/**
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**.
+5. **[アカウントの選択]**ウィンドウで、**[別のアカウントを使用する]**を選択します。
 
-2. To validate the sensitivity label that you created and published when you ran the PowerShell script in Lab 1 on the first day of class, you must first sign out of Microsoft 365 as Holly and sign back in as Alex Wilber. <br/>
+6. **[サインイン]**ウィンドウに**[「AlexW@xxxxxZZZZZZ.onmicrosoft.com」](mailto:AlexW@xxxxxZZZZZZ.onmicrosoft.com)**と入力し(xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)、 [**次へ]**を選択します。
 
-	In your Edge browser, select the **Microsoft 365 admin center** tab, and then select the circle with Holly Dickson's HD initials in the upper right corner of the screen. In the **Holly Dickson** window, select **Sign out**.
+7. **[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 [**サインイン]**を選択します。
 
-3. Once you are signed out, close all the tabs in your Edge browser except for the **Sign out** tab.
+8. **[Office 365 で作業を完了します]**ウィンドウが表示された場合は、[X] を選択してウィンドウを閉じます。
 
-4. In the **Sign out** tab, enter the following URL in the address bar: **https://portal.office.com/** 
+9. **[Microsoft Office ホーム]**タブで、画面左側のアプリ アイコンの列にある**Wordアイコンを選択します。**これにより、同じタブで Microsoft Word Online が開かれ、**Microsoft Office ホーム**タブが上書きされます。
 
-5. In the **Pick an account** window, select **Use another account**.
+   **注:次のタスクでは、この****Word**タブの上部にある**戻る**矢印を選択して、**Microsoft Office ホーム**タブに戻ります。
 
-6. In the **Sign in** window, enter **AlexW@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) and then select **Next**.
+10. **[Word]**タブのページ上部の [**新規作成]セクションで、** **[空白の文書]**を選択します。
 
-7. On the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in**.
+11. **[プライバシー オプション]**ウィンドウが表示された場合は、**[閉じる]**を選択します。
 
-8. If a **Get your work done with Office 365** window appears, select the X to close it.
+12. Word のリボンに各機能のアイコンが表示されるが、アイコンがグループごとに分割されていない場合は、リボンの右端にある下矢印を選択し、[リボン レイアウト] で [クラシック リボン] を**選択****し**ます。これにより、リボンが機能グループ (元に戻す、クリップボード、フォント、段落、スタイルなど) ごとに分かれた従来のリボン スタイルに切り替わります。
 
-9. On the **Microsoft Office Home** tab, select the **Word** icon in the column of app icons on the left-side of the screen. This will override the **Microsoft Office Home** tab by opening Microsoft Word Online in this same tab. <br/>
+13. **Word**文書に**「個人を特定できる情報 (PII) のテスト」と入力します。**
 
-	**Note:** In the next task, you will return back to the **Microsoft Office Home** tab by selecting the **Back** arrow at the top of this **Word** tab.
+14. この演習の開始時に機密ラベルを有効にしており、コースの 1 日目にスクリプトを実行して作成したラベルが Microsoft 365 を通じて完全に反映されているため、Word ではページ上部のリボンに**機密**グループが表示されます。。
 
-10. In the **Word** tab, under the **Create new** section at the top of the page, select **Blank document**.
+    **[感度]**グループの下矢印を選択します。表示されるドロップダウン メニューには、スクリプトが作成および公開した**PII - V1ラベルが表示されます。****このドキュメントではPII - V1**ラベルが有効になっているため、 **PII - V1**の横にチェック マークが表示されます。
 
-11. If a **Your privacy option** window appears, select **Close**.
+    この最初の検証テストでは、このドキュメントに適用されている機密ラベルを削除しようとします。前のタスクで**PII ポリシー - V1**ポリシーと**PII**ラベルを作成したときに、選択した同じオプションがラボ 1 スクリプトによって**PII ポリシー - V1**ポリシーと**PII - V1ラベルに適用されました。**ラベル ポリシー オプションの 1 つは、ユーザーがラベルを削除するか、下位の分類ラベルを選択するための理由を提供することを要求します。この設定が適切に機能しているかどうかを確認します。
 
-12. If the Word ribbon displays icons for each feature but does not break the icons out by group, then select the down-arrow on the far right-side of the ribbon, and then under **Ribbon layout**, select **Classic ribbon**. This will switch the ribbon to the traditional ribbon style that is broken out by feature group (such as Undo, Clipboard, Font, Paragraph, Styles, and so forth).
+    このドキュメントからラベルを削除するには、このドロップダウン メニューに表示される**PII - V1ラベルを選択します。**
 
-13. In the **Word** document, type **Testing personally identifiable information (PII).**
+15. 表示される**「正当な理由」**ウィンドウで、 **「その他 (説明)」**オプションを選択します。**[このラベルを変更する理由を説明してください]**フィールドに、**「ラベルが削除されたときに何が起こるかをテストしています」と**入力し、**[変更]**を選択します。
 
-14. Because you enabled Sensitivity labels at the start of this exercise, and since the label you created by running the script on day 1 of the course has fully propagated through Microsoft 365, Word should display a **Sensitivity** group on the ribbon at the top of the page. 
+16. **Word リボンの[秘密度]**グループで、下矢印を選択します。表示されるドロップダウン メニューで、**PII - V1**が表示されている間は、その横にチェック マークが表示されていないことに注意してください。これは、**PII - V1**機密ラベルがこのドキュメントに適用されなくなったことを示します。
 
-	Select the down arrow in the **Sensitivity** group. In the drop-down menu that appears, it should display the **PII - V1** label the script created and published. Since the **PII - V1** label is enabled for this document, a check mark is displayed next to **PII - V1**. <br/>
-	
-	In this first validation test, you're going to attempt to remove this sensitivity label from being applied to this document. When you created the **PII Policy - V1** policy and **PII** label in the prior task, the same options you selected were applied to the **PII Policy - V1** policy and **PII - V1** label by the Lab 1 script. One of the label policy options requires users to provide justification to remove a label or to select a lower classification label. You will now verify whether this setting is functioning properly. <br/>
-	
-	To remove the label from this document, select the **PII - V1** label that appears in this drop-down menu.
-	
-15. In the **Justification Required** window that appears, select the **Other (explain)** option. In the **Explain why you're changing this label** field, enter **Testing what happens when a label is removed** and then select **Change**.
+17. 機密ラベルをドキュメントに再適用するには、ドロップダウン メニューで**[PII - V1]を選択します。****もう一度、 [感度]**グループのドロップダウン矢印を選択します。表示されるドロップダウン メニューには**PII - V1**ラベルが表示され、その横にこのドキュメントに適用されていることを示すチェック マークが表示されます。
 
-16. In the **Sensitivity** group in the Word ribbon, select the down arrow. In the drop-down menu that appears, note that while **PII - V1** is displayed, it no longer has a check mark displayed next to it. This indicates the **PII - V1** sensitivity label is no longer being applied to this document.  
+18. Word 文書で、入力した前のテキスト行の下に**「111-11-1111」と入力します。**この番号は、米国の社会保障番号と同じ形式です。
 
-17. To re-apply the sensitivity label to the document, select **PII - V1** in the drop-down menu. Once again select the drop-down arrow in the **Sensitivity** group. The drop-down menu that appears should display the **PII - V1** label, and it should display a check mark next to it that indicates it is being applied to this document.
+    **注**: Web 用 Word では、**PII - V1**ポリシーで指定されたカスタム ヘッダー、フッター、およびウォーターマークは既定では表示されません。カスタム ヘッダー、フッター、ウォーターマークを表示するには、[**表示]**タブを選択し、メニューで**[閲覧ビュー]**を選択します。あるいは、現実の世界では、これらをデフォルトで表示する Word デスクトップ アプリを使用することもできます。
 
-18. In the Word document, enter **111-11-1111** below the previous line of text that you entered. This number is the same format as a U.S. Social Security Number.
+    閲覧ビューを終了するには、**[ドキュメントの編集]**ドロップダウン メニューを選択し、**[編集]**を選択します。
 
-	**Note**: In Word for the Web, the custom header, footer, and watermark specificed in the **PII - V1** policy do not display by default. To view the custom header, footer, and watermark, select the **View** tab and then in the menu select **Reading View**. Alternatively, in the real world, you could use the Word Desktop App which would display these by default.
+19. ここでドキュメントを保存します。Word の右側のタイトル バーで、**Document1**を選択します。表示されるドロップダウン メニューで、ファイルの**場所に****Alex Wilber > Documents**と表示されていることを確認します。
 
-	To exit reading view, select the **Edit Document** drop-down menu and then select **Edit**.
+    **[ファイル名]**フィールドで、ファイルの名前を**ProtectedDocument1**に変更し、このファイル名メニューの外側を選択します (ドキュメント内を選択します)。タイトル バーのファイルに割り当てられた新しい名前に注目してください。
 
-19. You will now save the document. On the title bar, to the right of Word, select **Document1**.  In the drop-down menu that appears, confirm the file **Location** says **Alex Wilber > Documents**. <br/>
+20. メニュー バーの右側にある**[共有]**ボタンを選択します。表示されるドロップダウン メニューで、**[共有]**を選択します。
 
-	In the **File Name** field, rename the file to **ProtectedDocument1** and then select outside of this file name menu (select inside the document). Note the new name assigned to the file in the title bar.
+21. 表示される**[リンクの送信]**ウィンドウで、 **[リンクを知っている人は誰でも編集できる]**を選択します。
 
-20. On the right-side of the menu bar, select the **Share** button. In the drop-down menu that appears, select **Share**.
+    **表示される[共有設定]**ページで、 [**選択したユーザー]**を選択します。**[その他の設定]**で、**[編集可能]**を選択します。表示されるメニューで、**[表示可能]**を選択し、**[適用]**を選択します。
 
-21. In the **Send link** window that appears, select **Anyone with the link can edit**. <br/>
+    **[リンクの送信]**ウィンドウで、**[宛先: 名前、グループ、または電子メール]**フィールドに**「Joni」**と入力します。**名前がjoni**で始まるユーザーのリストが表示されます。**ジョニ・シャーマン**を選択します。
 
-	On the **Sharing settings** page that appears, select **People you choose**. Under **More settings**, select **Can edit**. In the menu that appears, select **Can view**, and then select **Apply**. <br/>
+    **[リンクのコピー]**セクションで、**[コピー]**ボタンを選択します。
 
-	On the **Send link** window, enter **Joni** in the **To: Name, group or email** field. A list of users whose name starts with **joni** should appear. Select **Joni Sherman**. <br/>
+22. **表示される「「ProtectedDocument1」へのリンクをコピーしました」**ウィンドウを閉じます。
 
-	Under the **Copy link** section, select the **Copy** button. 
+これで、読み取り専用で保護された AIP 保護された Word 文書が正常に作成されました。このドキュメントにアクセスできるのは、作成者である Alex Wilber と、ドキュメントが共有された Joni Sherman (読み取り専用権限を持つ) のみです。
 
-22. Close the **Link to 'ProtectedDocument1' copied** window that appears.
+### [タスク 4 – 機密ラベル ポリシーを確認する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_09_Lab9_Ex1_Implement Sensitivity labels.md#task-4--verify-your-sensitivity-label-policy)
 
-You have just successfully created an AIP protected Word document that is read-only protected. The document is accessible only by its creator, Alex Wilber, and by Joni Sherman (with Read-only permission), to whom the document was shared.
+前のタスクでは、Word 文書を作成し、機密ラベルで保護しました。PII **- V1**ラベルは文書に透かしを挿入し、文書に対するアクセス許可を制限する必要があります。ドキュメントに割り当てた保護が機能するかどうかを確認するには、まずドキュメントを Joni Sherman と自分の個人電子メール アドレスに電子メールで送信します。次に、ジョニ ウィルバーとアレックス ウィルバーの両方でどのような機能が可能かをテストします。
 
+1. LON-CL1 では、Edge ブラウザーで、前のタスクで**[Word]タブを開いた状態で****Alex Wilber**として Microsoft 365 にログインしているはずです。
 
-### Task 4 – Verify your Sensitivity Label policy
+   **注**: 前の演習でコピーしたリンクがクリップボードにない場合は、リンクを再コピーする必要があります。これを行うには、**[Word]**タブを選択し、メニュー バーの右側にある [**共有]**ボタンを選択します。表示されるドロップダウン メニューで、**[アクセスの管理]**を選択します。**[アクセスを許可するリンク]**で、前のタスクで作成したリンクをコピーできます。
 
-In the prior task, you created a Word document and protected it with a sensitivity label. The **PII - V1** label should have inserted a watermark in the document, and it should have restricted permissions on the document. To verify whether the protection that you assigned to the document works, you will first email the document to Joni Sherman and to your own personal email address. You will then test what functionality is possible for both Joni and Alex Wilber.
+2. Edge ブラウザで、**[Word]タブを選択し、** **[戻る]**矢印を選択します。これにより、**「Microsoft Office ホーム」**タブが表示されるはずです。
 
-1. On LON-CL1, in your Edge browser, you should still be logged into Microsoft 365 as **Alex Wilber** from the prior task with the **Word** tab open. 
+3. **[Microsoft Office ホーム]**タブで、画面左側のアプリ アイコンの列にある**Outlookアイコンを選択します。**これにより、Web 上の Outlook が新しいタブで開きます。
 
-	**Note**: If the copied link from the prior exercise is no longer in your clipboard, you will need to re-copy the link. To do so, select the **Word** tab, and then on the right-side of the menu bar select the **Share** button. In the drop-down menu that appears, select **Manage Access**. Under **Links giving access** you can copy the link created in the previous task.
+4. **Web 上の Outlook**で、画面の左上部分にある**[新しいメール]を選択します。**
 
-2.  In your Edge browser, select the **Word** tab and then select the **Back** arrow. This should display the **Microsoft Office Home** tab. 
+5. 右側のペインのメッセージ フォームに次の情報を入力します。
 
-3. In the **Microsoft Office Home** tab, select the **Outlook** icon in the column of app icons on the left-side of the screen. This opens Outlook on the web in a new tab. 
+   - 宛先: **「Joni」**と入力し、ユーザー リストから**[Joni Sherman]を選択します。**
+   - CC: 自分の個人メール アドレスを入力します (Holly のメール アドレスを入力しないでください。代わりに、自分の個人メール アドレスを入力してください)。
+   - 件名を追加:**保護されたドキュメントのテスト**
+   - メッセージの本文: Enter**この電子メールに添付された保護され制限された文書を開くことができる場合は、文書を変更してみてください。**
 
-4. In **Outlook on the web**, select **New Mail** in the upper left part of the screen.
+6. メッセージ本文の、前の手順で追加したテキストの下に、前のタスクからクリップボードにコピーしたリンクを貼り付けます。**ProtectedDocument1.docx**という名前のファイルへのリンクが表示されます。
 
-5. In the right-hand pane, enter the following information in the message form:
+7. **[送信]**を選択します。
 
-	- To: Enter **Joni** and then select **Joni Sherman** from the user list. 
+8. **LON-CL2**に切り替えます。
 
-	- CC: Enter your own personal email address (do NOT enter Holly's email address; instead, enter your own personal email address)
+9. **LON-CL2**では、前のラボ演習で使用した**Lynne Robbins**として**Web 上の Outlook**にログインする必要があります。Lynne としてサインアウトします。
 
-	- Add a subject: **Protected Document Test**
+10. Edge ブラウザーで、**[サインアウト]**タブを除くすべてのタブを閉じます。このタブのアドレス バーに次の URL を入力します: **[https://outlook.office365.com](https://outlook.office365.com/)**
 
-	- Body of the message: enter **If you can open the protected and restricted document attached to this email, then try to change it.**
+11. **[アカウントの選択]**ウィンドウで、**[別のアカウントを使用する]**を選択します。
 
-6. In the body of the message, under the text you added in the previous step, paste the link copied to your clipboard from the prior task. A link for the file named **ProtectedDocument1.docx** should appear.
+12. **[サインイン]**ウィンドウで、**[「JoniS@xxxxxZZZZZZ.onmicrosoft](mailto:JoniS@xxxxxZZZZZZ.onmicrosoft)** (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス)」と入力し、 [**次へ]**を選択します。
 
-8. Select **Send**.
+13. **[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 [**サインイン]**を選択します。
 
-9. Switch to **LON-CL2**. 
+14. **「ようこそ」**ウィンドウが表示された場合は、「X」を選択してウィンドウを閉じます。
 
-10. On **LON-CL2**, you should be logged into **Outlook on the Web** as **Lynne Robbins** from a previous lab exercise. Sign out as Lynne.
+15. **Outlook on the web**のJoni の**受信トレイ**で、受信トレイ内の電子メールを選択して、Alex が彼女に送信したばかりの電子メールを開きます。メッセージに表示される**「機密 - 共有禁止」**のウォーターマークに注目してください。これらは、PowerShell スクリプトによって作成された PII - V1 ラベルに入力されたヘッダーとフッターのウォーターマークであり、前のタスクで作成したラベルに構成したウォーターマークと同じです。
 
-11. In your Edge browser, close all tabs except for the **Sign out** tab. In this tab, enter the following URL in the address bar: **https://outlook.office365.com** 
+16. 添付ファイルを選択して開きます。
 
-12. In the **Pick an account** window, select **Use another account**.
+17. **表示される[プライバシー オプション]**ダイアログ ボックスで、**[閉じる]**を選択します。**ドキュメントを確認して、 PII - V1**ポリシーで指定されたカスタム ヘッダー、フッター、ウォーターマークがデフォルトでは表示されないことに注意してください。カスタム ヘッダー、フッター、ウォーターマークを表示するには、[**表示]**タブを選択し、メニューで**[閲覧ビュー]**を選択します。あるいは、現実の世界では、これらをデフォルトで表示する Word デスクトップ アプリを使用することもできます。
 
-13. In the **Sign in** window, enter **JoniS@xxxxxZZZZZZ.onmicrosoft** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider) and then select **Next**.
+    ドキュメントの確認が終了したら、ドキュメント ウィンドウを閉じます。
 
-14. On the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in**.
+18. **これにより、 Web 上の Outlook**に戻り、右側のウィンドウに電子メールが表示されたままになります。電子メールの本文では、ドキュメントがタイルに表示されます。ドキュメントをダウンロードしたいと考えています。タイルの右側に表示される下矢印を選択し、表示されるメニューで**[ダウンロード]**を選択します。
 
-15. If a **Welcome** window appears, select the X to close it.
+19. ファイルのダウンロードが完了したら、通知バーで、ファイル名の下に表示される**「ファイルを開く」を選択します。**
 
-16. In Joni’s **Inbox** in **Outlook on the web**, open the email that Alex just sent her by selecting the email in the Inbox. Note the **Sensitive - Do Not Share** watermark that appears in the message. These are the header and footer watermarks were entered in the PII - V1 label created by the PowerShell script, which are the same watermarks that you configured for the label that you created in the prior task.
+20. **Microsoft Word は、****サインイン**ウィンドウとともに開きます(Outlook ウィンドウの背後に開く場合があります。その場合は、タスク バーの**Wordアイコンを選択して前面に表示します)。**
 
-17. Select the attached file to open it.
+21. **Microsoft Office ライセンス認証ウィザード**ウィンドウが表示された場合は、**[閉じる]**を選択して次の手順に進みます。
 
-18. In the **Your privacy option** dialog box that appears, select **Close**. Review the document, note the custom header, footer, and watermark specificed in the **PII - V1** policy do not display by default. To view the custom header, footer, and watermark, select the **View** tab and then in the menu select **Reading View**. Alternatively, in the real world, you could use the Word Desktop App which would display these by default. <br/>
+    ただし、**サインイン**ウィンドウが表示される場合は、ファイルが RMS で保護されており、AIP 統合ラベル付けクライアントが LON-CL2 にインストールされていないことが原因です。この場合、Word Microsoft Apps のネイティブ RMS 機能を使用し、このインストールを Joni のアカウントに登録する必要があります。
 
-	Once you have finished reviewing the document, close the document window. 
+    **[サインイン]**ウィンドウに**[「JoniS@xxxxxZZZZZZ.onmicrosoft.com」](mailto:JoniS@xxxxxZZZZZZ.onmicrosoft.com)**と入力し、**[次へ] を選択します。****[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、[**サインイン] を選択します。**
 
-19. This will return you to **Outlook on the web** with the email still displayed in the right-hand pane. In the body of the email, the document appears in a tile. You want to download the document. Select the down arrow that appears on the right-side of the tile, and in the menu that appears, select **Download**.
+    表示される**[デバイス上のあらゆる場所でこのアカウントを使用する]**ウィンドウで、この Office 365 ProPlus インストールを**Joni Sherman の**Microsoft 365 アカウントに登録する場合**にのみ、このアプリを選択します。**
 
-20. Once the file has finished downloading, in the notification bar, select **Open file** that appears below the file name.
+22. Joni に読み取り専用アクセス許可を割り当てているため、ファイルは Word で開く必要があります。ドキュメントの上に表示される 3 つの通知バーを確認します。
 
-21. **Microsoft Word** should open along with a **Sign in** window (it may open behind the Outlook window, in which case select the **Word** icon on the taskbar to bring it forward). 
+23. ファイルを変更してみてください。Word ではキーストロークが認識されず、タスク バーの上に次のメッセージが表示されます。**文書は表示専用に開かれているため、この変更は許可されません。**
 
-22. If a **Microsoft Office Activation Wizard** window appears, select **Close** and proceed to the next step. <br/>
+    注**:**ファイルに割り当てられたアクセス許可が適切に機能していることを確認しました。Joni はファイルを読み取ることができます (読み取り専用権限が割り当てられているため) が、変更することはできません (誰も編集権限が割り当てられていません)。
 
-	However, if a **Sign in** window appears, it's because the file is RMS protected and no AIP unified labeling client is installed on LON-CL2. In this case, you need to use the native RMS features of Word Microsoft Apps and register this installation to Joni’s account. <br/>
+24. Wordを閉じます。
 
-	‎In the **Sign in** window, enter **JoniS@xxxxxZZZZZZ.onmicrosoft.com** and then select **Next.** In the **Enter password** window, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account) and then select **Sign in.** <br/>
+25. ここで、個人の電子メール アドレスに送信されたドキュメントを開こうとすると何が起こるかをテストします。携帯電話または教室の PC を使用して、個人の電子メール アドレスにアクセスします。(ホリーの役割で) 個人の電子メール アドレスに送信した電子メールを開き、添付ファイルを開いてみます。
 
-	In the **Use this account everywhere on your device** window that appears, select **This app only** to register this Office 365 ProPlus installation to **Joni Sherman’s** Microsoft 365 account.
+26. ドキュメントへのアクセス許可を持つアカウントで Office にサインインしていないことを示すメッセージが表示されます。必要に応じて、ファイルへのアクセス許可を持つアカウントでサインインするか、**[AlexW@xxxxxZZZZZZ.onmicrosoft.com](mailto:AlexW@xxxxxZZZZZZ.onmicrosoft.com)**アカウントからのアクセスを要求するか、操作をキャンセルすることができます。**[キャンセル]**を選択します。
 
-23. The file should open in Word, since you assigned Joni with Read-only permission. Review the three notification bars that appear above the document. 
+    Joni だけにドキュメントを読み取るアクセス許可が割り当てられているため、構成した PII ポリシー パラメーターに基づいて Azure Information Protection がドキュメントを保護していることを確認しました。
 
-24. Try to change the file. Word should not recognize any keystrokes, and it should display the following message above the taskbar: **This modification is not allowed because the document is open for viewing only.** <br/>  
+## [おめでとう！このコースの最後のラボを完了しました。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_09_Lab9_Ex1_Implement Sensitivity labels.md#congratulations-you-have-just-completed-the-final-lab-in-this-course)
 
-	‎**Note:** You have just verified that the permissions assigned to the file are working properly. Joni can read the file (since she was assigned Read-only permission), but she is unable to change it (no one was assigned Edit permission).
-
-25. Close Word.
-
-26. You will now test what happens when you attempt to open the document that was sent to your personal email address. Use your phone or classroom PC to access your personal email address. Open the email that you (in the role of Holly) just sent to your personal email address, and then attempt to open the attached file. 
-
-27. You should receive a message indicating that you are not signed into Office with an account that has permission to access the document. You can optionally sign in with an account that has permission to access the file, or request access from the **AlexW@xxxxxZZZZZZ.onmicrosoft.com** account, or Cancel out of the operation. Select **Cancel**.  <br/>
-
-	‎Since only Joni was assigned permission to read the document, you just verified that Azure Information Protection protected the document based on the PII policy parameters that you configured.
-
-## Congratulations! You have just completed the final lab in this course.
-
-
-# End of Lab 9
+# [ラボ 9 の終了](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_09_Lab9_Ex1_Implement Sensitivity labels.md#end-of-lab-9)

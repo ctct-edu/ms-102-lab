@@ -1,59 +1,56 @@
-# Learning Path 6 - Lab 6 - Exercise 1 - Prepare for Alert Policies
+# [ラーニング パス 6 - ラボ 6 - 演習 1 - アラート ポリシーの準備](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_06_Lab6_Ex1_Prepare_Alert_Policies.md#learning-path-6---lab-6---exercise-1---prepare-for-alert-policies)
 
-Alerts are policies designed to automatically notify administrators when key actions have occurred in their Microsoft 365 tenant. Alerts can be an easy way to ensure that change logs are up-to-date and that business policies are being followed inside your Microsoft 365 tenant.
+アラートは、Microsoft 365 テナントで重要なアクションが発生したときに管理者に自動的に通知するように設計されたポリシーです。アラートは、変更ログが最新であること、および Microsoft 365 テナント内でビジネス ポリシーが遵守されていることを確認する簡単な方法です。
 
-In your role as Holly Dickson, Adatum’s new Microsoft 365 Administrator, you have Microsoft 365 deployed in a virtualized lab environment. One of Adatum’s business requirements is to set up an alert notification system so that targeted administrators are automatically notified through email when certain actions occur. As you proceed with your Microsoft 365 pilot project, you want to test out Microsoft 365’s alert notification system by creating and validating several types of alerts.
+Adatum の新しい Microsoft 365 管理者である Holly Dickson としてのあなたの役割では、仮想化されたラボ環境に Microsoft 365 を展開しています。Adatum のビジネス要件の 1 つは、特定のアクションが発生したときに対象の管理者に電子メールで自動的に通知されるように、アラート通知システムを設定することです。Microsoft 365 パイロット プロジェクトを進めるにあたり、いくつかの種類のアラートを作成して検証することで、Microsoft 365 のアラート通知システムをテストしたいと考えています。
 
-There are two requirements to viewing alerts in Microsoft 365 Defender – turning on Audit Logging and assigning the proper Role Based Access Control (RBAC) permissions to the users who will view alerts. 
+Microsoft 365 Defender でアラートを表示するには、監査ログを有効にすることと、アラートを表示するユーザーに適切な役割ベースのアクセス制御 (RBAC) アクセス許可を割り当てることという 2 つの要件があります。
 
-- **Audit logging.** If you recall, towards the end of Lab 1 you turned on Audit Logging. You performed this task in Lab 1 because it can take an hour or two to propagate that setting through the system before you can successfully implement alerts. This propagation should have completed by now, and you should be ready to go.
+- **監査ログ。**思い出していただければ、ラボ 1 の終わり近くで監査ログを有効にしました。アラートを正常に実装できるようになるまでに、その設定がシステムに反映されるまでに 1 ～ 2 時間かかる可能性があるため、このタスクをラボ 1 で実行しました。この伝播はすでに完了しているはずなので、準備ができているはずです。
+- **RBAC 権限。**この演習では、必要な RBAC 役割グループを Lynne Robbins に割り当てます。Lynne Robbins は、Adatum の Microsoft 365 パイロット プロジェクトでアラートをテストするために Holly が選択したユーザーです。
 
-- **RBAC permissions.** In this exercise, you will assign the necessary RBAC role group to Lynne Robbins, who is the user that Holly selected for testing alerts in Adatum's Microsoft 365 pilot project. 
+### [タスク 1 – アラート通知テスト用の RBAC 権限を割り当てる](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_06_Lab6_Ex1_Prepare_Alert_Policies.md#task-1--assign-rbac-permissions-for-alert-notification-testing)
 
-### Task 1 – Assign RBAC Permissions for Alert Notification Testing
+**[アラートの表示]**ページでユーザーが表示できるアラートは、ユーザーに割り当てられている RBAC ロールによって異なります。これにより、ユーザーが持つ洞察と制御の深さが決まります。これはどのようにして実現されるのでしょうか? **ユーザーに割り当てられた管理役割 (Microsoft 365 の役割グループのメンバーシップに基づいて) によって、ユーザーが [アラートの表示]**ページにどのアラート カテゴリを表示できるかが決まります (これについては、前のモジュールのアラートに関するトピックで説明しました) 。
 
-The alerts a user can see on the **View alerts** page are dependent on the user's assigned RBAC roles, which determine the depth of insight and control a user has. How is this accomplished? The management roles assigned to users (based on their membership in role groups in Microsoft 365) determine which alert categories a user can see on the **View alerts** page (this was covered in the topic on Alerts in the previous module). 
+Adatum のパイロット プロジェクトでは、Lynne Robbins がアラート通知システムのテストに選ばれました。Lynne がアラートを表示し、アラート通知を受信できるようにするには、まず Microsoft 365 Defender で適切な RBAC アクセス許可を割り当てる必要があります。
 
-For Adatum’s pilot project, Lynne Robbins has been selected to test the alert notification system. For Lynne to be able to view alerts and receive alert notifications, she must first be assigned appropriate RBAC permissions in Microsoft 365 Defender.
+このラボで作成する 3 つのアラートは、「**アクセス許可**」と**「データ損失防止」**という 2 つのアラート カテゴリに割り当てられます。コンプライアンス管理者役割を含むコンプライアンス データ管理者役割グループは、これら 2 つのアラート カテゴリに対するアクセス許可を提供します。したがって、Lynne Robbins をこの役割グループに割り当てると、Lynne Robbins はこのラボで作成されたアラートを表示できるようになります。
 
-The three alerts that you will create in this lab are assigned to two Alert categories: **Permissions** and **Data Loss Prevention**. The Compliance Data Administrator role group, which includes the Compliance Administrator role, provides permissions for these two alert categories; therefore, assigning Lynne Robbins to this role group will enable her to view the alerts that are created in this lab.
+|                              | **データガバナンス** | **データ損失の防止** | **メールの流れ** | **権限** | **脅威管理** | **その他** |
+| ---------------------------- | -------------------- | -------------------- | ---------------- | -------- | ------------ | ---------- |
+| コンプライアンスデータ管理者 | バツ                 | バツ                 |                  | バツ     |              | バツ       |
 
+次の手順を実行して、Lynne Robbins にコンプライアンス データ管理者役割グループを割り当てます。これには、コンプライアンス管理者の役割が含まれます。
 
-|                               | **Data governance** | **Data loss prevention** | **Mail flow** | **Permissions** | **Threat Management** | **Others** |
-|:-------------------------------:|:---------------------:|:--------------------------:|:---------------:|:-----------------:|:-----------------------:|:------------:|
-| Compliance Data Administrator | X                   | X                        |               | X               |                       | X          |
+1. 前のラボの最後には、LON-CL2 にログインしました。このラボでは LON-CL1 を使用します。
 
-Perform the following steps to assign Lynne Robbins the Compliance Data Administrator role group, which includes the Compliance Administrator role.
+   **LON-CL1**に切り替えます。
 
-1. At the end of the prior lab, you were logged into LON-CL2. This lab will use LON-CL1.  <br/>
+2. **LON-CL1**では、Edge ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-    Switch to **LON-CL1**. 
+3. 必要に応じて、ブラウザーで**[Microsoft 365 管理センター]タブを選択します。**左側のナビゲーション ウィンドウの [**管理センター]**グループで、**[セキュリティ]**を選択します。これにより、新しいタブで Microsoft 365 Defender ポータルが開きます。
 
-2. On **LON-CL1**, in your Edge browser, you should still be logged into Microsoft 365 as **Holly Dickson**. 
+4. **Microsoft 365 Defender**ポータルで、左側のナビゲーション ウィンドウの下部に向かって下にスクロールし、 [**アクセス許可]**を選択します。
 
-3. If necessary, select the **Microsoft 365 admin center** tab in your browser. In the left-hand navigation pane, under the **Admin centers** group, select **Security**. This opens the Microsoft 365 Defender portal in a new tab.
+5. **[アクセス許可]**ページには、Azure AD、電子メールとコラボレーションのロール、クラウド アプリの 3 つのセクションがあります。**[電子メールとコラボレーションの役割]**セクションで、**[役割]**を選択します。
 
-4. In the **Microsoft 365 Defender** portal, scroll down towards the bottom of the left-hand navigation pane and select **Permissions**.
+6. 表示される役割のリストで、**「名前」**列見出しを選択して、役割をアルファベット名の昇順で並べ替えます。**コンプライアンス データ管理者**役割グループを選択します。
 
-5. On the **Permissions** page, there are three sections - Azure AD, Email & collaboration roles, and Cloud Apps. Under the **Email & collaboration roles** section, select **Roles**. 
+7. **表示される[コンプライアンス データ管理者]**ウィンドウで、この役割グループに割り当てられている役割のリストに注目してください。ペインの一番下までスクロールし、**「メンバー」**セクションで**「編集」**を選択します。
 
-6. In the list of roles that appears, select the **Name** column heading to sort the roles in ascending alphabetical name order. Select the **Compliance Data Administrator** role group. 
+8. **「編集中のメンバーの選択」**ウィンドウで、メンバーのリストが現在空であることを示すメッセージに注目してください。このメッセージの下にある**[メンバーの選択]**を選択します。
 
-7. In the **Compliance Data Administrator** pane that appears, note the list of roles that have been assigned to this role group. Scroll to the bottom of the pane, and in the **Members** section, select **Edit**. 
+9. **[メンバーの選択]**ウィンドウで、 [ **+追加]**を選択します。ソートされていないユーザーのリストの一部が表示されるため、**「検索」**フィールドに**「Lynne」**と入力します。**名前に Lynne が含まれるユーザーのリストが表示されるので、 Lynne Robbins**の横のチェック ボックスをオンにして、**[追加] を選択します。**
 
-8. In the **Editing Choose members** window, note the message indicating the list of members is currently empty. Below this message, select **Choose members**. 
+10. **「メンバーの選択」**ウィンドウで、**「完了」を選択します。**
 
-9. In the **Choose members** window, select **+Add**. Because a partial, unsorted list of users appears, enter **Lynne** in the **Search** field. In the list of users that appears whose name includes Lynne, select the check box next to **Lynne Robbins** and then select **Add.**
+11. **「編集中のメンバーの選択」**ウィンドウで、**「保存」を選択します。**
 
-10. In the **Choose members** window, select **Done.**
+12. **[コンプライアンス データ アドミニストレーター]**ペインで、**[閉じる] を選択します。**
 
-11. In the **Editing Choose members** window, select **Save.**
+13. 次のラボ演習まで、Edge ブラウザーのすべてのタブを開いたままにしておきます。
 
-12. In the **Compliance Data Administrator** pane, select **Close.**
+これで、Lynne Robbins がコンプライアンス データ管理者役割グループに追加されました。
 
-13. Leave all tabs in your Edge browser open for the next lab exercise.
-
-You have now added Lynne Robbins to the Compliance Data Administrator role group.
-
-
-# Proceed to Lab 6 - Exercise 2
+# [ラボ 6 - 演習 2 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_06_Lab6_Ex1_Prepare_Alert_Policies.md#proceed-to-lab-6---exercise-2)

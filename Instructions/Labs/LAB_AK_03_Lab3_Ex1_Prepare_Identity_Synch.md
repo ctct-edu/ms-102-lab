@@ -1,177 +1,201 @@
-# Learning Path 3 - Lab 3 - Exercise 1 - Prepare for Identity Synchronization  
+# [ラーニング パス 3 - ラボ 3 - 演習 1 - ID 同期の準備](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#learning-path-3---lab-3---exercise-1---prepare-for-identity-synchronization)
 
-As in the previous lab exercises, you will take on the role of Holly Dickson, Adatum Corporation’s new Microsoft 365 Administrator. Adatum has recently subscribed to Microsoft 365, and you have been tasked with deploying the application in Adatum’s virtualized lab environment. In this lab, you will perform the tasks necessary to manage your Microsoft 365 identity environment using both the Microsoft 365 admin center and Windows PowerShell. 
+前のラボ演習と同様に、Adatum Corporation の新しい Microsoft 365 管理者である Holly Dickson の役割を引き受けます。Adatum は最近 Microsoft 365 をサブスクライブし、あなたは Adatum の仮想化されたラボ環境にアプリケーションを展開する任務を与えられました。このラボでは、Microsoft 365 管理センターと Windows PowerShell の両方を使用して、Microsoft 365 ID 環境を管理するために必要なタスクを実行します。
 
-During this exercise you will set up and manage Azure AD Connect. You will create on-premises users and validate the sync process so that their identity is moved to the cloud. Some of the user and group maintenance steps may feel familiar from previous exercises; however, in this case they are needed to validate the synchronization process.
+この演習では、Azure AD Connect をセットアップして管理します。オンプレミス ユーザーを作成し、その ID がクラウドに移動されるように同期プロセスを検証します。ユーザーとグループのメンテナンス手順の中には、以前の演習でおなじみのものもあるかもしれません。ただし、この場合、同期プロセスを検証するために必要です。
 
-### Task 1: Configure your UPN suffix
+### [タスク 1: UPN サフィックスを構成する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#task-1-configure-your-upn-suffix)
 
-In Active Directory, the default User Principal Name (UPN) suffix (i.e. the tenant prefix) is the DNS name of the domain where the user account was created. The Azure AD Connect wizard uses the UserPrincipalName attribute, or it lets you specify the on-premises attribute (in a custom installation) to be used as the user principal name in Azure AD. This is the value that is used for signing into Azure AD. 
+Active Directory では、デフォルトのユーザー プリンシパル名 (UPN) サフィックス (つまり、テナント プレフィックス) は、ユーザー アカウントが作成されたドメインの DNS 名です。Azure AD Connect ウィザードでは UserPrincipalName 属性を使用するか、Azure AD でユーザー プリンシパル名として使用するオンプレミス属性 (カスタム インストールの場合) を指定できます。これは、Azure AD へのサインインに使用される値です。
 
-If you recall, your VM environment was created by your lab hosting provider with an on-premises domain titled **adatum.com**. This domain included several on-premises user accounts, such as Holly Dickson, Laura Atkins, and so on. Then in an earlier lab in this course, you created a custom, accepted domain for Adatum titled **xxxUPNxxx.xxxCustomDomainxxx.xxx** (where xxxUPNxxx was the unique UPN name assigned to your tenant, and xxxCustomDomainxxx.xxx was the name assigned to the domain by your lab hosting provider).
+**思い出してください。VM 環境は、 adatum.com**というタイトルのオンプレミス ドメインを使用して、ラボ ホスティング プロバイダーによって作成されました。このドメインには、Holly Dickson、Laura Atkins など、いくつかのオンプレミス ユーザー アカウントが含まれていました。次に、このコースの前半のラボで、**xxxUPNxxx.xxxCustomDomainxxx.xxx**という名前の Adatum 用のカスタム承認済みドメインを作成しました (xxxUPNxxx はテナントに割り当てられた一意の UPN 名、xxxCustomDomainxxx.xxx はテナントによってドメインに割り当てられた名前です)ラボ ホスティング プロバイダー）。
 
-In this task, you will use PowerShell to change the user principal name of the domain for the entire Adatum Corporation by replacing the originally established **adatum.com** domain with the custom **xxxUPNxxx.xxxCustomDomainxxx.xxx** domain. In doing so, you will update the UPN suffix for the primary domain and the UPN on every on-premises user account in AD DS with **@xxxUPNxxx.xxxCustomDomainxxx.xxx**. 
+**このタスクでは、PowerShell を使用して、最初に確立されたadatum.com**ドメインをカスタム**xxxUPNxxx.xxxCustomDomainxxx.xxx**ドメインに置き換えることにより、Adatum Corporation 全体のドメインのユーザー プリンシパル名を変更します。その際、プライマリ ドメインの UPN サフィックスと、AD DS のすべてのオンプレミス ユーザー アカウントの UPN を**@xxxUPNxxx.xxxCustomDomainxxx.xxx**で更新します。
 
-A company may change its domain name for a variety of reasons. For example, a company may purchase a new domain name, or a company may change its name and it wants its domain name to reflect the new company name, or a company may be sold and it wants its domain name to reflect the new parent company’s name. Regardless of the underlying reason, the goal of changing a domain name is typically to change the domain name on each user’s email address. 
+企業はさまざまな理由でドメイン名を変更する場合があります。たとえば、企業が新しいドメイン名を購入したり、社名を変更してそのドメイン名に新しい社名を反映させたい場合や、企業が売却されてそのドメイン名に新しい親会社の名前を反映させたい場合があります。名前。根本的な理由に関係なく、ドメイン名を変更する目的は通常、各ユーザーの電子メール アドレスのドメイン名を変更することです。
 
-For this lab, Adatum has purchased the new xxxUPNxxx.xxxCustomDomainxxx.xxx domain (provided by your lab hosting provider); therefore, it wants to change the domain name of all its users’ email addresses from @adatum.com to @xxxUPNxxx.xxxCustomDomainxxx.xxx.
+このラボ用に、Adatum は新しい xxxUPNxxx.xxxCustomDomainxxx.xxx ドメイン (ラボ ホスティング プロバイダーによって提供される) を購入しました。したがって、すべてのユーザーの電子メール アドレスのドメイン名を @adatum.com から @xxxUPNxxx.xxxCustomDomainxxx.xxx に変更したいと考えています。
 
-**IMPORTANT - PowerShell notice:** Up to this point, the labs in this course that involve Windows PowerShell have used the latest PowerShell module known as Microsoft Graph PowerShell. This PowerShell module replaces two older modules, MSOnline and Azure Active Directory (Azure AD) PowerShell. Where applicable, Microsoft customers are encouraged to use the newer Microsoft Graph PowerShell module, since the older modules are scheduled for retirement. However, at present, not all MSOnline and Azure AD PowerShell functionality has been incorporated into Microsoft Graph PowerShell. Such is the case with this lab exercise, which must use MSOnline since the commands necessary to update Adatum's Active Directory forest have not yet been incorporated into Microsoft Graph PowerShell. As such, you will begin this task by installing the MSOnline module and then connecting to the Microsoft Online Service. You'll then run the appropriate MSOnline cmdlets to update the adatum.com domain.
+**重要 - PowerShell に関する注意事項:**これまで、Windows PowerShell を使用するこのコースのラボでは、Microsoft Graph PowerShell として知られる最新の PowerShell モジュールを使用してきました。この PowerShell モジュールは、MSOnline と Azure Active Directory (Azure AD) PowerShell の 2 つの古いモジュールを置き換えます。古いモジュールは廃止される予定であるため、該当する場合、Microsoft のお客様は新しい Microsoft Graph PowerShell モジュールを使用することをお勧めします。ただし、現時点では、MSOnline および Azure AD PowerShell のすべての機能が Microsoft Graph PowerShell に組み込まれているわけではありません。この実習では、Adatum の Active Directory フォレストの更新に必要なコマンドがまだ Microsoft Graph PowerShell に組み込まれていないため、MSOnline を使用する必要があります。そのような、このタスクは、MSOnline モジュールをインストールし、Microsoft Online Service に接続することで開始します。次に、適切な MSOnline コマンドレットを実行して、adatum.com ドメインを更新します。
 
-1. Switch to **LON-DC1**, which is Adatum's domain controller, where you should still be logged in as **ADATUM\Administrator** and password **Pa55w.rd**. 
+1. **Adatum のドメイン コントローラーであるLON-DC1**に切り替えます。ここでも**ADATUM\Administrator**およびパスワード**Pa55w.rd**としてログインしているはずです。
 
-2. If **Windows PowerShell** is still open, then select the **PowerShell** icon on your taskbar; otherwise, you must open **Windows PowerShell** by selecting the magnifying glass (**Search**) icon on the taskbar, typing **power** in the Search box that appears,  right-clicking on **Windows PowerShell** (do not select Windows PowerShell ISE), and selecting **Run as administrator** in the drop-down menu. When Windows PowerShell opens, maximize the window.
+2. **Windows PowerShell**がまだ開いている場合は、タスクバーの**PowerShellアイコンを選択します。****それ以外の場合は、タスク**バーの虫眼鏡 (**検索**) アイコンを選択し、表示される検索ボックスに「**power」と入力し、** **Windows PowerShell**を右クリックし(Windows PowerShell ISE は選択しないでください)、[**管理者として実行]**を選択して、 Windows PowerShell を開く必要があります。ドロップダウン メニュー。Windows PowerShell が開いたら、ウィンドウを最大化します。
 
-3. You must begin by installing the MSOnline PowerShell module. In **Windows PowerShell**, at the command prompt type the following command and then press Enter:
+3. MSOnline PowerShell モジュールをインストールすることから始める必要があります。**Windows PowerShell**のコマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
 
-		Install-Module MSOnline
-	
-4. If you are prompted to confirm whether you want to install the module from an untrusted repository (PSGallery), enter **A** to select **[A] Yes to All.** 
+   ```
+    Install-Module MSOnline
+   ```
 
-5. You must now connect your PowerShell session to the Microsoft Online Service. At the command prompt, type the following command, and then press Enter:  <br/>
+   
 
-		Connect-MsolService
-	
-6. In the **Sign in** dialog box that appears, log in as **Holly@xxxxxZZZZZZ.onmicrosoft.com** (where xxxxxZZZZZZ is the tenant prefix provided by your lab hosting provider). In the **Password** field, enter the same **Microsoft 365 Tenant Password** provided by your lab hosting provider for the tenant admin account (i.e. the MOD Administrator account). 
+4. 信頼できないリポジトリ (PSGallery) からモジュールをインストールするかどうかを確認するメッセージが表示されたら、「**A 」と入力して****[A] すべてはいを**選択します。
 
-7. PowerShell's execution policy settings dictate what PowerShell scripts can be run on a Windows system. Setting this policy to **Unrestricted** enables Holly to load all configuration files and run all scripts. At the command prompt, type the following command, and then press Enter:   <br/>
+5. ここで、PowerShell セッションを Microsoft Online Service に接続する必要があります。コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
 
-		Set-ExecutionPolicy unrestricted
+   ```
+    Connect-MsolService
+   ```
 
-	‎If you are prompted to verify that you want to change the execution policy, enter **A** to select **[A] Yes to All.** 
+   
 
-8. Using **Windows PowerShell**, you must replace the on-premises **adatum.com** domain with the **xxxUPNxxx.xxxCustomDomainxxx.xxx** domain (where you will replace xxxUPNxxx with the unique UPN name assigned to your tenant, and you will replace xxxCustomDomainxxx.xxx with your lab hosting provider's custom domain). In doing so, you will update the UPN suffix for the primary domain and the UPN on every user in AD DS with **@xxxUPNxxx.xxxCustomDomainxxx.xxx**. <br/> 
+6. **表示される[サインイン]**ダイアログ ボックスで、 **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**としてログインします(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。**[パスワード]**フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 テナント パスワードを入力します。**
 
-	‎In the following PowerShell command, the **Set-ADForest** cmdlet modifies the properties of an Active Directory forest, and the **-identity** parameter specifies the Active Directory forest to modify. To perform this task, run the following command to set the **UPNSuffixes** property for the **adatum.com** forest (remember to change xxxUPNxxx to your unique UPN name and xxxCustomDomainxxx.xxx to your lab hosting provider's custom domain name):<br/>
-	
-		Set-ADForest -identity adatum.com -UPNSuffixes @{replace="xxxUPNxxx.xxxCustomDomainxxx.xxx"}
+7. PowerShell の実行ポリシー設定は、Windows システム上でどの PowerShell スクリプトを実行できるかを決定します。このポリシーを**無制限**に設定すると、Holly はすべての構成ファイルをロードし、すべてのスクリプトを実行できるようになります。コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
 
-9. You must then run the following command that changes all existing adatum.com accounts to the new UPN @xxxUPNxxx.xxxCustomDomainxxx.xxx domain (remember to change xxxUPNxxx to your unique UPN name and xxxCustomDomainxxx.xxx to your lab hosting provider's custom domain name): <br/>
+   ```
+    Set-ExecutionPolicy unrestricted
+   ```
 
-		Get-ADUser -Filter * -Properties SamAccountName | ForEach-Object { Set-ADUser $_  -UserPrincipalName ($_.SamAccountName + "@xxxUPNxxx.xxxCustomDomainxxx.xxx" )}
+   
 
-10. You will continue using PowerShell on LON-DC1 in the next task.
+   実行ポリシーを変更するかどうかを確認するメッセージが表示されたら、 「 **A 」と入力して****[A] すべてはいを**選択します。
 
+8. **Windows PowerShell**を使用して、オンプレミスの**adatum.com**ドメインを**xxxUPNxxx.xxxCustomDomainxxx.xxx**ドメインに置き換える必要があります (xxxUPNxxx はテナントに割り当てられた一意の UPN 名に置き換え、xxxCustomDomainxxx.xxx はラボ ホスティングに置き換えます)プロバイダーのカスタム ドメイン)。その際、プライマリ ドメインの UPN サフィックスと、AD DS 内のすべてのユーザーの UPN を**@xxxUPNxxx.xxxCustomDomainxxx.xxx**で更新します。
 
-### Task 2: Prepare problem user accounts   
+   次の PowerShell コマンドでは、**Set-ADForest**コマンドレットは Active Directory フォレストのプロパティを変更し、**-identity**パラメーターは変更する Active Directory フォレストを指定します。**このタスクを実行するには、次のコマンドを実行して、 adatum.comフォレストの****UPNSuffixes**プロパティを設定します(xxxUPNxxx を一意の UPN 名に変更し、xxxCustomDomainxxx.xxx をラボ ホスティング プロバイダーのカスタム ドメイン名に変更することを忘れないでください)。
 
-Integrating your on-premises Active Directory with Azure AD makes your users more productive by providing a common identity for accessing both cloud and on-premises resources. However, errors can occur when identity data is synchronized from Windows Server Active Directory (AD DS) to Azure Active Directory (Azure AD). 
+   ```
+    Set-ADForest -identity adatum.com -UPNSuffixes @{replace="xxxUPNxxx.xxxCustomDomainxxx.xxx"}
+   ```
 
-For example, two or more objects may have the same value for the **ProxyAddresses** attribute or the **UserPrincipalName** attribute in on-premises Active Directory. There are a multitude of different conditions that may result in synchronization errors. Organizations can correct these errors by running Microsoft's IdFix tool, which performs discovery and remediation of identity objects and their attributes in an on-premises Active Directory environment in preparation for migration to Azure Active Directory. 
+   
 
-In this task, you will run a script that breaks an on-premises user account. As part of your Adatum pilot project, you are purposely breaking an identity object so that you can run the IdFix tool in the next task to see how you can fix the broken account. 
+9. 次に、次のコマンドを実行して、既存のすべての adatum.com アカウントを新しい UPN @xxxUPNxxx.xxxCustomDomainxxx.xxx ドメインに変更する必要があります (xxxUPNxxx を独自の UPN 名に変更し、xxxCustomDomainxxx.xxx をラボ ホスティング プロバイダーのカスタム ドメイン名に変更することを忘れないでください)。
 
-1. On your Domain Controller VM (LON-DC1), in the Windows PowerShell window, run the following command to change the root source to **C:\labfiles** so that you can access any files from that location: <br/>
+   ```
+    Get-ADUser -Filter * -Properties SamAccountName | ForEach-Object { Set-ADUser $_  -UserPrincipalName ($_.SamAccountName + "@xxxUPNxxx.xxxCustomDomainxxx.xxx" )}
+   ```
 
-		CD C:\labfiles\
+   
 
-3. Enter the following command that runs a PowerShell script that creates a problem user account. This script, which is stored in the C:\labfiles folder, will purposely create an issue with the UserPrincipalName for Klemen Sic's on-premises user account; this will enable you to troubleshoot this account in the next task using the IdFix tool.  <br/>
+10. 次のタスクでは、引き続き LON-DC1 で PowerShell を使用します。
 
-		.\CreateProblemUsers.ps1
-	
-	**Important:** Wait until the script has finished before proceeding to the next task. This Windows PowerShell script will make the following change in AD DS:
+### [タスク 2: 問題のあるユーザー アカウントを準備する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#task-2-prepare-problem-user-accounts)
 
-	- **Klemen Sic**. Update the UserPrincipalName for Klemen to include an extra "@" character. 
+オンプレミスの Active Directory を Azure AD と統合すると、クラウドとオンプレミスの両方のリソースにアクセスするための共通の ID が提供され、ユーザーの生産性が向上します。ただし、ID データが Windows Server Active Directory (AD DS) から Azure Active Directory (Azure AD) に同期されるときにエラーが発生する可能性があります。
 
-4. Minimize your Windows PowerShell window.
+たとえば、オンプレミスの Active Directory では、2 つ以上のオブジェクトの**ProxyAddresses**属性または**UserPrincipalName属性が同じ値を持つ場合があります。**同期エラーが発生する可能性のあるさまざまな条件が多数あります。組織は、Microsoft の IdFix ツールを実行することでこれらのエラーを修正できます。このツールは、Azure Active Directory への移行に備えて、オンプレミスの Active Directory 環境で ID オブジェクトとその属性の検出と修復を実行します。
 
+このタスクでは、オンプレミスのユーザー アカウントを破壊するスクリプトを実行します。Adatum パイロット プロジェクトの一環として、次のタスクで IdFix ツールを実行して壊れたアカウントを修正する方法を確認できるように、意図的に ID オブジェクトを破壊します。
 
-### Task 3: Run the IdFix tool and fix identified issues 
+1. ドメイン コントローラー VM (LON-DC1) の Windows PowerShell ウィンドウで次のコマンドを実行してルート ソースを**C:\labfiles**に変更し、その場所から任意のファイルにアクセスできるようにします。
 
-In this task you will download and use the IdFix Directory Synchronization Error Remediation Tool to fix Klemen Sic's on-premises user account that you purposely broke in the previous task. Running the IdFix tool will correct any user account errors prior to synchronizing identity data between your on-premises environment and Azure AD.
+   ```
+    CD C:\labfiles\
+   ```
 
-1. You should still be logged into **LON-DC1** as the **Administrator** from the prior task. 
+   
 
-2. On **LON-DC1**, select the **Microsoft Edge** icon on the taskbar. In your **Microsoft Edge** browser, open a new tab and enter the following URL in the address bar to access the Microsoft -IdFix Overview page: <br/>
+2. 次のコマンドを入力すると、問題のあるユーザー アカウントを作成する PowerShell スクリプトが実行されます。このスクリプトは C:\labfiles フォルダーに保存されており、Klemen Sic のオンプレミス ユーザー アカウントの UserPrincipalName に意図的に問題を引き起こします。これにより、次のタスクで IdFix ツールを使用してこのアカウントのトラブルシューティングを行うことができます。
 
-	**https://microsoft.github.io/idfix**
-	
-3. On the **Microsoft - IdFix** page, in the navigation pane on the left-side of the screen, select **Step 2: Install IdFix**. 
+   ```
+    .\CreateProblemUsers.ps1
+   ```
 
-4. On the **Step 2: Install IdFix** page, the first line in the instruction says: **Select *setup.exe* to download and install the IDFix tool on your Windows machine.**  <br/>
+   
 
-	In this instruction, select **setup.exe** to download the IdFix application to your machine. 
+   **重要:**スクリプトが完了するまで待ってから、次のタスクに進みます。この Windows PowerShell スクリプトは、AD DS に次の変更を加えます。
 
-5. Once the **setup.exe** file is downloaded, a **Downloads** window will appear at the top-right of the page. In this window, under **setup.exe**, select **Open file** to install the file on LON-DC1. This will initiate the **Application Install** wizard.
+   - **クレメンシック**。Klemen の UserPrincipalName を更新して、追加の「@」文字を含めます。
 
-6. In the **Do you want to install this application?** page in the **Application Install** wizard, select **Install**.
+3. Windows PowerShell ウィンドウを最小化します。
 
-7. In the **IdFix Privacy Statement** message box, select **OK**. Once the IDFix tool is installed, the **Application Install** wizard will close and the **IDFix** tool will automatically open. 
+### [タスク 3: IdFix ツールを実行し、特定された問題を修正する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#task-3-run-the-idfix-tool-and-fix-identified-issues)
 
-8. In the **IdFix** tool that appears, maximize the window. On the menu bar at the very top of the screen, select **Query** to query the directory. After a short wait, you should see several errors. <br/>
+このタスクでは、IdFix ディレクトリ同期エラー修復ツールをダウンロードして使用し、前のタスクで意図的に破損した Klemen Sic のオンプレミス ユーザー アカウントを修正します。IdFix ツールを実行すると、オンプレミス環境と Azure AD の間で ID データを同期する前に、ユーザー アカウントのエラーが修正されます。
 
-	**Note:** If a **Schema Warning** dialog box appears, select **Yes** to continue.
+1. 前のタスクで**管理者**として**LON-DC1**にログインしたままである必要があります。
 
-9. Select the **ERROR** column heading to sort the records in alphabetical error sequence. <br/>
+2. **LON-DC1**で、タスクバーの**Microsoft Edgeアイコンを選択します。****Microsoft Edge**ブラウザーで新しいタブを開き、アドレス バーに次の URL を入力して、Microsoft -IdFix の概要ページにアクセスします。
 
-	‎**Note:** If any **topleveldomain** errors appear, then ignore them as they cannot be fixed by the IdFix tool.  
+   **https://microsoft.github.io/idfix**
 
-10. In the **Klemen Sic** row, note the text in the **VALUE** column. It currently includes two **@@** signs, which occurred when you ran the script in the prior task that purposely broke Klemen's UserPrincipalName. Now note the text in the **UPDATE** column, which is the value the IDFix tool will change the UPN name to, should you direct it to do so. <br/>
+3. **[Microsoft - IdFix]**ページの画面左側のナビゲーション ウィンドウで、**[ステップ 2: IdFix のインストール]**を選択します。
 
-	You want the IDFix tool to fix Klemen's UPN value, so select the drop-down arrow in Klemen's **ACTION** field and select **EDIT**. <br/>
+4. [ステップ**2: IdFix のインストール]**ページの説明の最初の行には、「***setup.exe\*****を選択して、IDFix ツールを Windows マシンにダウンロードしてインストールします」と記載されています。**
 
-	**Note:** Do NOT update either of the remaining two user accounts. Ignore those for now.
+   この手順では、**setup.exe**を選択してIdFix アプリケーションをマシンにダウンロードします。
 
-11. On the menu bar at the top of the window, select **Apply**. 
+5. **setup.exe**ファイルがダウンロードされると、ページの右上に**[ダウンロード]ウィンドウが表示されます。****このウィンドウのsetup.exe**で、**「ファイルを開く」**を選択してLON-DC1 にファイルをインストールします。これにより、**アプリケーション インストール**ウィザードが開始されます。
 
-12. In the **Apply Pending** dialog box that appears, select **Yes**. <br/>
+6. **「このアプリケーションをインストールしますか?**」**アプリケーション インストール**ウィザードのページで、**[インストール]**を選択します。
 
-	‎**Note:** Notice the value in the **Action** column changed from **EDIT** to **COMPLETE** for Klemen Sic. This indicates the IdFix tool corrected the error by updating Klemen Sic's user object. 
+7. **[IdFix プライバシーに関する声明]**メッセージ ボックスで、**[OK]**を選択します。IDFix ツールがインストールされると、**アプリケーション インストール**ウィザードが閉じ、**IDFix**ツールが自動的に開きます。
 
-13. On the menu bar at the top of the page, select **Query**. If a **Schema Warning** dialog box appears, select **Yes** to continue. If a dialog box appears indicating an unhandled exception has occurred, select **Continue**.<br/>
+8. **表示されるIdFix**ツールで、ウィンドウを最大化します。画面の最上部にあるメニュー バーで、**[クエリ]**を選択してディレクトリをクエリします。少し待つと、いくつかのエラーが表示されるはずです。
 
-	In the query results, note how the Klemen Sic row no longer appears in the results, since the IdFix tool just fixed this user record. <br/>	
+   **注:** **[スキーマ警告]**ダイアログ ボックスが表示された場合は、**[はい]**を選択して続行します。
 
-	As you can see, there are still two users whose errors have not been fixed (**An Dung Dao** and **Ngoc Bich Tran**). We are purposely leaving these errors alone so that you can see what happens during the synchronization process using the Azure AD Connect tool in the next exercise when it processes users with these conditions. <br/>
+9. **ERROR**列見出しを選択して、レコードをアルファベット順のエラー順に並べ替えます。
 
-	**Important:** When there are format and duplicate errors for distinguished names, the **UPDATE** column either contains the same string as the **VALUE** column, or the **UPDATE** column entry is blank. In either case, this means that IdFix cannot suggest a remediation for the error. You can either fix these errors outside IdFix, or manually remediate them within IdFix. You can also export the results and use Windows PowerShell to remediate many different errors. 
+   注**:****トップレベル ドメイン**エラーが表示された場合は、IdFix ツールでは修正できないため、無視してください。
 
-14. Close the IdFix window. 
+10. **Klemen Sic**行の**VALUE**列のテキストに注目してください。現在、これには 2 つの**@@**記号が含まれています。これらは、Klemen の UserPrincipalName を意図的に破壊する前のタスクでスクリプトを実行したときに発生しました。**UPDATE**列のテキストに注目してください。これは、IDFix ツールに指示した場合に、IDFix ツールが UPN 名を変更する値です。
 
-15. Leave your Edge browser open. However, you can close the **Step 2: Install Id-Fix - Microsoft - IdFix** tab since you are done using IdFix.
+    **IDFix ツールで Klemen の UPN 値を修正する必要があるため、Klemen の[ACTION]**フィールドのドロップダウン矢印を選択し、 **[EDIT]**を選択します。
 
+    **注:**残りの 2 つのユーザー アカウントはどちらも更新しないでください。今のところは無視してください。
 
-### Task 4: Prepare for Directory Synchronization    
+11. ウィンドウの上部にあるメニュー バーで、**[適用]**を選択します。
 
-The Azure Active Directory Connect synchronization service is a main component of Azure AD Connect. It's responsible for processing all operations related to synchronizing identity data between your on-premises environment and Azure AD. The sync service consists of an on-premises component (Azure AD Connect sync) and a cloud service component (Azure AD Connect Cloud Sync service). Deployments such as Adatum that implement Microsoft Exchange Online must use the Azure AD Connect sync service.
+12. **表示される[保留中の適用]**ダイアログ ボックスで、**[はい]**を選択します。
 
-Before you can run Azure AD Connect, you must first configure several settings that control the synchronization process, which you will do in this task. Once you have completed the preparation process, you will then run the Azure AD Connect tool in the next exercise. 
+    注**:** Klemen Sic の場合、**[アクション]**列の値が**EDIT**から**COMPLETE**に変更されていることに注目してください。これは、IdFix ツールが Klemen Sic のユーザー オブジェクトを更新することでエラーを修正したことを示しています。
 
-1. You should still be logged into **LON-DC1**. 
+13. ページ上部のメニュー バーで、**[クエリ]**を選択します。**「スキーマ警告」**ダイアログ・ボックスが表示された場合は、**「はい」**を選択して続行します。未処理の例外が発生したことを示すダイアログ ボックスが表示された場合は、**[続行]**を選択します。
 
-2. You want to begin by adding several trusted sites for Microsoft Edge. If you're familiar doing this with Internet Explorer (IE), the process is basically the same for Edge; however, the location of the **Security** settings is different. With IE, you added trusted sites through IE's Internet Options; for Edge, you will add trusted sites through the Windows Control Panel. <br/>
+    IdFix ツールがこのユーザー レコードを修正したばかりなので、クエリ結果で Klemen Sic 行が結果に表示されなくなっていることに注目してください。
 
-	Select the magnifying glass icon on the taskbar and then enter **control** in the Search box. 
+    ご覧のとおり、エラーが修正されていないユーザーがまだ 2 人います ( **An Dung Dao**と**Ngoc Bich Tran** )。次の演習で、これらの条件のユーザーを処理するときに Azure AD Connect ツールを使用して同期プロセス中に何が起こるかを確認できるように、これらのエラーは意図的にそのままにしておきます。
 
-3. In the list of search results, select **Control Panel**.
+    **重要:**識別名の形式エラーと重複エラーがある場合、**UPDATE列に****VALUE**列と同じ文字列が含まれているか、**UPDATE**列のエントリが空白になります。どちらの場合も、これは、IdFix がエラーの修復を提案できないことを意味します。これらのエラーは IdFix の外部で修正することも、IdFix 内で手動で修正することもできます。結果をエクスポートし、Windows PowerShell を使用してさまざまなエラーを修復することもできます。
 
-4. In the **Control Panel**, select **Network and Internet**.
+14. IdFix ウィンドウを閉じます。
 
-5. On the **Network and Internet** window, select **Internet Options**.
+15. Edge ブラウザを開いたままにしておきます。ただし、IdFix の使用は終了しているため、**[ステップ 2: Id-Fix のインストール - Microsoft - IdFix]タブを閉じても問題ありません。**
 
-6. This opens the **Internet Properties** window. Select the **Security** tab. 
+### [タスク 4: ディレクトリ同期の準備](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#task-4-prepare-for-directory-synchronization)
 
-7. The **Internet** zone should be selected by default. Towards the bottom of the window, select the **Custom level...** button. 
+Azure Active Directory Connect 同期サービスは、Azure AD Connect の主要コンポーネントです。オンプレミス環境と Azure AD の間の ID データの同期に関連するすべての操作を処理します。同期サービスは、オンプレミス コンポーネント (Azure AD Connect 同期) とクラウド サービス コンポーネント (Azure AD Connect Cloud Sync サービス) で構成されます。Microsoft Exchange Online を実装する Adatum などの展開では、Azure AD Connect 同期サービスを使用する必要があります。
 
-8. In the **Security Settings – Internet Zone** window, scroll down to the **Downloads** section. The first option in this section is **File download**. Verify the **File download** option is set to **Enable** and then select **OK**. 
+Azure AD Connect を実行する前に、まず同期プロセスを制御するいくつかの設定を構成する必要があります。これはこのタスクで行います。準備プロセスが完了したら、次の演習で Azure AD Connect ツールを実行します。
 
-9. This takes you back to the **Internet Options** window. Select the **Trusted sites** zone.
+1. まだ**LON-DC1**にログインしているはずです。
 
-10. In the **Trusted Sites** zone, you must add several sites. Select the **Sites** button. 
+2. まず、Microsoft Edge の信頼できるサイトをいくつか追加します。Internet Explorer (IE) でこれを行うことに慣れている場合、プロセスは基本的に Edge でも同じです。**ただし、セキュリティ**設定の場所は異なります。IE では、IE のインターネット オプションを通じて信頼済みサイトを追加しました。Edge の場合は、Windows のコントロール パネルから信頼済みサイトを追加します。
 
-11. In the **Trusted sites** window, in the **Add this website to the zone** field, enter the following URL and then select **Add**: **https://outlook.office365.com/** 
+   タスクバーの虫眼鏡アイコンを選択し、検索ボックスに**「control」と入力します。**
 
-12. Repeat step 11 to add the following site: **https://outlook.office.com/**  
+3. 検索結果のリストで、**[コントロール パネル]**を選択します。
 
-13. Repeat step 11 to add the following site: **https://portal.office.com/**  
+4. **コントロール パネル**で、**[ネットワークとインターネット]**を選択します。
 
-14. Select **Close** once you have added these three sites.
+5. **[ネットワークとインターネット]**ウィンドウで、**[インターネット オプション]**を選択します。
 
-15. In the **Internet Options** window, select **OK** to close the window.
+6. これにより、**「インターネットのプロパティ」**ウィンドウが開きます。**「セキュリティ」**タブを選択します。
 
-16. Close the **Network and Internet** window.
+7. デフォルトではインターネット ゾーンが選択されている必要があります**。**ウィンドウの下部にある**[カスタム レベル...]**ボタンを選択します。
 
-17. Proceed to the next exercise. You are now ready to install the Azure AD Connect tool and enable directory synchronization. 
+8. **[セキュリティ設定 - インターネット ゾーン]**ウィンドウで、**[ダウンロード]**セクションまで下にスクロールします。このセクションの最初のオプションは**[ファイルのダウンロード]**です。**[ファイルのダウンロード]オプションが****[有効]**に設定されていることを確認し、**[OK]**を選択します。
 
-# Proceed to Lab 3 - Exercise 2
- 
+9. **これにより、 [インターネット オプション]**ウィンドウに戻ります。**[信頼済みサイト]**ゾーンを選択します。
+
+10. **信頼済みサイト**ゾーンでは、複数のサイトを追加する必要があります。**「サイト」**ボタンを選択します。
+
+11. **[信頼済みサイト]**ウィンドウの**[この Web サイトをゾーンに追加する]**フィールドに次の URL を入力し、**[追加]**を選択します: **https://outlook.office365.com/**
+
+12. 手順 11 を繰り返して、次のサイトを追加します: **https://outlook.office.com/**
+
+13. 手順 11 を繰り返して、次のサイトを追加します: **https://portal.office.com/**
+
+14. これら 3 つのサイトを追加したら、**[閉じる]**を選択します。
+
+15. **[インターネット オプション]**ウィンドウで**[OK]**を選択してウィンドウを閉じます。
+
+16. **「ネットワークとインターネット」**ウィンドウを閉じます。
+
+17. 次の演習に進みます。これで、Azure AD Connect ツールをインストールし、ディレクトリ同期を有効にする準備が整いました。
+
+# [ラボ 3 - 演習 2 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#proceed-to-lab-3---exercise-2)
