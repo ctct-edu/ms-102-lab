@@ -183,5 +183,3 @@
 39. **「このドメインをデフォルトとして設定しますか?**」表示されるダイアログ ボックスで、**[デフォルトとして設定]**ボタンを選択します。**このドメインは、 [ドメイン]**ページのデフォルト ドメインとして表示されます。
 
 40. **Microsoft Edge**と**Windows PowerShell の**両方を開いたままにして、LON-DC1 VM にログインしたままにしてください。ID 同期を実行する後のラボで LON-DC1 に戻ります。
-
-# [ラボ 1 の終了](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_01_Lab1_Ex3_Add_a_Domain.md#end-of--lab-1)

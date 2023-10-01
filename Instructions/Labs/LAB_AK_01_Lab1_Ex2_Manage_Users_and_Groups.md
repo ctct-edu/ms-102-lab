@@ -345,5 +345,3 @@ Holly Dickson は、Adatum の新しい Microsoft 365 管理者です。彼女�
 14. **インサイド セールス**ウィンドウを閉じます。
 
 15. LON-CL1 にログインしたままにし、ブラウザのタブを開いたままにして、次のタスクに備えます。
-
-# [ラボ 1 - 演習 3 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_01_Lab1_Ex2_Manage_Users_and_Groups.md#proceed-to-lab-1---exercise-3)

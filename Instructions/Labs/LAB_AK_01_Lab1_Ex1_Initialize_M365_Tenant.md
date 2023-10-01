@@ -290,5 +290,3 @@ Microsoft 365 をインストールするときに、いくつかの構成タス
 6. ラボのセットアップ プロセスが完了すると、「ラボのセットアップが完了しました」というポップアップ メッセージが表示されます**。EXITING...**と表示されます。**[OK]**を選択して続行します。
 
    **重要:**ラボのセットアップ プロセスが完了するまでに最大 5 分かかる場合があります。
-
-# [ラボ 1 - 演習 2 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_01_Lab1_Ex1_Initialize_M365_Tenant.md#proceed-to-lab-1---exercise-2)

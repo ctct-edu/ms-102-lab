@@ -171,5 +171,3 @@ Adatum の CTO は、組織全体で最近明らかになったサービスの�
 7. ページの右上隅にある[ **X]**を選択して、**[サポートへのお問い合わせ]**ウィンドウを閉じます。
 
 8. 次のラボ演習まで、LON-CL1 と Edge ブラウザを開いたままにしておきます。
-
-# [ラボ 2 - 演習 3 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_02_Lab2_Ex2_Monitor_Microsoft_365.md#proceed-to-lab-2---exercise-3)

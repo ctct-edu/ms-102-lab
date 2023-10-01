@@ -162,5 +162,3 @@ Microsoft の攻撃シミュレーション トレーニングを使用してフ
    - **Microsoft Office ホーム**ページから**[管理者]アイコンを選択して、** **Microsoft 365 管理センター**に移動します。
 
    これで、次のラボ演習に進む準備ができました。
-
-# [ラボ 6 の終了](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex6_AttackSim_PW_attack.md#end-of-lab-6)

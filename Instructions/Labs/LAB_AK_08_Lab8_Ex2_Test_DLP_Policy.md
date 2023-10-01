@@ -94,5 +94,3 @@ Holly Dickson は現在、パイロット プロジェクトの段階にあり�
 14. 次のタスクのために、Edge ブラウザーで [Outlook] タブを開いたままにしておきます。
 
 15. **LON-CL1**に切り替えます。
-
-# [ラボ 8 の終了](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_08_Lab8_Ex2_Test_DLP_Policy.md#end-of-lab-8)

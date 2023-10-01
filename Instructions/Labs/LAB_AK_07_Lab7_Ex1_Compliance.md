@@ -81,5 +81,3 @@ Adatum パイロット プロジェクトでアーカイブと保持をテスト
 13. **Microsoft Edge ブラウザーでは、 Microsoft Office ホーム**タブと**Microsoft 365 管理センター**タブを除くすべてのタブを閉じることができます。次の演習のために、これら 2 つのタブを開いたままにしておきます。
 
 Compliance Test Users グループのユーザーのデバイスに対して Intune での自動登録を構成し、Adatum のテナントの MDM 機関が Microsoft Intune に設定されていることを確認しました。
-
-# [ラボ 7 - 演習 2 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex1_Compliance.md#proceed-to-lab-7---exercise-2)

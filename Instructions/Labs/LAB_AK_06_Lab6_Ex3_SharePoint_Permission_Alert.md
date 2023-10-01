@@ -78,5 +78,3 @@
 10. このラボの残りの演習では、LON-CL1 および LON-CL2 VM を開いたままにしておきます。
 
 これで、SharePoint サイトのサイト コレクション管理者権限を監視する SharePoint アラートのテストが正常に完了しました。
-
-# [ラボ 6 - 演習 4 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex3_SharePoint_Permission_Alert.md#proceed-to-lab-6---exercise-4)

@@ -102,5 +102,3 @@ Adatum のパイロット プロジェクトの一環として、新しい保持
 13. Edge ブラウザでは、すべてのタブを開いたままにして次の演習に進みます。
 
 これで、Microsoft Purview ポータルで、すべてのメールボックスからのすべての Exchange 電子メールを最後の変更後 5 年間保持する新しい保持ポリシーが作成されました。
-
-# [ラボ 7 - 演習 3 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex2_Retention_Policies.md#proceed-to-lab-7---exercise-3)

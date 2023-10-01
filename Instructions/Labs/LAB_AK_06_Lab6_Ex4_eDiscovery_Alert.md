@@ -96,5 +96,3 @@
 18. 別のラボ演習ですぐに使用するため、ブラウザーで [Outlook] タブ ( **[メール] - [ホリー ディクソン] - [Outlook] ) を開いたままにしておきます。**他のブラウザのタブもすべて開いたままにしておきます。
 
 これで、電子情報開示検索の作成または完了した検索からのデータのエクスポートを監視する Microsoft 365 電子情報開示システム アラートのテストが正常に完了しました。
-
-# [ラボ 6 - 演習 5 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex4_eDiscovery_Alert.md#proceed-to-lab-6---exercise-5)

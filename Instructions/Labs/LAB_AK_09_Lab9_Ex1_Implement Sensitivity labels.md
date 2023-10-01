@@ -325,6 +325,4 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
     Joni だけにドキュメントを読み取るアクセス許可が割り当てられているため、構成した PII ポリシー パラメーターに基づいて Azure Information Protection がドキュメントを保護していることを確認しました。
 
-## [おめでとう！このコースの最後のラボを完了しました。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_09_Lab9_Ex1_Implement Sensitivity labels.md#congratulations-you-have-just-completed-the-final-lab-in-this-course)
-
-# [ラボ 9 の終了](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_09_Lab9_Ex1_Implement Sensitivity labels.md#end-of-lab-9)
+## おめでとう！このコースの最後のラボを完了しました。

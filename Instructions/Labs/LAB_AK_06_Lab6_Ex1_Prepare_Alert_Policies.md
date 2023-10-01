@@ -52,5 +52,3 @@ Adatum のパイロット プロジェクトでは、Lynne Robbins がアラー�
 13. 次のラボ演習まで、Edge ブラウザーのすべてのタブを開いたままにしておきます。
 
 これで、Lynne Robbins がコンプライアンス データ管理者役割グループに追加されました。
-
-# [ラボ 6 - 演習 2 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_06_Lab6_Ex1_Prepare_Alert_Policies.md#proceed-to-lab-6---exercise-2)

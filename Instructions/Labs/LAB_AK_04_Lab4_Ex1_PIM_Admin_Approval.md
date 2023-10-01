@@ -216,5 +216,3 @@ Adatum の PIM パイロット プロジェクトにおいて、Holly は、グ�
 8. InPrivate ブラウザー セッションを閉じます。
 
 9. Edge ブラウザでは、次のラボのためにすべてのタブを開いたままにしておきます。
-
-# [ラボ 4 - 演習 2 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_04_Lab4_Ex1_PIM_Admin_Approval.md#proceed-to-lab-4---exercise-2)

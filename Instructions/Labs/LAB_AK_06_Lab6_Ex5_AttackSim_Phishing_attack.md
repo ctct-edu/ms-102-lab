@@ -145,5 +145,3 @@ Microsoft 365 には、シミュレーションを作成し、すべてのユー
 12. **PhishingTest1**ページが表示されます。このシミュレートされた攻撃のために収集されたすべての情報を確認します。完了したら、ウィンドウの右上隅にある[ **X]を選択してウィンドウを閉じます。**
 
 13. LON-CL1 でブラウザを開いたままにし、どのタブも閉じないでください。
-
-# [ラボ 6 - 演習 6 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex5_AttackSim_Phishing_attack.md#proceed-to-lab-6---exercise-6)

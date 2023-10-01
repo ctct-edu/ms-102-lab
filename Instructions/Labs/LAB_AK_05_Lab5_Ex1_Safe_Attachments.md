@@ -50,5 +50,3 @@ Adatum の Microsoft 365 パイロット プロジェクトのこのフェーズ
 **注:**残念ながら、作成したばかりの安全な添付ファイル ポリシーを検証できるトレーニング ラボを作成できません。そのためには、悪意のある添付ファイルを含む電子メールを送信する必要があります。EICAR テスト ウイルスなど、利用可能な一般的なテスト ウイルスがいくつかあります。ただし、EICAR などのよく知られたテスト ウイルスの場合、ウイルスが添付されたメッセージは、Microsoft Defender for Office 365 で処理される前にメール サーバーによって隔離されます。安全な添付ファイル機能は、未知のウイルスやゼロウイルスから保護することを目的としているため、ウイルスやマルウェアの可能性があるため、このような添付ファイルを作成することは非常に困難であり、お勧めできません。
 
 ただし、実際の環境で安全な添付ファイル ポリシーを定義した後、サービスがどのように機能しているかを確認する良い方法の 1 つは、Microsoft Defender for Office 365 のセキュリティ関連レポートを表示することです。 これらのレポートの使用方法の詳細については、「Microsoft Defender for Office 365」を参照してください。安全なリンクと安全な添付ファイルのポリシーを検証するには、「[Microsoft 365 Defender ポータルで Defender for Office 365 レポートを表示する」を](https://learn.microsoft.com/microsoft-365/security/office-365-security/view-reports-for-mdo)参照してください。
-
-# [ラボ 5 - 演習 2 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_05_Lab5_Ex1_Safe_Attachments.md#proceed-to-lab-5---exercise-2)

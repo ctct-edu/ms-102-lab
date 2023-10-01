@@ -99,5 +99,3 @@ Adatum の新しい Microsoft 365 管理者である Holly Dickson としての�
 I8. **[新しいポリシーが作成されました**] ページが表示されるまでに 1 分ほどかかる場合があります。完了したら、**「完了」**を選択します。
 
 これで、組織内で送信または共有される電子メールおよびドキュメント内の IP アドレスをスキャンする DLP ポリシーが作成されました。
-
-# [ラボ 8 - 演習 2 に進みます。](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_08_Lab8_Ex1_Manage_DLP_Policies.md#proceed-to-lab-8---exercise-2)

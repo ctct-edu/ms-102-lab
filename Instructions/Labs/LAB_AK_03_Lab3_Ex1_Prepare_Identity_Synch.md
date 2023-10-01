@@ -197,5 +197,3 @@ Azure AD Connect を実行する前に、まず同期プロセスを制御する
 16. **「ネットワークとインターネット」**ウィンドウを閉じます。
 
 17. 次の演習に進みます。これで、Azure AD Connect ツールをインストールし、ディレクトリ同期を有効にする準備が整いました。
-
-# [ラボ 3 - 演習 2 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#proceed-to-lab-3---exercise-2)

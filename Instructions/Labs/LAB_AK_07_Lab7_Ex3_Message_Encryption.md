@@ -77,5 +77,3 @@
    ルールのリストの上に表示されるメニュー バーで、**[更新]**アイコンを選択します。更新されたリストには、PowerShell を使用して作成したばかりのルールも表示されます。
 
 9. 次の演習のために Edge ブラウザを開いたままにしておきます。
-
-# [ラボ 7 の終了](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_07_Lab7_Ex3_Message_Encryption.md#end-of-lab-7)

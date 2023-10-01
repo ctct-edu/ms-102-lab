@@ -105,5 +105,3 @@
 19. ここで、LON-CL2 を使用する次のラボ用に LON-CL2 を準備する必要があります。Edge ブラウザの [Outlook] タブで、右上隅にある**MA の**イニシャルが付いた円を選択します。表示される**MOD 管理者**プロファイル ウィンドウで、 **[サインアウト]**を選択します。
 
 20. Outlook からサインアウトしたら、Edge ブラウザを閉じます。LON-CL2 は Lab 6 で使用できるようになりました。
-
-# [ラボ 5 の終了](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_05_Lab5_Ex2_Safe_Links.md#end-of-lab-5)

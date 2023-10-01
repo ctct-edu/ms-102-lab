@@ -95,5 +95,3 @@
 14. Edge ブラウザーで、**[アラートの表示 - Microsoft 365 セキュリティ]**タブを閉じます。次のラボ演習で使用するため、Lynne の**[Outlook]タブは開いたままにしておきます。**
 
 ユーザーのメールボックスへのフルアクセスの付与に関してアラーム メッセージを送信するメールボックス アクセス許可アラートのテストが正常に完了しました。
-
-# [ラボ 6 - 演習 3 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_06_Lab6_Ex2_Mailbox_Permission_Alert.md#proceed-to-lab-6---exercise-3)

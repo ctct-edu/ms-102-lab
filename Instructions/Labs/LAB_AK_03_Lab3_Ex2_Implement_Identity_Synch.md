@@ -343,5 +343,3 @@
     - ドーン・ウィリアムソン
 
 19. これで、テスト グループとユーザー アカウントが適切に同期されたことが検証されました。検証手順が完了したら、PowerShell ウィンドウを閉じます。
-
-# [ラボ 3 - 演習 3 に進みます。](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex2_Implement_Identity_Synch.md#proceed-to-lab-3---exercise-3)

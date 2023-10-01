@@ -102,5 +102,3 @@ CTO は、Adatum のユーザーが自分のアカウントにアクセスし続
     **[ロックアウトされたら、90 秒待ってから、 laura@xxxxxZZZZZZ.onmicrosoft.com](mailto:laura@xxxxxZZZZZZ.onmicrosoft.com)**としてサインインし直します(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって割り当てられたテナント プレフィックスです)。**[パスワード]**フィールドに、Laura のパスワードを入力します。これは、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供される**Microsoft 365 テナント パスワード**と同じです。Laura として正常にサインインできることを確認します。
 
 22. ログインが成功したら、開いているアプリケーションをすべて閉じることができます。これは、LON-DC1 ドメイン コントローラーを使用した最後の実習となります。
-
-# [ラボ 3 の終了](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_03_Lab3_Ex3_Manage_secure_user_access.md#end-of-lab-3)
