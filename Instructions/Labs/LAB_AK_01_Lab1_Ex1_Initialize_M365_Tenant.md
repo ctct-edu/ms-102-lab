@@ -29,7 +29,7 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 4. 右上の歯車マーク **[Settings]** をクリックします。
 
-   ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-1.png)
+   ![](.\media\lab1-1.png)
 
 5. **[Setting]** の一覧から、 **[Language and time zone]** の **[Change your language]** をクリックします。
 
