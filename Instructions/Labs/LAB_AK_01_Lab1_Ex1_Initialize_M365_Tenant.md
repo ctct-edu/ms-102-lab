@@ -21,7 +21,7 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 ### タスク 1: Microsoft 365 ポータルの日本語化
 
-1. InPrivate ウィンドウ(Microsoft Edge) もしくは、シークレットウィンドウ (Google Chrome) で、Microsoft 365 ポータル (https://portal.office.com/) にアクセスし、管理者の資格情報でサインインします。
+1. お手元のPCで、InPrivate ウィンドウ(Microsoft Edge) もしくは、シークレットウィンドウ (Google Chrome) で、Microsoft 365 ポータル (https://portal.office.com/) にアクセスし、管理者の資格情報でサインインします。
 
 2. **[サインインの状態を保持しますか]** ページでは、 **[いいえ]** をクリックします 。
 
