@@ -33,33 +33,33 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 5. **[Setting]** の一覧から、 **[Language and time zone]** の **[Change your language]** をクリックします。
 
-6. ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-2.png)
+6. ![](./media/lab1-2.png)
 
 7. **[My Account]** の **[Settings ＆ Privacy]** ページが表示されます。
 
 8. **[Language]** セクションの **[Display Language]** をクリックして、 **[Change display language]** をクリックします。
 
-   ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-3.png)
+   ![](./media/lab1-3.png)
 
 9. **[Language]** ページで **[Japanese]** を選択し、 **[Select]** をクリックします。
 
 10. **[Display language and regional format will be updated to Japanese]** とメッセージが表示されたら、 **[Update]** をクリックします。
 
-    ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-4.png)
+    ![](./media/lab1-4.png)
 
 11. **[表示言語と地域設定が Japanese に更新されました。新しい言語を完全に適用するには、サインアウトする必要があります。]** とメッセージが表示されたら、 **[キャンセル]** をクリックします。
 
-    ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-5.png)
+    ![](./media/lab1-5.png)
 
 12. **[設定およびプライバシー]** ページで、 **[地域]** の **[タイムゾーン] - [タイムゾーンの変更]** をクリックします。
 
-    ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-6.png)
+    ![](./media/lab1-6.png)
 
 13. **[ (UTC ＋ 09:00)大阪、札幌、東京]** を選択して、 **[選択]** をクリックします。
 
 14. Microsoft 365 ポータル の右上にあるイニシャルのアイコンをクリックしてから、 **[sign out]** をクリックします。
 
-    ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-7.png)
+    ![](./media/lab1-7.png)
 
 15. サインアウトが完了したら、一度ブラウザーを×で閉じます。
 
@@ -73,11 +73,11 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 2. Microsoft 365 管理センターの左ペインから、 **[・・・すべて表示]** をクリックします。
 
-   ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-8.png)
+   ![](./media/lab1-8.png)
 
 3. 左側のナビゲーション ウィンドウで  **[設定]** を選択します。 **[設定]** グループで、 **[組織設定]** 選択します。
 
-   ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-9.png)
+   ![](./media/lab1-9.png)
 
 4.  **「組織設定」** ページには、デフォルトで **「サービス」** タブが表示されます。 **「組織プロファイル」** タブを選択します。
 
@@ -104,11 +104,11 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 10. **[リリース設定]** ペインで、リリース オプションのリストの下にある **[ユーザーの選択(Select users)]** オプションを選択します。
 
-    ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-13.png)
+    ![](./media/ab1-13.png)
 
 11. 表示される **[ターゲット リリースのユーザーの選択]** ペインで、 **[ターゲット リリースを受け取るのは誰ですか?(Who should receive targeted releases?)] 内を選択します。** 
 
-    ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-14.png)
+    ![](./media/lab1-14.png)
 
     **注:** 以下の各ユーザーを一度に 1 人ずつ選択する必要があります。 フィールドを再度クリックするとリストが再表示され、次のユーザーを選択できるようになります。
 
@@ -121,7 +121,7 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 12. **[保存(Save)]** を選択します。
 
-    ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-15.png)
+    ![](./media/lab1-15.png)
 
 13. **[リリース設定]** ペインの上部に、4 人のユーザーが対象のリリースに追加されたことを示すメッセージが表示されます。右上隅の **[X]** を選択してペインを閉じます。
 
