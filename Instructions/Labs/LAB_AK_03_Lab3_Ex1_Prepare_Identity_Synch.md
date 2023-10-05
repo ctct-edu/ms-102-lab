@@ -50,7 +50,7 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
 
 8.  **Windows PowerShell** を使用して、オンプレミスの **adatum.com** ドメインを **WWLxZZZZZZ.onelearndns.com** ドメインに置き換える必要があります。その際、プライマリ ドメインの UPN サフィックスと、AD DS 内のすべてのユーザーの UPN を **WWLxZZZZZZ.onelearndns.com** で更新します。
 
-   次の PowerShell コマンドでは、 **Set-ADForest** コマンドレットは Active Directory フォレストのプロパティを変更し、 **-identity** パラメーターは変更する Active Directory フォレストを指定します。 **このタスクを実行するには、次のコマンドを実行して、 adatum.comフォレストの**  **UPNSuffixes** プロパティを設定します(WWLxZZZZZZ を一意の UPN 名に変更することを忘れないでください)。
+   次の PowerShell コマンドでは、 **Set-ADForest** コマンドレットは Active Directory フォレストのプロパティを変更し、 **-identity** パラメーターは変更する Active Directory フォレストを指定します。 **このタスクを実行するには、次のコマンドを実行して、 adatum.comフォレストの**  **UPNSuffixes** プロパティを設定します **(WWLxZZZZZZ を一意の UPN 名に変更することを忘れないでください)** 。
 
    ```
     Set-ADForest -identity adatum.com -UPNSuffixes @{replace="WWLxZZZZZZ.onelearndns.com"}
@@ -58,10 +58,10 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
 
    
 
-9. 次に、次のコマンドを実行して、既存のすべての adatum.com アカウントを新しい UPN @xxxUPNxxx.xxxCustomDomainxxx.xxx ドメインに変更する必要があります (xxxUPNxxx を独自の UPN 名に変更し、xxxCustomDomainxxx.xxx をラボ ホスティング プロバイダーのカスタム ドメイン名に変更することを忘れないでください)。
+9. 次に、次のコマンドを実行して、既存のすべての adatum.com アカウントを新しい UPN @xxxUPNxxx.xxxCustomDomainxxx.xxx ドメインに変更する必要があります  **(WWLxZZZZZZ を一意の UPN 名に変更することを忘れないでください)** 。
 
    ```
-    Get-ADUser -Filter * -Properties SamAccountName | ForEach-Object { Set-ADUser $_  -UserPrincipalName ($_.SamAccountName + "@xxxUPNxxx.xxxCustomDomainxxx.xxx" )}
+    Get-ADUser -Filter * -Properties SamAccountName | ForEach-Object { Set-ADUser $_  -UserPrincipalName ($_.SamAccountName + "@WWLxZZZZZZ.onelearndns.com" )}
    ```
 
    
