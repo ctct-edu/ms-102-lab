@@ -4,25 +4,21 @@
 
 この演習では、Azure AD Connect をセットアップして管理します。オンプレミス ユーザーを作成し、その ID がクラウドに移動されるように同期プロセスを検証します。ユーザーとグループのメンテナンス手順の中には、以前の演習でおなじみのものもあるかもしれません。ただし、この場合、同期プロセスを検証するために必要です。
 
-### [タスク 1: UPN サフィックスを構成する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#task-1-configure-your-upn-suffix)
+### タスク 1: UPN サフィックスを構成する
 
 Active Directory では、デフォルトのユーザー プリンシパル名 (UPN) サフィックス (つまり、テナント プレフィックス) は、ユーザー アカウントが作成されたドメインの DNS 名です。Azure AD Connect ウィザードでは UserPrincipalName 属性を使用するか、Azure AD でユーザー プリンシパル名として使用するオンプレミス属性 (カスタム インストールの場合) を指定できます。これは、Azure AD へのサインインに使用される値です。
 
-**思い出してください。VM 環境は、 adatum.com**というタイトルのオンプレミス ドメインを使用して、ラボ ホスティング プロバイダーによって作成されました。このドメインには、Holly Dickson、Laura Atkins など、いくつかのオンプレミス ユーザー アカウントが含まれていました。次に、このコースの前半のラボで、**xxxUPNxxx.xxxCustomDomainxxx.xxx**という名前の Adatum 用のカスタム承認済みドメインを作成しました (xxxUPNxxx はテナントに割り当てられた一意の UPN 名、xxxCustomDomainxxx.xxx はテナントによってドメインに割り当てられた名前です)ラボ ホスティング プロバイダー）。
+**思い出してください。VM 環境は、 adatum.com** というタイトルのオンプレミス ドメインを使用して、ラボ ホスティング プロバイダーによって作成されました。このドメインには、Holly Dickson、Laura Atkins など、いくつかのオンプレミス ユーザー アカウントが含まれていました。次に、このコースの前半のラボで、 **WWLxZZZZZZ.onelearndns.com** という名前の Adatum 用のカスタム承認済みドメインを作成しました 。
 
-**このタスクでは、PowerShell を使用して、最初に確立されたadatum.com**ドメインをカスタム**xxxUPNxxx.xxxCustomDomainxxx.xxx**ドメインに置き換えることにより、Adatum Corporation 全体のドメインのユーザー プリンシパル名を変更します。その際、プライマリ ドメインの UPN サフィックスと、AD DS のすべてのオンプレミス ユーザー アカウントの UPN を**@xxxUPNxxx.xxxCustomDomainxxx.xxx**で更新します。
-
-企業はさまざまな理由でドメイン名を変更する場合があります。たとえば、企業が新しいドメイン名を購入したり、社名を変更してそのドメイン名に新しい社名を反映させたい場合や、企業が売却されてそのドメイン名に新しい親会社の名前を反映させたい場合があります。名前。根本的な理由に関係なく、ドメイン名を変更する目的は通常、各ユーザーの電子メール アドレスのドメイン名を変更することです。
-
-このラボ用に、Adatum は新しい xxxUPNxxx.xxxCustomDomainxxx.xxx ドメイン (ラボ ホスティング プロバイダーによって提供される) を購入しました。したがって、すべてのユーザーの電子メール アドレスのドメイン名を @adatum.com から @xxxUPNxxx.xxxCustomDomainxxx.xxx に変更したいと考えています。
+ **このタスクでは、PowerShell を使用して、最初に確立されたadatum.com** ドメインをカスタム **WWLxZZZZZZ.onelearndns.com **ドメインに置き換えることにより、Adatum Corporation 全体のドメインのユーザー プリンシパル名を変更します。その際、プライマリ ドメインの UPN サフィックスと、AD DS のすべてのオンプレミス ユーザー アカウントの UPN を **@WWLxZZZZZZ.onelearndns.com** で更新します。
 
 **重要 - PowerShell に関する注意事項:**これまで、Windows PowerShell を使用するこのコースのラボでは、Microsoft Graph PowerShell として知られる最新の PowerShell モジュールを使用してきました。この PowerShell モジュールは、MSOnline と Azure Active Directory (Azure AD) PowerShell の 2 つの古いモジュールを置き換えます。古いモジュールは廃止される予定であるため、該当する場合、Microsoft のお客様は新しい Microsoft Graph PowerShell モジュールを使用することをお勧めします。ただし、現時点では、MSOnline および Azure AD PowerShell のすべての機能が Microsoft Graph PowerShell に組み込まれているわけではありません。この実習では、Adatum の Active Directory フォレストの更新に必要なコマンドがまだ Microsoft Graph PowerShell に組み込まれていないため、MSOnline を使用する必要があります。そのような、このタスクは、MSOnline モジュールをインストールし、Microsoft Online Service に接続することで開始します。次に、適切な MSOnline コマンドレットを実行して、adatum.com ドメインを更新します。
 
-1. **Adatum のドメイン コントローラーであるLON-DC1**に切り替えます。ここでも**ADATUM\Administrator**およびパスワード**Pa55w.rd**としてログインしているはずです。
+1. **Adatum のドメイン コントローラーであるLON-DC1** に切り替えます。ここでも **ADATUM\Administrator** およびパスワード **Pa55w.rd** としてログインしているはずです。
 
-2. **Windows PowerShell**がまだ開いている場合は、タスクバーの**PowerShellアイコンを選択します。****それ以外の場合は、タスク**バーの虫眼鏡 (**検索**) アイコンを選択し、表示される検索ボックスに「**power」と入力し、** **Windows PowerShell**を右クリックし(Windows PowerShell ISE は選択しないでください)、[**管理者として実行]**を選択して、 Windows PowerShell を開く必要があります。ドロップダウン メニュー。Windows PowerShell が開いたら、ウィンドウを最大化します。
+2.  **Windows PowerShell** がまだ開いている場合は、タスクバーの **PowerShellアイコンを選択します。** それ以外の場合は、タスクバーの虫眼鏡 (検索) アイコンを選択し、表示される検索ボックスに「power」と入力し、**Windows PowerShell**を右クリックし、 **[Run as administrator]** を選択して、 Windows PowerShell を開く必要があります。ドロップダウン メニュー。Windows PowerShell が開いたら、ウィンドウを最大化します。
 
-3. MSOnline PowerShell モジュールをインストールすることから始める必要があります。**Windows PowerShell**のコマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
+3. MSOnline PowerShell モジュールをインストールすることから始める必要があります。  **Windows PowerShell**  のコマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
 
    ```
     Install-Module MSOnline
@@ -30,7 +26,7 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
 
    
 
-4. 信頼できないリポジトリ (PSGallery) からモジュールをインストールするかどうかを確認するメッセージが表示されたら、「**A 」と入力して****[A] すべてはいを**選択します。
+4. 信頼できないリポジトリ (PSGallery) からモジュールをインストールするかどうかを確認するメッセージが表示されたら、 **「A 」と入力して**  **[A] すべてはいを** 選択します。
 
 5. ここで、PowerShell セッションを Microsoft Online Service に接続する必要があります。コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
 
@@ -40,9 +36,9 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
 
    
 
-6. **表示される[サインイン]**ダイアログ ボックスで、 **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**としてログインします(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。**[パスワード]**フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 テナント パスワードを入力します。**
+6. 表示される[サインイン]ダイアログ ボックスで、 **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**としてログインします(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。 **[パスワード]** フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供されたのと同じ **Microsoft 365 管理者 パスワードを入力します。** 
 
-7. PowerShell の実行ポリシー設定は、Windows システム上でどの PowerShell スクリプトを実行できるかを決定します。このポリシーを**無制限**に設定すると、Holly はすべての構成ファイルをロードし、すべてのスクリプトを実行できるようになります。コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
+7. PowerShell の実行ポリシー設定は、Windows システム上でどの PowerShell スクリプトを実行できるかを決定します。このポリシーを **無制限** に設定すると、Holly はすべての構成ファイルをロードし、すべてのスクリプトを実行できるようになります。コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
 
    ```
     Set-ExecutionPolicy unrestricted
@@ -50,14 +46,14 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
 
    
 
-   実行ポリシーを変更するかどうかを確認するメッセージが表示されたら、 「 **A 」と入力して****[A] すべてはいを**選択します。
+   実行ポリシーを変更するかどうかを確認するメッセージが表示されたら、   **「A 」と入力して**  **[A] すべてはいを** 選択します。
 
-8. **Windows PowerShell**を使用して、オンプレミスの**adatum.com**ドメインを**xxxUPNxxx.xxxCustomDomainxxx.xxx**ドメインに置き換える必要があります (xxxUPNxxx はテナントに割り当てられた一意の UPN 名に置き換え、xxxCustomDomainxxx.xxx はラボ ホスティングに置き換えます)プロバイダーのカスタム ドメイン)。その際、プライマリ ドメインの UPN サフィックスと、AD DS 内のすべてのユーザーの UPN を**@xxxUPNxxx.xxxCustomDomainxxx.xxx**で更新します。
+8.  **Windows PowerShell** を使用して、オンプレミスの **adatum.com** ドメインを **WWLxZZZZZZ.onelearndns.com** ドメインに置き換える必要があります。その際、プライマリ ドメインの UPN サフィックスと、AD DS 内のすべてのユーザーの UPN を **WWLxZZZZZZ.onelearndns.com** で更新します。
 
-   次の PowerShell コマンドでは、**Set-ADForest**コマンドレットは Active Directory フォレストのプロパティを変更し、**-identity**パラメーターは変更する Active Directory フォレストを指定します。**このタスクを実行するには、次のコマンドを実行して、 adatum.comフォレストの****UPNSuffixes**プロパティを設定します(xxxUPNxxx を一意の UPN 名に変更し、xxxCustomDomainxxx.xxx をラボ ホスティング プロバイダーのカスタム ドメイン名に変更することを忘れないでください)。
+   次の PowerShell コマンドでは、 **Set-ADForest** コマンドレットは Active Directory フォレストのプロパティを変更し、 **-identity** パラメーターは変更する Active Directory フォレストを指定します。 **このタスクを実行するには、次のコマンドを実行して、 adatum.comフォレストの**  **UPNSuffixes** プロパティを設定します(WWLxZZZZZZ を一意の UPN 名に変更することを忘れないでください)。
 
    ```
-    Set-ADForest -identity adatum.com -UPNSuffixes @{replace="xxxUPNxxx.xxxCustomDomainxxx.xxx"}
+    Set-ADForest -identity adatum.com -UPNSuffixes @{replace="WWLxZZZZZZ.onelearndns.com"}
    ```
 
    
@@ -72,7 +68,7 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
 
 10. 次のタスクでは、引き続き LON-DC1 で PowerShell を使用します。
 
-### [タスク 2: 問題のあるユーザー アカウントを準備する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#task-2-prepare-problem-user-accounts)
+### タスク 2: 問題のあるユーザー アカウントを準備する
 
 オンプレミスの Active Directory を Azure AD と統合すると、クラウドとオンプレミスの両方のリソースにアクセスするための共通の ID が提供され、ユーザーの生産性が向上します。ただし、ID データが Windows Server Active Directory (AD DS) から Azure Active Directory (Azure AD) に同期されるときにエラーが発生する可能性があります。
 
@@ -102,7 +98,7 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
 
 3. Windows PowerShell ウィンドウを最小化します。
 
-### [タスク 3: IdFix ツールを実行し、特定された問題を修正する](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#task-3-run-the-idfix-tool-and-fix-identified-issues)
+### タスク 3: IdFix ツールを実行し、特定された問題を修正する
 
 このタスクでは、IdFix ディレクトリ同期エラー修復ツールをダウンロードして使用し、前のタスクで意図的に破損した Klemen Sic のオンプレミス ユーザー アカウントを修正します。IdFix ツールを実行すると、オンプレミス環境と Azure AD の間で ID データを同期する前に、ユーザー アカウントのエラーが修正されます。
 
@@ -156,7 +152,7 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
 
 15. Edge ブラウザを開いたままにしておきます。ただし、IdFix の使用は終了しているため、**[ステップ 2: Id-Fix のインストール - Microsoft - IdFix]タブを閉じても問題ありません。**
 
-### [タスク 4: ディレクトリ同期の準備](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex1_Prepare_Identity_Synch.md#task-4-prepare-for-directory-synchronization)
+### タスク 4: ディレクトリ同期の準備
 
 Azure Active Directory Connect 同期サービスは、Azure AD Connect の主要コンポーネントです。オンプレミス環境と Azure AD の間の ID データの同期に関連するすべての操作を処理します。同期サービスは、オンプレミス コンポーネント (Azure AD Connect 同期) とクラウド サービス コンポーネント (Azure AD Connect Cloud Sync サービス) で構成されます。Microsoft Exchange Online を実装する Adatum などの展開では、Azure AD Connect 同期サービスを使用する必要があります。
 
