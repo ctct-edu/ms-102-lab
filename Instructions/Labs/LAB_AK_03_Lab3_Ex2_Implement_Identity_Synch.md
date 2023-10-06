@@ -38,7 +38,7 @@
 
     [PASSWORD]フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 管理者パスワード**を入力し、  **[Next]** を選択します。
 
-13. [Connect to AD DS]ページで、[ USERNAME]フィールドに **「adatum\Administrator」** と入力し、[ PASSWORD]フィールドに　**「Pa55w.rd」 **　と入力して、 **[Next]**  を選択します。
+13. [Connect to AD DS]ページで、[ USERNAME]フィールドに **「adatum\Administrator」** と入力し、[ PASSWORD]フィールドに　**「Pa55w.rd」**　と入力して、 **[Next]**  を選択します。
 
 14. Azure AD sign-in configuration ウィンドウで、ページの下部にある  **[Continue without matching all UPN suffixes to verified domains] チェック ボックスをオンにし、**  **[Next]** を選択します。
 
@@ -150,11 +150,11 @@
 
 このタスクでは、Azure AD Connect が ID オブジェクトを同期するまで 30 分待つ代わりに、Adatum のオンプレミス AD と Azure AD の間の同期を強制します。強制同期を実行するには、PowerShell を使用する必要があります。
 
-**重要 - PowerShell に関する注意:**前のラボ演習では、その演習のタスクで Microsoft Graph PowerShell ではなく MSOnline モジュールを使用した理由を示す免責事項が提供されていました。Microsoft は、MSOnline と Azure Active Directory (Azure AD) PowerShell の 2 つの古い PowerShell モジュールを Microsoft Graph PowerShell に置き換える作業を進めていますが、古いモジュールには Microsoft Graph PowerShell にまだ組み込まれていない機能がいくつかあります。前の演習のコマンドとこのタスクで使用したコマンドは、このカテゴリに分類されます。前の演習では MSOnline モジュールに接続しましたが、このモジュールも Start-ADSyncSyncCycle コマンドに従ってこのタスクで使用されます。
+**重要 - PowerShell に関する注意:**　前のラボ演習では、その演習のタスクで Microsoft Graph PowerShell ではなく MSOnline モジュールを使用した理由を示す免責事項が提供されていました。Microsoft は、MSOnline と Azure Active Directory (Azure AD) PowerShell の 2 つの古い PowerShell モジュールを Microsoft Graph PowerShell に置き換える作業を進めていますが、古いモジュールには Microsoft Graph PowerShell にまだ組み込まれていない機能がいくつかあります。前の演習のコマンドとこのタスクで使用したコマンドは、このカテゴリに分類されます。前の演習では MSOnline モジュールに接続しましたが、このモジュールも Start-ADSyncSyncCycle コマンドに従ってこのタスクで使用されます。
 
 1. LON-DC1 で、前の演習で **Windows PowerShellアプリケーションがまだ開いている場合は、**  **ここで閉じる必要があります**。
 
-   警告**:**この手順を実行する理由は、Azure AD Connect のセットアップ前に Windows PowerShell を開いた場合、手順 3 で使用したコマンドレット **Start-ADSyncSyncCycle** が使用できなくなり、コマンドレットが認識されないことを示すエラーが表示されるためです。実行しようとすると。したがって、このステップでは、Windows PowerShell が開いている場合は閉じることをお勧めします。
+   **警告:** この手順を実行する理由は、Azure AD Connect のセットアップ前に Windows PowerShell を開いた場合、手順 3 で使用したコマンドレット **Start-ADSyncSyncCycle** が使用できなくなり、コマンドレットが認識されないことを示すエラーが表示されるためです。実行しようとすると。したがって、このステップでは、Windows PowerShell が開いている場合は閉じることをお勧めします。
 
 2. この時点では、Windows PowerShell は開いてはいけません。今、それを再度開きたいと考えています。これを開くには、タスク バーの **虫眼鏡 (検索)アイコンを選択し、検索ボックスに**   **「power」** と入力し、メニューで **Windows PowerShell**  を右クリックし、 **[Run as administrator]** を選択します。Windows PowerShell ウィンドウが開いたら、最大化します。
 
@@ -176,7 +176,7 @@
 
 このタスクでは、以前に行った変更が Adatum のオンプレミス Active Directory から Azure Active Directory に同期されたかどうかを検証します。Microsoft 365 管理センターを使用して変更を検証し、次に Windows PowerShell を使用して同じ検証を実行します。これにより、Microsoft 365 管理センター GUI と PowerShell の両方を使用して同期を検証する経験が得られます。
 
-**重要 - PowerShell に関する注意:**このタスクでは、Microsoft Graph PowerShell でサポートされている、グループとユーザーに対する基本的な PowerShell クエリを使用します。Microsoft Graph PowerShell は、MSOnline と Azure Active Directory (Azure AD) PowerShell という 2 つの古い PowerShell モジュールを置き換えるものであるため、このタスクでは Microsoft Graph PowerShell を使用します。
+**重要 - PowerShell に関する注意:** このタスクでは、Microsoft Graph PowerShell でサポートされている、グループとユーザーに対する基本的な PowerShell クエリを使用します。Microsoft Graph PowerShell は、MSOnline と Azure Active Directory (Azure AD) PowerShell という 2 つの古い PowerShell モジュールを置き換えるものであるため、このタスクでは Microsoft Graph PowerShell を使用します。
 
 1. ローカルのadatum\administratorとしてパスワードPa55w.rd を使用して LON-DC1 にログインしている必要があります。
 
@@ -194,7 +194,7 @@
 
 5. [Manufacturing]グループの右側には、垂直の省略記号アイコン (ピリオドが 3 つ垂直に並んでいます) があります。このアイコンの上にマウスを置きます。このグループはオンプレミス環境でのみ管理できることを示すメッセージが表示されることに注意してください。
 
-6. 次に、Windows PowerShell を使用してこのグループを調べてみましょう。Windows PowerShellがタスクバーですでに開いている場合は、PowerShell アイコンを選択して次の手順に進みます。それ以外の場合は、タスク バーの**[検索]** フィールドに**「PowerShell」と入力し、** **Windows PowerShell** アプリケーションを右クリックして **[Run as administrator]** を選択します。PowerShell ウィンドウを最大化します。
+6. 次に、Windows PowerShell を使用してこのグループを調べてみましょう。Windows PowerShellがタスクバーですでに開いている場合は、PowerShell アイコンを選択して次の手順に進みます。それ以外の場合は、タスク バーの**[検索]** フィールドに**「PowerShell」と入力し、**  Windows PowerShell アプリケーションを右クリックして **[Run as administrator]** を選択します。PowerShell ウィンドウを最大化します。
 
 7. まず、Microsoft Graph PowerShell をインストールする必要があります。このトレーニングの前半で、Microsoft Graph PowerShell を LON-CL1 にインストールしました。その時点で、次のコマンドを実行して 30 個以上のサブモジュールをすべてインストールしました: Install-Module Microsoft.Graph (Graph は 30 個以上のサブモジュールを含む親モジュールです)。30 以上のサブモジュールをすべて LON-DC1 にインストールすることもできますが、このタスクではグループとユーザーのサブモジュールのみを使用します。これは、LON-DC1 で PowerShell を使用するこのトレーニングの最後のタスクです。したがって、インストール時間を短縮するには、次の 2 つのコマンドを実行します。これにより、これら 2 つのサブモジュールのみがインストールされ、他の 30 以上のサブモジュールはインストールされません。これにより、Graph サブモジュール全体ではなく、特定のサブモジュールをインストールする経験も得られます。
 
