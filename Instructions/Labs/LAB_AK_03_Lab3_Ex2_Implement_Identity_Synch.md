@@ -280,7 +280,7 @@ Get-MgGroupMember -GroupId 'the object ID of the Research group' -All | ForEach 
 
 
 
-**重要:**このコマンドを実行する前に、Research グループのオブジェクト ID を Manufacturing グループのオブジェクト ID に置き換える必要があります。これを行うには、キーボードの左矢印を使用してカーソルをオブジェクト ID の先頭に移動し、リサーチ グループのオブジェクト ID を強調表示して**Ctrl+V**を押します。これにより、研究グループの ID がManufacturing グループのオブジェクト ID に貼り付けられて置き換えられます。次に、Enter キーを押してコマンドを実行します。これにより、Manufacturing グループのメンバーが表示されます。
+**重要:** このコマンドを実行する前に、Research グループのオブジェクト ID を Manufacturing グループのオブジェクト ID に置き換える必要があります。これを行うには、キーボードの左矢印を使用してカーソルをオブジェクト ID の先頭に移動し、リサーチ グループのオブジェクト ID を強調表示して**Ctrl+V**を押します。これにより、研究グループの ID がManufacturing グループのオブジェクト ID に貼り付けられて置き換えられます。次に、Enter キーを押してコマンドを実行します。これにより、Manufacturing グループのメンバーが表示されます。
 
 Manufacturingグループでは、以前に次のメンバーをオンプレミスの Active Directory のグループに追加しました。同期後、この Microsoft 365 グループにこれらの各グループ メンバーが表示されるようになります。
 
