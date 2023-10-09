@@ -222,7 +222,7 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
 15. 表示される[Share "PtotectedDocument1"]ウィンドウで、下の方にある **[Anyone with the link can edit]** リンクを選択します。
 
-    表示される[Sharing settings]ページで、 **[People you choose]** を選択します。その下にある[More settings]で、**[Can Edit] ** を選択します。表示されるメニューで、**[Can Review]** を選択します。
+    表示される[Sharing settings]ページで、 **[People you choose]** を選択します。その下にある[More settings]で、 **[Can Edit]** を選択します。表示されるメニューで、**[Can Review]** を選択します。
 
     **[Apply]** ボタンを選択します。
 
