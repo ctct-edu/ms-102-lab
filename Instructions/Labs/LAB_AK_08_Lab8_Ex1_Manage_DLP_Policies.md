@@ -2,7 +2,7 @@
 
 Adatum の新しい Microsoft 365 管理者である Holly Dickson としてのあなたの役割では、仮想化されたラボ環境に Microsoft 365 を展開しています。Microsoft 365 パイロット プロジェクトを進める際の次のステップは、Adatum でデータ損失防止 (DLP) ポリシーを実装することです。この演習では、まずカスタム DLP ポリシーを作成し、次に電子メール メッセージのアーカイブと機密データを含む電子メールに関連する DLP ポリシーをテストします。
 
-### [タスク 1 – カスタム設定を使用して DLP ポリシーを作成する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_08_Lab8_Ex1_Manage_DLP_Policies.md#task-1--create-a-dlp-policy-with-custom-settings)
+### タスク 1 – カスタム設定を使用して DLP ポリシーを作成する
 
 このタスクでは、Microsoft Purview ポータルでデータ損失防止ポリシーを作成し、機密データがユーザーによって共有されないように保護します。作成した DLP ポリシーは、IP アドレスを含むコンテンツを共有したいかどうかをユーザーに通知します。
 
