@@ -64,16 +64,14 @@
 
 6. **表示される[パスワードの入力]**ダイアログ ボックスで、ラボ ホスティング プロバイダーから提供された Microsoft 365 テナント管理者パスワードを入力し、 [**サインイン] を**選択します。
 
-7. **ここで、 New-TransportRule**コマンドレットを使用してメール フロー ルールを作成し、 **ApplyRightsProtectionTemplate**プロパティを、使用可能な RMS テンプレートの 1 つである**Encrypt**に設定します。[このルールは、Adatum からGservices@adatum.com](mailto:Gservices@adatum.com)に送信されるすべての送信メールを暗号化します。
+7. ここで、 New-TransportRuleコマンドレットを使用してメール フロー ルールを作成し、 ApplyRightsProtectionTemplateプロパティを、使用可能な RMS テンプレートの 1 つである**Encrypt**に設定します。このルールは、Adatum からGservices@adatum.comに送信されるすべての送信メールを暗号化します。
 
    このルールを作成するには、次のコマンドを実行します。
 
-   **New-TransportRule -Name "ゲスト サービスの暗号化ルール" -SentTo " [Gservices@adatum.com](mailto:Gservices@adatum.com) " -SentToScope "NotinOrganization" -ApplyRightsProtectionTemplate Encrypt**
+    **New-TransportRule -Name "Encrypt rule for Guest Services" -SentTo "Gservices@adatum.com" -SentToScope "NotinOrganization" -ApplyRightsProtectionTemplate Encrypt**
 
    **注:**このコマンドは完了するまでに数秒かかります。作成した新しいルールのプロパティが PowerShell に表示されるまで、次の手順に進まないでください。
 
-8. ルールが存在することを確認するには、まず PowerShell ウィンドウを最小化します。**Microsoft Edge ブラウザでは、引き続きExchange 管理センターの****メール フロー**ウィンドウが表示され、**[ルール]**タブが表示されます。ルールのリストには、前のタスクで作成した**[「guest@adatum.com の](mailto:guest@adatum.com)****メールを暗号化する」ルールのみが表示されます。**
+8. ルールが存在することを確認するには、 **Exchange 管理センターのメール フローウィンドウにて、[ルール]タブを表示** します。必要に応じて、ルールのリストの上に表示されるメニュー バーで、**[更新]** アイコンを選択します。更新されたリストには、PowerShell を使用して作成したばかりのルールが表示されます。
 
-   ルールのリストの上に表示されるメニュー バーで、**[更新]**アイコンを選択します。更新されたリストには、PowerShell を使用して作成したばかりのルールも表示されます。
-
-9. 次の演習のために Edge ブラウザを開いたままにしておきます。
+   
