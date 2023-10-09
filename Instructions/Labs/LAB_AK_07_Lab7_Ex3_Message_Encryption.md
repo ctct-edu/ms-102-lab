@@ -54,13 +54,13 @@
 
 3. Windows PowerShellでは、コマンド プロンプトで次のコマンドを実行して、Exchange Online PowerShell モジュール (ExchangeOnlineManagement) をインストールすることから始める必要があります。
 
-   ‎**Install-Module -Name ExchangeOnlineManagement**
+   ‎ **Install-Module -Name ExchangeOnlineManagement**
 
 4. 信頼できないリポジトリ (PSGallery) からモジュールをインストールするかどうかを確認するメッセージが表示されたら、「**A 」と入力して** **[A] すべてはいを** 選択します。
 
 5. 次に、コマンド プロンプトで次のコマンドを実行して、モジュールに接続する必要があります (注: コマンドでは、ラボ ホスティング プロバイダーから提供されたテナント名 (xxxxxZZZZZZ.onmicrosoft.com、xxxxxZZZZZZ はテナント) をコピーして貼り付ける必要があります)ラボ ホスティング プロバイダーによって割り当てられたプレフィックス):
 
-   **Connect -ExchangeOnline -UserPrincipalName holly@xxxxxZZZZZZ.onmicrosoft.com**
+    **Connect-ExchangeOnline -UserPrincipalName holly@xxxxxZZZZZZ.onmicrosoft.com**
 
 6. **表示される[パスワードの入力]**ダイアログ ボックスで、ラボ ホスティング プロバイダーから提供された Microsoft 365 テナント管理者パスワードを入力し、 [**サインイン] を**選択します。
 
