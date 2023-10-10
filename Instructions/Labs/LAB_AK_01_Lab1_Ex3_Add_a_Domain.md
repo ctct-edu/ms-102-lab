@@ -102,7 +102,7 @@
 
     c. DNS マネージャー の左側ペインのForward Lookup Zones で、以前に中断したときから**WWLxZZZZZZ.onelearndnsドメインが選択されているはずです。** ここで、このドメインのMail Exchanger (MX) レコードを作成する必要があります。**WWLxZZZZZZ.onelearndns** ドメインを右クリックし、**[New Mail Exchanger (MX)...]を選択します。**
 
-    d. [New Resource Record\] ウィンドウの **[Mail Exchanger (MX)]**タブで、[Host or child domain] フィールドを空白のままにし、  **[Fully qualified domain name (FQDN) of mail server]** フィールドを右クリックし、表示されるメニューから **[Paste]** を選択します 。これにより、上記の手順 a でクリップボードにコピーした、参照先のアドレスまたは値が貼り付けられます。
+    d. [New Resource Record\] ウィンドウの **[Mail Exchanger (MX)]** タブで、[Host or child domain] フィールドを空白のままにし、  **[Fully qualified domain name (FQDN) of mail server]** フィールドを右クリックし、表示されるメニューから **[Paste]** を選択します 。これにより、上記の手順 a でクリップボードにコピーした、参照先のアドレスまたは値が貼り付けられます。
 
     ![](./media/lab1-3-2.png)
 
