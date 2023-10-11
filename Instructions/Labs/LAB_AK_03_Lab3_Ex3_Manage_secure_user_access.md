@@ -30,7 +30,7 @@ Adatum の CTO は、同社のユーザーにより良いサインイン エク�
 
 10. Ready to configure ページで、**[Configure]** を選択します。構成が完了するまでに 1 分ほどかかる場合があります。
 
-11. [Configuration complete]ページで、Azure AD の現在のサインオン方法が PTA であることを示すメッセージに注目してください。**[Exit]**を選択します。これでパススルー認証が有効になりました。
+11. [Configuration complete]ページで、Azure AD の現在のサインオン方法が PTA であることを示すメッセージに注目してください。**[Exit]** を選択します。これでパススルー認証が有効になりました。
 
 12. パススルー認証が正常に有効になっていることを確認するには、Microsoft Entra 管理センターにアクセスします。ブラウザで新しいタブを選択し、アドレス バーに次の URL を入力します: **https://entra.microsoft.com**
 
