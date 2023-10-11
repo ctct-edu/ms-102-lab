@@ -24,7 +24,7 @@ Adatum の CTO は、同社のユーザーにより良いサインイン エク�
 
 7. [enable singre sign-on]ページで、**[Enter credentials]** を選択します。
 
-8. [Forest Credentials]ダイアログ ボックスで、ユーザー名として**adatum\administrator を** 入力し、パスワードとして **Pa55w.rd ** を入力し、**[OK]** を選択します。
+8. [Forest Credentials]ダイアログ ボックスで、ユーザー名として**adatum\administrator を** 入力し、パスワードとして **Pa55w.rd** を入力し、**[OK]** を選択します。
 
 9.  [Enter credentials]ボタンの右側にチェック マークが表示されます。**「Next」** を選択します。
 
