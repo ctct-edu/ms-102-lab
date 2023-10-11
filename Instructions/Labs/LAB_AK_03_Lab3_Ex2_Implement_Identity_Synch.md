@@ -8,9 +8,9 @@
 
 このタスクでは、Azure AD Connect セットアップ ウィザードを実行して、Adatum のオンプレミス Active Directory と Azure Active Directory 間の同期を有効にします。構成が完了すると、同期プロセスが自動的に開始されます。
 
-1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 **LON-DC1** でEdgeブラウザーを起動し、**[Microsoft 365 管理センター]**  (https://admin.microsoft.com)にアクセスし、Holly Dickson として Microsoft 365 にログインしてください。
+1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動し、**[Microsoft 365 管理センター]**  (https://admin.microsoft.com)にアクセスし、Holly Dickson として Microsoft 365 にログインしてください。
 
-2. 　**[Microsoft 365 管理センター]** のナビゲーション ウィンドウで  **[ユーザー]** 、 **[アクティブ ユーザー]** の順に選択します。
+2. 　[Microsoft 365 管理センター] のナビゲーション ウィンドウで  **[ユーザー]** 、 **[アクティブ ユーザー]** の順に選択します。
 
 3. [アクティブ ユーザー]ウィンドウで、メニュー バーの最後に表示される **省略記号アイコンを選択し、表示されるドロップダウン メニューで**  **[ディレクトリ同期]** を選択します。
 
@@ -44,13 +44,13 @@
 
 15. [構成の準備完了]画面で、 **[Start the synchronization process when configuration completes]**  チェック ボックスがまだ選択されていない場合は選択し、 **[Install]**　を選択します。
 
-    **重要:**  Holly は最終的に Exchange ハイブリッド展開を今はインストールする予定はありません。このラボでは、**Exchange hybrid deployment** オプションを選択しないでください。
+    **重要:**  Holly は最終的に Exchange ハイブリッド展開を今はインストールする予定はありません。このラボでは、Exchange hybrid deployment オプションを選択しないでください。
 
 16. 構成が完了するまで待ちます (数分かかる場合があります)。**[Configuration complete]** ページで、**[Exit]** 選択します。
 
 17. タスクバーの左下隅にある**Windows (スタート)**アイコンを選択します。 **[All Apps]** アイコンを選択してすべてのアプリを表示します。**[Azure AD Connect]** を選択してグループを展開し、**[Synchronization Service]** を選択してこのデスクトップ アプリケーションを開始します。
 
-18. **xxxxxZZZZZZ.onmicrosoft.com-AAD** の **Export**  プロファイルが完了するまで待ちます。完了すると、**ステータスは**  **completed-export-errors**になるはずです。完了してこのステータスが表示されたら、この行を選択します。
+18. xxxxxZZZZZZ.onmicrosoft.com-AAD の Export  プロファイルが完了するまで待ちます。完了すると、**ステータスは**  **completed-export-errors**になるはずです。完了してこのステータスが表示されたら、この行を選択します。
 
     ![](./media/lab3-2-2.png)
 
@@ -64,7 +64,7 @@
 
       2 番目のデータ検証エラー リンクを選択し、このエラーが意図的に修正しなかった 2 番目のユーザーのものであることを確認します。前と同じ手順に従って、このユーザーのエラーを確認します。
 
-20.  **LON-DC1 の Synchronization Service Manager** ウィンドウを閉じます。Azure AD Connect が完全同期を完了したことが確認できたので、次のタスクでは、いくつかの更新を行って、30 分ごとに更新が同期されるのを待つのではなく、手動で強制的に即時同期を実行します。
+20.  LON-DC1 の Synchronization Service Manager ウィンドウを閉じます。Azure AD Connect が完全同期を完了したことが確認できたので、次のタスクでは、いくつかの更新を行って、30 分ごとに更新が同期されるのを待つのではなく、手動で強制的に即時同期を実行します。
 
 21. LON-DC1 は次の演習で使用するため、開いたままにしておきます。
 
@@ -96,11 +96,11 @@
 
 9. [Print Operators Properties]ウィンドウで **[OK]** を選択して、[Active Directory ユーザーとコンピュータ]ウィンドウに戻ります。
 
-10. ここで、新しいセキュリティ グループを作成します。**Adatum.com**の下のコンソール ツリーで、 **Research**フォルダー(OU:組織単位)を右クリックし、**[New]**を選択し、 **[Group]** を選択します。
+10. ここで、新しいセキュリティ グループを作成します。**Adatum.com**の下のコンソール ツリーで、 **Research**フォルダー(OU:組織単位)を右クリックし、**[New]** を選択し、 **[Group]** を選択します。
 
     ![](./media/lab3-2-3.png)
 
-11. **[新しいオブジェクト - グループ]**ウィンドウで、次の情報を入力します。
+11. [新しいオブジェクト - グループ]ウィンドウで、次の情報を入力します。
 
     - グループ名 : **Manufacturing**
     - グループ範囲 : **Universal**
@@ -110,7 +110,7 @@
 
 13. **Adatum.com** の下のコンソール ツリーで **Research** フォルダーを選択し、右側の詳細ペインで**Manufacturing** セキュリティ グループをダブルクリックします。
 
-14. 「Manufacturing Propaties」ウィンドウで、 **「E-mail」** フィールドに**[「Manufacturing@adatum.com」](mailto:manufacturing@adatum.com)**と入力します。(英語キーボードのため @ は Shift + 2 で入力)
+14. 「Manufacturing Propaties」ウィンドウで、 「E-mail」 フィールドに **Manufacturing@adatum.com** と入力します。(英語キーボードのため @ は Shift + 2 で入力)
 
 15. **[メンバー]**  タブを選択し、手順 6 ～ 9 を繰り返して、次のメンバーをこのグループに追加します。
 
@@ -130,7 +130,7 @@
 
    ![](./media/lab3-2-4.png)
 
-2. **Research Properties**ウィンドウで、 **[members]** タブを選択して、このグループのメンバーを表示します。
+2. Research Propertiesウィンドウで、 **[members]** タブを選択して、このグループのメンバーを表示します。
 
 3. 次のユーザーをグループから削除したいと考えています:
 
@@ -138,9 +138,9 @@
    - **Shannon Booth**
    - **Tia Zecirevic**
 
-   **ヒント:**各ユーザーを個別に削除することもできますが、最も簡単な方法は、3 人全員を一度に削除することです。最初のユーザーを選択し、**Ctrl** キーを押したまま下にスクロールして、他の 2 人を選択します。3 人のユーザーをすべて選択した状態で、**[Remove]ボタンを選択し、**  **Yes**を選択して削除を確認します。3 人のユーザーが削除されたことを確認し、 **[OK] を選択します。**
+   **ヒント:** 各ユーザーを個別に削除することもできますが、最も簡単な方法は、3 人全員を一度に削除することです。最初のユーザーを選択し、**Ctrl** キーを押したまま下にスクロールして、他の 2 人を選択します。3 人のユーザーをすべて選択した状態で、**[Remove]ボタンを選択し、**  **Yes**を選択して削除を確認します。3 人のユーザーが削除されたことを確認し、 **[OK] を選択します。**
 
-4.  **「Active Directory Users and Computers」** ウィンドウを閉じます。
+4.  「Active Directory Users and Computers」 ウィンドウを閉じます。
 
 5. 次のタスクで引き続き使用するため、LON-DC1 は開いたままにしておきます。
 
@@ -154,11 +154,11 @@
 
 1. LON-DC1 で、前の演習で **Windows PowerShellアプリケーションがまだ開いている場合は、**  **ここで閉じる必要があります**。
 
-   **警告:** この手順を実行する理由は、Azure AD Connect のセットアップ前に Windows PowerShell を開いた場合、手順 3 で使用したコマンドレット **Start-ADSyncSyncCycle** が使用できなくなり、コマンドレットが認識されないことを示すエラーが表示されるためです。実行しようとすると。したがって、このステップでは、Windows PowerShell が開いている場合は閉じることをお勧めします。
+   **警告:** この手順を実行する理由は、Azure AD Connect のセットアップ前に Windows PowerShell を開いた場合、手順 3 で使用したコマンドレット Start-ADSyncSyncCycle が使用できなくなり、コマンドレットが認識されないことを示すエラーが表示されるためです。実行しようとすると。したがって、このステップでは、Windows PowerShell が開いている場合は閉じることをお勧めします。
 
 2. この時点では、Windows PowerShell は開いてはいけません。今、それを再度開きたいと考えています。これを開くには、タスク バーの **虫眼鏡 (検索)アイコンを選択し、検索ボックスに**   **「power」** と入力し、メニューで **Windows PowerShell**  を右クリックし、 **[Run as administrator]** を選択します。Windows PowerShell ウィンドウが開いたら、最大化します。
 
-3. **Windows PowerShell** で次のコマンドを実行して、Adatum のオンプレミス AD と Azure AD の間で同期サイクルを手動で実行します。ここではデルタスイッチを使用して、更新のみが同期されるようにします **。**
+3. Windows PowerShell で **次のコマンドを実行** して、Adatum のオンプレミス AD と Azure AD の間で同期サイクルを手動で実行します。ここではデルタスイッチを使用して、更新のみが同期されるようにします **。**
 
    ```
     Start-ADSyncSyncCycle -PolicyType Delta
@@ -238,7 +238,7 @@
 
 10. 表示されるウィンドウで、 **Holly Dickson の** アカウントを選択します。[パスワードの入力]ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ **Microsoft 365 管理者 パスワードを** テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 **[Sign in]** を選択します。
 
-11. [Permissions requested] ダイアログ ボックスが表示された場合は、 **[Consent on behalf of your organization]** チェック ボックスをオンにして、**[Accept]**を選択します。ここで、PowerShell を使用して、Microsoft 365 のグループのリストを表示します。このリストには、Microsoft 365 で手動で作成したグループと、Microsoft と同期したばかりのオンプレミスの Active Directory で作成されたグループが含まれている必要があります。 365. 次のコマンドを入力し、Enter キーを押します。
+11. [Permissions requested] ダイアログ ボックスが表示された場合は、 **[Consent on behalf of your organization]** チェック ボックスをオンにして、 **[Accept]** を選択します。ここで、PowerShell を使用して、Microsoft 365 のグループのリストを表示します。このリストには、Microsoft 365 で手動で作成したグループと、Microsoft と同期したばかりのオンプレミスの Active Directory で作成されたグループが含まれている必要があります。 365. 次のコマンドを入力し、Enter キーを押します。
 
 ```
 Get-MgGroup | Format-List Id, DisplayName, Description, GroupTypes
