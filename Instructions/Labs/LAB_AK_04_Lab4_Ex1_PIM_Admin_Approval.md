@@ -43,7 +43,7 @@ Adatum の新しい Microsoft 365 管理者である Holly Dickson は、Privile
 
 9. **「承認者の選択」** セクションでは、特定の承認者が選択されていません。ホリーは自分自身をこのロールの承認者として割り当てたいので、このセクションを選択します。右側に開く **[メンバーの選択]** ウィンドウで、Holly Dickson を選択します。ただし、前のラボ演習では 200 を超えるユーザーがオンプレミスの Active Directory から Azure AD に同期されたため、ユーザー リストをスクロールするのは非常に時間がかかります。
 
-   したがって、検索ボックスに **「Holly」** と入力します。名前が Holly で始まるユーザーのリストで、onmicrosoft.com ドメインに属する Holly Dickson のユーザー アカウント ( **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)** ) を選択します。カスタム ドメインに適用される Holly のユーザー アカウントを選択しないでください。次に、**「選択」**ボタンを選択します。
+   したがって、検索ボックスに **「Holly」** と入力します。名前が Holly で始まるユーザーのリストで、onmicrosoft.com ドメインに属する Holly Dickson のユーザー アカウント ( **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)** ) を選択します。カスタム ドメインに適用される Holly のユーザー アカウントを選択しないでください。次に、**「選択」**　ボタンを選択します。
 
 10. [ロール設定の編集 - グローバル管理者] ウィンドウで、ページの上部にある**[通知]** タブを選択します。
 
@@ -73,9 +73,9 @@ Adatum の PIM パイロット プロジェクトにおいて、Holly は、グ�
 
 1. まず、Azure AD にPIM-Global-Administratorsというロール割り当て可能な新しいセキュリティ グループを作成し、Patti をグループのメンバーとして割り当てます。
 
-   **Microsoft Entra 管理センターが**開いているはずです。左側のナビゲーション ウィンドウで、**ID**  の下にある   **[グループ]** を選択し、 **[すべてのグループ]** を選択します。
+   Microsoft Entra 管理センターが開いているはずです。左側のナビゲーション ウィンドウで、**ID**  の下にある   **[グループ]** を選択し、 **[すべてのグループ]** を選択します。
 
-3. 右側の詳細ペインで、メニュー バーの**[新しいグループ]** を選択します。
+3. 右側の詳細ペインで、メニュー バーの **[新しいグループ]** を選択します。
 
 4. **[新しいグループ]**ウィンドウで、次の情報を入力します。
 
@@ -91,7 +91,7 @@ Adatum の PIM パイロット プロジェクトにおいて、Holly は、グ�
 
 6. ページの上部に、「Microsoft Entra ロール割り当ての対象となるグループの作成は、後で変更できない設定です。この機能を追加しますか?」という内容のダイアログ ボックスが表示されます。 **[はい]** を選択します。
 
-7. ここで、PIM-Global-Administratorsグループを役割の割り当てに適格にする必要があります。左側のナビゲーションペインで、**「Identity Governance」**を選択してセクションを展開し、**「Privileged Identity Management」**を選択します。
+7. ここで、PIM-Global-Administratorsグループを役割の割り当てに適格にする必要があります。左側のナビゲーションペインで、 **「Identity Governance」** を選択してセクションを展開し、**「Privileged Identity Management」** を選択します。
 
 8. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Azure AD ロール]** を選択します。
 
