@@ -279,7 +279,7 @@ Adatum の Microsoft 365 管理者である Holly Dickson として、展開の�
 
    
 
-   **注:**これらのコマンドを実行すると、削除された Inside Sales グループの属性が $DeletedGroup 変数に保存されます。
+    **注:** これらのコマンドを実行すると、削除された Inside Sales グループの属性が $DeletedGroup 変数に保存されます。
 
 8. Inside Sales グループの属性を取得したので、**Restore-MgDirectoryDeletedItem** コマンドレットを実行してグループを復元できます。その際、グループのオブジェクト ID を「-DirectoryObjectId」の隣のパラメータとして宣言する必要があります。通常はオブジェクト ID (例: -DirectoryObjectId 'e76bbcdb-24c5-41a6-805d-b352976fd2a8') をコピーして貼り付けますが、 Get-MgDirectoryDeletedItemコマンドレットに関する現在の問題により、実際のID 値を識別できません。 。そのため、前のコマンドを実行して、$DeletedGroup 変数内のグループの属性を取得する必要がありました。次に、 Restore-MgDirectoryDeletedItemコマンドレットを実行し、 IDを使用するように指示します。$DeletedGroup 変数に格納されている属性の中からフィールドを選択します。次のコマンドを入力して Enter キーを押します。
 
