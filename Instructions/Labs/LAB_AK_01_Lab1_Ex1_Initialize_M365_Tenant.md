@@ -17,7 +17,7 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 - Adatum のオンプレミス環境のローカル管理者アカウント (Adatum\Administrator)。
 - Microsoft 365 のデフォルトのテナント管理者アカウント (このユーザー アカウントの表示名は MOD 管理者です)。
 
-ローカルの Adatum\Administrator アカウントを使用して、クライアント 1 PC (LON-CL1) にログインします。初めて Microsoft 365 にアクセスするときは、最初に Microsoft 365 テナント管理者アカウント (MOD 管理者) を使用してログインします。次に、Adatum の Microsoft 365 組織プロファイルを更新し、Microsoft Azure Active Directory 用と、Information Rights Management、監査アラート、Microsoft Graph PowerShell、機密ラベルを使用する後のラボ用にテナントを準備します。
+初めて Microsoft 365 にアクセスするときは、最初に Microsoft 365 テナント管理者アカウント (MOD 管理者) を使用してログインします。次に、Adatum の Microsoft 365 組織プロファイルを更新し、Microsoft Azure Active Directory 用と、Information Rights Management、監査アラート、Microsoft Graph PowerShell、機密ラベルを使用する後のラボ用にテナントを準備します。
 
 ### タスク 1: Microsoft 365 ポータルの日本語化
 
