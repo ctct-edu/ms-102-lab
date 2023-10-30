@@ -8,7 +8,7 @@
 
 このタスクでは、Azure AD Connect セットアップ ウィザードを実行して、Adatum のオンプレミス Active Directory と Azure Active Directory 間の同期を有効にします。構成が完了すると、同期プロセスが自動的に開始されます。
 
-1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動し、**[Microsoft 365 管理センター]**  (https://admin.microsoft.com)にアクセスし、Holly Dickson として Microsoft 365 にログインしてください。
+1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動し、**[Microsoft 365 管理センター]**  (https://admin.microsoft.com) にアクセスし、Holly Dickson として Microsoft 365 にログインしてください。
 
 2. 　[Microsoft 365 管理センター] のナビゲーション ウィンドウで  **[ユーザー]** 、 **[アクティブ ユーザー]** の順に選択します。
 
@@ -78,7 +78,7 @@
 
 2. サーバー マネージャーが閉じている場合は、ここで再度開きます。
 
-3. サーバー マネージャーで、画面右上の　**[ツール]を選択し、ドロップダウン メニューで**  **[Active Directory ユーザーとコンピューター] を選択します。** 
+3. サーバー マネージャーで、画面右上の　**[Tools]を選択し、ドロップダウン メニューで**  **[Active Directory Users and Computers] を選択します。** 
 
 4. まず、組み込みのオンプレミス セキュリティ グループの 1 つにメンバーを追加します。「Active Directory ユーザーとコンピュータ」ウィンドウを最大化します。左側のペインのコンソール ツリーで、Adatum.comの下にある **Builtin** フォルダーを選択します。これにより、 Adatum.comドメインの作成時に自動的に作成されたすべてのビルトインセキュリティ グループ フォルダーが表示されます。
 
@@ -86,7 +86,7 @@
 
 6. 「Print Operators Propaties」 ウィンドウで、 **「Members」タブを選択し、**   **「Add」** ボタンを選択します。
 
-7. [Select Users, Contacts, Computers, Service Accounts, or Groups]  ウィンドウの  **[Enter the object names to select] ** フィールドに次の名前を入力します (セミコロンで区切って 3 つすべてを一度に入力します)。
+7. [Select Users, Contacts, Computers, Service Accounts, or Groups]  ウィンドウの **[Enter the object names to select]** フィールドに次の名前を入力します (セミコロンで区切って 3 つすべてを一度に入力します)。
 
    - **Ashlee Pickett**
    - **Juanita Cook**
@@ -94,7 +94,7 @@
 
 8. **[Check Names]** を選択します。すべての検証が完了したら、**「OK」** を選択して「Print Operators Propaties」 ウィンドウに戻ります。
 
-9. [Print Operators Properties]ウィンドウで **[OK]** を選択して、[Active Directory ユーザーとコンピュータ]ウィンドウに戻ります。
+9. [Print Operators Properties]ウィンドウで **[OK]** を選択して、[Active Directory Users and Computers]ウィンドウに戻ります。
 
 10. ここで、新しいセキュリティ グループを作成します。**Adatum.com**の下のコンソール ツリーで、 **Research**フォルダー(OU:組織単位)を右クリックし、**[New]** を選択し、 **[Group]** を選択します。
 
@@ -182,7 +182,7 @@
 
 2. Microsoft 365 管理センターにアクセスし、ナビゲーション ウィンドウで **[チームとグループ]** を選択し、  **[アクティブなチームとグループ]** を選択します。
 
-3. [アクティブなチームとグループ] ウィンドウで **「セキュリティ」**タブを選択します。Print Operatorsグループがセキュリティ グループのリストに表示されないことを確認します。前述したように、 Print Operatorsグループなどの組み込みセキュリティ グループは、前のタスクで行ったようにグループにメンバーを追加した場合でも、オンプレミス AD から Azure AD に同期されません。
+3. [アクティブなチームとグループ] ウィンドウで **「セキュリティグループ」** タブを選択します。Print Operatorsグループがセキュリティ グループのリストに表示されないことを確認します。前述したように、 Print Operatorsグループなどの組み込みセキュリティ グループは、前のタスクで行ったようにグループにメンバーを追加した場合でも、オンプレミス AD から Azure AD に同期されません。
 
 4. Manufacturingグループが表示されることを確認します。前のタスクでオンプレミス グループに 電子メール アドレス ( **[production@adatum.com](mailto:manufacturing@adatum.com)** )を追加したため、このグループはメールが有効なセキュリティ グループとして表示されます。
 
@@ -194,7 +194,7 @@
 
 5. [Manufacturing]グループの右側には、垂直の省略記号アイコン (ピリオドが 3 つ垂直に並んでいます) があります。このアイコンの上にマウスを置きます。このグループはオンプレミス環境でのみ管理できることを示すメッセージが表示されることに注意してください。
 
-6. 次に、Windows PowerShell を使用してこのグループを調べてみましょう。Windows PowerShellがタスクバーですでに開いている場合は、PowerShell アイコンを選択して次の手順に進みます。それ以外の場合は、タスク バーの**[検索]** フィールドに**「PowerShell」と入力し、**  Windows PowerShell アプリケーションを右クリックして **[Run as administrator]** を選択します。PowerShell ウィンドウを最大化します。
+6. 次に、Windows PowerShell を使用してこのグループを調べてみましょう。Windows PowerShellがタスクバーですでに開いている場合は、PowerShell アイコンを選択して次の手順に進みます。それ以外の場合は、タスク バーの  [検索] フィールドに **「PowerShell」と入力し、**  Windows PowerShell アプリケーションを右クリックして  **[Run as administrator]** を選択します。PowerShell ウィンドウを最大化します。
 
 7. まず、Microsoft Graph PowerShell をインストールする必要があります。このトレーニングの前半で、Microsoft Graph PowerShell を LON-CL1 にインストールしました。その時点で、次のコマンドを実行して 30 個以上のサブモジュールをすべてインストールしました: Install-Module Microsoft.Graph (Graph は 30 個以上のサブモジュールを含む親モジュールです)。30 以上のサブモジュールをすべて LON-DC1 にインストールすることもできますが、このタスクではグループとユーザーのサブモジュールのみを使用します。これは、LON-DC1 で PowerShell を使用するこのトレーニングの最後のタスクです。したがって、インストール時間を短縮するには、次の 2 つのコマンドを実行します。これにより、これら 2 つのサブモジュールのみがインストールされ、他の 30 以上のサブモジュールはインストールされません。これにより、Graph サブモジュール全体ではなく、特定のサブモジュールをインストールする経験も得られます。
 
