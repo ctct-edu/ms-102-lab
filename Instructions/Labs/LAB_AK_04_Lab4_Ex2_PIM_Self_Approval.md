@@ -119,7 +119,7 @@ Holly のパイロット プロジェクトのこの時点で、PIM-Helpdesk-Adm
 
 2. ブラウザーを起動し、アドレス バーに次の URL を入力します: **[https://portal.azure.com](https://portal.azure.com/)**
 
-3. 次に、Alex Wilber (「AlexW@xxxxxZZZZZZ.onmicrosoft.com」)として Azure にログインします。[サインイン]ウィンドウで**[「AlexW@xxxxxZZZZZZ.onmicrosoft.com」](mailto:AlexW@xxxxxZZZZZZ.onmicrosoft.com)**と入力し(xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) と入力し、 **[次へ]** を選択します。[パスワードの入力]ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ　 **Microsoft 365 管理者 パスワードを入力し、 [サインイン]を選択** します。サインインした状態で滞在しますか? ダイアログ ボックスで、[いいえ] を選択します。
+3. 次に、Alex Wilber (「AlexW@xxxxxZZZZZZ.onmicrosoft.com」)として Azure にログインします。[サインイン]ウィンドウで **[「AlexW@xxxxxZZZZZZ.onmicrosoft.com」](mailto:AlexW@xxxxxZZZZZZ.onmicrosoft.com)** と入力し(xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) と入力し、 **[次へ]** を選択します。[パスワードの入力]ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ　 **Microsoft 365 管理者 パスワードを入力し、 [サインイン]を選択** します。サインインした状態で滞在しますか? ダイアログ ボックスで、[いいえ] を選択します。
 
 4. 表示される[Microsoft Azure へようこそ]ダイアログ ボックスで、 **[後で行う]** を選択してツアーをスキップします。これから、Alex Wilber として Azure にログインします。**[サインイン]**ウィンドウに**[「AlexW@xxxxxZZZZZZ.onmicrosoft.com」](mailto:AlexW@xxxxxZZZZZZ.onmicrosoft.com)**と入力し(xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)、 [**次へ]**を選択します。**[パスワードの入力]**ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 テナント パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 [**サインイン]**を選択します。サインインした状態で**滞在しますか?** ダイアログ ボックスで、**[今後これを表示しない]**チェック ボックスをオンにし、**[はい]**を選択します。
 
