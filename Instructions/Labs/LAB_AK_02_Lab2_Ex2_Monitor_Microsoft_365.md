@@ -8,7 +8,7 @@ Adatum の新しい Microsoft 365 管理者である Holly Dickson は、Adatum 
 
 1. 前の演習を完了した後も Holly Dickson として Microsoft 365 にログインしているはずです。
 
-2. https://portal.office.comに移動します。
+2. https://portal.office.com に移動します。
 
 3. [Microsoft 365 へようこそ] ページで、左側のアプリ アイコンの列にある**Outlook** アイコンを選択します。
 
