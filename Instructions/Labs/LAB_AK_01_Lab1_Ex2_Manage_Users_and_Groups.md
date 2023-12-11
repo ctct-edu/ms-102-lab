@@ -232,7 +232,7 @@ Adatum の Microsoft 365 管理者である Holly Dickson として、展開の�
 
 1. LON-CL1 で、前のラボ演習で Windows PowerShell がまだ開いている場合は、タスク バーの**Windows PowerShellアイコンを選択します。** それ以外の場合は、以前と同じように Windows PowerShell の昇格されたインスタンスを開く必要があります。PowerShell ウィンドウを最大化します。
 
-2. 前のラボ演習では、Microsoft Graph PowerShell をインストールしました。ここで、**Microsoft.Graph.Groups** サブモジュール (Microsoft グループを表示および保守するためのコマンドレットが含まれる) と**Microsoft.Graph.Identity.DirectoryManagement** サブモジュール (削除されたグループを回復するために必要なコマンドレットが含まれる) の両方をインポートする必要があります。 。これを行うには、次のコマンドを入力して Enter キーを押します。
+2. 前のラボ演習では、Microsoft Graph PowerShell をインストールしました。ここで、**Microsoft.Graph.Groups** サブモジュール (Microsoft グループを表示および保守するためのコマンドレットが含まれる) と**Microsoft.Graph.Identity.DirectoryManagement** サブモジュール (削除されたグループを回復するために必要なコマンドレットが含まれる) の両方をインポートする必要があります 。これを行うには、次のコマンドを入力して Enter キーを押します。
 
    ```
     Import-Module Microsoft.Graph.Groups
