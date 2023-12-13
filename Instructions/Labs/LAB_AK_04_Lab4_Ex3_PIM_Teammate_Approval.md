@@ -24,7 +24,7 @@ Adatum のパイロット プロジェクトにおける PIM の最終テスト�
    - グループタイプ -**セキュリティ**
    - グループ名 - **PIM-Intune-Administrators**
    - グループの説明 - **PIM で Intune 管理者ロールに割り当てることができる適格なユーザーのグループ**
-   - Azure AD ロールをグループに割り当てることができます -**はい**
+   - Microsoft Entra ロールをグループに割り当てることができます -**はい**
    - メンバーシップの種類 -**割り当て済み**
    - 所有者 -  **[所有者が選択されていません]** を選択します。[所有者の追加]ウィンドウで、[検索]フィールドに **「Holly」** と入力し、**Holly@xxxxxZZZZZZ.onmicrosoft.com** ユーザー アカウントを選択します。
    - メンバー -  **「メンバーが選択されていません」** を選択し、２人のメンバーを追加します。[メンバーの追加]ウィンドウで、まず **[Alex Wilber]** を選択します。次に[検索] フィールドに **「Joni」** と入力し、 **[Joni Sherman]** を選択します。
@@ -37,7 +37,7 @@ Adatum のパイロット プロジェクトにおける PIM の最終テスト�
 
 8. ここで、PIM-Intune-Administratorsグループにロールの割り当てに資格を与えるにする必要があります。Microsoft Entra 管理センターのナビゲーション ウィンドウの [ID Governance] セクションで、 **[ Privileged Identity Management]** を選択します。
 
-9. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Azure AD ロール]** を選択します。
+9. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Microsoft Entra ロール]** を選択します。
 
 10. ウィンドウの[割り当て]セクションで、 **[資格の割り当て]** ボタンを選択します。
 
@@ -69,7 +69,7 @@ Adatum のパイロット プロジェクトにおける PIM の最終テスト�
 
 2. ブラウザーでは、前のタスクで使用したMicrosoft Entra 管理センターが開いたままになっているはずです。左側のナビゲーションペインの「Identity Governance」セクションで、 **「Privileged Identity Management」** を選択します。
 
-3. ウィンドウの中央ペインの[管理]セクションの下にある **[Azure AD ロール]** を選択します。
+3. ウィンドウの中央ペインの[管理]セクションの下にある **[Microsoft Entra ロール]** を選択します。
 
 4. ウィンドウの中央ペインの[管理]セクションの下にある **[設定]** を選択します。
 
@@ -117,7 +117,7 @@ Holly のパイロット プロジェクトのこの時点で、**PIM-Intune-Adm
 
 5. Microsoft Azureポータルでは、画面の中央にAzure サービスのセクションがあります。このセクションには、一連の Azure サービスとそれに関連するアイコンが表示されます。行の最後で、**[その他のサービス]** (前方向矢印アイコン付き) を選択します。これにより、**「すべてのサービス」** ウィンドウが開きます。
 
-6. [すべてのサービス]ウィンドウで、ページ上部の **[サービスのフィルター]** 検索ボックスに **「priv」** と入力します。検索結果のリストで、 **[Azure AD Privileged Identity Management]** を選択します。
+6. [すべてのサービス]ウィンドウで、ページ上部の **[サービスのフィルター]** 検索ボックスに **「priv」** と入力します。検索結果のリストで、 **[Microsoft Entra Privileged Identity Management]** を選択します。
 
 7. Privileged Identity Management | クイック スタートウィンドウの左側のナビゲーション ペインの  [タスク]セクションで、 **[自分のロール]** を選択します。
 
@@ -137,7 +137,7 @@ Holly のパイロット プロジェクトのこの時点で、**PIM-Intune-Adm
 
 Joni は、PIM-Intune-Administrators グループのメンバーとして、Intune 管理者ロールの要求を承認できます。しかし、ジョニもこの役割の割り当てを要求したため、彼女自身の要求を自己承認することはできないはずです。グループの別のメンバー (この場合は Alex) だけが彼女のリクエストを承認できる必要があります。このタスクでは、まず、Joni が自分のリクエストを自己承認できないことを確認します。
 
-1. 画面上の検索欄に  **「priv」** と入力し、**Azure AD Privileged Identity Management** を選択します。
+1. 画面上の検索欄に  **「priv」** と入力し、**Microsoft Entra Privileged Identity Management** を選択します。
 
    ![](./media/lab4-3-2.png)
 
@@ -157,7 +157,7 @@ Joni は、PIM-Intune-Administrators グループのメンバーとして、Intu
 
 8. Microsoft Azureポータルでは、画面の中央にAzure サービスのセクションがあります。 **[その他のサービス]**  (前向き矢印アイコン)を選択します。これにより、「すべてのサービス」ウィンドウが開きます。
 
-9. 「すべてのサービス」ウィンドウで、ページ上部の検索ボックスに **「priv」** と入力します。検索結果のリストで、 **[Azure AD Privileged Identity Management]** を選択します。
+9. 「すべてのサービス」ウィンドウで、ページ上部の検索ボックスに **「priv」** と入力します。検索結果のリストで、 **[Microsoft Entra Privileged Identity Management]** を選択します。
 
 10. ウィンドウの左側のナビゲーション ペインの[タスク]セクションで、  **[申請の承認]** 選択します。
 
@@ -177,7 +177,7 @@ Joni は、PIM-Intune-Administrators グループのメンバーとして、Intu
 
 17. Microsoft Azureポータルでは、画面の中央にAzure サービスのセクションがあります。このセクションには、一連の Azure サービスとそれに関連するアイコンが表示されます。行の最後で、**[その他のサービス]** (前方向矢印アイコン付き) を選択します。これにより、**「すべてのサービス」** ウィンドウが開きます
 
-18. 「すべてのサービス」ウィンドウで、ページ上部の検索ボックスに **「priv」** と入力します。検索結果のリストで、 **[Azure AD Privileged Identity Management]** を選択します。
+18. 「すべてのサービス」ウィンドウで、ページ上部の検索ボックスに **「priv」** と入力します。検索結果のリストで、 **[Microsoft Entra Privileged Identity Management]** を選択します。
 
 19. 左側のナビゲーション ペインの[タスク]セクションで、 **[自分のロール]** を選択します。
 
@@ -203,7 +203,7 @@ Joni は、PIM-Intune-Administrators グループのメンバーとして、Intu
 
 7. 左側のナビゲーションペインの **「Identity Governance」** セクションで、 **「Privileged Identity Management」** を選択します。
 
-8. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある　**[Azure AD ロール]**　を選択します。
+8. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある　**[Microsoft Entra ロール]**　を選択します。
 
 9. 中央ペインのページ下部にある「アクティビティ」セクションで、 **「リソースの監査」** を選択します。
 
