@@ -27,7 +27,7 @@ Adatum の新しい Microsoft 365 管理者である Holly Dickson は、Privile
 
 1. Microsoft Entra 管理センターにアクセスします。ブラウザで新しいタブを選択し、アドレス バーに次の URL を入力します: **https://entra.microsoft.com**  Hollyの資格情報でサインインしてください。
 
-2. Microsoft Entra 管理センターの左側のナビゲーション ウィンドウで、[Identity  Governance]サブメニューの　**「Privileged Identity Management」** を選択します。
+2. Microsoft Entra 管理センターの左側のナビゲーション ウィンドウで、 **[Identity  Governance]** サブメニューの　**「Privileged Identity Management」** を選択します。
 
 3. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Azure AD ロール]** を選択します。
 
