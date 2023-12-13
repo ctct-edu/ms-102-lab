@@ -29,7 +29,7 @@ Adatum の新しい Microsoft 365 管理者である Holly Dickson は、Privile
 
 2. Microsoft Entra 管理センターの左側のナビゲーション ウィンドウで、 **[Identity  Governance]** サブメニューの　**「Privileged Identity Management」** を選択します。
 
-3. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Azure AD ロール]** を選択します。
+3. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Microsoft Entra ロール]** を選択します。
 
 4. ウィンドウの中央ペインの[管理]セクションの下にある　**[設定]** を選択します。
 
@@ -82,7 +82,7 @@ Adatum の PIM パイロット プロジェクトにおいて、Holly は、グ�
    - グループタイプ -**セキュリティ**
    - グループ名 - **PIM-Global-Administrators**
    - グループの説明 - **PIM のグローバル管理者ロールに割り当てることができる適格なユーザーのグループ**
-   - Azure AD ロールをグループに割り当てることができます -**はい**
+   - Microsoft Entra ロールをグループに割り当てることができます -**はい**
    - メンバーシップの種類 -**割り当て済み**
    - 所有者 - **[所有者が選択されていません]** を選択します。[所有者の追加]ウィンドウで、検索フィールドに **「Holly」** と入力し、**Holly@xxxxxZZZZZZ.onmicrosoft.com** ユーザー アカウントを選択します。
    - メンバー - **「メンバーが選択されていません」** を選択します。[メンバーの追加]ウィンドウで、検索フィールドに **「Patti」** と入力し、Patti Fernandez のユーザー アカウントを選択します。
@@ -93,7 +93,7 @@ Adatum の PIM パイロット プロジェクトにおいて、Holly は、グ�
 
 7. ここで、PIM-Global-Administratorsグループを役割の割り当てに適格にする必要があります。左側のナビゲーションペインで、 **「Identity Governance」** を選択してセクションを展開し、**「Privileged Identity Management」** を選択します。
 
-8. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Azure AD ロール]** を選択します。
+8. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Microsoft Entra ロール]** を選択します。
 
 9. ウィンドウの右側の詳細ペインに、Privileged Identity Management ウィンドウが表示されます。このウィンドウには、「割り当て」、「アクティブ化」、「承認」、および「監査」のセクションが表示されます。「割り当て」セクションで、**「資格の割り当て」** ボタンを選択します。
 
@@ -173,7 +173,7 @@ PIM-Global-Administratorsグループがグローバル管理者ロールの資�
 
 3. Microsoft Entra 管理センターの左側のナビゲーション ウィンドウで、[Identity  Governance]サブメニューの　**「Privileged Identity Management」** を選択します。
 
-4. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Azure AD ロール]** を選択します。
+4. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Microsoft Entra ロール]** を選択します。
 
 5. ウィンドウの中央ペインの[タスク]セクションの下にある　**[申請の承認]** を選択します。
 
