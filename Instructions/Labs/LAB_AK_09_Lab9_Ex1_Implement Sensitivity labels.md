@@ -215,7 +215,7 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
     閲覧ビューを終了するには、ページの上の方にある **[Edit Document]** ドロップダウン メニューを選択し、**[Edit]** を選択します。
 
-13. Word 画面左上で、**[File]** を選択します。表示されるメニューで**[Share]** を選択します。その右側の **[Share with People]** を選択します。
+13. Word 画面左上で、**[File]** を選択します。表示されるメニューで **[Share]** を選択します。その右側の **[Share with People]** を選択します。
 
 14. 表示されるウィンドウで、下の方にある **[Anyone with the link can edit]** リンクを選択します。
 
