@@ -120,7 +120,7 @@
 
     d. 表示される [New Resource Record]  ウィンドウの **[Text(TXT)]**  タブで、 [Record Name]  フィールドを空白のままにします。 **「Text」** フィールドに、Microsoft 365 管理センターでクリップボードにコピーした参照先のアドレスまたは値の TXT 値を貼り付けます。
 
-    ![](C:\Users\CTCT\Documents\GitHub\ms-102-lab\Instructions\Labs\media\lab1-3-4.png)
+    ![](./media/lab1-3-4.png)
 
     e. [New Resource Record] ウィンドウで、**[OK]** を選択します。
 
