@@ -62,7 +62,7 @@
 14. [ Microsoft Edge へようこそ] ウィンドウが表示された場合は、次の手順を実行して Edge ブラウザーを初期化し、Microsoft 365 ホーム ページに移動します。
 
     - 最初の画面で、**「Start without your data」** ボタンを選択します。
-    - 2 番目の画面で、**[Don't Allow]を選択し、「Confirm and continue」を選択**  します。
+    - 2 番目の画面で、**「Confirm and continue」を選択**  します。
     - 3番目の画面で、**「Continue without your data」** ボタンを選択します。
     - 4番目の画面で、**「Confirm and start browsing」** ボタンを選択します。
     - Edge ブラウザーで、アドレス バーに次の URL を入力してMicrosoft 365 ホームページに移動します: **https://portal.office.com/**
