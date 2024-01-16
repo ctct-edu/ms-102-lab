@@ -194,98 +194,21 @@
 
 5. [Manufacturing]グループの右側には、垂直の省略記号アイコン (ピリオドが 3 つ垂直に並んでいます) があります。このアイコンの上にマウスを置きます。このグループはオンプレミス環境でのみ管理できることを示すメッセージが表示されることに注意してください。
 
-6. 次に、Windows PowerShell を使用してこのグループを調べてみましょう。Windows PowerShellがタスクバーですでに開いている場合は、PowerShell アイコンを選択して次の手順に進みます。それ以外の場合は、タスク バーの  [検索] フィールドに **「PowerShell」と入力し、**  Windows PowerShell アプリケーションを右クリックして  **[Run as administrator]** を選択します。PowerShell ウィンドウを最大化します。
+6. Manufacturingグループでは、以前に次のメンバーをオンプレミスの Active Directory のグループに追加しました。同期後、この Microsoft 365 グループにこれらの各グループ メンバーが表示されるようになります。**([Manufacturing]グループが表示されても、メンバーが表示されるまでさらに時間がかかることがあります。表示されない場合は少々お待ちください。)**
 
-7. まず、Microsoft Graph PowerShell をインストールする必要があります。このトレーニングの前半で、Microsoft Graph PowerShell を LON-CL1 にインストールしました。その時点で、次のコマンドを実行して 30 個以上のサブモジュールをすべてインストールしました: Install-Module Microsoft.Graph (Graph は 30 個以上のサブモジュールを含む親モジュールです)。30 以上のサブモジュールをすべて LON-DC1 にインストールすることもできますが、このタスクではグループとユーザーのサブモジュールのみを使用します。これは、LON-DC1 で PowerShell を使用するこのトレーニングの最後のタスクです。したがって、インストール時間を短縮するには、次の 2 つのコマンドを実行します。これにより、これら 2 つのサブモジュールのみがインストールされ、他の 30 以上のサブモジュールはインストールされません。これにより、Graph サブモジュール全体ではなく、特定のサブモジュールをインストールする経験も得られます。
+   - Bernardo Rutter
+   - Charlie Miller
+   - Dawn Williamson
 
-   ａ．**次のコマンドを入力して Enter キーを押します (信頼できないリポジトリからこのモジュールをインストールするかどうかを尋ねるメッセージが表示された場合は、 「すべてはい」** の意味で **A** を入力します。次のコマンドでも同じことを行います)。
+7. 次に、Research グループのメンバーのリストに、次のユーザーが含まれて **いない** ことを確認します。前のタスクで、グループを Microsoft 365 に同期する前に、オンプレミスの Active Directory のリサーチ グループからこれら 3 人のユーザーを削除したことを思い出してください。
 
-   ```
-    Install-Module Microsoft.Graph.Groups -Scope CurrentUser
-   ```
+   - Cai Chu
 
-   
+   - Shannon Booth
 
-   b. コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
-
-   ```
-    Install-Module Microsoft.Graph.Users -Scope CurrentUser
-   ```
-
-8. Groups サブモジュールと Users サブモジュールをインストールしたので、それぞれのコマンドレットを PowerShell セッションにインポートするには、それぞれをインポートする必要があります。これを行うには、次の 2 つのコマンドを実行する必要があります。
-
-   ａ．次のコマンドを入力して Enter キーを押します。
-
-   ```
-   Import-Module Microsoft.Graph.Groups
-   ```
-
-   
-
-   ｂ．次に、次のコマンドを入力して Enter キーを押します。
-
-   ```
-   Import-Module Microsoft.Graph.Users
-   ```
-
-   
-
-9. コマンド プロンプトで、Microsoft Graph に接続し、インポートしたばかりの Groups および Users コマンドレットを使用する許可の要求を実行する必要があります。このタスクを完了するには、これら 2 つのサブモジュールに対する「読み取り専用」権限のみが必要です。次のコマンドを入力して Enter キーを押します。
-
-   ```
-   Connect-MgGraph -Scopes 'Group.Read.All', 'User.Read.All'
-   ```
-
-10. 表示されるウィンドウで、 **Holly Dickson の** アカウントを選択します。[パスワードの入力]ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ **Microsoft 365 管理者 パスワードを** テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 **[Sign in]** を選択します。
-
-11. [Permissions requested] ダイアログ ボックスが表示された場合は、 **[Consent on behalf of your organization]** チェック ボックスをオンにして、 **[Accept]** を選択します。ここで、PowerShell を使用して、Microsoft 365 のグループのリストを表示します。このリストには、Microsoft 365 で手動で作成したグループと、Microsoft と同期したばかりのオンプレミスの Active Directory で作成されたグループが含まれている必要があります。 365. 次のコマンドを入力し、Enter キーを押します。
-
-```
-Get-MgGroup | Format-List Id, DisplayName, Description, GroupTypes
-```
+   - Tai Zecirevic
 
 
 
-12. 次に、Researchグループのメンバーを表示したいとします。グループのリストで、Researchグループのオブジェクト ID を強調表示し、 **Ctrl+C**を押してID をクリップボードにコピーします。次に、次のコマンドを入力し、リサーチ グループのオブジェクト ID ( **Ctrl+V** ) を適切な場所に貼り付けて、Enter キーを押します。
 
-```
-Get-MgGroupMember -GroupId 'paste in the group's object ID here'
-```
-
-13. 前の手順で表示されたグループ メンバーのリストでは、結果に各メンバーのオブジェクト ID が単純に表示されることに注目してください。ユーザー名を表示しない場合、このコマンドはグループ メンバーが同期されているかどうかを確認するのには役立ちません。この問題を回避するには、前のコマンドを繰り返しますが、今回はグループの各メンバーのユーザー レコードを取得し、ユーザー名を含むユーザーの属性を表示するコンポーネントを追加します
-
-コマンド プロンプトでキーボードの上矢印を押します。これにより、以前に実行されたコマンドが自動的に入力されます (これにはリサーチ グループのオブジェクト ID が含まれるため、再貼り付ける必要はありません)。次に、オブジェクト ID に続いて、コマンドの残りの部分 ( **-All** で始まる) を入力し、Enter キーを押します。
-
-```
-Get-MgGroupMember -GroupId 'the object ID of the Research group' -All | ForEach {Get-MgUser -UserId $_.Id}
-```
-
-
-
-14. Research グループのメンバーのリストに、次のユーザーが含まれて **いない** ことを確認します。前のタスクで、グループを Microsoft 365 に同期する前に、オンプレミスの Active Directory のリサーチ グループからこれら 3 人のユーザーを削除したことを思い出してください。
-
-- Cai Chu
-- Shannon Booth
-- Tai Zecirevic
-
-15. 前のタスクでは、オンプレミスの Active Directory にManufacturingグループを追加し、そのグループに 3 人のユーザーを割り当てました。ここで、同期プロセス中に Microsoft 365 にグループが追加されたときに、**Manufacturing** グループのメンバーが同期されたことを確認したいと考えています。
-
-これを行うには、まずグループのリストまでスクロールして戻り、Manufacturingグループのオブジェクト ID を強調表示してから、**Ctrl+C**を押してID をクリップボードにコピーする必要があります。
-
-次に、キーボードの上矢印を押して、前のコマンドを自動的に入力します。このコマンドには、前の手順で貼り付けたResearch グループのオブジェクト ID が含まれています。
-
-```
-Get-MgGroupMember -GroupId 'the object ID of the Research group' -All | ForEach {Get-MgUser -UserId $_.Id}
-```
-
-
-
-**重要:** このコマンドを実行する前に、Research グループのオブジェクト ID を Manufacturing グループのオブジェクト ID に置き換える必要があります。これを行うには、キーボードの左矢印を使用してカーソルをオブジェクト ID の先頭に移動し、リサーチ グループのオブジェクト ID を強調表示して**Ctrl+V**を押します。これにより、研究グループの ID がManufacturing グループのオブジェクト ID に貼り付けられて置き換えられます。次に、Enter キーを押してコマンドを実行します。これにより、Manufacturing グループのメンバーが表示されます。
-
-Manufacturingグループでは、以前に次のメンバーをオンプレミスの Active Directory のグループに追加しました。同期後、この Microsoft 365 グループにこれらの各グループ メンバーが表示されるようになります。
-
-- Bernardo Rutter
-- Charlie Miller
-- Dawn Williamson
-
-16. これで、テスト グループとユーザー アカウントが適切に同期されたことが検証されました。検証手順が完了したら、PowerShell ウィンドウを閉じます。
+これで、テスト グループとユーザー アカウントが適切に同期されたことが検証されました。検証手順が完了したら、PowerShell ウィンドウを閉じます。
