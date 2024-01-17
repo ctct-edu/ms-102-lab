@@ -125,7 +125,7 @@ PIM-Global-Administratorsグループがグローバル管理者ロールの資�
 
 2. ブラウザーを起動し、アドレス バーに次の URL を入力します: **[https://portal.azure.com](https://portal.azure.com/)**
 
-3. 次に、Patti Fernandez として Azure にログインします。[サインイン]ウィンドウで、**[「PattiF@xxxxxZZZZZZ.onmicrosoft.com](mailto:PattiF@xxxxxZZZZZZ.onmicrosoft.com)**」 (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) と入力し、 [次へ]を選択します。[パスワードの入力]ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 管理者 パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 **[サインイン]**を選択します。サインインした状態で滞在しますか? ダイアログ ボックスで、 **[いいえ]** を選択します。
+3. 次に、Patti Fernandez として Azure にログインします。[サインイン]ウィンドウで、**[「PattiF@xxxxxZZZZZZ.onmicrosoft.com](mailto:PattiF@xxxxxZZZZZZ.onmicrosoft.com)**」 (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) と入力し、 [次へ]を選択します。[パスワードの入力]ウィンドウで、ラボ ホスティング プロバイダーから提供されたのと同じ**Microsoft 365 管理者 パスワードを**テナント管理者アカウント (つまり、MOD 管理者アカウント) に入力し、 **[サインイン]** を選択します。サインインした状態で滞在しますか? ダイアログ ボックスで、 **[いいえ]** を選択します。
 
 4. 表示される[Microsoft Azure へようこそ]ダイアログ ボックスで、 **[後で行う]** を選択してツアーをスキップします。
 
