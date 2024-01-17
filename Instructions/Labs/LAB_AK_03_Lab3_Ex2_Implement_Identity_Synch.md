@@ -174,13 +174,11 @@
 
 ### タスク 5 - ディレクトリ同期の結果を検証する
 
-このタスクでは、以前に行った変更が Adatum のオンプレミス Active Directory から Azure Active Directory に同期されたかどうかを検証します。Microsoft 365 管理センターを使用して変更を検証し、次に Windows PowerShell を使用して同じ検証を実行します。これにより、Microsoft 365 管理センター GUI と PowerShell の両方を使用して同期を検証する経験が得られます。
+このタスクでは、以前に行った変更が Adatum のオンプレミス Active Directory から Azure Active Directory に同期されたかどうかを検証します。
 
-**重要 - PowerShell に関する注意:** このタスクでは、Microsoft Graph PowerShell でサポートされている、グループとユーザーに対する基本的な PowerShell クエリを使用します。Microsoft Graph PowerShell は、MSOnline と Azure Active Directory (Azure AD) PowerShell という 2 つの古い PowerShell モジュールを置き換えるものであるため、このタスクでは Microsoft Graph PowerShell を使用します。
+1. お手元のPCでInPrivate ウィンドウ(Microsoft Edge) もしくは、シークレットウィンドウ (Google Chrome) で、Microsoft 365 管理センター (https://admin.microsoft.com) にアクセスし、Hollyの資格情報でサインインします。
 
-1. ローカルのadatum\administratorとしてパスワードPa55w.rd を使用して LON-DC1 にログインしている必要があります。
-
-2. Microsoft 365 管理センターにアクセスし、ナビゲーション ウィンドウで **[チームとグループ(Teams & groups)]** を選択し、  **[アクティブなチームとグループ(Active teams & groups)]** を選択します。
+2. ナビゲーション ウィンドウで **[チームとグループ(Teams & groups)]** を選択し、  **[アクティブなチームとグループ(Active teams & groups)]** を選択します。
 
 3. [アクティブなチームとグループ] ウィンドウで **「セキュリティグループ(Security Groups)」** タブを選択します。Print Operatorsグループがセキュリティ グループのリストに表示されないことを確認します。前述したように、 Print Operatorsグループなどの組み込みセキュリティ グループは、前のタスクで行ったようにグループにメンバーを追加した場合でも、オンプレミス AD から Azure AD に同期されません。
 
