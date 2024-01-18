@@ -219,10 +219,12 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
 14. 表示されるウィンドウで、下の方にある **[Anyone with the link can edit]** リンクを選択します。
 
-    表示される[Sharing settings]ページで、 **[People you choose]** を選択します。その下にある[More settings]で、 **[Can Edit]** を選択します。表示されるメニューで、**[Can View]** を選択します。
+    表示される[Sharing settings]ページで、 **[People you choose]** を選択します。Share ”PII Test.docx”ウィンドウの右の方にある **下向き矢印** をクリックし、表示されるメニューで、**[Can View]** を選択します。
 
-    **[Apply]** ボタンを選択します。
+    ![](./media/lab9-2.png)
 
+    
+    
     **[Add a name, group, or email]**フィールドに**「Joni」**と入力します。**名前がjoni**で始まるユーザーのリストが表示されます。**Joni Sherman** を選択します。**[Copy link]** を選択した後、 **Wordのウィンドウを閉じます。** 
 
 これで、読み取り専用で保護された AIP 保護された Word 文書が正常に作成されました。このドキュメントにアクセスできるのは、作成者である Alex Wilber と、ドキュメントが共有された Joni Sherman (読み取り専用権限を持つ) のみです。
