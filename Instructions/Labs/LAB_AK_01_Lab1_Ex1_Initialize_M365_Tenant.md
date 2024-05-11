@@ -257,7 +257,7 @@ Microsoft 365 をインストールするときに、いくつかの構成タス
     Install-Module Microsoft.Graph -Scope CurrentUser
    ```
 
-   今インストールするかどうかを確認するメッセージが表示された場合は、 **Y** を入力して( [Y] Yes を選択)、Enter キーを押します。
+   NuGet providerを今インストールするかどうか確認するメッセージが表示された場合は、 **Y** を入力して( [Y] Yes を選択)、Enter キーを押します。
 
 3. 信頼できないリポジトリ (PSGallery) からモジュールをインストールするかどうかを確認するメッセージが表示されます。**A** を入力して( [A] Yes to All を選択)、Enter キーを押します。
 
