@@ -241,7 +241,7 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
 6. LON-CL2に切り替えます。
 
-7. [すべて完了です。Officeはインストールされました。]ページが表示されている場合は、[閉じる]ボタンをクリックします。 
+7. [すべて完了です。Officeはインストールされました。]ページが表示されている場合は、**[閉じる]** ボタンをクリックします。 
 
 8. [まだいくつか手順があります…]ページが表示されている場合は、[閉じる]ボタンをクリックします。 
 
@@ -275,7 +275,7 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
 2. [Hello Joni,welcome to Office]ページが表示されたことを確認し、**[Continue]** ボタンを クリックします。
 
-21. [Activate Office]ページが表示されたことを確認し、 **JoniS@WWLxZZZZZ onmicrosoft.com** と入力して（入力されていればそのまま）、[Next]ボタンをクリックします。
+21. [Activate Office]ページが表示されたことを確認し、 **JoniS@WWLxZZZZZ onmicrosoft.com** と入力して（入力されていればそのまま）、**[Next]**　ボタンをクリックします。
 
 22. [Accept the license agreement]ページが表示されたことを 確認し、**[Accept]** ボタンをクリックします。
 
