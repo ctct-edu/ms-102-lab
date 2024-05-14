@@ -173,39 +173,39 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
 2. [スタート]メニューからWordを起動します。
 
-3. [Activate Office]ページが表示されたことを確認し、AlexW@WWLxZZZZZZ.onmicrosoft.comと入力して（入力されていればそのまま）、[Next]ボタンをクリックします。
+3. **[Activate Office]** ページが表示されたことを確認し、AlexW@WWLxZZZZZZ.onmicrosoft.comと入力して（入力されていればそのまま）、**[Next]** ボタンをクリックします。
 
-4. [Enter password]ページが表示されたことを確認し、「Pa55w.rd1234」と入力して、[Sign in]ボタンをクリックします。
+4. [Enter password] ページが表示されたことを確認し、 **Pa55w.rd1234** と入力して、**[Sign in]** ボタンをクリックします。
 
-5. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、[No, sign in to this app only]をクリックします。 ([OK]ボタンをクリックしないでください。)
+5. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、 **[No, sign in to this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
 
    ![image](./media/lab9-3.png)
 
-6. [Accept the license agreement)]ページで、[Accept]ボタンをクリックします。
+6. [Accept the license agreement)]ページで、 **[Accept]** ボタンをクリックします。
 
-7. [Your privacy matters]ページが表示されたら、画面右下の[Close]ボタンをクリックします。
+7. [Your privacy matters] ページが表示されたら、画面右下の **[Close]** ボタンをクリックします。
 
 8. Wordの画面が表示されたことを確認し、[Blank document]をクリックします。
 
 9. [Home(ホーム)]タブに、[Sensitivity(秘密度)]アイコンが表示されていることを確認します。 表示されていない場合は、Wordを閉じて、再度起動しなおしてください。![image](./media/lab9-4.png)
 
-10. Word リボンの[Sensitivity]グループで、下矢印を選択します。
+10. Word リボンの [Sensitivity] グループで、下矢印を選択します。
 
-11. [Permission] ダイアログが表示されます。[Restrict permission to this document] チェックボックスをオンにします。
+11. [Permission] ダイアログが表示されます。 **[Restrict permission to this document] チェックボックスをオン** にします。
 
-12. Readの右の欄に JoniS@WWLxZZZZZZ.onmicrosoft.com と入力し、[OK] をクリックします。
+12. Readの右の欄に **JoniS@WWLxZZZZZZ.onmicrosoft.com** と入力し、**[OK]** をクリックします。
 
 13. 秘密度ラベルをドキュメントに再適用するため、ドロップダウン メニューで **[PII - V1]** を選択します。その後もう一度、 [Sensitivity]グループのドロップダウン矢印を選択すると、表示されるドロップダウン メニューにはPII - V1ラベルが表示され、その横にこのドキュメントに適用されていることを示すチェック マークが表示されることを確認します。
 
-14. Word 文書で、入力した前のテキスト行の下に **「111-11-1111」** と入力します。この番号は、米国の社会保障番号と同じ形式です。
+14. Word 文書で、入力した前のテキスト行の下に **111-11-1111** と入力します。この番号は、米国の社会保障番号と同じ形式です。
 
 15. Word左上のSave(フロッピーディスクのアイコン)をクリックし、ファイルを保存します。
 
 16. [Permission] ダイアログが表示されます。[Restrict permission to this document] チェックボックスをオンにします。
 
-17. Readの右の欄に JoniS@WWLxZZZZZZ.onmicrosoft.com と入力し、[OK] をクリックします。
+17. Readの右の欄に JoniS@WWLxZZZZZZ.onmicrosoft.com と入力し、**[OK]** をクリックします。
 
-18. [Save this file] 画面のFile name で Test と入力します。Choose a Location で Documents を選択します。Sensitibityのドロップダウン メニューで **[PII - V1]** となっていることを確認します。 [Save] をクリックします。
+18. [Save this file] 画面のFile name で Test と入力します。Choose a Location で Documents を選択します。Sensitibityのドロップダウン メニューで **[PII - V1]** となっていることを確認します。 **[Save]** をクリックします。
 
     ![image](./media/lab9-5.png)
 
@@ -223,9 +223,9 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
 1. LON-CL1　のEdgeブラウザーで、Office 365ポータルにAlexw@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。ほかのユーザーでサインインしている場合はサインインし直します。
 
-2. Office365ポータルページで、[Outlook]アイコンをクリックします。 パスワードが要求されたらPa55w.rd1234と入力します。
+2. Office365ポータルページで、 **[Outlook]** アイコンをクリックします。 パスワードが要求されたら **Pa55w.rd1234** と入力します。
 
-3. [新規メール]ボタンをクリックします。
+3. **[新規メール]** ボタンをクリックします。
 
 4. 次の設定で新しいメッセージを作成します。
 
@@ -237,7 +237,7 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
    (Document フォルダーに保存されています。)
 
-5. [送信]ボタンをクリックします。
+5.  **[送信]** ボタンをクリックします。
 
 6. LON-CL2に切り替えます。
 
@@ -251,7 +251,7 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
    • パスワード Pa55w.rd1234
 
-10. Office365ポータルページで、[Outlook]アイコンをクリックします。パスワードが要求されたらPa55w.rd1234と入力します。
+10. Office365ポータルページで、**[Outlook]** アイコンをクリックします。パスワードが要求されたら **Pa55w.rd1234** と入力します。
 
 11. Joniの受信トレイが表示されたことを確認し、Alexから届いたメールを選択します。
 
@@ -267,30 +267,30 @@ AIP Unified Label クライアントがクライアント 1 VM に正常にイ�
 
 17. 画面の右上に[ダウンロード]ページが表示されますので、[Open file(ファイルを開く)]をクリックします。
 
-18. [Sign in]ページが表示されたことを確認し、JoniS@WWLxZZZZZ.onmicrosoft.comで サインインします。パスワードは、「Pa55w.rd1234」を使用します。
+18. [Sign in]ページが表示されたことを確認し、JoniS@WWLxZZZZZ.onmicrosoft.comで サインインします。パスワードは、  **Pa55w.rd1234** を使用します。
 
-19. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、[No, sign in to this app only]をクリックします。 ([OK]ボタンをクリックしないでください。)
+19. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、**[No, sign in to this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
 
     ![image](./media/lab9-3.png)
 
-2. [Hello Joni,welcome to Office]ページが表示されたことを確認し、[Continue]ボタンを クリックします。
+2. [Hello Joni,welcome to Office]ページが表示されたことを確認し、**[Continue]** ボタンを クリックします。
 
-21. [Activate Office]ページが表示されたことを確認し、「JoniS@WWLxZZZZZ onmicrosoft.com」と入力して（入力されていればそのまま）、[Next]ボタンをクリックします。
+21. [Activate Office]ページが表示されたことを確認し、 **JoniS@WWLxZZZZZ onmicrosoft.com** と入力して（入力されていればそのまま）、[Next]ボタンをクリックします。
 
-22. [Accept the license agreement]ページが表示されたことを 確認し、[Accept]ボタンをクリックします。
+22. [Accept the license agreement]ページが表示されたことを 確認し、**[Accept]** ボタンをクリックします。
 
-23. [Your privacy option]ページが表示されたことを確認し、右下の[Close(閉じる)]ボタンをクリックします。
+23. [Your privacy option]ページが表示されたことを確認し、右下の **[Close(閉じる)]** ボタンをクリックします。
 
 24. Joniには、読み取り専用のアクセス許可を付与したため、文書の内容が表示されます。
 
     また、Wordの画面の上部には通知バーが表示されます。
 
-25. 入力などを行おうとすると、編集がロックされていることを確認します(文字を入力しようとすると、画面下部のステータスバーに読み取り専用であることが表示されます)。
+25. 入力などを行おうとすると、編集がロックされていることを確認します(文字を入力しようとすると、画面下部のステータスバーに変更できない旨のメッセージが表示されます)。
 
     ![image](./media/lab9-7.png)
 
 26. Wordを閉じます。
 
-    Joni にドキュメントを読み取るアクセス許可が割り当てられているため、構成した PII ポリシー パラメーターに基づいて Azure Information Protection がドキュメントを保護していることを確認しました。
+    Joni にドキュメントを読み取るアクセス許可が割り当てられているため、構成した ポリシー パラメーターに基づいて Azure Information Protection がドキュメントを保護していることを確認しました。
 
 ## おめでとう！このコースの最後のラボを完了しました。
