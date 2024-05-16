@@ -1,6 +1,6 @@
 # ラーニング パス 9 - ラボ 9 - 演習 1 - Azure Information Protection Unified Labels クライアントを使用して秘密度ラベルを実装する
 
-Adatum の新しい Microsoft 365 管理者である Holly Dickson としてのあなたの役割では、仮想化されたラボ環境に Microsoft 365 を展開しています。Microsoft 365 パイロット プロジェクトを進める際の次のステップは、Adatum で Azure Information Protection (AIP) を使用して秘密度ラベルを実装することです。このラボでは、ラベルを作成して公開し、公開されたラベルをテストします。ただし、その際、このラボで作成したラベルはテストされません。別のラベルをテストします。
+Adatum の新しい Microsoft 365 管理者である Holly Dickson としてのあなたの役割では、仮想化されたラボ環境に Microsoft 365 を展開しています。Microsoft 365 パイロット プロジェクトを進める際の次のステップは、Adatum で 秘密度ラベルを実装することです。このラボでは、ラベルを作成して公開し、公開されたラベルをテストします。ただし、その際、このラボで作成したラベルはテストされません。別のラベルをテストします。
 
 **重要:** 思い起こせば、このクラスの初日に、秘密度ラベルと秘密度ラベル ポリシーを作成して公開するラボ セットアップ スクリプトを実行しました。秘密度ラベルのタイミングの問題のため、このラボをサポートするにはそのスクリプトを実行する必要がありました。ラベル ポリシーを発行すると、発行されたラベル ポリシーが Microsoft 365 に反映されるまで 24 時間かかります。そのため、このラボでは、作成して発行したラベルとラベル ポリシーをテストすることはできません。
 
@@ -10,7 +10,7 @@ Microsoft 365 UI を使用したラベルとラベル ポリシーの作成と�
 
 
 
-### タスク 0 – Microsoft 365 Apps for enterprise のユーザー主導のインストールを実行する
+### タスク 1 – Microsoft 365 Apps for enterprise のユーザー主導のインストールを実行する
 
 LON-CL1でAlex Wilberとして Microsoft 365 にログインし、– Microsoft 365 Apps for enterpriseをインストールします。
 
@@ -35,26 +35,6 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 8. 画面右上のドロップダウンリストで **[Install and more] - [Install Microsoft 365 Apps ]** を選択します。
 
 9.  画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストール中に下の手順に進みます。
-
-### タスク 1 – Azure Information Protection Unified Labeling クライアントをインストールする
-
-Adatum のパイロット プロジェクトの一部として秘密度ラベルを実装するには、まず Microsoft ダウンロード センターから AIP クライアントをインストールする必要があります。
-
-1. **LON-CL1** に切り替えます。**adatum\administrator** アカウントとしてログインします。
-
-2. LON-CL1内のMicrosoft Edgeで、新しいタブを開き、アドレス バーに次の URL を入力 (またはコピーして貼り付け) します: **https://www.microsoft.com/en-us/download/confirmation.aspx?id=53018**
-
-   これにより、AIP Unified ラベル クライアントのダウンロードが開始されます。
-
-3. [Microsoft ダウンロード センター] タブのページ下部の通知バーに、ダウンロード中のAzInfoProtection_UI.exeファイルが表示されます。ファイルのダウンロードが完了したら、ファイル名の下に表示される **「Open file」リンクを選択します。** 
-
-4. Microsoft **Azure Information Protection**ウィザードが開きます。ウィザードがデスクトップに表示されない場合は、タスクバーのウィザードのアイコンを選択してウィザードを表示します。
-
-5. ウィザードの[Azure Information Protection クライアントのインストール]ページで、 [使用状況統計を Microsoft に送信して Azure Information Protection の改善に協力する(Help Improve AzureInfomation Protection by sending usage statistics to Microsoft)]チェック ボックスを **オフ** にして (チェックを外し) 、 **[I Agree]** ボタンを選択します。
-
-6. インストールが完了したら、**「Close」** を選択します。
-
-AIP Unified Label クライアントがクライアント 1 VM に正常にインストールされました。
 
 ### タスク 2 – 秘密度ラベルを作成する
 
