@@ -129,7 +129,7 @@ PIM-Global-Administratorsグループがグローバル管理者ロールの資�
 
 4. 表示される[Microsoft Azure へようこそ]ダイアログ ボックスで、 **[後で行う]** を選択してツアーをスキップします。
 
-5. ページ上部の検索ボックスに **「priv」** と入力します。検索結果のリストで、 **[Microsoft Entra Privileged Identity Management]** を選択します。
+5. ページ上部の検索ボックスに **「privi」** と入力します。検索結果のリストで、 **[Microsoft Entra Privileged Identity Management]** を選択します。
 
 7. 左側のナビゲーション ペインの[タスク]セクションで、  **[自分のロール]** を選択します。
 
@@ -189,9 +189,7 @@ PIM-Global-Administratorsグループがグローバル管理者ロールの資�
 
 10. 表示される[Microsoft Azure へようこそ]ダイアログ ボックスで、 **[後で行う]** を選択してツアーをスキップします。
 
-11. Microsoft Azureポータルでは、画面の中央にAzure サービスのセクションがあります。このセクションには、一連の Azure サービスとそれに関連するアイコンが表示されます。行の最後で、**[その他のサービス]** (前方向矢印アイコン付き) を選択します。これにより、「すべてのサービス」ウィンドウが開きます。
-
-12. 「すべてのサービス」ウィンドウで、ページ上部の検索ボックスに **「priv」** と入力します。検索結果のリストで、 **[Microsoft Entra Privileged Identity Management]** を選択します。
+11. ページ上部の検索ボックスに **「privi」** と入力します。検索結果のリストで、 **[Microsoft Entra Privileged Identity Management]** を選択します。
 
 13. 左側のナビゲーション ペインの[タスク]セクションで、 **[自分のロール]** を選択します。
 

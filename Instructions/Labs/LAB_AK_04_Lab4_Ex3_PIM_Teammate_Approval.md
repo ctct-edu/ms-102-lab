@@ -135,9 +135,7 @@ Holly のパイロット プロジェクトのこの時点で、**PIM-Intune-Adm
 
 Joni は、PIM-Intune-Administrators グループのメンバーとして、Intune 管理者ロールの要求を承認できます。しかし、ジョニもこの役割の割り当てを要求したため、彼女自身の要求を自己承認することはできないはずです。グループの別のメンバー (この場合は Alex) だけが彼女のリクエストを承認できる必要があります。このタスクでは、まず、Joni が自分のリクエストを自己承認できないことを確認します。
 
-1. 画面上の検索欄に  **「priv」** と入力し、**Microsoft Entra Privileged Identity Management** を選択します。
-
-   ![](./media/lab4-3-2.png)
+1. 画面上の検索欄に  **「privi」** と入力し、**Microsoft Entra Privileged Identity Management** を選択します。
 
 2. まず、Joni が Intune 管理者ロールに対する自分の要求を自己承認できないことを確認することから始めます。ウィンドウの左側のナビゲーション ペインの[タスク]セクションで、 **[申請の承認]** を選択します。
 
