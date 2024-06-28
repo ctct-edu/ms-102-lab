@@ -26,7 +26,9 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 8. 画面右上のドロップダウンリストで **[Install and more] - [Install Microsoft 365 Apps ]** を選択します。
 
-9. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストールの最初に管理者のユーザー名とパスワードを聞かれるため、AdministratorとPa55w.rdを入力してください。インストール中に下の手順に進みます。
+9. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストールの最初に管理者のユーザー名とパスワードを聞かれるため、AdministratorとPa55w.rdを入力してください。
+
+10. インストールが終了したら、LON-CL1とLON-CL2を再起動してください。
 
 ### タスク 2 – 秘密度ラベルを作成する
 
@@ -148,7 +150,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 8. Wordの画面が表示されたことを確認し、[Blank document]をクリックします。
 
-9. [Home(ホーム)]タブに、[Sensitivity(秘密度)]アイコンが表示されていることを確認します。 表示されていない場合は、Wordを閉じて、再度起動しなおしてください。![image](./media/lab9-4.png)
+9. [Home(ホーム)]タブに、[Sensitivity(秘密度)]アイコンが表示されていることを確認します。 表示されていない場合は、Wordを閉じて、再度起動しなおしてください。それでも表示されない場合は、LON-CL1を再起動してください。![image](./media/lab9-4.png)
 
 10. Word リボンの [Sensitivity] グループで、下矢印を選択します。
 
@@ -191,10 +193,6 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 5. **[送信]** ボタンをクリックします。
 
 6. LON-CL2に切り替えます。
-
-7. [すべて完了です。Officeはインストールされました。]ページが表示されている場合は、**[閉じる]** ボタンをクリックします。 
-
-8. [まだいくつか手順があります…]ページが表示されている場合は、[閉じる]ボタンをクリックします。 
 
 9. Office 365ポータルにJoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。ほかのユーザーでサインインしている場合は、次のユーザー名とパスワードを 使用してサインインし直します。
 
