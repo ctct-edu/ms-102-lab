@@ -269,18 +269,7 @@ Microsoft 365 をインストールするときに、いくつかの構成タス
     Get-InstalledModule Microsoft.Graph.* 
    ```
 
-   
-
    **注記：** このコースで Microsoft Graph PowerShell を使用するラボでは、Microsoft.Graph.Identity.DirectoryManagement、Microsoft.Graph.Users、および Microsoft.Graph.Groups のサブモジュールを使用します。サブモジュールのコマンドレットにアクセスするには、まずサブモジュールをインポートする必要があります。"Import-Module Microsoft.Graph" コマンドを使用して 30 個以上のサブモジュールをすべて一度にインポートすることも、実行中の機能を実行するために必要な各モジュールをインポートすることもできます (たとえば、"Import-Module Microsoft.Graph")。 .Graph.Users」を使用して、特定の時点でユーザー メンテナンスを実行します。このトレーニングの目的では、後のラボ演習では 3 つのサブモジュールのみを使用するため、ここで 40 以上のサブモジュールすべてをインポートするわけではありません。代わりに、これら 3 つのサブモジュールは、後のラボで必要になったときにインポートするまで待ちます。
 
-5. PowerShell の実行ポリシー設定は、Windows システム上でどの PowerShell スクリプトを実行できるかを決定します。このポリシーを unrestricted に設定すると、Holly はすべての構成ファイルをロードし、すべてのスクリプトを実行できるようになります。コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
+5. PowerShell ウィンドウを閉じ**ない** でください。Windows PowerShell ウィンドウを開いたままにしておきますが、ここでは最小化します。LON-CL1 にログインしたままにしてください。
 
-   ```
-    Set-ExecutionPolicy unrestricted
-   ```
-
-   
-
-   実行ポリシーを変更するかどうかを確認するメッセージが表示されたら、 **「A 」と入力し** (て [A] Yes to All を選択し)ます。
-
-6. PowerShell ウィンドウを閉じ**ない** でください。Windows PowerShell ウィンドウを開いたままにしておきますが、ここでは最小化します。LON-CL1 にログインしたままにしてください。
