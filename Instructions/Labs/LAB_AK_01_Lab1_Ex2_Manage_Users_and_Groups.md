@@ -26,11 +26,11 @@ Holly Dickson は、Adatum の新しい Microsoft 365 管理者です。彼女�
 
 7. ユーザーの追加ウィザードの **「基本設定」** ページで、次の情報を入力します。
 
-   - 名前：**Holly**
+   - 姓：**Holly**
 
-   - 姓 : **Dickson**
+   - 名 : **Dickson**
 
-   - 表示名: このフィールドにタブで移動すると、**Holly Dickson**が表示されます。
+   - 表示名: **Holly Dickson** 
 
    - ユーザー名:**Holly**
 
