@@ -26,7 +26,7 @@
 
 7. **[Microsoft Entra Connect同期(Microsoft Entra Connect Sync)]**  を選択します (誤ってMicrosoft Entra *Cloud* Syncを選択しないように注意してください)。 **「次へ(Next)」** を選択します。
 
-8. [ユーザーの同期]ページで、  **[Microsoft Entra Connect をダウンロード]** ボックスを選択します。これにより、ブラウザーで新しいタブが開き、Microsoft ダウンロード センターに移動します。画面の上部に[ダウンロード]ウィンドウが表示されたら、ダウンロードが完了したAzureADConnect.msiファイルの下に表示される  **[Open file]リンクを選択します。** 
+8. [ユーザーの同期]ページで、  **[Microsoft Entra Connect をダウンロード(Download Microsoft Entra Connect Sync)]** ボックスを選択します。これにより、ブラウザーで新しいタブが開き、Microsoft ダウンロード センターに移動します。画面の上部に[ダウンロード]ウィンドウが表示されたら、ダウンロードが完了したAzureADConnect.msiファイルの下に表示される  **[Open file]リンクを選択します。** 
 
 9. Microsoft Azure Active Directory Connect ウィザードが開始され、 Microsoft Azure Active Directory Connectツールのインストールが開始されます。ウィザードの最初のページが表示されてから突然消える場合や、まったく表示されない場合があります。いずれかの状況が発生した場合は、タスクバーのウィザード アイコンを選択します。
 
