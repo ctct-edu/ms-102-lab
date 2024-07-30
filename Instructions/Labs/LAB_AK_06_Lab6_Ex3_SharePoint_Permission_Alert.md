@@ -34,7 +34,7 @@
 
 1. ブラウザーで、**Holly Dickson**として Microsoft 365 にログインしているはずです。
 
-2. **Microsoft Edge**ブラウザーで新しいタブを開き、アドレス バーに次の URL を入力します:  **https://xxxxxZZZZZZ.sharepoint.com/_layouts/15/settings.aspx** (xxxxxZZZZZZ を、ラボ ホスティング プロバイダーが提供するテナント プレフィックスに置き換えます) ）。これにより、グローバル SharePoint コミュニケーション サイトのサイト設定が開きます。
+2. ブラウザーで新しいタブを開き、アドレス バーに次の URL を入力します:  **https://xxxxxZZZZZZ.sharepoint.com/_layouts/15/settings.aspx** (xxxxxZZZZZZ を、ラボ ホスティング プロバイダーが提供するテナント プレフィックスに置き換えます) ）。これにより、グローバル SharePoint コミュニケーション サイトのサイト設定が開きます。
 
 3. [サイトの設定]ウィンドウの [ユーザーと権限(Users and Permissions)] セクションで、 **[サイトの権限(Site permissions)]** を選択します。
 
