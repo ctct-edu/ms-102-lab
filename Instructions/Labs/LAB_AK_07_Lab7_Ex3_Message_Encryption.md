@@ -44,7 +44,7 @@
 
 17. ブラウザのタブを開いたままにして、次のタスクに進みます。
 
-### [タスク 2 – Windows PowerShell を使用してメール フロー暗号化ルールを作成する])
+### タスク 2 – Windows PowerShell を使用してメール フロー暗号化ルールを作成する
 
 前のタスクでは、Exchange 管理センターを使用してメール フロー暗号化ルールを構成しました。このタスクでは、Windows PowerShell (具体的には Microsoft Graph PowerShell) を使用してメール フロー暗号化ルールを作成します。まず、Exchange Online PowerShell モジュール (ExchangeOnlineManagement) に接続する必要があります。このタスクで使用されるNew-TransportRuleコマンドレットは Exchange Online コマンドレットであるため、これが必要です。そのため、このコマンドレットにアクセスするには、PowerShell を介して Exchange Online セッションに接続する必要があります。
 
