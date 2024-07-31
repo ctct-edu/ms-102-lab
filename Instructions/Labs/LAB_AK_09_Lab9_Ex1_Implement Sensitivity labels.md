@@ -26,7 +26,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 8. 画面右上のドロップダウンリストで **[Install and more] - [Install Microsoft 365 Apps ]** を選択します。
 
-9. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストールの最初に管理者のユーザー名とパスワードを聞かれるため、AdministratorとPa55w.rdを入力してください。
+9. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストールの最初に管理者のユーザー名とパスワードを聞かれた場合、AdministratorとPa55w.rdを入力してください。
 
 10. インストールが終了したら、LON-CL1とLON-CL2を再起動してください。
 
