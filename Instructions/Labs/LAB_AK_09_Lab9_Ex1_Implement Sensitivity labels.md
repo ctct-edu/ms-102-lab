@@ -136,19 +136,19 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 2. [スタート]メニューからWordを起動します。
 
-3. **[Activate Office]** ページが表示されたことを確認し、AlexW@WWLxZZZZZZ.onmicrosoft.comと入力して（入力されていればそのまま）、**[Next]** ボタンをクリックします。
+3. Wordの画面が表示されたことを確認し、[Blank document]をクリックします。
 
-4. [Enter password] ページが表示されたことを確認し、 **Pa55w.rd1234** と入力して、**[Sign in]** ボタンをクリックします。
+4. [Sign in to get started with Word] ページで **[Sign in or create account]** をクリックした後、AlexW@WWLxZZZZZZ.onmicrosoft.comと入力、**[Next]** ボタンをクリックします。
 
-5. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、 **[No, sign in to this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
+5. [Enter password] ページが表示されたら、管理者のパスワードを入力し、**[Sign in]** ボタンをクリックします。
+
+6. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、 **[No, sign in to this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
 
    ![image](./media/lab9-3.png)
 
-6. [Accept the license agreement)]ページで、 **[Accept]** ボタンをクリックします。
+7. [Accept the license agreement)]ページで、 **[Accept]** ボタンをクリックします。
 
-7. [Your privacy matters] ページが表示されたら、画面右下の **[Close]** ボタンをクリックします。
-
-8. Wordの画面が表示されたことを確認し、[Blank document]をクリックします。
+8. [Your privacy matters] ページが表示されたら、画面右下の **[Close]** ボタンをクリックします。
 
 9. [Home(ホーム)]タブに、[Sensitivity(秘密度)]アイコンが表示されていることを確認します。 表示されていない場合は、Wordを閉じて、再度起動しなおしてください。それでも表示されない場合は、LON-CL1を再起動してください。![image](./media/lab9-4.png)
 
@@ -166,7 +166,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 16. [Save this file] 画面のFile name でファイル名を **Test** と入力します。Choose a Location で **Documents** を選択します。Sensitibityのドロップダウン メニューで **[PII]** が選択されていることを確認します。 **[Save]** をクリックします。
 
-    
+17. Wordのドキュメントを閉じます。
 
 これで、読み取り専用で保護された AIP 保護された Word 文書が正常に作成されました。このドキュメントにアクセスできるのは、作成者である Alex Wilber と、ドキュメントが共有された Joni Sherman (読み取り専用権限を持つ) のみです。
 
@@ -174,7 +174,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 前のタスクでは、Word 文書を作で保護しました。PII ラベルは文書に透かしを挿入し、文書に対するアクセス許可を制限する必要があります。ドキュメントに割り当てた保護が機能するかどうかを確認するには、まずドキュメントを Joni Sherman と自分の個人電子メール アドレスに電子メールで送信します。次に、ジョニ ウィルバーとアレックス ウィルバーの両方でどのような機能が可能かをテストします。
 
-1. LON-CL1　のEdgeブラウザーで、Office 365ポータルにAlexw@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。ほかのユーザーでサインインしている場合はサインインし直します。
+1. LON-CL1　のEdgeブラウザーで、Office 365ポータルにAlexw@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。そうでない場合はサインインし直します。
 
 2. Office365ポータルページで、 **[Outlook]** アイコンをクリックします。 パスワードが要求されたら **Pa55w.rd1234** と入力します。
 
