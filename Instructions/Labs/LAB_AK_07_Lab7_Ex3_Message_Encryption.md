@@ -42,36 +42,3 @@
 
 16. これにより、 「ルール」ページに戻るはずです。新しいルールがルールのリストに表示されない場合は、メニュー バーの[更新] オプションを選択します。
 
-17. ブラウザのタブを開いたままにして、次のタスクに進みます。
-
-### タスク 2 – Windows PowerShell を使用してメール フロー暗号化ルールを作成する
-
-前のタスクでは、Exchange 管理センターを使用してメール フロー暗号化ルールを構成しました。このタスクでは、Windows PowerShell (具体的には Microsoft Graph PowerShell) を使用してメール フロー暗号化ルールを作成します。まず、Exchange Online PowerShell モジュール (ExchangeOnlineManagement) に接続する必要があります。このタスクで使用されるNew-TransportRuleコマンドレットは Exchange Online コマンドレットであるため、これが必要です。そのため、このコマンドレットにアクセスするには、PowerShell を介して Exchange Online セッションに接続する必要があります。
-
-1. 仮想マシンLON-CL1 に切り替えます。Adatum\Administratorでログインしているはずです。
-
-2. Windows PowerShell がまだデスクトップ上で開いている場合は、タスクバーの PowerShell アイコンを選択して PowerShell ウィンドウを最大化します。ただし、PowerShell を最後に使用した後に閉じた場合は、タスク バーの検索ボックスに「power」と入力し、表示されるメニューでWindows PowerShell   を右クリックし、ドロップダウン メニューで [Run as administrator] を選択します。
-
-3. Windows PowerShellでは、コマンド プロンプトで次のコマンドを実行して、Exchange Online PowerShell モジュール (ExchangeOnlineManagement) をインストールすることから始める必要があります。
-
-   ‎ **Install-Module -Name ExchangeOnlineManagement**
-
-4. 信頼できないリポジトリ (PSGallery) からモジュールをインストールするかどうかを確認するメッセージが表示されたら、**「A 」** と入力して [A] すべてはいを 選択します。
-
-5. 次に、コマンド プロンプトで次のコマンドを実行して、モジュールに接続する必要があります (注: コマンドでは、ラボ ホスティング プロバイダーから提供されたテナント名 (xxxxxZZZZZZ.onmicrosoft.com、xxxxxZZZZZZ はテナント) をコピーして貼り付ける必要があります)ラボ ホスティング プロバイダーによって割り当てられたプレフィックス):
-
-    **Connect-ExchangeOnline -UserPrincipalName holly@xxxxxZZZZZZ.onmicrosoft.com**
-
-6. 表示される[パスワードの入力]ダイアログ ボックスで、ラボ ホスティング プロバイダーから提供された Microsoft 365 テナント管理者パスワードを入力し、 [**サインイン] を**選択します。
-
-7. ここで、 New-TransportRuleコマンドレットを使用してメール フロー ルールを作成し、 ApplyRightsProtectionTemplateプロパティを、使用可能な RMS テンプレートの 1 つである**Encrypt**に設定します。このルールは、Adatum からGservices@adatum.comに送信されるすべての送信メールを暗号化します。
-
-   このルールを作成するには、次のコマンドを実行します。
-
-    **New-TransportRule -Name "Encrypt rule for Guest Services" -SentTo "Gservices@adatum.com" -SentToScope "NotinOrganization" -ApplyRightsProtectionTemplate Encrypt**
-
-   **注:** このコマンドは完了するまでに数秒かかります。作成した新しいルールのプロパティが PowerShell に表示されるまで、次の手順に進まないでください。
-
-8. ルールが存在することを確認するには、 **Exchange 管理センターのメール フローウィンドウにて、[ルール]タブを表示** します。必要に応じて、ルールのリストの上に表示されるメニュー バーで、**[更新]** アイコンを選択します。更新されたリストには、PowerShell を使用して作成したばかりのルールが表示されます。
-
-   
