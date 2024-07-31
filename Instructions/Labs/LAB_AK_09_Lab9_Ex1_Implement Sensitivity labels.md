@@ -176,9 +176,9 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 1. LON-CL1　のEdgeブラウザーで、Office 365ポータルにAlexw@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。そうでない場合はサインインし直します。
 
-2. Office365ポータルページで、 **[Outlook]** アイコンをクリックします。 パスワードが要求されたら **Pa55w.rd1234** と入力します。
+2. Office365ポータルページで、 **[Outlook]** アイコンをクリックします。 
 
-3. **[新規メール]** ボタンをクリックします。
+3. **[New mail]** ボタンをクリックします。
 
 4. 次の設定で新しいメッセージを作成します。
 
