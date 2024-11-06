@@ -31,7 +31,7 @@ Adatum の新しい Microsoft 365 管理者である Holly Dickson としての�
 - **Exchangeメール**
 - **SharePoint サイト**
 - **OneDrive アカウント**
-- **Teams チャットとチャネル メッセージ**
+- **Teams チャットおよびチャネル メッセージ**
 
 他のすべての場所を **[オフ]** に設定し、**[次へ]** を選択します。
 
