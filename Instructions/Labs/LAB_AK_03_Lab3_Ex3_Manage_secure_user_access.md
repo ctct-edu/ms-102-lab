@@ -1,52 +1,8 @@
 # [ラーニング パス 3 - ラボ 3 - 演習 3 - 安全なユーザー アクセスの管理](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_03_Lab3_Ex3_Manage_secure_user_access.md#learning-path-3---lab-3---exercise-3---manage-secure-user-access)
 
-Adatum の Microsoft 365 管理者である Holly Dickson は、Adatum の CTO から、組織全体のパスワード管理を強化する手段としてパススルー認証 (PTA) と Azure AD スマート ロックアウトを展開するように依頼されました。
+Adatum の Microsoft 365 管理者である Holly Dickson は、Adatum の CTO から、組織全体のパスワード管理を強化する手段として Azure AD スマート ロックアウトを展開するように依頼されました。
 
-### タスク 1: Azure AD パススルー認証を展開する
-
-パススルー認証を使用すると、ユーザーはオンプレミスのパスワードを使用してクラウドベースのサービスにサインインできます。すべてのユーザー パスワードはオンプレミス ドメインにローカルにのみ保存され、クラウドに同期されることはありません。ユーザーがサインインすると、PTA エージェントは資格情報をユーザーのオンプレミス環境に取り込み、パスワードが正しいかどうかを確認します。次に、結果を Azure AD に送り返します。
-
-Adatum の CTO は、同社のユーザーにより良いサインイン エクスペリエンスを提供したいと考えています (PTA では覚えておくべきパスワードが 1 つ少なくて済むため)。また、PTA を使用するとユーザーがサインイン方法を忘れる可能性が低くなるため、Adatum の IT ヘルプデスクのコストを削減したいと考えています。これは、パスワード ハッシュ同期や Active Directory フェデレーション サービスを採用することによっても実現できますが、Adatum は Microsoft 365 パイロット プロジェクトで PTA をテストすることを選択しました。
-
-1. 前のタスクのローカル**adatum\administratorとして**  **LON-DC1** にログインしている必要があります。
-
-2. LON-DC1 では、デスクトップにある、 **[Azure AD Connect]** ショートカットをダブルクリックします。これにより、Microsoft Azure Active Directory Connectウィザードが開始されます。
-
-3. [Azure AD Connect へようこそ]ウィンドウに、このセットアップ ウィザードが閉じるまで同期サービス スケジューラーが一時停止されていることを示すページが表示されます。これは、Azure AD Connect インストール ウィザードを開始すると (前のタスクで実行しました)、スケジューラが一時的に停止されるためです。**Configure** を選択します。
-
-4. [追加タスク]ページで、**[Change user sign-in]** タスクを選択し、**[Next]** を選択します。
-
-5. [Connect to Azure AD]ページで、Azure AD にサインインします。USERNAMEフィールドには、すでにHolly@xxxUPNxxx.onmicrosoft.comが入力されています。[PASSWORD]フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 管理者 パスワード** を入力し、 **[Next]** を選択します。
-
-6. [User sign-in]ページ で、**[Pass-through authentication]**を選択し、**[Next]** を選択します。
-
-   ![](./media/lab3-3-1.png)
-
-7. [enable singre sign-on]ページで、**[Enter credentials]** を選択します。
-
-8. [Forest Credentials]ダイアログ ボックスで、ユーザー名として**adatum\administrator を** 入力し、パスワードとして **Pa55w.rd** を入力し、**[OK]** を選択します。
-
-9.  [Enter credentials]ボタンの右側にチェック マークが表示されます。**「Next」** を選択します。
-
-10. Ready to configure ページで、**[Configure]** を選択します。構成が完了するまでに 1 分ほどかかる場合があります。
-
-11. [Configuration complete]ページで、Azure AD の現在のサインオン方法が PTA であることを示すメッセージに注目してください。**[Exit]** を選択します。これでパススルー認証が有効になりました。
-
-12. パススルー認証が正常に有効になっていることを確認するには、Microsoft Entra 管理センターにアクセスします。シークレットウインドウ(InPrivateウィンドウ)のブラウザーに切り替え、アドレス バーに次の URL を入力します: **https://entra.microsoft.com**
-
-13. 左側のナビゲーション ウィンドウで、 **[ID] - [表示数を増やす]** をクリックして、 **[ハイブリッド管理] - [Microsoft Entra Connect]** を選択します。
-
-14. ページ中央のナビゲーション ウィンドウで、**[Connect同期]** を選択します。
-
-15. 詳細ペインの [ユーザー サインイン]セクションで、パススルー認証のステータスが [有効] であることを確認し、**[パススルー認証]** を選択します。
-
-16. [パススルー認証]ページで、パススルー認証エージェントがインストールされているサーバーのリストを確認します。これにより、LON-DC1.Adatum.comが表示されるはずです。
-
-17. [パススルー認証]ページの右上隅にある **[X]** を選択してページを閉じる操作を2回行うと、Microsoft Entra 管理センターに戻っているはずです。
-
-18.  Microsoft Entra 管理センターは 次のタスクで使用するため、開いたままにしておきます。
-
-### [タスク 2: Azure AD スマート ロックアウトを展開する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_03_Lab3_Ex3_Manage_secure_user_access.md#task-2-deploy-azure-ad-smart-lockout)
+### [タスク 1: Azure AD スマート ロックアウトを展開する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_03_Lab3_Ex3_Manage_secure_user_access.md#task-2-deploy-azure-ad-smart-lockout)
 
 Adatum の CTO は、ユーザーのパスワードを推測したり、ネットワークへの侵入を許可するためにブルート フォース手法を使用したりしようとする悪意のある攻撃者をロックアウトするのに役立つ Azure AD Smart Lockout を展開するようあなたに依頼しました。Smart Lockout は、有効なユーザーからのサインインを認識し、攻撃者やその他の不明なソースからのサインインとは異なる方法で処理します。
 
