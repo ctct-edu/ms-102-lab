@@ -138,27 +138,27 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 3. Wordの画面が表示されたことを確認し、[Blank document]をクリックします。
 
-4. [Sign in to get started with Word] ページで **[Sign in or create account]** をクリックした後、AlexW@WWLxZZZZZZ.onmicrosoft.comと入力、**[Next]** ボタンをクリックします。
+4. 「Hello Alex, welcome to Word」ページで**[Continue]** ボタンをクリックします。 
 
-5. [Enter password] ページが表示されたら、管理者のパスワードを入力し、**[Sign in]** ボタンをクリックします。
+5. [Activate Office]ページが表示されたことを確認し、AlexW@WWLxZZZZZZ.onmicrosoft.comと入力、**[Next]** ボタンをクリックします。
 
-6. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、 **[No, sign in to this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
+6. [Enter password] ページが表示されたら、管理者のパスワードを入力し、**[Sign in]** ボタンをクリックします。
+
+7. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、 **[No, sign in to this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
 
    ![image](./media/lab9-3.png)
 
-7. [Accept the license agreement)]ページで、 **[Accept]** ボタンをクリックします。
+8. [Accept the license agreement)]ページで、 **[Accept]** ボタンをクリックします。
 
-8. [Your privacy matters] ページが表示されたら、画面右下の **[Close]** ボタンをクリックします。
+9. [Your privacy matters] ページが表示されたら、画面右下の **[Close]** ボタンをクリックします。
 
-9. [Home(ホーム)]タブに、[Sensitivity(秘密度)]アイコンが表示されていることを確認します。 表示されていない場合は、Wordを閉じて、再度起動しなおしてください。それでも表示されない場合は、LON-CL1を再起動してください。![image](./media/lab9-4.png)
+10. [Home(ホーム)]タブに、[Sensitivity(秘密度)]アイコンが表示されていることを確認します。 表示されていない場合は、Wordを閉じて、再度起動しなおしてください。それでも表示されない場合は、LON-CL1を再起動してください。![image](./media/lab9-4.png)
 
-10. Word リボンの [Sensitivity] グループで、下矢印を選択します。
+11. Word リボンの [Sensitivity] グループで、下矢印を選択します。
 
-11. 秘密度ラベルをドキュメントに適用するため、ドロップダウン メニューで **[PII]** を選択します。その後もう一度、 [Sensitivity]グループのドロップダウン矢印を選択すると、表示されるドロップダウン メニューにはPIIラベルが表示され、その横にこのドキュメントに適用されていることを示すチェック マークが表示されることを確認します。
+12. 秘密度ラベルをドキュメントに適用するため、ドロップダウン メニューで **[PII]** を選択します。その後もう一度、 [Sensitivity]グループのドロップダウン矢印を選択すると、表示されるドロップダウン メニューにはPIIラベルが表示され、その横にこのドキュメントに適用されていることを示すチェック マークが表示されることを確認します。
 
-12. [Permission] ダイアログが表示されます。 **[Restrict permission to this document] チェックボックスをオン** にします。
-
-13. Readの右の欄に **JoniS@WWLxZZZZZZ.onmicrosoft.com** と入力し、**[OK]** をクリックします。
+13. [Permissioportan] ダイアログが表示されます。 Viewer の欄に **JoniS@WWLxZZZZZZ.onmicrosoft.com** と入力し、**[Apply]** をクリックします。
 
 14. 透かしテキストが表示されることを確認します。
 
@@ -174,7 +174,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 前のタスクでは、Word 文書を作で保護しました。PII ラベルは文書に透かしを挿入し、文書に対するアクセス許可を制限する必要があります。ドキュメントに割り当てた保護が機能するかどうかを確認するには、まずドキュメントを Joni Sherman と自分の個人電子メール アドレスに電子メールで送信します。次に、ジョニ ウィルバーとアレックス ウィルバーの両方でどのような機能が可能かをテストします。
 
-1. LON-CL1　のEdgeブラウザーで、Office 365ポータルにAlexw@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。そうでない場合はサインインし直します。
+1. LON-CL1　のEdgeブラウザーで、 Office 365ポータルにAlexw@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。そうでない場合はOffice 365ポータル (https://portal.office.com)にサインインし直します。
 
 2. Office365ポータルページで、 **[Outlook]** アイコンをクリックします。 
 
@@ -194,7 +194,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 6. LON-CL2に切り替えます。
 
-7. Office 365ポータルにJoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。そうでない場合はし直します。
+7. Office 365ポータルに JoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。そうでない場合はOffice 365ポータル (https://portal.office.com)にサインインし直します。
 
 8. Office365ポータルページで、**[Outlook]** アイコンをクリックします。Joniの受信トレイが表示されたことを確認し、Alexから届いたメールを選択します。
 
