@@ -102,7 +102,7 @@
 
     c. [New Resource Record]  ウィンドウで、[Alias Name] フィールドに **「autodiscover」** と入力します。
 
-    d.  **[Fully qualified domain name(FQDN)] フィールド ** に、以前にクリップボードにコピーした、参照先のアドレスまたは値 を貼り付けます。
+    d.  [Fully qualified domain name(FQDN)] フィールドに、以前にクリップボードにコピーした、参照先のアドレスまたは値 を貼り付けます。
 
     ![](./media/lab1-3-3.png)
 
