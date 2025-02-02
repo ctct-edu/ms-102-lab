@@ -27,43 +27,45 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 3. **[Welcome to your new Office,Mod]** ページが表示された場合は、右側に表示される **[>]** ボタンを3回クリックします。(表示されない場合は、そのままMicrosoft 365 ポータルが表示されます)
 
-4. 右上の歯車マーク **[Settings and more]** をクリックします。
+4. Copilotのロックを解除するか聞かれる場合があります。その場合は **[Skip Now (今はスキップする) ]** を選択してください。 
+
+5. 右上の歯車マーク **[Settings and more]** をクリックします。
 
    ![](./media/lab1-1.png)
 
-5. **[Setting]** の一覧から、 **[Language and time zone]** の **[Change your language]** をクリックします。
+6. **[Setting]** の一覧から、 **[Language and time zone]** の **[Change your language]** をクリックします。s
 
    ![](./media/lab1-2.png)
 
-6. **[My Account]** の **[Settings ＆ Privacy]** ページが表示されます。
+7. **[My Account]** の **[Settings ＆ Privacy]** ページが表示されます。
 
-7. **[Language]** セクションの **[Display Language]** をクリックして、 **[Change display language]** をクリックします。
+8. **[Language]** セクションの **[Display Language]** をクリックして、 **[Change display language]** をクリックします。
 
    ![](./media/lab1-3.png)
 
-8. **[Language]** ページで **[Japanese]** を選択し、 **[Select]** をクリックします。
+9. **[Language]** ページで **[Japanese]** を選択し、 **[Select]** をクリックします。
 
-9. **[Display language and regional format will be updated to Japanese]** とメッセージが表示されたら、 **[Update]** をクリックします。
+10. **[Display language and regional format will be updated to Japanese]** とメッセージが表示されたら、 **[Update]** をクリックします。
 
-   ![](./media/lab1-4.png)
+    ![](./media/lab1-4.png)
 
-10. **[表示言語と地域設定が Japanese に更新されました。新しい言語を完全に適用するには、サインアウトする必要があります。]** とメッセージが表示されたら、 **[キャンセル]** をクリックします。
+11. **[表示言語と地域設定が Japanese に更新されました。新しい言語を完全に適用するには、サインアウトする必要があります。]** とメッセージが表示されたら、 **[キャンセル]** をクリックします。
 
     ![](./media/lab1-5.png)
 
-11. **[設定およびプライバシー]** ページで、 **[地域]** の **[タイムゾーン] - [タイムゾーンの変更]** をクリックします。
+12. **[設定およびプライバシー]** ページで、 **[地域]** の **[タイムゾーン] - [タイムゾーンの変更]** をクリックします。
 
     ![](./media/lab1-6.png)
 
-12. **[ (UTC ＋ 09:00)大阪、札幌、東京]** を選択して、 **[選択]** をクリックします。
+13. **[ (UTC ＋ 09:00)大阪、札幌、東京]** を選択して、 **[選択]** をクリックします。
 
-13. Microsoft 365 ポータル の右上にあるイニシャルのアイコンをクリックしてから、 **[sign out]** をクリックします。
+14. Microsoft 365 ポータル の右上にあるイニシャルのアイコンをクリックしてから、 **[sign out]** をクリックします。
 
     ![](./media/lab1-7.png)
 
-14. サインアウトが完了したら、一度ブラウザーを×で閉じます。
+15. サインアウトが完了したら、一度ブラウザーを×で閉じます。
 
-15. https://portal.office.com に再度サインインします。日本語化されたことが確認できたら(少し時間がかかったり、再サインインを要することもあります)、手順を進めてください。
+16. https://portal.office.com に再度サインインします。日本語化されたことが確認できたら(少し時間がかかったり、再サインインを要することもあります)、手順を進めてください。
 
 ### タスク 2 - Adatum の組織プロファイルをセットアップする
 
