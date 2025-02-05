@@ -136,7 +136,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 3. Wordの画面が表示されたことを確認し、[Blank document]をクリックします。
 
-4. 「Hello Alex, welcome to Word」ページで**[Continue]** ボタンをクリックします。 
+4. 「Hello Alex, welcome to Word」ページで **[Continue]** ボタンをクリックします。 
 
 5. [Activate Office]ページが表示されたことを確認し、AlexW@WWLxZZZZZZ.onmicrosoft.comと入力、**[Next]** ボタンをクリックします。
 
