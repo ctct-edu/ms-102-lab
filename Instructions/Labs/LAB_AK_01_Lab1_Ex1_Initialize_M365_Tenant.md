@@ -152,7 +152,7 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 7. ここで、M365 パイロット プロジェクト グループにメンバーを割り当てます。**[メンバーの追加]** ページで、**[+メンバーの追加]** を選択します。
 
-8. 表示される[メンバーの追加] ウィンドウで、次のユーザーの横にあるチェック ボックスをオンにします: **Alex Wilber**、**Allan Deyoung** 、**Diego Siciliani** 、**Isaiah Langer** 、**Joni Sherman** 、**Lynne Robbins** 、**Megan Bowen** 、**MOD Administrator** 、**Nestor Wilke** 、および**Patti Fernandez** 。次に、ペインの下部にある **[Add (10)]ボタンを選択します。**
+8. 表示される[メンバーの追加] ウィンドウで、次のユーザーの横にあるチェック ボックスをオンにします: **Alex Wilber**、**Allan Deyoung** 、**Diego Siciliani** 、**Isaiah Langer** 、**Joni Sherman** 、**Lynne Robbins** 、**Megan Bowen** 、**MOD Administrator** 、**Nestor Wilke** 、および**Patti Fernandez** 。次に、ペインの下部にある **[追加 (10)]ボタンを選択します。**
 
 9. [メンバーの追加]ページで、これら 10 人のユーザーがグループのメンバーとしてリストされていることを確認します。ユーザーを見逃した場合は、**[+メンバーの追加]** を選択して、見逃したユーザーを追加します。10 人のユーザー全員がこのページに表示されたら、**[次へ]** を選択します。
 
