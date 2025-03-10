@@ -27,7 +27,7 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 4. Copilotのロックを解除するか聞かれる場合があります。その場合は **[Skip Now (今はスキップする) ]** を選択してください。 
 
-5. 右上の歯車マーク **[Settings and more]** をクリックします。
+5. 画面左下の歯車マーク **[Settings and more]** をクリックします。
 
    ![](./media/lab1-1.png)
 
