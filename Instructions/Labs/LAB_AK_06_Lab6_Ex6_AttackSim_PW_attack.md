@@ -147,6 +147,8 @@ Holly Dickson 氏は、Adatum のユーザーの中には、偽の Web サイト
 
 ### [タスク 3: 全体管理者の多要素認証を無効にする](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_06_Lab6_Ex6_AttackSim_PW_attack.md#task-3-disable-multi-factor-authentication-for-the-global-admin) 
 
+**※  ラーニング パス 6 - ラボ 6 - 演習 5  タスク1 を実施していない場合はスキップしてください。**
+
 Microsoft の攻撃シミュレーション トレーニングを使用してフィッシング攻撃をシミュレートするために、ホリーはユーザー アカウントに対して多要素認証 (MFA) を有効にしました。攻撃シミュレーション トレーニング テストを完了したので、パイロット プロジェクトの残りの部分で MFA に対処する必要がないように、自分のアカウントの MFA を無効にしたいと考えています。
 
 1. Microsoft 365 管理センター にアクセスします。ブラウザーを起動し、アドレス バーに次の URL を入力します: **https://admin.microsoft.com/**  
