@@ -142,7 +142,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 6. [Enter password] ページが表示されたら、管理者のパスワードを入力し、**[Sign in]** ボタンをクリックします。
 
-7. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、 **[No, sign in to this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
+7. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、 **[No, this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
 
    ![image](./media/lab9-3.png)
 
@@ -206,7 +206,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 12. [Sign in]ページが表示されたことを確認し、JoniS@WWLxZZZZZ.onmicrosoft.comで サインインします。
 
-13. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、**[No, sign in to this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
+13. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、**[No, this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
 
     ![image](./media/lab9-3.png)
 
