@@ -186,7 +186,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
    • 件名 : Protected Document Test
 
-   • 添付ファイル(上のメニューで「Insert」をクリックするとクリップの添付アイコンが表示されます) : 前のタスクで保存したTest.docx
+   • 添付ファイル(上のメニューで「Insert」を選択し、表示されるクリップのようなアイコンを選択) : 前のタスクで保存したTest.docx
 
    (Document フォルダーに保存されています。)
 
@@ -194,15 +194,15 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 6. LON-CL2に切り替えます。
 
-7. Office 365ポータルに JoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。そうでない場合はOffice 365ポータル (https://portal.office.com)にサインインし直します。
+7. Office 365ポータルに JoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインします。
 
 8. Office365ポータルページで、**[Outlook]** アイコンをクリックします。Joniの受信トレイが表示されたことを確認し、Alexから届いたメールを選択します。
 
 9. Wordの添付ファイルがあることを確認します。
 
-10. 添付ファイルの右側に表示されている[∨]をクリックし、 次いで [ ↓ ]　(ダウンロード) をクリックします。
+10. 添付ファイルの右側に表示されている[∨]をクリックし、 次いで [ ↓ ]　(Download) をクリックします。
 
-11. 画面の右上に[ダウンロード]ページが表示されますので、[Open file(ファイルを開く)]をクリックします。(あるいは、Downloadsフォルダーにある Test.docx を開いてください)
+11. 画面の右上に[Downloads]ページが表示されますので、[Open file(ファイルを開く)]をクリックします。(あるいは、Downloadsフォルダーにある Test.docx を開いてください)
 
 12. [Sign in]ページが表示されたことを確認し、JoniS@WWLxZZZZZ.onmicrosoft.comで サインインします。
 
