@@ -186,7 +186,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
    • 件名 : Protected Document Test
 
-   • 添付ファイル : 前のタスクで保存したTest.docx
+   • 添付ファイル(上のメニューで「Insert」をクリックするとクリップの添付アイコンが表示されます) : 前のタスクで保存したTest.docx
 
    (Document フォルダーに保存されています。)
 
