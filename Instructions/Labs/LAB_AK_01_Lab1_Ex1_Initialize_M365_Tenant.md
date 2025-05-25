@@ -21,15 +21,13 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 ### タスク 1: Microsoft 365 ポータルの日本語化
 
-1. お手元のPCで、InPrivate ウィンドウ(Microsoft Edge) もしくは、シークレットウィンドウ (Google Chrome) で、Microsoft 365 ポータル (https://portal.office.com/) にアクセスし、管理者の資格情報でサインインします。
+1. お手元のPCで、InPrivate ウィンドウ(Microsoft Edge) もしくは、シークレットウィンドウ (Google Chrome) で、Microsoft 管理センター (https://admin.microsoft.com/) にアクセスし、管理者の資格情報でサインインします。
 
 2. **[サインインの状態を保持しますか]** ページでは、 **[いいえ]** をクリックします 。
 
 4. Copilotのロックを解除するか聞かれる場合があります。その場合は **[Skip Now (今はスキップする) ]** を選択してください。 
 
-5. 画面左下の **歯車マーク** をクリックし、表示される **[Settings]** メニューをクリックします。
-
-   ![](./media/lab1-1.png)
+5. 画面右上の **歯車マーク** をクリックし、表示される **[Settings]** メニューをクリックします。
 
 6. **[Setting]** の一覧から、 **[Language and time zone]** の **[Change your language]** をクリックします。s
 
