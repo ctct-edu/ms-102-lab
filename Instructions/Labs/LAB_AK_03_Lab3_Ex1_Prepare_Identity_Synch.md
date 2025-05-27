@@ -12,43 +12,19 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
 
  このタスクでは、PowerShell を使用して、最初に確立されたadatum.com ドメインをカスタム WWLxZZZZZZ.onelearndns.com ドメインに置き換えることにより、Adatum Corporation 全体のドメインのユーザー プリンシパル名を変更します。その際、プライマリ ドメインの UPN サフィックスと、AD DS のすべてのオンプレミス ユーザー アカウントの UPN を @WWLxZZZZZZ.onelearndns.com で更新します。
 
-**重要 - PowerShell に関する注意事項:**これまで、Windows PowerShell を使用するこのコースのラボでは、Microsoft Graph PowerShell として知られる最新の PowerShell モジュールを使用してきました。この PowerShell モジュールは、MSOnline と Azure Active Directory (Azure AD) PowerShell の 2 つの古いモジュールを置き換えます。古いモジュールは廃止される予定であるため、該当する場合、Microsoft のお客様は新しい Microsoft Graph PowerShell モジュールを使用することをお勧めします。ただし、現時点では、MSOnline および Azure AD PowerShell のすべての機能が Microsoft Graph PowerShell に組み込まれているわけではありません。この実習では、Adatum の Active Directory フォレストの更新に必要なコマンドがまだ Microsoft Graph PowerShell に組み込まれていないため、MSOnline を使用する必要があります。そのような、このタスクは、MSOnline モジュールをインストールし、Microsoft Online Service に接続することで開始します。次に、適切な MSOnline コマンドレットを実行して、adatum.com ドメインを更新します。
-
 1. **Adatum のドメイン コントローラーであるLON-DC1** に切り替えます。ここでも **ADATUM\Administrator** およびパスワード **Pa55w.rd** としてログインしているはずです。
 
-2.  Windows PowerShell がまだ開いている場合は、タスクバーの **PowerShellアイコンを選択します。** それ以外の場合は、タスクバーの虫眼鏡 (検索) アイコンを選択し、表示される検索ボックスに「power」と入力し、Windows PowerShellを右クリックし、 [Run as administrator] を選択して、 Windows PowerShell を開く必要があります。ドロップダウン メニュー。Windows PowerShell が開いたら、ウィンドウを最大化します。
+2. Windows PowerShell がまだ開いている場合は、タスクバーの **PowerShellアイコンを選択します。** それ以外の場合は、タスクバーの虫眼鏡 (検索) アイコンを選択し、表示される検索ボックスに「power」と入力し、Windows PowerShellを右クリックし、 [Run as administrator] を選択して、 Windows PowerShell を開く必要があります。ドロップダウン メニュー。Windows PowerShell が開いたら、ウィンドウを最大化します。
 
-3. MSOnline PowerShell モジュールをインストールすることから始める必要があります。  Windows PowerShell  のコマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
-
-   ```
-    Install-Module MSOnline
-   ```
-
-   NuGet providerを今インストールするかどうか確認するメッセージが表示された場合は、 **Y** を入力して( [Y] Yes を選択)、Enter キーを押します。
-
-4. 信頼できないリポジトリ (PSGallery) からモジュールをインストールするかどうかを確認するメッセージが表示されたら、 **「A 」と入力して**  **[A] すべてはいを** 選択します。
-
-5. ここで、PowerShell セッションを Microsoft Online Service に接続する必要があります。コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
-
-   ```
-    Connect-MsolService
-   ```
-
-   
-
-6. 表示される[サインイン]ダイアログ ボックスで、 **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)** としてログインします(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。 **[パスワード]** フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供されたのと同じ **Microsoft 365 管理者 パスワードを入力します。** 
-
-7. PowerShell の実行ポリシー設定は、Windows システム上でどの PowerShell スクリプトを実行できるかを決定します。このポリシーを **unrestricted** に設定すると、Holly はすべての構成ファイルをロードし、すべてのスクリプトを実行できるようになります。コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
+3. PowerShell の実行ポリシー設定は、Windows システム上でどの PowerShell スクリプトを実行できるかを決定します。このポリシーを **unrestricted** に設定すると、Holly はすべての構成ファイルをロードし、すべてのスクリプトを実行できるようになります。コマンド プロンプトで次のコマンドを入力し、Enter キーを押します。
 
    ```
     Set-ExecutionPolicy unrestricted
    ```
 
-   
-
    実行ポリシーを変更するかどうかを確認するメッセージが表示されたら、   **「A 」と入力して**  **[A] すべてはいを** 選択します。
 
-8.  Windows PowerShell を使用して、オンプレミスの adatum.com ドメインを WWLxZZZZZZ.onelearndns.com ドメインに置き換える必要があります。その際、プライマリ ドメインの UPN サフィックスと、AD DS 内のすべてのユーザーの UPN を WWLxZZZZZZ.onelearndns.com で更新します。
+4. Windows PowerShell を使用して、オンプレミスの adatum.com ドメインを WWLxZZZZZZ.onelearndns.com ドメインに置き換える必要があります。その際、プライマリ ドメインの UPN サフィックスと、AD DS 内のすべてのユーザーの UPN を WWLxZZZZZZ.onelearndns.com で更新します。
 
    次の PowerShell コマンドでは、 Set-ADForest コマンドレットは Active Directory フォレストのプロパティを変更し、 -identity パラメーターは変更する Active Directory フォレストを指定します。 このタスクを実行するには、**次のコマンドを実行して、 adatum.comフォレストの  UPNSuffixes プロパティを設定します (WWLxZZZZZZ を一意の UPN 名に変更することを忘れないでください) 。** 
 
@@ -56,17 +32,13 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
     Set-ADForest -identity adatum.com -UPNSuffixes @{replace="WWLxZZZZZZ.onelearndns.com"}
    ```
 
-   
-
-9. 次に、**次のコマンドを実行して、既存のすべての adatum.com アカウントを新しい UPN @xxxUPNxxx.xxxCustomDomainxxx.xxx ドメインに変更する必要があります  (WWLxZZZZZZ を一意の UPN 名に変更することを忘れないでください) 。**
+5. 次に、**次のコマンドを実行して、既存のすべての adatum.com アカウントを新しい UPN @xxxUPNxxx.xxxCustomDomainxxx.xxx ドメインに変更する必要があります  (WWLxZZZZZZ を一意の UPN 名に変更することを忘れないでください) 。**
 
    ```
     Get-ADUser -Filter * -Properties SamAccountName | ForEach-Object { Set-ADUser $_  -UserPrincipalName ($_.SamAccountName + "@WWLxZZZZZZ.onelearndns.com" )}
    ```
 
-   
-
-10. 次のタスクでは、引き続き LON-DC1 で PowerShell を使用します。
+6. 次のタスクでは、引き続き LON-DC1 で PowerShell を使用します。
 
 ### タスク 2: 問題のあるユーザー アカウントを準備する
 
@@ -82,15 +54,11 @@ Active Directory では、デフォルトのユーザー プリンシパル名 (
     CD C:\labfiles\
    ```
 
-   
-
 2. **次のコマンドを入力** すると、問題のあるユーザー アカウントを作成する PowerShell スクリプトが実行されます。このスクリプトは C:\labfiles フォルダーに保存されており、Klemen Sic のオンプレミス ユーザー アカウントの UserPrincipalName に意図的に問題を引き起こします。これにより、次のタスクで IdFix ツールを使用してこのアカウントのトラブルシューティングを行うことができます。
 
    ```
     .\CreateProblemUsers.ps1
    ```
-
-   
 
     **重要:** スクリプトが完了するまで待ってから、次のタスクに進みます。この Windows PowerShell スクリプトは、AD DS に次の変更を加えます。
 
