@@ -201,9 +201,7 @@ Joni は、PIM-Intune-Administrators グループのメンバーとして、Intu
 
 1. Joni をサインアウトし、ブラウザーを閉じます。
 
-2. Officeポータルにアクセスします。ブラウザーを起動し、アドレス バーに次の URL を入力します: **https://portal.office.com**  Hollyの資格情報でサインインしてください。
-
-3. [Microsoft 365 へようこそ]ページの画面左側にあるアプリケーション アイコンの列で、**Outlook**アイコンを選択します。これにより、Holly Dickson の Outlook メールボックスが新しいタブで開きます。
+2. Officeポータルにアクセスします。ブラウザーを起動し、アドレス バーに次の URL を入力します: **https://outlook.office.com/** Hollyの資格情報でサインインしてください。これにより、Holly Dickson の Outlook メールボックスが開きます。
 
 4. ホリーの Outlook メールボックスには、デフォルトで受信トレイが表示されます。Holly が、**PIM: Joni Sherman が Intune 管理者ロールの割り当てをアクティブ化した**ことを示す、PIM で生成された電子メールを受信したことを確認します。以下のような件名のメールになります。
 
