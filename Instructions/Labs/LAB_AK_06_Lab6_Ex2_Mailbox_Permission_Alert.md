@@ -79,11 +79,9 @@
 
 8. Holly をサインアウトし、ブラウザーを閉じます。
 
-9. Officeポータルにアクセスします。ブラウザーを起動し、アドレス バーに次の URL を入力します: **https://portal.office.com**  
+9. Officeポータルにアクセスします。ブラウザーを起動し、アドレス バーに次の URL を入力します: **https://outlook.office.com/**  
 
-   Lynne Robbins(LynneR@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。
-
-10. [Microsoft 365 へようこそ]ページの画面左側にあるアプリケーション アイコンの列で、**Outlook**アイコンを選択します。これにより、 Lynne Robbins の Outlook メールボックスが新しいタブで開きます。
+   Lynne Robbins(LynneR@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。これにより、 Lynne Robbins の Outlook メールボックスが新しいタブで開きます。
 
 11. Lynne Robbins の受信トレイには、Holly Dickson がメールボックスのアクセス許可を変更したことを通知する、アラート通知システム ( Office365Alerts@microsoft.com ) からの電子メールが含まれている必要があります。
 

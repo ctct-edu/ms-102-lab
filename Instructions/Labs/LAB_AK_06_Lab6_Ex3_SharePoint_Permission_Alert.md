@@ -46,11 +46,7 @@
 
 6. Holly をサインアウトし、ブラウザーを閉じます。
 
-7. Officeポータルにアクセスします。ブラウザーを起動し、アドレス バーに次の URL を入力します: **https://portal.office.com**  
-
-   Lynne Robbins(LynneR@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。
-
-8. [Microsoft 365 へようこそ]ページの画面左側にあるアプリケーション アイコンの列で、**Outlook**アイコンを選択します。これにより、 Lynne Robbins の Outlook メールボックスが新しいタブで開きます。
+7. Officeポータルにアクセスします。ブラウザーを起動し、アドレス バーに次の URL を入力します: **https://outlook.office.com/**  Lynne Robbins(LynneR@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。これにより、 Lynne Robbins の Outlook メールボックスが新しいタブで開きます。
 
 9. Lynne の受信トレイを監視して、作成したばかりのアラートによって生成された電子メールを表示します。
 
