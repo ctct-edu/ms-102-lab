@@ -178,9 +178,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 前のタスクでは、Word 文書を作で保護しました。PII ラベルは文書に透かしを挿入し、文書に対するアクセス許可を制限する必要があります。ドキュメントに割り当てた保護が機能するかどうかを確認するには、まずドキュメントを Joni Sherman と自分の個人電子メール アドレスに電子メールで送信します。次に、ジョニ ウィルバーとアレックス ウィルバーの両方でどのような機能が可能かをテストします。
 
-1. LON-CL1　のEdgeブラウザーで、 Office 365ポータルにAlexw@WWLxZZZZZ.onmicrosoft.comとしてサインインしていることを確認します。そうでない場合はOffice 365ポータル (https://portal.office.com)にサインインし直します。
-
-2. Office365ポータルページで、 **[Outlook]** アイコンをクリックします。 
+1. LON-CL1　のEdgeブラウザーで、 Outlook (https://outlook.office.com)にサインインします。
 
 3. **[New mail]** ボタンをクリックします。
 
@@ -198,7 +196,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 6. LON-CL2に切り替えます。
 
-7. Office 365ポータルに JoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインします。
+7. Edgeブラウザーで、 Outlook (https://outlook.office.com)に JoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインします。
 
 8. Office365ポータルページで、**[Outlook]** アイコンをクリックします。Joniの受信トレイが表示されたことを確認し、Alexから届いたメールを選択します。
 
