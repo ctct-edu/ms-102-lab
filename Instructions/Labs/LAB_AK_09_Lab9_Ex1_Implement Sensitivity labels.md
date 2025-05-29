@@ -198,13 +198,11 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 7. Edgeブラウザーで、 Outlook (https://outlook.office.com)に JoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインします。
 
-8. Office365ポータルページで、**[Outlook]** アイコンをクリックします。Joniの受信トレイが表示されたことを確認し、Alexから届いたメールを選択します。
+8. Joniの受信トレイが表示されたことを確認し、Alexから届いたメールを選択します。
 
-9. Wordの添付ファイルがあることを確認します。
+9. Wordの添付ファイルのアイコンをクリックします。
 
-10. 添付ファイルの右側に表示されている[∨]をクリックし、 次いで [ ↓ ]　(Download) をクリックします。
-
-11. 画面の右上に[Downloads]ページが表示されますので、[Open file(ファイルを開く)]をクリックします。(あるいは、Downloadsフォルダーにある Test.docx を開いてください)
+10. 添付ファイルのプレビューが開きます。上の方にある **[ ↓ Download ]** をクリックし、[Open file(ファイルを開く)]をクリックします。(あるいは、Downloadsフォルダーにある Test.docx を開いてください)
 
 12. [Sign in]ページが表示されたことを確認し、JoniS@WWLxZZZZZ.onmicrosoft.comで サインインします。
 
@@ -216,9 +214,9 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 15. [Activate Office]ページが表示されたことを確認し、 **JoniS@WWLxZZZZZ.onmicrosoft.com** と入力して（入力されていればそのまま）、**[Next]**　ボタンをクリックします。
 
-16. [Accept the license agreement]ページが表示されたことを 確認し、**[Accept]** ボタンをクリックします。
+16. [Accept the license agreement]ページが表示されたら、**[Accept]** ボタンをクリックします。
 
-17. [Your privacy option]ページが表示されたことを確認し、右下の **[Close(閉じる)]** ボタンをクリックします。
+17. [Your privacy option]ページが表示されたら、右下の **[Close(閉じる)]** ボタンをクリックします。
 
 18. Joniには、読み取り専用のアクセス許可を付与したため、文書の内容が表示されます。
 
