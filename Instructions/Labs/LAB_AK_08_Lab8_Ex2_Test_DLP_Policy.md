@@ -14,7 +14,7 @@ Holly Dickson は現在、パイロット プロジェクトの段階にあり�
 
 2. 次に、Holly から Lynne Robbins に電子メールを送信し、電子メールの本文に IP アドレスを含めます。
 
-   Office 365 ポータル(https://portal.office.com) にアクセスし、画面左側のアプリ アイコンの列にある **Outlookアイコンを選択します。** Web 上の Outlook が開くと、Holly Dickson として自動的にログインするはずです。
+    Outlook (https://outlook.office.com)にHolly Dicksonとしてサインインします。
 
 3. 画面の左上隅にある **[新規メール]** を選択します。
 
@@ -82,7 +82,7 @@ Holly Dickson は現在、パイロット プロジェクトの段階にあり�
 
 16. Holly をサインアウトし、ブラウザーを閉じます。
 
-17. Officeポータルにアクセスします。ブラウザーを起動し、アドレス バーに次の URL を入力します: **https://portal.office.com**  
+17. Officeポータルにアクセスします。ブラウザーを起動し、アドレス バーに次の URL を入力します:https://outlook.office.com
 
        Lynne Robbins(LynneR@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。
 
