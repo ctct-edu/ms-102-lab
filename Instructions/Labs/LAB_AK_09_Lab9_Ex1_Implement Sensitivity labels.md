@@ -12,9 +12,13 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 2. Officeポータルにアクセスします。LON-CL1内でブラウザーを起動し、アドレス バーに次の URL を入力します: **[https://portal.office.com](https://portal.office.com/)**
 
-   Alex Wilber([AlexW@xxxxxZZZZZZ.onmicrosoft.com](mailto:AlexW@xxxxxZZZZZZ.onmicrosoft.com))の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインインしなおしてください。
+   Alex Wilber([AlexW@xxxxxZZZZZZ.onmicrosoft.com](mailto:AlexW@xxxxxZZZZZZ.onmicrosoft.com))の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインアウトしてからサインインしなおします。
 
-3. 画面左のメニューで **[Apps]** をクリックします。
+   ※ もしサインイン時に以下のような画面になった(admin@～サインイン情報が残っている)場合は、ユーザー名の右にある３つの点を選択した後、 **[Forget]**  を選択し、**[Use another account]** を選択してAlex Wilber としてサインインを進めてください。
+
+   ![image](./media/lab9.png)
+
+3. Officeポータルにアクセスしたら、画面左のメニューで **[Apps]** をクリックします。
 
 4. 画面右上のドロップダウンリストで **[Install apps] - [Microsoft 365 Apps ]** を選択します。
 
