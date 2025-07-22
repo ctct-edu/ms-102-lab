@@ -24,9 +24,7 @@
 
 5. ダウンロードしたインストーラー(AzureAdConnect.msi ) を実行します。(ブラウザーの右上に表示された「Open File」をクリックするか、あるいはDownloadフォルダーにあるファイルを実行します。)
 
-6. ウィザードが開始され、 MMicrosoft Entra Connect Sync ツールのインストールが開始されます。ウ
-
-7. セットアップ ウィザードの　最初のウィンドウで、 **[I agree to the license terms and privacy notice]** チェック ボックスをオンにし、 **[Continue]** を選択します。
+6. ウィザードが開始され、 Microsoft Entra Connect Sync ツールのインストールが開始されます。 **[I agree to the license terms and privacy notice]** チェック ボックスをオンにし、 **[Continue]** を選択します。
 
 8. [Express Settings]ページで、単一の Windows Server AD フォレストに関する手順を読み、 **[Use express settings]** を選択します。
 
