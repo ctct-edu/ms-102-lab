@@ -12,7 +12,7 @@
 
    英語表記となりますので、日本語表記に変更した方が進めやすくなります。画面右上の歯車のマーク **「Settings」** をクリックした後、左の「Language + region」をクリックし、Language と Regional format でいずれも日本語を選択し、 **[Apply] - [OK]**  をクリックします。
 
-2. 画面左のメニューにて **「さらに表示」 – 「ハイブリッド管理」 –  「Microsoft Entra Connect」** と選択します。
+2. 画面左のメニューにて **「Entra ID」 –  「Entra Connect」** と選択します。
 
 3. 「Microsoft Entra Connect | 作業の開始」画面のメニューにて **「管理」** タブをクリックします。
 
@@ -24,9 +24,9 @@
 
 5. ダウンロードしたインストーラー(AzureAdConnect.msi ) を実行します。(ブラウザーの右上に表示された「Open File」をクリックするか、あるいはDownloadフォルダーにあるファイルを実行します。)
 
-6. Microsoft Azure Active Directory Connect ウィザードが開始され、 Microsoft Azure Active Directory Connectツールのインストールが開始されます。ウィザードの最初のページが表示されてから突然消える場合や、まったく表示されない場合があります。いずれかの状況が発生した場合は、タスクバーのウィザード アイコンを選択します。
+6. ウィザードが開始され、 MMicrosoft Entra Connect Sync ツールのインストールが開始されます。ウ
 
-7. セットアップ ウィザードの　[Welcome to Azure AD Connect]　ウィンドウで、 **[I agree to the license terms and privacy notice]** チェック ボックスをオンにし、 **[Continue]** を選択します。
+7. セットアップ ウィザードの　最初のウィンドウで、 **[I agree to the license terms and privacy notice]** チェック ボックスをオンにし、 **[Continue]** を選択します。
 
 8. [Express Settings]ページで、単一の Windows Server AD フォレストに関する手順を読み、 **[Use express settings]** を選択します。
 
