@@ -8,15 +8,15 @@
 
 このタスクでは、Azure AD Connect セットアップ ウィザードを実行して、Adatum のオンプレミス Active Directory と Azure Active Directory 間の同期を有効にします。構成が完了すると、同期プロセスが自動的に開始されます。
 
-1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動ます。 **Entra管理センター(https://entra.microsoft.com)にアクセス** し、Holly Dicksonの資格情報でサインインします。
+1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動ます。 **Entra管理センター( https://entra.microsoft.com )にアクセス** し、Holly Dicksonの資格情報でサインインします。
 
 2. 画面左のメニューにて **「さらに表示」 – 「ハイブリッド管理」 –  「Microsoft Entra Connect」** と選択します。
 
-3. 「Microsoft Entra Connect | 作業の開始」画面のメニューにて「管理」タブをクリックします。
+3. 「Microsoft Entra Connect | 作業の開始」画面のメニューにて**「管理」**タブをクリックします。
 
    ![](./media/lab3-2-1.png)
 
-4. 「Connect同期エージェントのダウンロード」 - 「使用条件に同意してダウンロードする」をクリックし、Entra Connectのインストーラーをダウンロードします。
+4. **「Connect同期エージェントのダウンロード」 - 「使用条件に同意してダウンロードする」**をクリックし、Entra Connectのインストーラーをダウンロードします。
 
    ![](./media/lab3-2-2.png)
 
