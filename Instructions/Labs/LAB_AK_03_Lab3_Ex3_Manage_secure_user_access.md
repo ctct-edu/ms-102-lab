@@ -2,7 +2,7 @@
 
 Adatum の Microsoft 365 管理者である Holly Dickson は、Adatum の CTO から、組織全体のパスワード管理を強化する手段として Azure AD スマート ロックアウトを展開するように依頼されました。
 
-### [タスク 1: Azure AD スマート ロックアウトを展開する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_03_Lab3_Ex3_Manage_secure_user_access.md#task-2-deploy-azure-ad-smart-lockout)
+### [タスク 1: スマート ロックアウトを展開する](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_03_Lab3_Ex3_Manage_secure_user_access.md#task-2-deploy-azure-ad-smart-lockout)
 
 Adatum の CTO は、ユーザーのパスワードを推測したり、ネットワークへの侵入を許可するためにブルート フォース手法を使用したりしようとする悪意のある攻撃者をロックアウトするのに役立つ Azure AD Smart Lockout を展開するようあなたに依頼しました。Smart Lockout は、有効なユーザーからのサインインを認識し、攻撃者やその他の不明なソースからのサインインとは異なる方法で処理します。
 
