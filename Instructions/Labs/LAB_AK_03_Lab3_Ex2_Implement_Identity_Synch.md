@@ -8,45 +8,39 @@
 
 このタスクでは、Azure AD Connect セットアップ ウィザードを実行して、Adatum のオンプレミス Active Directory と Azure Active Directory 間の同期を有効にします。構成が完了すると、同期プロセスが自動的に開始されます。
 
-1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動し、**[Microsoft 365 管理センター]**  (https://admin.microsoft.com) にアクセスし、Holly Dickson として Microsoft 365 にログインしてください。
+1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動ます。 **Entra管理センター(https://entra.microsoft.com)にアクセス** し、Holly Dicksonの資格情報でサインインします。
 
-2. [Microsoft 365 管理センター] のナビゲーション ウィンドウで  **[ユーザー(Users)]** 、 **[アクティブ ユーザー(Active users)]** の順に選択します。
+2. 画面左のメニューにて **「さらに表示」 – 「ハイブリッド管理」 –  「Microsoft Entra Connect」** と選択します。
 
-3. [アクティブ ユーザー]ウィンドウで、メニュー バーの最後に表示される **省略記号アイコンを選択し、表示されるドロップダウン メニューで**  **[ディレクトリ同期(Directory synchronization)]** を選択します。
+3. 「Microsoft Entra Connect | 作業の開始」画面のメニューにて「管理」タブをクリックします。
 
    ![](./media/lab3-2-1.png)
 
-   これにより、 Azure AD へのユーザーの追加または同期ウィザード が開始されます。
+4. 「Connect同期エージェントのダウンロード」 - 「使用条件に同意してダウンロードする」をクリックし、Entra Connectのインストーラーをダウンロードします。
 
-4. Azure AD にユーザーを追加または同期するウィザードの [ユーザー同期について]ページで、内容を最後までお読みください。[ユーザー ステータス]セクションで、既存の Adatum クラウド ユーザーとハイブリッド ユーザーの数に注目してください。 **「次へ(Next)」** を選択します。
+   ![](./media/lab3-2-2.png)
 
-5. [移行オプションの選択]ページで各オプションの説明を読み、使用可能な移行オプションを理解します。 **[継続的同期(Continuous sync)]** オプションを選択し、  **[次へ(Next)]** を選択します。
+5. ダウンロードしたインストーラー(AzureAdConnect.msi ) を実行します。(ブラウザーの右上に表示された「Open File」をクリックするか、あるいはDownloadフォルダーにあるファイルを実行します。)
 
-6. 「IdFix を実行して準備」 ページでは、前のラボ演習で IdFix をすでに実行しているため、再度ダウンロードして実行する必要はありません。**「次へ(Next)」** を選択します。
+6. Microsoft Azure Active Directory Connect ウィザードが開始され、 Microsoft Azure Active Directory Connectツールのインストールが開始されます。ウィザードの最初のページが表示されてから突然消える場合や、まったく表示されない場合があります。いずれかの状況が発生した場合は、タスクバーのウィザード アイコンを選択します。
 
-7. **[Microsoft Entra Connect同期(Microsoft Entra Connect Sync)]**  を選択します (誤ってMicrosoft Entra *Cloud* Syncを選択しないように注意してください)。 **「次へ(Next)」** を選択します。
+7. セットアップ ウィザードの　[Welcome to Azure AD Connect]　ウィンドウで、 **[I agree to the license terms and privacy notice]** チェック ボックスをオンにし、 **[Continue]** を選択します。
 
-8. [ユーザーの同期]ページで、  **[Microsoft Entra Connect をダウンロード(Download Microsoft Entra Connect Sync)]** ボックスを選択します。これにより、ブラウザーで新しいタブが開き、Microsoft ダウンロード センターに移動します。画面の上部に[ダウンロード]ウィンドウが表示されたら、ダウンロードが完了したAzureADConnect.msiファイルの下に表示される  **[Open file]リンクを選択します。** 
+8. [Express Settings]ページで、単一の Windows Server AD フォレストに関する手順を読み、 **[Use express settings]** を選択します。
 
-9. Microsoft Azure Active Directory Connect ウィザードが開始され、 Microsoft Azure Active Directory Connectツールのインストールが開始されます。ウィザードの最初のページが表示されてから突然消える場合や、まったく表示されない場合があります。いずれかの状況が発生した場合は、タスクバーのウィザード アイコンを選択します。
+9. [Connect to Azure AD ]ウィンドウで、[USERNAME]フィールドに **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**  (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) を入力します。
 
-10. セットアップ ウィザードの　[Welcome to Azure AD Connect]　ウィンドウで、 **[I agree to the license terms and privacy notice]** チェック ボックスをオンにし、 **[Continue]** を選択します。
+   [PASSWORD]フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 管理者パスワード**を入力し、  **[Next]** を選択します。
 
-11. [Express Settings]ページで、単一の Windows Server AD フォレストに関する手順を読み、 **[Use express settings]** を選択します。
+10. [Connect to AD DS]ページで、[ USERNAME]フィールドに **「adatum\Administrator」** と入力し、[ PASSWORD]フィールドに　**「Pa55w.rd」**　と入力して、 **[Next]**  を選択します。
 
-12. [Connect to Azure AD ]ウィンドウで、[USERNAME]フィールドに **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**  (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) を入力します。
+11. Azure AD sign-in configuration ウィンドウで、ページの下部にある  **[Continue without matching all UPN suffixes to verified domains] チェック ボックスをオンにし、**  **[Next]** を選択します。
 
-    [PASSWORD]フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 管理者パスワード**を入力し、  **[Next]** を選択します。
-
-13. [Connect to AD DS]ページで、[ USERNAME]フィールドに **「adatum\Administrator」** と入力し、[ PASSWORD]フィールドに　**「Pa55w.rd」**　と入力して、 **[Next]**  を選択します。
-
-14. Azure AD sign-in configuration ウィンドウで、ページの下部にある  **[Continue without matching all UPN suffixes to verified domains] チェック ボックスをオンにし、**  **[Next]** を選択します。
-
-15. [Ready to configure]画面で、 **[Start the synchronization process when configuration completes]**  チェック ボックスがまだ選択されていない場合は選択し、 **[Install]**　を選択します。
+12. [Ready to configure]画面で、 **[Start the synchronization process when configuration completes]**  チェック ボックスがまだ選択されていない場合は選択し、 **[Install]**　を選択します。
 
     **重要:**  Holly は最終的に Exchange ハイブリッド展開を今はインストールする予定はありません。このラボでは、Exchange hybrid deployment オプションを選択しないでください。
 
-16. 構成が完了するまで待ちます (数分かかる場合があります)。**[Configuration complete]** ページで、**[Exit]** 選択します。
+13. 構成が完了するまで待ちます (数分かかる場合があります)。**[Configuration complete]** ページで、**[Exit]** 選択します。
 
     Azure AD Connect が完全同期を完了したことが確認できたので、次のタスクでは、いくつかの更新を行って、30 分ごとに更新が同期されるのを待つのではなく、手動で強制的に即時同期を実行します。
 
