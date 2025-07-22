@@ -10,6 +10,8 @@
 
 1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動ます。 **Entra管理センター( https://entra.microsoft.com )にアクセス** し、Holly Dicksonの資格情報でサインインします。
 
+   英語表記となりますので、日本語表記に変更した方が進めやすくなります。画面右上の歯車のマーク **「Settings」** をクリックした後、左の「Language + region」をクリックし、Language と Regional format でいずれも日本語を選択し、 **[Apply] - [OK]**  をクリックします。
+
 2. 画面左のメニューにて **「さらに表示」 – 「ハイブリッド管理」 –  「Microsoft Entra Connect」** と選択します。
 
 3. 「Microsoft Entra Connect | 作業の開始」画面のメニューにて **「管理」** タブをクリックします。
