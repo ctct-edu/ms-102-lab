@@ -1,12 +1,12 @@
 # [ラーニング パス 3 - ラボ 3 - 演習 2 - ID 同期の実装](https://github.com/ctct-edu/ms-102-lab/blob/main/Instructions/Labs/LAB_AK_03_Lab3_Ex2_Implement_Identity_Synch.md#learning-path-3---lab-3---exercise-2---implement-identity-synchronization)
 
-この演習では、Azure AD Connect を使用して、Adatum のオンプレミス Active Directory と Azure Active Directory 間の同期を有効にします。その後、Azure AD Connect は 30 分ごとにデルタ変更を同期し続けます。次に、ユーザーとグループの更新をいくつか行ってから、Azure AD Connect が自動的に更新を同期するのを待つのではなく、手動で強制的に即時同期を実行します。次に、更新が同期されたかどうかを確認します。
+この演習では、Entra Connect Sync を使用して、Adatum のオンプレミス Active Directory と Azure Active Directory 間の同期を有効にします。その後、Entra Connect Sync は 30 分ごとにデルタ変更を同期し続けます。次に、ユーザーとグループの更新をいくつか行ってから、Entra Connect Sync が自動的に更新を同期するのを待つのではなく、手動で強制的に即時同期を実行します。次に、更新が同期されたかどうかを確認します。
 
-**重要:** この演習を開始するときは、Azure AD Connect が ID オブジェクトに加えた変更を自動的に同期しないように、最初の 4 つのタスクを遅延なく実行する必要があります。
+**重要:** この演習を開始するときは、Entra Connect Sync が ID オブジェクトに加えた変更を自動的に同期しないように、最初の 4 つのタスクを遅延なく実行する必要があります。
 
-### タスク 1: Azure AD Connect をインストールし、同期を開始する
+### タスク 1: Entra Connect Sync をインストールし、同期を開始する
 
-このタスクでは、Azure AD Connect セットアップ ウィザードを実行して、Adatum のオンプレミス Active Directory と Azure Active Directory 間の同期を有効にします。構成が完了すると、同期プロセスが自動的に開始されます。
+このタスクでは、Entra Connect Sync セットアップ ウィザードを実行して、Adatum のオンプレミス Active Directory と Microsoft Entra 間の同期を有効にします。構成が完了すると、同期プロセスが自動的に開始されます。
 
 1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動ます。 **Entra管理センター( https://entra.microsoft.com )にアクセス** し、Holly Dicksonの資格情報でサインインします。
 
@@ -50,7 +50,7 @@
 
 ### タスク 2 - 同期をテストするためのグループ アカウントを作成する
 
-手動の強制同期プロセスをテストするには、いくつかのグループ シナリオをセットアップして、強制同期機能が Azure AD Connect で機能しているかどうかを確認します。新しいセキュリティ グループを作成し、既存の組み込みセキュリティ グループのグループ メンバーをすべて Adatum のオンプレミス環境内で更新します。
+手動の強制同期プロセスをテストするには、いくつかのグループ シナリオをセットアップして、強制同期機能が Entra Connect Sync で機能しているかどうかを確認します。新しいセキュリティ グループを作成し、既存の組み込みセキュリティ グループのグループ メンバーをすべて Adatum のオンプレミス環境内で更新します。
 
 各グループには複数のメンバーが割り当てられます。強制同期後、Microsoft 365 の各セキュリティ グループが表示され、そのメンバーがオンプレミス グループからクラウド グループに同期されたことを検証します。また、Adatum のオンプレミス環境でメンバーを追加した場合でも、ビルトインセキュリティ グループが Microsoft 365 で作成されていないことも検証します。
 
@@ -102,7 +102,7 @@
 
 ### タスク 3 - 同期をテストするためにグループ メンバーシップを変更する
 
-このタスクでは、同期プロセスが Azure AD Connect で機能しているかどうかをテストするための別のシナリオを設定します。このタスクでは、グループのメンバーを変更して、グループが同期された後にそのメンバーがクラウドに反映されるかどうかを確認します。
+このタスクでは、同期プロセスが機能しているかどうかをテストするための別のシナリオを設定します。このタスクでは、グループのメンバーを変更して、グループが同期された後にそのメンバーがクラウドに反映されるかどうかを確認します。
 
 1. このタスクは、LON-DC1 で前のタスクが中断したところから継続します。[Active Directory Users and Computers]ウィンドウのAdatum.comの下のコンソール ツリーでは、Research組織単位が選択されたままです。
 
@@ -128,9 +128,7 @@
 
 ### タスク 4 - 手動同期を強制する
 
-このタスクでは、Azure AD Connect が ID オブジェクトを同期するまで 30 分待つ代わりに、Adatum のオンプレミス AD と Azure AD の間の同期を強制します。強制同期を実行するには、PowerShell を使用する必要があります。
-
-**重要 - PowerShell に関する注意:**　前のラボ演習では、その演習のタスクで Microsoft Graph PowerShell ではなく MSOnline モジュールを使用した理由を示す免責事項が提供されていました。Microsoft は、MSOnline と Azure Active Directory (Azure AD) PowerShell の 2 つの古い PowerShell モジュールを Microsoft Graph PowerShell に置き換える作業を進めていますが、古いモジュールには Microsoft Graph PowerShell にまだ組み込まれていない機能がいくつかあります。前の演習のコマンドとこのタスクで使用したコマンドは、このカテゴリに分類されます。前の演習では MSOnline モジュールに接続しましたが、このモジュールも Start-ADSyncSyncCycle コマンドに従ってこのタスクで使用されます。
+このタスクでは、Entra Connect Syncが ID オブジェクトを同期するまで 30 分待つ代わりに、Adatum のオンプレミス AD と Microsoft Entra の間の同期を強制します。強制同期を実行するには、PowerShell を使用する必要があります。
 
 1. LON-DC1 で、前の演習で **Windows PowerShellアプリケーションがまだ開いている場合は、**  **ここで閉じる必要があります**。
 
@@ -154,7 +152,7 @@
 
 ### タスク 5 - ディレクトリ同期の結果を検証する
 
-このタスクでは、以前に行った変更が Adatum のオンプレミス Active Directory から Azure Active Directory に同期されたかどうかを検証します。
+このタスクでは、以前に行った変更が Adatum のオンプレミス Active Directory から Microsoft Entra に同期されたかどうかを検証します。
 
 1. お手元のPCでInPrivate ウィンドウ(Microsoft Edge) もしくは、シークレットウィンドウ (Google Chrome) で、Microsoft 365 管理センター (https://admin.microsoft.com) にアクセスし、Hollyの資格情報でサインインします。
 
