@@ -91,7 +91,7 @@ Adatum の PIM パイロット プロジェクトにおいて、Holly は、グ�
 
 6. ページの上部に、「Microsoft Entra ロール割り当ての対象となるグループの作成は、後で変更できない設定です。この機能を追加しますか?」という内容のダイアログ ボックスが表示されます。 **[はい]** を選択します。
 
-7. ここで、PIM-Global-Administratorsグループを役割の割り当てに適格にする必要があります。左側のナビゲーションペインで、 **「Identity Governance」** を選択してセクションを展開し、**「Privileged Identity Management」** を選択します。
+7. ここで、PIM-Global-Administratorsグループを役割の割り当てに適格にする必要があります。左側のナビゲーションペインで、 **「ID ガバナンス」** を選択してセクションを展開し、**「Privileged Identity Management」** を選択します。
 
 8. Privileged Identity Management | クイック スタートウィンドウの中央ペインの[管理]セクションの下にある **[Microsoft Entra ロール]** を選択します。
 
