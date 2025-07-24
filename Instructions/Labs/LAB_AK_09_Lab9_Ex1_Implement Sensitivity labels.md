@@ -4,39 +4,34 @@ Adatum の新しい Microsoft 365 管理者である Holly Dickson としての�
 
 ### タスク 1 – Microsoft 365 Apps for enterprise のユーザー主導のインストールを実行する
 
-LON-CL1でAlex Wilberとして Microsoft 365 にログインし、– Microsoft 365 Apps for enterpriseをインストールします。
+LON-CL1でMOD管理者(admin@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365 にログインし、– Microsoft 365 Apps for enterpriseをインストールします。
 
-LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft 365 Apps for enterpriseをインストールします。
+LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365 にログインし、– Microsoft 365 Apps for enterpriseをインストールします。
 
 1. LON-CL1に切り替えます。
 
 2. Officeポータルにアクセスします。LON-CL1内でブラウザーを起動し、アドレス バーに次の URL を入力します: **[https://portal.office.com](https://portal.office.com/)**
 
-   Alex Wilber([AlexW@xxxxxZZZZZZ.onmicrosoft.com](mailto:AlexW@xxxxxZZZZZZ.onmicrosoft.com))の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインアウトしてからサインインしなおします。
+3. MOD管理者(admin@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインインしなおしてください。
 
-   ※ もしサインイン時に以下のような画面になった(admin@～サインイン情報が残っている)場合は、ユーザー名の右にある３つの点を選択した後、 **[Forget]**  を選択し、**[Use another account]** を選択してAlex Wilber としてサインインを進めてください。
+4. Officeポータルにアクセスしたら、画面左のメニューで **[アプリ]** をクリックします。
 
-   ![image](./media/lab9.png)
+5. 画面右上のドロップダウンリストで **[アプリをインストール] - [Microsoft 365 Apps ]** を選択します。
 
-3. Officeポータルにアクセスしたら、画面左のメニューで **[Apps]** をクリックします。
+6. 画面真ん中上の [Officeのインストール] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストール中に下の手順に進みます。
 
-4. 画面右上のドロップダウンリストで **[Install apps] - [Microsoft 365 Apps ]** を選択します。
+7. LON-CL2に切り替えます。
 
-5. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストール中に下の手順に進みます。
+8. Officeポータルにアクセスします。LON-CL2内でブラウザーを起動し、アドレス バーに次の URL を入力します: **[https://portal.office.com](https://portal.office.com/)**
 
-6. LON-CL2に切り替えます。
+9. Joni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインインしなおしてください。
 
-7. Officeポータルにアクセスします。LON-CL2内でブラウザーを起動し、アドレス バーに次の URL を入力します: **[https://portal.office.com](https://portal.office.com/)**
+10. 画面左のメニューで **[Apps]** をクリックします。
 
-8. Joni Sharman ([Jonis@xxxxxZZZZZZ.onmicrosoft.com](mailto:Jonis@xxxxxZZZZZZ.onmicrosoft.com))の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインインしなおしてください。
+11. 画面右上のドロップダウンリストで **[Install Apps] - [Microsoft 365 Apps ]** を選択します。
+12. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストールの最初に管理者のユーザー名とパスワードを聞かれた場合、AdministratorとPa55w.rdを入力してください。
 
-9. 画面左のメニューで **[Apps]** をクリックします。
-
-10. 画面右上のドロップダウンリストで **[Install apps] - [Microsoft 365 Apps ]** を選択します。
-
-11. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストールの最初に管理者のユーザー名とパスワードを聞かれた場合、AdministratorとPa55w.rdを入力してください。
-
-12. インストールが終了したら、LON-CL1とLON-CL2を再起動してください。
+13. インストールが終了したら、LON-CL1とLON-CL2を再起動してください。
 
 ### タスク 2 – 秘密度ラベルを作成する
 
@@ -148,21 +143,21 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 9. [Your privacy matters] ページが表示されたら、画面右下の **[Close]** ボタンをクリックします。
 
-10. [Blank document]をクリックします。
+10. [白紙の文書]をクリックします。
 
-11. [Home(ホーム)]タブに、[Sensitivity(秘密度)]アイコンが表示されていることを確認します。 表示されていない場合は、Wordを閉じて、再度起動しなおしてください。それでも表示されない場合は、LON-CL1を再起動してください。![image](./media/lab9-4.png)
+11. [ホーム]タブに、[秘密度]アイコンが表示されていることを確認します。 表示されていない場合は、Wordを閉じて、再度起動しなおしてください。それでも表示されない場合は、LON-CL1を再起動してください。![image](./media/lab9-4.png)
 
-12. Word リボンの [Sensitivity] グループで、下矢印を選択します。
+12. Word リボンの [秘密度] グループで、下矢印を選択します。
 
-13. 秘密度ラベルをドキュメントに適用するため、ドロップダウン メニューで **[PII]** を選択します。その後もう一度、 [Sensitivity]グループのドロップダウン矢印を選択すると、表示されるドロップダウン メニューにはPIIラベルが表示され、その横にこのドキュメントに適用されていることを示すチェック マークが表示されることを確認します。
+13. 秘密度ラベルをドキュメントに適用するため、ドロップダウン メニューで **[PII]** を選択します。その後もう一度、 [秘密度]グループのドロップダウン矢印を選択すると、表示されるドロップダウン メニューにはPIIラベルが表示され、その横にこのドキュメントに適用されていることを示すチェック マークが表示されることを確認します。
 
-14. [Permissions] ダイアログが表示されます。 Viewer の欄に **JoniS@WWLxZZZZZZ.onmicrosoft.com** と入力し、**[Apply]** をクリックします。
+14. [アクセス許可] ダイアログが表示されます。 閲覧者 の欄に **Jonis@WWLxZZZZZZ.onmicrosoft.com** と入力し、**[適用]** をクリックします。
 
 15. 透かしテキストが表示されることを確認します。
 
 16. Wordに任意の文章を入力した後、Word左上のSave(フロッピーディスクのアイコン)をクリックし、ファイルを保存します。
 
-17. [Save this file] 画面のFile name でファイル名を **Test** と入力します。Choose a Location で **Documents** を選択します。Sensitibityのドロップダウン メニューで **[PII]** が選択されていることを確認します。 **[Save]** をクリックします。
+17. [このファイルを保存] 画面のFile name でファイル名を **Test** と入力します。Choose a Location で **Documents** を選択します。[秘密度]のドロップダウン メニューで **[PII]** が選択されていることを確認します。 **[保存]** をクリックします。
 
 18. Wordのドキュメントを閉じます。
 
@@ -174,7 +169,7 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 1. LON-CL1　のEdgeブラウザーで、 Outlook (https://outlook.office.com)にサインインします。
 
-3. **[New mail]** ボタンをクリックします。
+3. **[新規メール]** ボタンをクリックします。
 
 4. 次の設定で新しいメッセージを作成します。
 
@@ -182,11 +177,11 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
    • 件名 : Protected Document Test
 
-   • 添付ファイル(上のメニューで「Insert」を選択し、表示されるクリップのようなアイコンを選択) : 前のタスクで保存したTest.docx
+   • 添付ファイル : 前のタスクで保存したTest.docx 
 
-   (Document フォルダーに保存されています。)
+   (上のメニューで「挿入」を選択して、表示されるクリップのようなアイコンを選択した後、「このコンピューターから選択」から「Documents」 フォルダーを選択し、Test.docx を選択します。)
 
-5. **[Send mail]** ボタンをクリックします。
+5. **[送信]** ボタンをクリックします。
 
 6. LON-CL2に切り替えます。
 
@@ -200,13 +195,9 @@ LON-CL2でJoni Sharmanとして Microsoft 365 にログインし、– Microsoft
 
 12. [Sign in]ページが表示されたことを確認し、JoniS@WWLxZZZZZ.onmicrosoft.comで サインインします。
 
-13. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、**[No, this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
+13. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、**[No, this app only]** をクリックします。 
 
-    ![image](./media/lab9-3.png)
-
-14. [Hello Joni,welcome to Office]ページが表示されたことを確認し、**[Continue]** ボタンを クリックします。
-
-15. [Activate Office]ページが表示されたことを確認し、 **JoniS@WWLxZZZZZ.onmicrosoft.com** と入力して（入力されていればそのまま）、**[Next]**　ボタンをクリックします。
+    ![image](./media/lab9-6.png)
 
 16. [Accept the license agreement]ページが表示されたら、**[Accept]** ボタンをクリックします。
 
