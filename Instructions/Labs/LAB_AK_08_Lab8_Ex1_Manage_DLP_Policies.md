@@ -10,7 +10,7 @@ Adatum の新しい Microsoft 365 管理者である Holly Dickson としての�
 
 1. お手元のPCでInPrivate ウィンドウ(Microsoft Edge) もしくは、シークレットウィンドウ (Google Chrome) で、Microsoft 365 管理センター ([https://admin.microsoft.com](https://admin.microsoft.com/)) にアクセスし、Hollyの資格情報でサインインします。
 
-2. 左側のナビゲーション ウィンドウの [管理センター]で、 **[コンプライアンス]**　を選択します。これにより、ブラウザーにMicrosoft Purview の新しいタブが開きます。
+2. 左側のナビゲーション ウィンドウの [管理センター]で、 **[Microsoft Purview]**　を選択します。これにより、ブラウザーにMicrosoft Purview の新しいタブが開きます。
 
 3. Microsoft Purviewポータルの左側のナビゲーション ウィンドウで、**[ソリューション]** - **[データ損失防止]** を選択し、**[ポリシー]** を選択します。
 
