@@ -170,7 +170,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 6. LON-CL2に切り替えます。
 
-7. Edgeブラウザーで、 Outlook (https://outlook.office.com)に JoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインします。
+7. Edgeブラウザーで、 Outlook (https://outlook.office.com) に JoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインします。
 
 8. Joniの受信トレイが表示されたことを確認し、MOD管理者から届いたメールを選択します。
 
