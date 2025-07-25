@@ -120,7 +120,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 4. 「こんにちは MODさん、Word へようこそ」ページで **[続行]** ボタンをクリックします。 
 
-5. [Office ライセンス認証]ページが表示されたことを確認し、AlexW@WWLxZZZZZZ.onmicrosoft.comと入力、**[次へ]** ボタンをクリックします。
+5. [Office ライセンス認証]ページが表示されたことを確認し、admin@xxxxxZZZZZZ.onmicrosoft.com と入力、**[次へ]** ボタンをクリックします。
 
 6. [パスワードの入力] ページが表示されたら、管理者のパスワードを入力し、**[サインイン]** ボタンをクリックします。
 
@@ -146,7 +146,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 16. Wordのドキュメントを閉じます。
 
-これで、読み取り専用で保護された AIP 保護された Word 文書が正常に作成されました。このドキュメントにアクセスできるのは、作成者である Alex Wilber と、ドキュメントが共有された Joni Sherman (読み取り専用権限を持つ) のみです。
+これで、読み取り専用で保護された AIP 保護された Word 文書が正常に作成されました。このドキュメントにアクセスできるのは、作成者である MOD管理者と、ドキュメントが共有された Joni Sherman (読み取り専用権限を持つ) のみです。
 
 ### タスク 4 – 秘密度ラベル ポリシーを確認する
 
@@ -172,7 +172,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 7. Edgeブラウザーで、 Outlook (https://outlook.office.com)に JoniS@WWLxZZZZZ.onmicrosoft.comとしてサインインします。
 
-8. Joniの受信トレイが表示されたことを確認し、Alexから届いたメールを選択します。
+8. Joniの受信トレイが表示されたことを確認し、MOD管理者から届いたメールを選択します。
 
 9. Wordの添付ファイルのアイコンをクリックします。
 
