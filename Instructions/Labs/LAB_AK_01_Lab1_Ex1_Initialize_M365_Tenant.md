@@ -25,7 +25,9 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 2. **[サインインの状態を保持しますか]** ページでは、 **[いいえ]** をクリックします 。
 
-3. 「You need to set up multifactor authentication 」というメッセージが出場合は **[Skip Now ]** を選択してください。 
+3. 「You need to set up multifactor authentication 」というメッセージが出た場合は **[Skip for Now]** を選択してください。 
+
+   ![](./media/lab1-1.png)
 
 4. 画面右上の **歯車マーク** をクリックし、表示される **[Settings]** メニューをクリックします。
 
