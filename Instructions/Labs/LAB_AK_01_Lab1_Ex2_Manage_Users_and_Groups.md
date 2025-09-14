@@ -255,6 +255,8 @@ Adatum の Microsoft 365 管理者である Holly Dickson として、展開の�
 
 5. 表示される[Permissions requested]  ダイアログ ボックスで、 **[Consent on behalf of your organiation]** チェック ボックスを **オン** にし、**[Accept]**  を選択し ます。
 
+   ![](./media/lab1-2-4.png)
+
 6. 次に、Microsoft Graph PowerShell を使用して、アクティブなグループのリストを表示します。Inside Sales グループはこのリストには表示されません。次のコマンドを入力して Enter キーを押します (注: グループのリストが表示されるまでに 1 分ほどかかる場合があります)。
 
    ```
@@ -299,4 +301,4 @@ Adatum の Microsoft 365 管理者である Holly Dickson として、展開の�
 
     **注:** Inside Sales グループが表示されない場合は、1 ～ 2 分待ってから、グループのリストの上にあるメニュー バーで[更新]を選択します。
 
-15. ブラウザを開いたままにして、次のタスクに備えます。
+12. ブラウザを開いたままにして、次のタスクに備えます。
