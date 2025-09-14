@@ -285,7 +285,7 @@ Microsoft 365 をインストールするときに、いくつかの構成タス
 
 6. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、 **[No, this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
 
-   ![image](./media/lab9-3.png)
+   ![image](./media/lab1-21.png)
 
 7. コマンド プロンプトで次のコマンドを実行して、監査ログを有効にします。
 
