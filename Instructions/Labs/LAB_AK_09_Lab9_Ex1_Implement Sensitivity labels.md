@@ -166,7 +166,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 前のタスクでは、Word 文書を作で保護しました。PII ラベルは文書に透かしを挿入し、文書に対するアクセス許可を制限する必要があります。ドキュメントに割り当てた保護が機能するかどうかを確認するには、まずドキュメントを Joni Sherman と自分の個人電子メール アドレスに電子メールで送信します。次に、ジョニ ウィルバーとアレックス ウィルバーの両方でどのような機能が可能かをテストします。
 
-1. LON-CL1　のEdgeブラウザーで、 Outlook (https://outlook.office.com)にサインインします。
+1. LON-CL1　のEdgeブラウザーで、 Outlook ( https://outlook.office.com )にサインインします。
 
 3. **[新規メール]** ボタンをクリックします。
 
