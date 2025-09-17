@@ -30,7 +30,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 11. 画面右上のドロップダウンリストで **[Install Apps] - [Microsoft 365 Apps ]** を選択します。
 
-12. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。User Account Controlのダイアログでで **[Yes]** をクリックします。
+12. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。User Account Controlのダイアログで **[Yes]** をクリックします。
 
     ![](./media/lab9.png)
 
