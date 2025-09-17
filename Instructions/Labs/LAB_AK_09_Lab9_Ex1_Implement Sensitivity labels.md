@@ -9,17 +9,31 @@ LON-CL1でMOD管理者(admin@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365 にログインし、– Microsoft 365 Apps for enterpriseをインストールします。
 
 1. LON-CL1に切り替えます。
+
 2. Officeポータルにアクセスします。LON-CL1内でブラウザーを起動し、アドレス バーに次の URL を入力します: **[https://portal.office.com](https://portal.office.com/)**
+
 3. MOD管理者(admin@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインインしなおしてください。
+
 4. Officeポータルにアクセスしたら、画面左のメニューで **[アプリ]** をクリックします。
+
 5. 画面右上のドロップダウンリストで **[アプリをインストール] - [Microsoft 365 Apps ]** を選択します。
+
 6. 画面真ん中上の [Officeのインストール] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストール中に下の手順に進みます。
+
 7. LON-CL2に切り替えます。
+
 8. Officeポータルにアクセスします。LON-CL2内でブラウザーを起動し、アドレス バーに次の URL を入力します: **[https://portal.office.com](https://portal.office.com/)**
+
 9. Joni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインインしなおしてください。
+
 10. 画面左のメニューで **[Apps]** をクリックします。
+
 11. 画面右上のドロップダウンリストで **[Install Apps] - [Microsoft 365 Apps ]** を選択します。
-12. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストールの最初に管理者のユーザー名とパスワードを聞かれた場合、Skillableの「Resources」タブに記載されたWindows管理者の資格情報を入力してください。
+
+12. 画面真ん中上の [Install Office] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。User Account Controlのダイアログでで **[Yes]** をクリックします。
+
+    ![](./media/lab9.png)
+
 13. インストールが終了したら、LON-CL1とLON-CL2を再起動してください。
 
 ### タスク 2 – 秘密度ラベルを作成する
