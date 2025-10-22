@@ -8,7 +8,7 @@
 
 このタスクでは、Entra Connect Sync セットアップ ウィザードを実行して、Adatum のオンプレミス Active Directory と Microsoft Entra 間の同期を有効にします。構成が完了すると、同期プロセスが自動的に開始されます。
 
-1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動ます。 **Entra管理センター( https://entra.microsoft.com )にアクセス** し、Holly Dicksonの資格情報でサインインします。
+1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動ます。 **Entra管理センター( https://entra.microsoft.com )にアクセス** し、Holly Dicksonの資格情報でサインインします。「Let's keep your account secure」のメッセージが出た場合は多要素認証の設定が必要ですので、Microsoft Authenticator で設定してください。
 
    英語表記となりますので、日本語表記に変更した方が進めやすくなります。画面右上の歯車のマーク **「Settings」** をクリックした後、左の「Language + region」をクリックし、Language と Regional format でいずれも日本語を選択し、 **[Apply] - [OK]**  をクリックします。
 
