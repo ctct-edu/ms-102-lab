@@ -265,7 +265,7 @@ Microsoft 365 をインストールするときに、いくつかの構成タス
 
 5. 資格情報を要求する**サインイン** ウィンドウが表示されます。ラボ ホスティング プロバイダーから提供された MOD 管理者アカウント (**[admin@xxxxxZZZZZZ.onmicrosoft.com](mailto:admin@xxxxxZZZZZZ.onmicrosoft.com)**、xxxxxZZZZZZ はラボ ホスティング プロバイダーから提供されたテナント プレフィックスです) を入力し、[**次へ**] を選択します。[**パスワードの入力**] ウィンドウで、ラボ ホスティング プロバイダーから提供された**管理パスワード**を入力し、 [**サインイン**] を選択します。
 
-6. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、 **[No, this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
+6. [Sign in to all apps～]ページが 表示されたことを確認し、 **[No, this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
 
    ![image](./media/lab1-21.png)
 
