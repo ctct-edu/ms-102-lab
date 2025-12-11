@@ -14,7 +14,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 3. MOD管理者(admin@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインインしなおしてください。
 
-4. Officeポータルにアクセスしたら、画面左のメニューで **[アプリ]** をクリックします。
+4. Officeポータルにアクセスしたら、画面左のメニューで **[アプリ]** - **[すべてのアプリ]** をクリックします。
 
 5. 画面右上のドロップダウンリストで **[アプリをインストール] - [Microsoft 365 Apps ]** を選択します。
 
