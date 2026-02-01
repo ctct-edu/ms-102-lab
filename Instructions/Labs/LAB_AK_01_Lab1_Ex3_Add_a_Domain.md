@@ -138,7 +138,8 @@
 
 34. ドメインのセットアップ プロセスが完了し、Exchange および Exchange Online Protection サービスに対して 3 つの DNS レコードが正常に検証されると、[ドメイン] ページが表示されます。**WWLxZZZZZZ.onelearndns.comドメインのドメイン ステータスが[正常]であることを確認** します。このドメインはドメインのリストに表示されます。この新しいドメインには、Adatum のデフォルト ドメインとしてもフラグを設定する必要があります。
 
-35. Holly は、Adatum の Microsoft 365 展開に新しいドメインを実装する準備がまだ整っていません。したがって、 xxxxxZZZZZZ.onmicrosoft.com ドメインを既定の Microsoft 365 ドメインとしてリセットしたいと考えています。[ドメイン]ページで、 **xxxxxZZZZZZ.onmicrosoft.com ドメインの右側にある縦方向の省略記号 ( [その他のアクション ] ) アイコンを選択** します。ドロップダウン メニューに表示される **[既定に設定]** を選択します。
+29. Holly は、Adatum の Microsoft 365 展開に新しいドメインを実装する準備がまだ整っていません。したがって、 xxxxxZZZZZZ.onmicrosoft.com ドメインを既定の Microsoft 365 ドメインとしたいと考えています。[ドメイン]ページで、 **xxxxxZZZZZZ.onmicrosoft.com ドメインの右側にある縦方向の省略記号 ( [その他のアクション ] ) アイコンを選択** します。ドロップダウン メニューに表示される **[既定に設定]** を選択します。
+    **※ 画面の更新等してもxxxxZZZZZZ.onmicrosoft.comが既に既定になっている場合、以下の操作をせず本演習を終了して構いません。**
 
     ![](./media/lab1-3-5.png)
 
