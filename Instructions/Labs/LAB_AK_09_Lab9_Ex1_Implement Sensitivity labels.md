@@ -140,7 +140,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 6. [パスワードの入力] ページが表示されたら、管理者のパスワードを入力し、**[サインイン]** ボタンをクリックします。
 
-7. [このデバイス上のすべてのデスクトップアプリとWebサイトに自動的にサインインしますか？]ページが 表示されたことを確認し、 **[いいえ、このアプリのみです]** をクリックします。
+7. [このデバイスのすべてのアプリ、Webサイト、サービスにサインインしますか？]ページが 表示されたことを確認し、 **[いいえ、このアプリのみです]** をクリックします。
 
    ![image](./media/lab9-3.png)
 
@@ -196,7 +196,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 12. [Sign in]ページが表示されたことを確認し、JoniS@WWLxZZZZZ.onmicrosoft.comで サインインします。
 
-13. [Stay signed in to all your apps(すべてのアプリにサインインしたままにする)]ページが 表示されたことを確認し、**[No, this app only]** をクリックします。 
+13. [Sign in to all apps, websites, and services on this device?]ページが 表示されたことを確認し、**[No, this app only]** をクリックします。 
 
     ![image](./media/lab9-6.png)
 
