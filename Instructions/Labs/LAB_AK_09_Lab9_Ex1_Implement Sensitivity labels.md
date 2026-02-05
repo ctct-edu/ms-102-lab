@@ -170,7 +170,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 1. LON-CL1　のEdgeブラウザーで、 Outlook ( https://outlook.office.com )にサインインします。
 
-3. **[新規メール]** ボタンをクリックします。
+3. **[新規メール(New mail)]** ボタンをクリックします。
 
 4. 次の設定で新しいメッセージを作成します。
 
@@ -180,7 +180,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
    • 添付ファイル : 前のタスクで保存したTest.docx 
 
-   (上のメニューで「挿入」を選択して、表示されるクリップのようなアイコンを選択した後、「このコンピューターから選択」から「Documents」 フォルダーを選択し、Test.docx を選択します。)
+   (上のメニューで「挿入」を選択して、表示されるクリップのようなアイコンを選択した後、「このコンピューターから選択(Browse this computer)」から「Documents」 フォルダーを選択し、Test.docx を選択します。)
 
 5. **[送信]** ボタンをクリックします。
 
