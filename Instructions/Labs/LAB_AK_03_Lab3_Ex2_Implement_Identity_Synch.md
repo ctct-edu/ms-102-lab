@@ -137,7 +137,8 @@
 3. Windows PowerShell で **次のコマンドを実行** して、Adatum のオンプレミス AD と Azure AD の間で同期サイクルを手動で実行します。ここではデルタスイッチを使用して、更新のみが同期されるようにします **。**
 
    ```
-    Start-ADSyncSyncCycle -PolicyType Delta
+   Import-Module -Name 'C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync\ADSync.psd1'
+   Start-ADSyncSyncCycle -PolicyType Delta
    ```
 
    **注:** Start-ADSyncSyncCycle コマンドが見つからない場合は、PowerShell モジュールのインストールを完了するためにドメイン コントローラーを再起動する必要があります。
