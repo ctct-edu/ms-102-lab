@@ -14,9 +14,9 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 3. MOD管理者(admin@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインインしなおしてください。
 
-4. Officeポータルにアクセスしたら、画面左のメニューで **[アプリ]** をクリックします。
+4. Officeポータルにアクセスしたら、画面左のメニューで **[Apps]** - **[More Apps]** をクリックします。
 
-5. 画面右上のドロップダウンリストで **[アプリをインストール] - [Microsoft 365 Apps ]** を選択します。
+5. 画面右上のドロップダウンリストで **[Install Apps] - [Microsoft 365 Apps ]** を選択します。
 
 6. 画面真ん中上の [Officeのインストール] をクリックし、ダウンロードした OfficeSetup.exeを実行し、Microsoft 365 Apps for enterprise をインストールします。インストール中に下の手順に進みます。
 
@@ -26,7 +26,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 9. Joni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)の資格情報でサインインしてください。他のユーザーでサインインしていた場合は、サインインしなおしてください。
 
-10. 画面左のメニューで **[Apps]** をクリックします。
+10. 画面左のメニューで **[Apps]** - **[More Apps]** をクリックします。
 
 11. 画面右上のドロップダウンリストで **[Install Apps] - [Microsoft 365 Apps ]** を選択します。
 
