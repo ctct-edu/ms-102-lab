@@ -287,5 +287,5 @@ Microsoft 365 をインストールするときに、いくつかの構成タス
 
    ![](./media/lab1-22.png)
 
-10. PowerShell ウィンドウを閉じ**ないでください**。Windows PowerShell ウィンドウは開いたままにしておきます。LON-CL1にログインしたままにします。
+10. PowerShell ウィンドウを閉じます。
 
