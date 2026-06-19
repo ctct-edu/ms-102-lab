@@ -1,4 +1,4 @@
-# [ラーニング パス 8 - ラボ 8 - 演習 2 - DLP ポリシーのテスト](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_08_Lab8_Ex2_Test_DLP_Policy.md#learning-path-8---lab-8---exercise-2---test-the-dlp-policy)
+# [ラーニング パス 8 - ラボ 8 - 演習 2 - (Exchange)DLP ポリシーのテスト](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_08_Lab8_Ex2_Test_DLP_Policy.md#learning-path-8---lab-8---exercise-2---test-the-dlp-policy)
 
 Holly Dickson は現在、パイロット プロジェクトの段階にあり、前のラボ演習で作成した機密情報を含む電子メールに関連する DLP ポリシーをテストしたいと考えています。
 

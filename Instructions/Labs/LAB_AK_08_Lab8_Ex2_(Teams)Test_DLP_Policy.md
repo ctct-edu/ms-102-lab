@@ -1,4 +1,4 @@
-# [ラーニング パス 8 - ラボ 8 - 演習 2-2 - DLP ポリシーのテスト(オプション)](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_08_Lab8_Ex2_Test_DLP_Policy.md#learning-path-8---lab-8---exercise-2---test-the-dlp-policy)
+# [ラーニング パス 8 - ラボ 8 - 演習 2 - (Teams)DLP ポリシーのテスト](https://github.com/MicrosoftLearning/MS-102T00-Microsoft-365-Administrator-Essentials/blob/master/Instructions/Labs/LAB_AK_08_Lab8_Ex2_Test_DLP_Policy.md#learning-path-8---lab-8---exercise-2---test-the-dlp-policy)
 
 
 
