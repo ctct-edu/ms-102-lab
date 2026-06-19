@@ -66,7 +66,7 @@
 
    
 
-10. 別のブラウザーを開くか、あるいはHollyをサインアウトして、Teams (https://teams.cloud.microsoft)にLynne Robbins としてサインインします。これまで送ったチャットメッセージが届いていることを確認してください。
+10. 別のブラウザーを開くか、あるいはHollyをサインアウトして、Teams ( https://teams.cloud.microsoft )にLynne Robbins としてサインインします。これまで送ったチャットメッセージが届いていることを確認してください。
 
       ![](./media/lab8-3-9.png)
 
