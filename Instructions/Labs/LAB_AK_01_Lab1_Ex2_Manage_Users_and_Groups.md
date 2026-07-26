@@ -259,11 +259,13 @@ Adatum の Microsoft 365 管理者である Holly Dickson として、展開の�
 
 5. 資格情報を要求するサインインウィンドウが表示されます。 **Holly@xxxxxZZZZZZ.onmicrosoft.com**  の Holly の Microsoft 365 アカウントを使用してサインインします(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。パスワードについては、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供されたものと同じ**Microsoft 365 管理者 パスワードを使用してサインインします。**
 
-6. [Sign in to all apps～]ページが 表示されたことを確認し、 **[No, this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
+6. [Permissions requested～]ページが 表示された場合は、チェックボックスをオンにし **[Accept]** をクリックします。 ![image](./media/lab1-2-4.png)
+
+7. [Sign in to all apps～]ページが 表示されたことを確認し、 **[No, this app only]** をクリックします。 ([OK]ボタンをクリックしないでください。)
 
    ![image](./media/lab1-21.png)
 
-7. 次に、Microsoft Graph PowerShell を使用して、アクティブなグループのリストを表示します。Inside Sales グループはこのリストには表示されません。次のコマンドを入力して Enter キーを押します (注: グループのリストが表示されるまでに 1 分ほどかかる場合があります)。
+8. 次に、Microsoft Graph PowerShell を使用して、アクティブなグループのリストを表示します。Inside Sales グループはこのリストには表示されません。次のコマンドを入力して Enter キーを押します (注: グループのリストが表示されるまでに 1 分ほどかかる場合があります)。
 
    ```
     Get-MgGroup
@@ -271,7 +273,7 @@ Adatum の Microsoft 365 管理者である Holly Dickson として、展開の�
 
    
 
-8. このタスクの開始時の注意に示されているように、この時点では通常、Get-MgDirectoryDeletedItem コマンドレットを実行して、削除されたオブジェクトのリストを表示します。これには、前のタスクで削除した**Inside Salesグループのオブジェクト ID が含まれます。** ただし、このコマンドレットに関する現在の問題を考慮すると、代わりに次の一連のコマンドを実行して、このオブジェクト ID を取得する必要があります。各コマンドを入力して Enter キーを押します。
+9. このタスクの開始時の注意に示されているように、この時点では通常、Get-MgDirectoryDeletedItem コマンドレットを実行して、削除されたオブジェクトのリストを表示します。これには、前のタスクで削除した**Inside Salesグループのオブジェクト ID が含まれます。** ただし、このコマンドレットに関する現在の問題を考慮すると、代わりに次の一連のコマンドを実行して、このオブジェクト ID を取得する必要があります。各コマンドを入力して Enter キーを押します。
 
    ```
     $url = "https://graph.microsoft.com/v1.0/directory/deleteditems/microsoft.graph.group"
@@ -285,7 +287,7 @@ Adatum の Microsoft 365 管理者である Holly Dickson として、展開の�
 
     **注:** これらのコマンドを実行すると、削除された Inside Sales グループの属性が $DeletedGroup 変数に保存されます。
 
-9. Inside Sales グループの属性を取得したので、**Restore-MgDirectoryDeletedItem** コマンドレットを実行してグループを復元できます。その際、グループのオブジェクト ID を「-DirectoryObjectId」の隣のパラメータとして宣言する必要があります。通常はオブジェクト ID (例: -DirectoryObjectId 'e76bbcdb-24c5-41a6-805d-b352976fd2a8') をコピーして貼り付けますが、 Get-MgDirectoryDeletedItemコマンドレットに関する現在の問題により、実際のID 値を識別できません。 。そのため、前のコマンドを実行して、$DeletedGroup 変数内のグループの属性を取得する必要がありました。次に、 Restore-MgDirectoryDeletedItemコマンドレットを実行し、 IDを使用するように指示します。$DeletedGroup 変数に格納されている属性の中からフィールドを選択します。次のコマンドを入力して Enter キーを押します。
+10. Inside Sales グループの属性を取得したので、**Restore-MgDirectoryDeletedItem** コマンドレットを実行してグループを復元できます。その際、グループのオブジェクト ID を「-DirectoryObjectId」の隣のパラメータとして宣言する必要があります。通常はオブジェクト ID (例: -DirectoryObjectId 'e76bbcdb-24c5-41a6-805d-b352976fd2a8') をコピーして貼り付けますが、 Get-MgDirectoryDeletedItemコマンドレットに関する現在の問題により、実際のID 値を識別できません。 。そのため、前のコマンドを実行して、$DeletedGroup 変数内のグループの属性を取得する必要がありました。次に、 Restore-MgDirectoryDeletedItemコマンドレットを実行し、 IDを使用するように指示します。$DeletedGroup 変数に格納されている属性の中からフィールドを選択します。次のコマンドを入力して Enter キーを押します。
 
    ```
     Restore-MgDirectoryDeletedItem -DirectoryObjectId $DeletedGroup.id
@@ -293,7 +295,7 @@ Adatum の Microsoft 365 管理者である Holly Dickson として、展開の�
 
    
 
-10. ここで、**Inside Sales** グループが回復されたことを確認する必要があります。これはMicrosoft 365 管理センターで行うこともできますが、このタスクは PowerShell で動作するため、Microsoft Graph PowerShell を使用して回復を確認してみましょう。これを行うには、次のコマンドを入力してアクティブなグループのリストを取得します。これには Inside Sales グループが含まれているはずです。
+11. ここで、**Inside Sales** グループが回復されたことを確認する必要があります。これはMicrosoft 365 管理センターで行うこともできますが、このタスクは PowerShell で動作するため、Microsoft Graph PowerShell を使用して回復を確認してみましょう。これを行うには、次のコマンドを入力してアクティブなグループのリストを取得します。これには Inside Sales グループが含まれているはずです。
 
    ```
     Get-MgGroup
