@@ -71,7 +71,7 @@ Microsoft 365 には、すべてのユーザーのモバイル アプリとデ�
 
 8. お手元のPCでブラウザーのInPrivate ウィンドウ(Microsoft Edge) もしくは、シークレットウィンドウ (Google Chrome) を起動し、Microsoft 365 ポータル (https://portal.office.com/) にアクセスし、**Laura Atkins として Microsoft 365 にサインイン** します。[サインイン]ウィンドウに「Laura@xxxxxZZZZZZ.onmicrosoft.com」と入力します(xxxxxZZZZZZ は、ラボ ホスティング プロバイダーによって提供されるテナント プレフィックスです)。[パスワードの入力]ウィンドウで、ラボ ホスティング プロバイダーからテナント管理者アカウント (つまり、MOD 管理者アカウント) 用に提供されたものと同じMicrosoft 365 管理者 パスワードを入力します。
 
-9. Microsoft 365 ポータル (Laura の Microsoft 365 ホーム ページ)左上の **９点リーダー** をクリックして表示される**[その他のアプリ]** を選択します。![](./media/lab2-3-2.png)
+9. Microsoft 365 ポータル (Laura の Microsoft 365 ホーム ページ)左上の **９点リーダー** をクリックして表示される **[その他のアプリ]** を選択します。![](./media/lab2-3-2.png)
 
 10. 画面右上に表示されるドロップダウン メニューで **[アプリをインストール] - [Microsoft 365 Apps]** を選択します。これにより、Laura の[マイ アカウント]ウィンドウが開きます。
 
