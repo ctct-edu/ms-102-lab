@@ -14,7 +14,7 @@ Holly Dickson は現在、パイロット プロジェクトの段階にあり�
 
 2. 次に、Holly から Lynne Robbins に電子メールを送信し、電子メールの本文に IP アドレスを含めます。
 
-    Outlook (https://outlook.office.com)にHolly Dicksonとしてサインインします。
+    Outlook ( https://outlook.office.com )にHolly Dicksonとしてサインインします。
 
 3. 画面の左上隅にある **[新規メール]** を選択します。
 
