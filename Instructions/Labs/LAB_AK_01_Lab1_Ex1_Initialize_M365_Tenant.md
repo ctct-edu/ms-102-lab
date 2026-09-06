@@ -25,47 +25,57 @@ Adatum の Microsoft 365 管理者として、あなたは仮想化されたラ�
 
 2. **[サインインの状態を保持しますか]** ページでは、 **[いいえ]** をクリックします 。
 
-3. 「You need to set up multifactor authentication 」というメッセージが出た場合は **[Skip for Now]** を選択してください。さらにスキップする理由を聞かれた場合、任意のものを選択して進めてください。
+3. 「You need to set up multifactor authentication 」というメッセージが出た場合、モバイル デバイスで MFA の要求を承認します。
 
-    [Skip for Now] を選択できない場合は、 **[Set up Now]** を選択して、Microsoft Authenticator(多要素認証) の設定を実施してください。
+    「You need to set up multifactor authentication」 → **Set up now**
 
-   
+    「アカウントをセキュリティ保護しましょう」 → **次へ**
 
-4. 画面右上の **歯車マーク** をクリックし、表示される **[Settings]** メニューをクリックします。
+    「Microsoft Authenticator のインストール」 → **次へ**
 
-5. **[Setting]** の一覧から、 **[Language and time zone]** の **[Change your language]** をクリックします。s
+    「アプリでアカウントをセットアップする」 → **次へ**
+
+    「QR コードをスキャンします」 → QRコードをスマートフォンの Microsoft Authenticator でスキャン → **次へ**
+
+    画面に表示された2桁の番号をMicrosoft Authenticatorに入力し → **完了**
+
+4. **[サインインの状態を保持しますか]** ページでは、 **[いいえ]** をクリックします 。
+
+5. 画面右上の **歯車マーク** をクリックし、表示される **[Settings]** メニューをクリックします。
+
+6. **[Setting]** の一覧から、 **[Language and time zone]** の **[Change your language]** をクリックします。s
 
    ![](./media/lab1-2.png)
 
-6. **[My Account]** の **[Settings ＆ Privacy]** ページが表示されます。
+7. **[My Account]** の **[Settings ＆ Privacy]** ページが表示されます。
 
-7. **[Language]** セクションの **[Display Language]** をクリックして、 **[Change display language]** をクリックします。
+8. **[Language]** セクションの **[Display Language]** をクリックして、 **[Change display language]** をクリックします。
 
    ![](./media/lab1-3.png)
 
-8. **[Language]** ページで **[Japanese]** を選択し、 **[Select]** をクリックします。
+9. **[Language]** ページで **[Japanese]** を選択し、 **[Select]** をクリックします。
 
-9. **[Display language and regional format will be updated to Japanese]** とメッセージが表示されたら、 **[Update]** をクリックします。
+10. **[Display language and regional format will be updated to Japanese]** とメッセージが表示されたら、 **[Update]** をクリックします。
 
    ![](./media/lab1-4.png)
 
-10. **[表示言語と地域設定が Japanese に更新されました。新しい言語を完全に適用するには、サインアウトする必要があります。]** とメッセージが表示されたら、 **[キャンセル]** をクリックします。
+11. **[表示言語と地域設定が Japanese に更新されました。新しい言語を完全に適用するには、サインアウトする必要があります。]** とメッセージが表示されたら、 **[キャンセル]** をクリックします。
 
     ![](./media/lab1-5.png)
 
-11. **[設定およびプライバシー]** ページで、 **[地域]** の **[タイムゾーン] - [タイムゾーンの変更]** をクリックします。
+12. **[設定およびプライバシー]** ページで、 **[地域]** の **[タイムゾーン] - [タイムゾーンの変更]** をクリックします。
 
     ![](./media/lab1-6.png)
 
-12. **[ (UTC ＋ 09:00)大阪、札幌、東京]** を選択して、 **[選択]** をクリックします。
+13. **[ (UTC ＋ 09:00)大阪、札幌、東京]** を選択して、 **[選択]** をクリックします。
 
-13. Microsoft 365 ポータル の右上にあるイニシャルのアイコンをクリックしてから、 **[sign out]** をクリックしてサインアウトします。
+14. Microsoft 365 ポータル の右上にあるイニシャルのアイコンをクリックしてから、 **[sign out]** をクリックしてサインアウトします。
 
     ![](./media/lab1-7.png)
 
-14. サインアウトが完了したら、一度ブラウザーを×で閉じます。
+15. サインアウトが完了したら、一度ブラウザーを×で閉じます。
 
-15. https://admin.microsoft.com に再度サインインします。
+16. https://admin.microsoft.com に再度サインインします。
 
     日本語化されたことが確認できたら(少し時間がかかったり、再サインインを要することもあります)、手順を進めてください。
 
