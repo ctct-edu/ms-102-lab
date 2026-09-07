@@ -8,7 +8,9 @@
 
 このタスクでは、Entra Connect Sync セットアップ ウィザードを実行して、Adatum のオンプレミス Active Directory と Microsoft Entra 間の同期を有効にします。構成が完了すると、同期プロセスが自動的に開始されます。
 
-1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動ます。 **Entra管理センター( https://entra.microsoft.com )にアクセス** し、Holly Dicksonの資格情報でサインインします。「Let's keep your account secure」のメッセージが出た場合は多要素認証の設定が必要ですので、Microsoft Authenticator で設定してください。
+1. 前のタスクのローカル**adatum\administratorとして** **LON-DC1** にログインしている必要があります。 LON-DC1 でEdgeブラウザーを起動ます。 **Entra管理センター( https://entra.microsoft.com )にアクセス** し、Holly Dicksonの資格情報でサインインします。「Let's keep your account secure」のメッセージが出た場合は、多要素認証の設定が必要であればMicrosoft Authenticator で設定してください。Passkeyの設定を要求された場合はキャンセルしてサインインできます。
+
+   
 
    英語表記となりますので、日本語表記に変更した方が進めやすくなります。画面右上の歯車のマーク **「Settings」** をクリックした後、左の「Language + region」をクリックし、Language と Regional format でいずれも日本語を選択し、 **[Apply] - [OK]**  をクリックします。
 
@@ -18,7 +20,7 @@
 
    ![](./media/lab3-2-1.png)
 
-4.  **「Connect同期エージェントのダウンロード」 - 「使用条件に同意してダウンロードする」** をクリックし、Entra Connectのインストーラーをダウンロードします。
+4. **「Connect同期エージェントのダウンロード」 - 「使用条件に同意してダウンロードする」** をクリックし、Entra Connectのインストーラーをダウンロードします。
 
    ![](./media/lab3-2-2.png)
 
@@ -26,21 +28,21 @@
 
 6. ウィザードが開始され、 Microsoft Entra Connect Sync ツールのインストールが開始されます。 **[I agree to the license terms and privacy notice]** チェック ボックスをオンにし、 **[Continue]** を選択します。
 
-8. [Express Settings]ページで、単一の Windows Server AD フォレストに関する手順を読み、 **[Use express settings]** を選択します。
+7. [Express Settings]ページで、単一の Windows Server AD フォレストに関する手順を読み、 **[Use express settings]** を選択します。
 
-9. [Connect to Azure AD ]ウィンドウで、[USERNAME]フィールドに **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**  (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) を入力します。
+8. [Connect to Azure AD ]ウィンドウで、[USERNAME]フィールドに **[Holly@xxxxxZZZZZZ.onmicrosoft.com](mailto:Holly@xxxxxZZZZZZ.onmicrosoft.com)**  (xxxxxZZZZZZ はラボ ホスティング プロバイダーによって提供されるテナント プレフィックス) を入力します。
 
    [PASSWORD]フィールドに、ラボ ホスティング プロバイダーからテナント管理者アカウント (MOD 管理者アカウント) 用に提供されたのと同じ**Microsoft 365 管理者パスワード**を入力し、  **[Next]** を選択します。
 
-10. [Connect to AD DS]ページで、[ USERNAME]フィールドに **「adatum\Administrator」** と入力し、[ PASSWORD]フィールドに　**「Pa55w.rd」**　と入力して、 **[Next]**  を選択します。
+9. [Connect to AD DS]ページで、[ USERNAME]フィールドに **「adatum\Administrator」** と入力し、[ PASSWORD]フィールドに　**「Pa55w.rd」**　と入力して、 **[Next]**  を選択します。
 
-11. Azure AD sign-in configuration ウィンドウで、ページの下部にある  **[Continue without matching all UPN suffixes to verified domains] チェック ボックスをオンにし、**  **[Next]** を選択します。
+10. Azure AD sign-in configuration ウィンドウで、ページの下部にある  **[Continue without matching all UPN suffixes to verified domains] チェック ボックスをオンにし、**  **[Next]** を選択します。
 
-12. [Ready to configure]画面で、 **[Start the synchronization process when configuration completes]**  チェック ボックスがまだ選択されていない場合は選択し、 **[Install]**　を選択します。
+11. [Ready to configure]画面で、 **[Start the synchronization process when configuration completes]**  チェック ボックスがまだ選択されていない場合は選択し、 **[Install]**　を選択します。
 
     **重要:**  Holly は最終的に Exchange ハイブリッド展開を今はインストールする予定はありません。このラボでは、Exchange hybrid deployment オプションを選択しないでください。
 
-13. 構成が完了するまで待ちます (数分かかる場合があります)。**[Configuration complete]** ページで、**[Exit]** 選択します。
+12. 構成が完了するまで待ちます (数分かかる場合があります)。**[Configuration complete]** ページで、**[Exit]** 選択します。
 
     Azure AD Connect が完全同期を完了したことが確認できたので、次のタスクでは、いくつかの更新を行って、30 分ごとに更新が同期されるのを待つのではなく、手動で強制的に即時同期を実行します。
 
