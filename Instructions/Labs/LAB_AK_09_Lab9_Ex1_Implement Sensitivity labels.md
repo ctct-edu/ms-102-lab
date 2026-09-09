@@ -195,11 +195,11 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 13. Wordのドキュメントを閉じます。
 
-これで、読み取り専用で保護された AIP 保護された Word 文書が正常に作成されました。このドキュメントにアクセスできるのは、作成者である MOD管理者と、ドキュメントが共有された Joni Sherman (読み取り専用権限を持つ) のみです。
+これで、読み取り専用で保護された AIP 保護された Word 文書が正常に作成されました。このドキュメントにアクセスできるのは、作成者である Joni Sherman と、ドキュメントが共有されたMOD Administrator (読み取り専用権限を持つ) のみです。
 
 ### タスク 4 – 秘密度ラベル ポリシーを確認する
 
-前のタスクでは、Word 文書を作で保護しました。PII ラベルは文書に透かしを挿入し、文書に対するアクセス許可を制限する必要があります。ドキュメントに割り当てた保護が機能するかどうかを確認するには、まずドキュメントを Joni Sherman に電子メールで送信します。次に、Joni Sherman でどのような機能が可能かをテストします。
+前のタスクでは、Word 文書を作で保護しました。PII ラベルは文書に透かしを挿入し、文書に対するアクセス許可を制限する必要があります。ドキュメントに割り当てた保護が機能するかどうかを確認するには、まずドキュメントを Joni Sherman に電子メールで送信します。次に、MOD Administrator でどのような機能が可能かをテストします。
 
 1. LON-CL2　のEdgeブラウザーで、 Outlook ( https://outlook.office.com )にサインインします。
 
@@ -233,7 +233,7 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
     ![image](./media/lab9-3.png)
 
-12. Joniには、読み取り専用のアクセス許可を付与したため、文書の内容が表示されます。
+12. MOD Administrator には、読み取り専用のアクセス許可を付与したため、文書の内容が表示されます。
 
     また、Wordの画面の上部には通知バーが表示されます。
 
@@ -243,6 +243,6 @@ LON-CL2でJoni Sherman(jonis@xxxxxZZZZZZ.onmicrosoft.com)として Microsoft 365
 
 14. Wordを閉じます。
 
-    Joni にドキュメントを読み取るアクセス許可が割り当てられているため、構成した ポリシー パラメーターに基づいて  Information Protection がドキュメントを保護していることを確認しました。
+    MOD Administrator にドキュメントを読み取るアクセス許可が割り当てられているため、構成した ポリシー パラメーターに基づいて  Information Protection がドキュメントを保護していることを確認しました。
 
 ## おめでとうございます！このコースの最後のラボを完了しました。
