@@ -21,12 +21,13 @@ Adatum の新しい Microsoft 365 管理者である Holly Dickson としての�
 
 4. [My Account]のページにサインインされます。画面左にある[Settings & Privacy(設定およびプライバシー)]をクリックします。
 
-   ![](./media/lab9-6.png)](https://github.com/ctct-edu/ab-900-lab/blob/main/LabManual/media/lab1-0.png)
+   ![](./media/lab9-6.png)
 
 5. [言語と地域] タブをクリックします。
+
    [Settings & Privacy(設定およびプライバシー)]の画面にある[Display language(表示言語)]をクリックし、さらに[Change display language(表示言語の変更)]をクリックします。
 
-   ![](./media/lab9-7.png)](https://github.com/ctct-edu/ab-900-lab/blob/main/LabManual/media/lab1-1.png)
+   ![](./media/lab9-7.png)
 
 6. [Languages(言語)]の一覧から[Japanese(日本語)]を選択し[Select(選択)]をクリックします。
 
